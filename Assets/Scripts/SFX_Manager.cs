@@ -10,8 +10,10 @@ public class SFX_Manager : MonoBehaviour
     public AudioClip axeSwing;
     public AudioClip axeSwingWithHit;
     public AudioClip environmentChange;
+    public AudioClip tutorialBackgroundMusic;
 
     public AudioSource Audio;
+    public AudioSource BackgroundAudio;
 
     public static SFX_Manager sfxInstance;
 
@@ -26,6 +28,8 @@ public class SFX_Manager : MonoBehaviour
 
         sfxInstance = this;
         DontDestroyOnLoad(this);
+        BackgroundAudio.loop = true;
+        BackgroundAudio.volume = 0.3f;
     }
 
     // Update is called once per frame

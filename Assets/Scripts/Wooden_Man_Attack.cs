@@ -52,6 +52,7 @@ public class Wooden_Man_Attack : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         //Debug.Log("Attacking");
-        Attack();
+        if(!Pause_Menu.isPaused)
+            Attack();
     }
 }

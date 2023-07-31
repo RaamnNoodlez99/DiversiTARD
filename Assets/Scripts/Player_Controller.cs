@@ -34,8 +34,8 @@ public class Player_Controller : MonoBehaviour
 
     private void Awake()
     {
+        SFX_Manager.sfxInstance.BackgroundAudio.PlayOneShot(SFX_Manager.sfxInstance.tutorialBackgroundMusic);
         playerBody = GetComponent<Rigidbody2D>();
-
         timer = jumpTimer;
     }
 
@@ -51,7 +51,7 @@ public class Player_Controller : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && !Pause_Menu.isPaused)
         {
             SpawnPlatform();
         }
