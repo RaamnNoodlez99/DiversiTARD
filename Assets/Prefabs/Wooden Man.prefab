@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 9040976519144163977}
   - component: {fileID: -3388147002755191424}
   - component: {fileID: 153200468808326430}
+  - component: {fileID: 7878183116680737280}
   m_Layer: 0
   m_Name: Wooden Man
   m_TagString: WoodenMan
@@ -151,6 +152,10 @@ MonoBehaviour:
   ghostPlatformExists: 0
   ghostPlatform: {fileID: 6849975941971926316, guid: 607304796dc15bc4386c5f3ab5c8ffd6, type: 3}
   animator: {fileID: -3388147002755191424}
+  knockbackForce: 12
+  knockbackCounter: 0
+  knockbackTotalTime: 0.4
+  knockFromRight: 0
 --- !u!61 &6348512918910243871
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -352,6 +357,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: -3388147002755191424}
   timeToAttack: 0.25
+--- !u!114 &7878183116680737280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6348512918910243862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ad71eff751d4fc1ad20e42940e42e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 300
+  MAX_HEALTH: 300
 --- !u!1 &7690010710839009779
 GameObject:
   m_ObjectHideFlags: 0

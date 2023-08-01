@@ -11,6 +11,8 @@ public class SFX_Manager : MonoBehaviour
     public AudioClip axeSwingWithHit;
     public AudioClip environmentChange;
     public AudioClip tutorialBackgroundMusic;
+    public AudioClip poisonDrop;
+
 
     public AudioSource Audio;
     public AudioSource BackgroundAudio;

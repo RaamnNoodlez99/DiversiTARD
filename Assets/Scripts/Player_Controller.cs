@@ -30,6 +30,11 @@ public class Player_Controller : MonoBehaviour
     Rigidbody2D playerBody;
     public Animator animator;
 
+    public float knockbackForce = 12;
+    public float knockbackCounter;
+    public float knockbackTotalTime = 0.4f;
+    public bool knockFromRight;
+
     private bool facingLeft = true; 
 
     private void Awake()
@@ -59,9 +64,25 @@ public class Player_Controller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerBody.velocity = new Vector2(moveInput.x * walkSpeed, playerBody.velocity.y);
+        if(knockbackCounter <= 0)
+        {
+            playerBody.velocity = new Vector2(moveInput.x * walkSpeed, playerBody.velocity.y);
+        }
+        else
+        {
+            if(knockFromRight == true)
+            {
+                playerBody.velocity = new Vector2(-knockbackForce, knockbackForce);
+            }
+            else
+            {
+                playerBody.velocity = new Vector2(knockbackForce, knockbackForce);
+            }
 
-        if(CompareTag("Ghost") || CompareTag("WoodenMan"))
+            knockbackCounter -= Time.deltaTime;
+        }
+
+        if (CompareTag("Ghost") || CompareTag("WoodenMan"))
         {
             animator.SetFloat("Speed", Mathf.Abs(moveInput.x));
         }
@@ -131,6 +152,15 @@ public class Player_Controller : MonoBehaviour
                 animator.SetBool("isJumping", false);
         }
     }
+
+    /*private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Projectile"))
+        {
+            Debug.Log("hit Biayutch");
+            
+        }
+    }*/
 
     void OnTriggerExit2D(Collider2D collision)
     {
