@@ -47,7 +47,17 @@ public class Wooden_Man_Attack : MonoBehaviour
         isAttacking = true;
         attackArea.SetActive(isAttacking);
         animator.SetBool("isAttacking", true);
+
+        //StartCoroutine(activateAttackCollider(1f));
     }
+
+    // private IEnumerator activateAttackCollider(float duration)
+    // {
+    //     yield return new WaitForSeconds(duration);
+    //
+    //     isAttacking = true;
+    //     attackArea.SetActive(isAttacking);
+    // }
 
     public void OnAttack(InputAction.CallbackContext context)
     {

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -119,30 +121,6 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-
-    //checking if grounded
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Platform"))
-        {
-            isJumping = false;
-
-            if (CompareTag("Ghost") || CompareTag("WoodenMan"))
-                animator.SetBool("isJumping", false);
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Platform"))
-        {
-            isJumping = true;
-
-            if (CompareTag("Ghost") || CompareTag("WoodenMan"))
-                animator.SetBool("isJumping", true);
-        }
-    }
-
     void Flip()
     {
         Vector3 currentScale = gameObject.transform.localScale;
@@ -180,5 +158,12 @@ public class Player_Controller : MonoBehaviour
     {
         Vector3 spawnPosition = playerBody.position - new Vector2(0f, platformOffset);
         Instantiate(ghostPlatform, spawnPosition, Quaternion.identity);
+    }
+
+    public void setIsJumping(bool value)
+    {
+        isJumping = value;
+        if (CompareTag("Ghost") || CompareTag("WoodenMan"))
+            animator.SetBool("isJumping", value);
     }
 }

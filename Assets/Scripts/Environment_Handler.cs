@@ -13,8 +13,8 @@ public class Environment_Handler : MonoBehaviour
     public float floorX = 2;
     public float floorY = -47;
 
-    public float backGroundX = 2.45f;
-    public float backGroundY = 17;
+    public float backGroundX = 0;
+    public float backGroundY = 0;
 
     private GameObject currentFatherFloor;
     private GameObject currentGhostFloor;
@@ -78,7 +78,7 @@ public class Environment_Handler : MonoBehaviour
 
         if (currentFatherFloor == null)
         {
-            Vector3 spawnPosition = new Vector3(floorX, floorY + 3f, 0f);
+            Vector3 spawnPosition = new Vector3(floorX, floorY, 0f);
             currentFatherFloor = Instantiate(fatherFloor, spawnPosition, Quaternion.identity);
             Debug.Log("Spawned father floor");
         }
