@@ -338,6 +338,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 136389080405409265, guid: bde6b9197d1c74d40aa8a5e6b7948586, type: 3}
+      propertyPath: gapBetweenDrops
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 136389080405409265, guid: bde6b9197d1c74d40aa8a5e6b7948586, type: 3}
+      propertyPath: inialNumOfDrops
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 136389080405409267, guid: bde6b9197d1c74d40aa8a5e6b7948586, type: 3}
       propertyPath: m_Name
       value: Poison Vat

@@ -20,6 +20,9 @@ public class Health : MonoBehaviour
         {
             Die();
         }
+
+        if(gameObject.CompareTag("WoodenMan"))
+            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.painGrunt);
     }
 
     public void Heal(int amount)
@@ -45,6 +48,10 @@ public class Health : MonoBehaviour
     private void Die()
     {
         Debug.Log("I am dead");
+
+        if (gameObject.CompareTag("WoodenMan"))
+            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.deathGrunt);
+
         Destroy(gameObject);
     }
 }

@@ -153,6 +153,7 @@ MonoBehaviour:
   ghostPlatform: {fileID: 6849975941971926316, guid: 607304796dc15bc4386c5f3ab5c8ffd6, type: 3}
   animator: {fileID: -3388147002755191424}
   knockbackForce: 12
+  footstepInterval: 0.3
   knockbackCounter: 0
   knockbackTotalTime: 0.4
   knockFromRight: 0
@@ -223,10 +224,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ba456f3f-a4f7-4167-bdec-761f75041a87
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: de90bf98-25dd-415c-a31f-1cc4e87dd247
-    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
@@ -303,6 +300,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3e1ec6da-1865-4fd4-8f43-23e99864ba04
     m_ActionName: Player/SpawnPlatform[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2ce2d013-ce4c-4e80-b348-98ca783bd208
+    m_ActionName: Player/SwitchCharacter[/Keyboard/tab,/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -320,8 +321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39229dabfbdb94873badce81b0128407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherCharacter: {fileID: 0}
-  thisCharacter: {fileID: 0}
+  otherCharacter: {fileID: 5786175793622069242, guid: b75b1e78a66d51940b438c788f88a6e9, type: 3}
+  thisCharacter: {fileID: 6348512918910243862}
   cinemachine: {fileID: 0}
 --- !u!95 &-3388147002755191424
 Animator:

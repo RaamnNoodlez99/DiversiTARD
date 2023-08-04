@@ -42,17 +42,17 @@ public class Wooden_Man_Attack : MonoBehaviour
         }
     }
 
-    private void Attack()
+    public void Attack()
     {
         isAttacking = true;
         attackArea.SetActive(isAttacking);
         animator.SetBool("isAttacking", true);
     }
 
-    public void OnAttack(InputAction.CallbackContext context)
+    /*public void OnAttack(InputAction.CallbackContext context)
     {
         //Debug.Log("Attacking");
         if(!Pause_Menu.isPaused)
             Attack();
-    }
+    }*/
 }

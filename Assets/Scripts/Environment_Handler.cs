@@ -25,6 +25,7 @@ public class Environment_Handler : MonoBehaviour
 
     void Awake()
     {
+        SFX_Manager.sfxInstance.BackgroundAudio.PlayOneShot(SFX_Manager.sfxInstance.tutorialBackgroundMusic, 0.2f);
         if (evironmentHandlerInstance != null && evironmentHandlerInstance != this)
         {
             Destroy(gameObject);
@@ -51,14 +52,12 @@ public class Environment_Handler : MonoBehaviour
         {
             Vector3 spawnPosition = new Vector3(floorX, floorY, 0f);
             currentGhostFloor = Instantiate(ghostFloor, spawnPosition, Quaternion.identity);
-            Debug.Log("Spawned ghost floor");
         }
 
         if (currentGhostBackGround == null)
         {
             Vector3 spawnPosition = new Vector3(backGroundX, backGroundY + 1.56f, 0f);
             currentGhostBackGround = Instantiate(ghostBackground, spawnPosition, Quaternion.identity);
-            Debug.Log("Spawned ghost evironment");
         }
 
         isFatherEnvironment = false;
@@ -80,14 +79,12 @@ public class Environment_Handler : MonoBehaviour
         {
             Vector3 spawnPosition = new Vector3(floorX, floorY + 3f, 0f);
             currentFatherFloor = Instantiate(fatherFloor, spawnPosition, Quaternion.identity);
-            Debug.Log("Spawned father floor");
         }
 
         if (currentFatherBackGround == null)
         {
             Vector3 spawnPosition = new Vector3(backGroundX, backGroundY, 0f);
             currentFatherBackGround = Instantiate(fatherBackground, spawnPosition, Quaternion.identity);
-            Debug.Log("Spawned father evironment");
         }
 
         isFatherEnvironment = true;

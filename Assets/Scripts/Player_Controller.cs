@@ -13,14 +13,17 @@ public class Player_Controller : MonoBehaviour
     public float platformOffset = 1f;
     public float ghostPlatSpawnDelay = 0f;
     public bool ghostPlatformExists = false;
-    //public string testString = "default";
+    public float switchDelay = 0.001f;
     public GameObject ghostPlatform;
+    //public GameObject gameManager;
 
     bool isJumping = false;
     bool activateJump = false;
     bool startTimer = false;
     bool earlyRelease = false;
     float timer;
+    public static bool canSwitch = true;
+
 
     Vector2 moveInput;
     RaycastHit2D[] m_Contacts = new RaycastHit2D[100];
@@ -31,6 +34,8 @@ public class Player_Controller : MonoBehaviour
     public Animator animator;
 
     public float knockbackForce = 12;
+    private float footstepTimer = 0f;
+    public float footstepInterval = 0.3f;
     public float knockbackCounter;
     public float knockbackTotalTime = 0.4f;
     public bool knockFromRight;
@@ -39,7 +44,6 @@ public class Player_Controller : MonoBehaviour
 
     private void Awake()
     {
-        SFX_Manager.sfxInstance.BackgroundAudio.PlayOneShot(SFX_Manager.sfxInstance.tutorialBackgroundMusic);
         playerBody = GetComponent<Rigidbody2D>();
         timer = jumpTimer;
     }
@@ -55,31 +59,39 @@ public class Player_Controller : MonoBehaviour
                 earlyRelease = true;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.F) && !Pause_Menu.isPaused)
-        {
-            SpawnPlatform();
-        }
     }
 
     private void FixedUpdate()
     {
-        if(knockbackCounter <= 0)
+        if (knockbackCounter <= 0)
         {
             playerBody.velocity = new Vector2(moveInput.x * walkSpeed, playerBody.velocity.y);
         }
         else
         {
-            if(knockFromRight == true)
+            moveInput = Vector2.zero;
+            if (knockFromRight == true)
             {
-                playerBody.velocity = new Vector2(-knockbackForce, knockbackForce);
+                moveInput = Vector2.zero;
+                playerBody.velocity = new Vector2(-knockbackForce + moveInput.x * walkSpeed, knockbackForce);
             }
             else
             {
-                playerBody.velocity = new Vector2(knockbackForce, knockbackForce);
+                moveInput = Vector2.zero;
+                playerBody.velocity = new Vector2(knockbackForce + moveInput.x * walkSpeed, knockbackForce);
             }
-
+            moveInput = Vector2.zero;
             knockbackCounter -= Time.deltaTime;
+        }
+
+        if (IsMoving && !isJumping && footstepTimer <= 0f && gameObject.CompareTag("WoodenMan"))
+        {
+            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.footstep);
+            footstepTimer = footstepInterval;
+        }
+        if (footstepTimer > 0f)
+        {
+            footstepTimer -= Time.fixedDeltaTime;
         }
 
         if (CompareTag("Ghost") || CompareTag("WoodenMan"))
@@ -116,7 +128,6 @@ public class Player_Controller : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        //Debug.Log(context.ReadValue<Vector2>());
         moveInput = context.ReadValue<Vector2>();
         IsMoving = moveInput != Vector2.zero;
     }
@@ -140,8 +151,35 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if(context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan" && !Pause_Menu.isPaused)
+            gameObject.GetComponent<Wooden_Man_Attack>().Attack();
+    }
 
-    //checking if grounded
+    public void OnSpawnPlatform(InputAction.CallbackContext context)
+    {
+        Debug.Log(gameObject.GetComponent<Character_Switch>().getCurCharacter());
+        if (context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && !Pause_Menu.isPaused)
+            SpawnPlatform();
+    }
+
+    public void OnSwitchCharacter(InputAction.CallbackContext context)
+    {
+        if (context.performed && canSwitch && !Pause_Menu.isPaused)
+        {
+            gameObject.GetComponent<Character_Switch>().SwitchCharacter();
+            canSwitch = false;
+            StartCoroutine(EnableSwitchAfterDelay());
+        }
+    }
+
+
+    private IEnumerator EnableSwitchAfterDelay()
+    {
+        yield return new WaitForSeconds(switchDelay);
+        canSwitch = true;
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Platform"))
@@ -152,15 +190,6 @@ public class Player_Controller : MonoBehaviour
                 animator.SetBool("isJumping", false);
         }
     }
-
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Projectile"))
-        {
-            Debug.Log("hit Biayutch");
-            
-        }
-    }*/
 
     void OnTriggerExit2D(Collider2D collision)
     {
