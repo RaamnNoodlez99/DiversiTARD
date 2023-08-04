@@ -9,6 +9,7 @@ TagManager:
   - Ghost
   - Ghost Platform
   - Map Edge
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - UI
   - Ghost
   - WoodenMan
-  - 
+  - Poison Drop
   - 
   - 
   - 

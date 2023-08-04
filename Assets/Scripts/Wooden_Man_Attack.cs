@@ -42,7 +42,7 @@ public class Wooden_Man_Attack : MonoBehaviour
         }
     }
 
-    private void Attack()
+    public void Attack()
     {
         isAttacking = true;
         attackArea.SetActive(isAttacking);
@@ -59,10 +59,10 @@ public class Wooden_Man_Attack : MonoBehaviour
     //     attackArea.SetActive(isAttacking);
     // }
 
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        //Debug.Log("Attacking");
-        if(!Pause_Menu.isPaused)
-            Attack();
-    }
+    // public void OnAttack(InputAction.CallbackContext context)
+    // {
+    //     //Debug.Log("Attacking");
+    //     if(!Pause_Menu.isPaused)
+    //         Attack();
+    // }
 }
