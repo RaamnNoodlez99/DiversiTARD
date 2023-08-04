@@ -24,17 +24,22 @@ public class EnemyPatrol : MonoBehaviour
 
     private CapsuleCollider2D _capsuleCollider2D;
     private CircleCollider2D _circleCollider2D;
+    private Health _health;
+    private float oldHealth;
     void Start()
     {
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
         _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         _circleCollider2D = GetComponent<CircleCollider2D>();
+        _health = GetComponent<Health>();
+        oldHealth = _health.health;
         currentPoint = pointB.transform;
     }
     
     void Update()
     {
+
         float distToPlayer = Vector2.Distance(transform.position, woodenMan.position);
         pointA.transform.position = new Vector3(pointA.transform.position.x, transform.position.y, 0);
         pointB.transform.position = new Vector3(pointB.transform.position.x, transform.position.y, 0);
@@ -50,6 +55,12 @@ public class EnemyPatrol : MonoBehaviour
         else
         {
             patrol();
+        }
+
+        if (_health.health < oldHealth)
+        {
+            StartCoroutine(Stun(2f));
+            oldHealth = _health.health;
         }
     }
     
@@ -86,6 +97,35 @@ public class EnemyPatrol : MonoBehaviour
                 transform.localScale = new Vector2(-0.8f, transform.localScale.y);
             }
         }
+    }
+
+    private IEnumerator Stun(float duration)
+    {
+        float elapsed = 0f;
+        if (elapsed == 0f)
+        {
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                
+                if (transform.position.x < woodenMan.position.x)
+                {
+                    transform.localScale = new Vector3(-0.8f, transform.localScale.y, transform.localScale.z);
+                }
+                else
+                {
+                    transform.localScale = new Vector3(0.8f, transform.localScale.y, transform.localScale.z);
+                }
+
+                
+                _animator.SetBool("isRolling", false);
+                transform.rotation = Quaternion.identity;
+                _rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                yield return null;
+            }
+        }
+        
+        _animator.SetBool("isRolling", true);
     }
 
     private void patrol()
