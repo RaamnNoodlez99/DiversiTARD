@@ -48,8 +48,8 @@ MonoBehaviour:
   poisonDrop: {fileID: 5406549034018571992, guid: 7a08f22f23ec0a341b0399ca18ae8616, type: 3}
   poisonOrigin: {fileID: 136389080679359830}
   poisonSpawnInterval: 0.45
-  inialNumOfDrops: 5
-  gapBetweenDrops: 0.5
+  inialNumOfDrops: 13
+  gapBetweenDrops: 11
 --- !u!1 &136389080679359825
 GameObject:
   m_ObjectHideFlags: 0

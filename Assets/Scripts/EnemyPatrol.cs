@@ -39,28 +39,30 @@ public class EnemyPatrol : MonoBehaviour
     
     void Update()
     {
-
-        float distToPlayer = Vector2.Distance(transform.position, woodenMan.position);
-        pointA.transform.position = new Vector3(pointA.transform.position.x, transform.position.y, 0);
-        pointB.transform.position = new Vector3(pointB.transform.position.x, transform.position.y, 0);
-
-        // if (canSeePlayer(agroRange))
-        // {
-        //     chasePlayer();
-        // }
-        if (distToPlayer < agroRange)
+        if(woodenMan != null)
         {
-            chasePlayer();
-        }
-        else
-        {
-            patrol();
-        }
+            float distToPlayer = Vector2.Distance(transform.position, woodenMan.position);
+            pointA.transform.position = new Vector3(pointA.transform.position.x, transform.position.y, 0);
+            pointB.transform.position = new Vector3(pointB.transform.position.x, transform.position.y, 0);
 
-        if (_health.health < oldHealth)
-        {
-            StartCoroutine(Stun(2f));
-            oldHealth = _health.health;
+            // if (canSeePlayer(agroRange))
+            // {
+            //     chasePlayer();
+            // }
+            if (distToPlayer < agroRange)
+            {
+                chasePlayer();
+            }
+            else
+            {
+                patrol();
+            }
+
+            if (_health.health < oldHealth)
+            {
+                StartCoroutine(Stun(2f));
+                oldHealth = _health.health;
+            }
         }
     }
     

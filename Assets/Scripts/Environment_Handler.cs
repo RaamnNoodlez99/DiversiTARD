@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Environment_Handler : MonoBehaviour
 {
-    public GameObject ghostFloor;
+    //public GameObject ghostFloor;
     public GameObject ghostBackground;
-    public GameObject fatherFloor;
+    //public GameObject fatherFloor;
     public GameObject fatherBackground;
     bool isFatherEnvironment = true;
 
@@ -42,21 +42,21 @@ public class Environment_Handler : MonoBehaviour
 
         if (isFatherEnvironment)
         {
-            Destroy(currentFatherFloor);
-            currentFatherFloor = null;
+            //Destroy(currentFatherFloor);
+           // currentFatherFloor = null;
             Destroy(currentFatherBackGround);
             currentFatherBackGround = null;
         }
 
-        if (currentGhostFloor == null)
-        {
-            Vector3 spawnPosition = new Vector3(floorX, floorY, 0f);
-            currentGhostFloor = Instantiate(ghostFloor, spawnPosition, Quaternion.identity);
-        }
+        //if (currentGhostFloor == null)
+        //{
+           // Vector3 spawnPosition = new Vector3(floorX, floorY, 0f);
+            //currentGhostFloor = Instantiate(ghostFloor, spawnPosition, Quaternion.identity);
+        //}
 
         if (currentGhostBackGround == null)
         {
-            Vector3 spawnPosition = new Vector3(backGroundX, backGroundY + 1.56f, 0f);
+            Vector3 spawnPosition = new Vector3(backGroundX, backGroundY, 0f);
             currentGhostBackGround = Instantiate(ghostBackground, spawnPosition, Quaternion.identity);
         }
 
@@ -69,17 +69,17 @@ public class Environment_Handler : MonoBehaviour
 
         if (!isFatherEnvironment)
         {
-            Destroy(currentGhostFloor);
-            currentGhostFloor = null;
+            //Destroy(currentGhostFloor);
+           // currentGhostFloor = null;
             Destroy(currentGhostBackGround);
             currentGhostBackGround = null;
         }
 
-        if (currentFatherFloor == null)
-        {
-            Vector3 spawnPosition = new Vector3(floorX, floorY, 0f);
-            currentFatherFloor = Instantiate(fatherFloor, spawnPosition, Quaternion.identity);
-        }
+       // if (currentFatherFloor == null)
+        //{
+           // Vector3 spawnPosition = new Vector3(floorX, floorY, 0f);
+            //currentFatherFloor = Instantiate(fatherFloor, spawnPosition, Quaternion.identity);
+       // }
 
         if (currentFatherBackGround == null)
         {

@@ -45,7 +45,7 @@ public class Health : MonoBehaviour
        
     }
 
-    private void Die()
+    public void Die()
     {
         Debug.Log("I am dead");
 

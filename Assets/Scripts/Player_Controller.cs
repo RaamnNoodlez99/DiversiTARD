@@ -16,6 +16,7 @@ public class Player_Controller : MonoBehaviour
     public float ghostPlatSpawnDelay = 0f;
     public bool ghostPlatformExists = false;
     public float switchDelay = 0.001f;
+    public GameObject inputManager;
     public GameObject ghostPlatform;
     //public GameObject gameManager;
 
@@ -67,11 +68,14 @@ public class Player_Controller : MonoBehaviour
     {
         if (knockbackCounter <= 0)
         {
+            //inputManager.GetComponent<PlayerInput>().enabled = true;
             playerBody.velocity = new Vector2(moveInput.x * walkSpeed, playerBody.velocity.y);
         }
         else
         {
-            moveInput = Vector2.zero;
+            StartCoroutine(DisableInputForDuration(knockbackTotalTime + 0.1f));
+            //inputManager.GetComponent<PlayerInput>().enabled = false;
+            //moveInput = Vector2.zero;
             if (knockFromRight == true)
             {
                 moveInput = Vector2.zero;
@@ -79,10 +83,8 @@ public class Player_Controller : MonoBehaviour
             }
             else
             {
-                moveInput = Vector2.zero;
                 playerBody.velocity = new Vector2(knockbackForce + moveInput.x * walkSpeed, knockbackForce);
             }
-            moveInput = Vector2.zero;
             knockbackCounter -= Time.deltaTime;
         }
 
@@ -126,6 +128,13 @@ public class Player_Controller : MonoBehaviour
             }
         }
            
+    }
+
+    IEnumerator DisableInputForDuration(float duration)
+    {
+        inputManager.GetComponent<PlayerInput>().enabled = false;
+        yield return new WaitForSeconds(duration);
+        inputManager.GetComponent<PlayerInput>().enabled = true;
     }
 
     public void OnMove(InputAction.CallbackContext context)
