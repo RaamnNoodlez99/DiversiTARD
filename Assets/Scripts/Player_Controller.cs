@@ -149,7 +149,7 @@ public class Player_Controller : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && !isJumping && gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()))
+        if (context.performed && !isJumping && gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && !Pause_Menu.isPaused)
         {
             animator.SetTrigger("takeOff");
             activateJump = true;
