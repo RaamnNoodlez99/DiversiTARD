@@ -62,6 +62,8 @@ public class Character_Switch : MonoBehaviour
        // Debug.Log("Active: " + activeCharacter.tag);
         if ( activeCharacter != null )
         {
+            otherCharacter.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            thisCharacter.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             if (activeCharacter.CompareTag("WoodenMan"))
             {
                 healthBar.SetActive(false);

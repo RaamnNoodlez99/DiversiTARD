@@ -14,6 +14,10 @@ public class Wooden_Man_Attack_Area : MonoBehaviour
             colliderToRemove = collider;
             Invoke("RemoveEnemyHealth", 0.3f);
         }
+        if(collider.CompareTag("switch"))
+        {
+            //Debug.Log("hit");
+        }
     }
 
     private void RemoveEnemyHealth()

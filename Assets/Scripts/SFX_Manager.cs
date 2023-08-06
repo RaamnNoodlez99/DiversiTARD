@@ -15,25 +15,42 @@ public class SFX_Manager : MonoBehaviour
     public AudioClip deathGrunt;
     public AudioClip painGrunt;
     public AudioClip footstep;
-    public AudioClip batBackground;
+    public AudioClip click;
+    public AudioClip stoneShort;
+
 
 
     public AudioSource Audio;
     public AudioSource BackgroundAudio;
+
+
 
     public static SFX_Manager sfxInstance;
 
 
     private void Awake()
     {
-        if(sfxInstance != null && sfxInstance != this)
+       // fatherBackground.Add(WindBackground);
+        //fatherBackground.Add(BirdBackground);
+
+       // ghostBackground.Add(BatBackGround);
+        //ghostBackground.Add(CaveBackground);
+
+        //bothBackground.Add(MusicBackground);
+
+        //allBackground.Add(MusicBackground);
+        //allBackground.Add(CaveBackground);
+        //allBackground.Add(BatBackGround);
+        //allBackground.Add(BirdBackground);
+        //allBackground.Add(WindBackground);
+
+        if (sfxInstance != null && sfxInstance != this)
         {
             Destroy(gameObject);
             return;
         }
 
         sfxInstance = this;
-        sfxInstance.BackgroundAudio.loop = true;
         DontDestroyOnLoad(this);
 
     }

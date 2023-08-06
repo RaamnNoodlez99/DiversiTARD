@@ -25,7 +25,7 @@ public class Wooden_Man_Attack : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if(timer >= timeToAttack - 0.2 && !soundAlreadyPlayed)
+            if(timer >= timeToAttack - 0.55 && !soundAlreadyPlayed)
             {
                 SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.axeSwing);
                 soundAlreadyPlayed = true;
@@ -45,24 +45,14 @@ public class Wooden_Man_Attack : MonoBehaviour
     public void Attack()
     {
         isAttacking = true;
-        attackArea.SetActive(isAttacking);
         animator.SetBool("isAttacking", true);
-
-        //StartCoroutine(activateAttackCollider(1f));
+        StartCoroutine(activateAttackCollider(1f));
     }
 
-    // private IEnumerator activateAttackCollider(float duration)
-    // {
-    //     yield return new WaitForSeconds(duration);
-    //
-    //     isAttacking = true;
-    //     attackArea.SetActive(isAttacking);
-    // }
+    private IEnumerator activateAttackCollider(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        attackArea.SetActive(isAttacking);
+    }
 
-    // public void OnAttack(InputAction.CallbackContext context)
-    // {
-    //     //Debug.Log("Attacking");
-    //     if(!Pause_Menu.isPaused)
-    //         Attack();
-    // }
 }

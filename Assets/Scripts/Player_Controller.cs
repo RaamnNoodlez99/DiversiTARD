@@ -70,22 +70,19 @@ public class Player_Controller : MonoBehaviour
     {
         if (knockbackCounter <= 0)
         {
-            //inputManager.GetComponent<PlayerInput>().enabled = true;
             playerBody.velocity = new Vector2(moveInput.x * walkSpeed, playerBody.velocity.y);
         }
         else
         {
-            StartCoroutine(DisableInputForDuration(knockbackTotalTime + 0.2f));
-            //inputManager.GetComponent<PlayerInput>().enabled = false;
-            //moveInput = Vector2.zero;
+            StartCoroutine(DisableInputForDuration(knockbackTotalTime + 0.4f));
             if (knockFromRight == true)
             {
                 moveInput = Vector2.zero;
-                playerBody.velocity = new Vector2(-knockbackForce + moveInput.x * walkSpeed, knockbackForce);
+                playerBody.velocity = new Vector2(knockbackForce + moveInput.x * walkSpeed, knockbackForce);
             }
             else
             {
-                playerBody.velocity = new Vector2(knockbackForce + moveInput.x * walkSpeed, knockbackForce);
+                playerBody.velocity = new Vector2(-knockbackForce + moveInput.x * walkSpeed, knockbackForce);
             }
             knockbackCounter -= Time.deltaTime;
         }
@@ -151,13 +148,18 @@ public class Player_Controller : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log(gameObject.GetComponent<Character_Switch>().getCurCharacter());
-        if (gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()))
+        if (gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && knockbackCounter <= 0)
         {
             moveInput = context.ReadValue<Vector2>();
             IsMoving = moveInput != Vector2.zero;
         }
+        else
+        {
+            moveInput = Vector2.zero;
+            IsMoving = false;
+        }
     }
+
 
     public void OnJump(InputAction.CallbackContext context)
     {

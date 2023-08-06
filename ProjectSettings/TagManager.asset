@@ -13,6 +13,9 @@ TagManager:
   - Button
   - Text
   - Ghost Bone
+  - switch
+  - WoodenManAttackArea
+  - TutorialPlatforms
   layers:
   - Default
   - TransparentFX
