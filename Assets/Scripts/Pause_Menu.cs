@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using TMPro;
+
 
 public class Pause_Menu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject gameManager;
     public GameObject levelComplete;
+    public GameObject characterCheck;
+    public TextMeshProUGUI characterNameTextMeshPro;
+    public TextMeshProUGUI button1;
+    public TextMeshProUGUI button2;
+    public TextMeshProUGUI button3;
     public static bool isPaused;
     public float VolumeChangeDuration = 1.0f;
     private float initialVolume;
@@ -63,6 +70,20 @@ public class Pause_Menu : MonoBehaviour
             pauseMenu.SetActive(true);
             isPaused = true;
             Time.timeScale = 0f;
+            if(characterCheck.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+            {
+                Color textColor = ColorUtility.TryParseHtmlString("#2C592E", out Color color) ? color : Color.white;
+                characterNameTextMeshPro.color = textColor;
+                button1.color = Color.white;
+                button2.color = Color.white;
+                button2.color = Color.white;
+            }
+            else
+            {
+                Color textColor = ColorUtility.TryParseHtmlString("#C5C5C5", out Color color) ? color : Color.white;
+                characterNameTextMeshPro.color = textColor;
+            }
+
         }
     }
 
