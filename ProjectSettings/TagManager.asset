@@ -10,6 +10,8 @@ TagManager:
   - Ghost Platform
   - Map Edge
   - Projectile
+  - Button
+  - Text
   layers:
   - Default
   - TransparentFX

@@ -10,11 +10,16 @@ public class Game_Over : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject player;
     public static bool isOver;
-    public GameObject firstSelectedButton; // Drag the "ButtonSelector" GameObject here
+    public GameObject firstSelectedButton; 
 
     void Start()
     {
         gameOverScreen.SetActive(false);
+    }
+
+    public bool isGameOver()
+    {
+        return isOver;
     }
 
     private void Update()
@@ -32,7 +37,6 @@ public class Game_Over : MonoBehaviour
         isOver = true;
         Time.timeScale = 0f;
 
-        // Set the first selected button for the EventSystem
         if (firstSelectedButton != null)
         {
             EventSystem.current.SetSelectedGameObject(firstSelectedButton);
@@ -50,6 +54,7 @@ public class Game_Over : MonoBehaviour
 
     public void ToMenu()
     {
+        SFX_Manager.sfxInstance.BackgroundAudio.volume = 1f;
         SFX_Manager.sfxInstance.BackgroundAudio.Stop();
         isOver = false;
         Time.timeScale = 1f;

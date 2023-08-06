@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 public class Pause_Menu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject gameOverMenu;
+    public GameObject gameManager;
+    public GameObject levelComplete;
     public static bool isPaused;
     public float VolumeChangeDuration = 1.0f;
     private float initialVolume;
@@ -26,13 +27,13 @@ public class Pause_Menu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.JoystickButton7))
             {
-                Debug.Log("piel");
+               // Debug.Log("piel");
                 ResumeGame();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Debug.Log("drol");
+               // Debug.Log("drol");
                 ResumeGame();
             }
         }
@@ -40,13 +41,13 @@ public class Pause_Menu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.JoystickButton7))
             {
-                Debug.Log("piel2");
+               // Debug.Log("piel2");
                 PauseGame();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Debug.Log("drol2");
+               // Debug.Log("drol2");
                 PauseGame();
             }
         }
@@ -54,8 +55,10 @@ public class Pause_Menu : MonoBehaviour
 
     public void PauseGame()
     {
-        if (!Game_Over.isOver)
+        Debug.Log(gameManager.GetComponent<Game_Over>().isGameOver());
+        if (!gameManager.GetComponent<Game_Over>().isGameOver() && !levelComplete.GetComponent<Level_Complete>().isLevelOver())
         {
+           // Debug.Log("Hello dian");
             volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, initialVolume, 0.13f));
 
             pauseMenu.SetActive(true);

@@ -73,7 +73,7 @@ public class Player_Controller : MonoBehaviour
         }
         else
         {
-            StartCoroutine(DisableInputForDuration(knockbackTotalTime + 0.1f));
+            StartCoroutine(DisableInputForDuration(knockbackTotalTime + 0.2f));
             //inputManager.GetComponent<PlayerInput>().enabled = false;
             //moveInput = Vector2.zero;
             if (knockFromRight == true)
