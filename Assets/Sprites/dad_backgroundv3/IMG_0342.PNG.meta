@@ -1,0 +1,318 @@
+fileFormatVersion: 2
+guid: 7d4bfbcd442bffb47af50b7236ec48b6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 18
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: IMG_0342_85
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 90
+        width: 690
+        height: 684
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85b11d5ec05ac8940a5b0b49e62e1511
+      internalID: 1818403610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_0342_107
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 46
+        width: 287
+        height: 409
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b54c6fdb4ea04b54d8fa3563f9fe7abe
+      internalID: 933035157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_0342_108
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 93
+        width: 231
+        height: 404
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f618548b189f21347b208962ed8884c6
+      internalID: 1458616183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_0342_109
+      rect:
+        serializedVersion: 2
+        x: 1681
+        y: 116
+        width: 138
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da948b3ef1568704984257e6b9884090
+      internalID: -318066960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      IMG_0342_0: -652805572
+      IMG_0342_1: -426532384
+      IMG_0342_10: 16066162
+      IMG_0342_100: 974413533
+      IMG_0342_101: -240054234
+      IMG_0342_102: 1419398461
+      IMG_0342_103: -1319275896
+      IMG_0342_104: 680035345
+      IMG_0342_105: 1070979354
+      IMG_0342_106: -1428314170
+      IMG_0342_107: 933035157
+      IMG_0342_108: 1458616183
+      IMG_0342_109: -318066960
+      IMG_0342_11: 1480513623
+      IMG_0342_110: 525690003
+      IMG_0342_12: 399953766
+      IMG_0342_13: 1088446649
+      IMG_0342_14: -1006193963
+      IMG_0342_15: 795672782
+      IMG_0342_16: 460876480
+      IMG_0342_17: 778939206
+      IMG_0342_18: -1640075010
+      IMG_0342_19: -1869465163
+      IMG_0342_2: 1731542781
+      IMG_0342_20: 1954504695
+      IMG_0342_21: -1631177498
+      IMG_0342_22: 444148274
+      IMG_0342_23: -422738513
+      IMG_0342_24: 1863819942
+      IMG_0342_25: 441970775
+      IMG_0342_26: 1426638200
+      IMG_0342_27: -454598663
+      IMG_0342_28: 714031797
+      IMG_0342_29: 1346492099
+      IMG_0342_3: 31577470
+      IMG_0342_30: -1838782914
+      IMG_0342_31: 1857692902
+      IMG_0342_32: -1061542852
+      IMG_0342_33: 868448201
+      IMG_0342_34: 399113449
+      IMG_0342_35: 1899735068
+      IMG_0342_36: 461477096
+      IMG_0342_37: 1658351063
+      IMG_0342_38: -182280921
+      IMG_0342_39: 536027666
+      IMG_0342_4: -1886583274
+      IMG_0342_40: 882200442
+      IMG_0342_41: 1835458041
+      IMG_0342_42: 1567611935
+      IMG_0342_43: 1850955255
+      IMG_0342_44: -665730454
+      IMG_0342_45: 1626903405
+      IMG_0342_46: 1914948325
+      IMG_0342_47: -114154398
+      IMG_0342_48: -1047534573
+      IMG_0342_49: 921335030
+      IMG_0342_5: -1432281902
+      IMG_0342_50: -2132520688
+      IMG_0342_51: 1395592035
+      IMG_0342_52: -2124147684
+      IMG_0342_53: 476680740
+      IMG_0342_54: -135819319
+      IMG_0342_55: 2006687734
+      IMG_0342_56: -809149499
+      IMG_0342_57: 1895341010
+      IMG_0342_58: 2084284575
+      IMG_0342_59: -487047651
+      IMG_0342_6: 677822844
+      IMG_0342_60: -671650829
+      IMG_0342_61: -308791323
+      IMG_0342_62: 250009050
+      IMG_0342_63: 1141516133
+      IMG_0342_64: 604978730
+      IMG_0342_65: -2147323319
+      IMG_0342_66: -688464737
+      IMG_0342_67: 175252940
+      IMG_0342_68: 57620564
+      IMG_0342_69: -1184786403
+      IMG_0342_7: -558805315
+      IMG_0342_70: -2034628252
+      IMG_0342_71: 215048831
+      IMG_0342_72: -1619352324
+      IMG_0342_73: -334768400
+      IMG_0342_74: 1831752011
+      IMG_0342_75: 1106592943
+      IMG_0342_76: 1205120060
+      IMG_0342_77: -1209822967
+      IMG_0342_78: 493121264
+      IMG_0342_79: -1041132846
+      IMG_0342_8: -345947936
+      IMG_0342_80: -1854029602
+      IMG_0342_81: -2115116415
+      IMG_0342_82: -730842589
+      IMG_0342_83: 1912671875
+      IMG_0342_84: -359543091
+      IMG_0342_85: 1818403610
+      IMG_0342_86: -1969696507
+      IMG_0342_87: -1120532851
+      IMG_0342_88: 2022753945
+      IMG_0342_89: -1456110157
+      IMG_0342_9: 977235970
+      IMG_0342_90: 1620720799
+      IMG_0342_91: 2080996243
+      IMG_0342_92: -462751186
+      IMG_0342_93: -1887090548
+      IMG_0342_94: -392918924
+      IMG_0342_95: -264536247
+      IMG_0342_96: 2110023479
+      IMG_0342_97: -996777514
+      IMG_0342_98: 636628794
+      IMG_0342_99: -1950535277
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
