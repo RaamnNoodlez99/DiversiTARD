@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Wooden_Man_Attack : MonoBehaviour
 {
     public Animator animator;
-    public float timeToAttack = 0.25f;
+    public float timeToAttack = 1f;
 
     private bool soundAlreadyPlayed = false;
 
