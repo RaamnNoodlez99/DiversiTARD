@@ -12,6 +12,9 @@ TagManager:
   - Projectile
   - Button
   - Text
+  - switch
+  - WoodenManAttackArea
+  - TutorialPlatforms
   layers:
   - Default
   - TransparentFX

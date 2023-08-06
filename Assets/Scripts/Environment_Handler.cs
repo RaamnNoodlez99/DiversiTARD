@@ -20,12 +20,24 @@ public class Environment_Handler : MonoBehaviour
     private GameObject currentGhostFloor;
     private GameObject currentFatherBackGround;
     private GameObject currentGhostBackGround;
+    public bool switchOff = true;
+    public bool shouldLoadPlatforms = false;
 
     public static Environment_Handler evironmentHandlerInstance;
 
+    private void Update()
+    {
+        if(currentFatherBackGround != null)
+        {
+            if (currentFatherBackGround.transform.Find("Switches").gameObject.GetComponent<Switch>().isSwitchedOn)
+            {
+                switchOff = false;
+                shouldLoadPlatforms = true;
+            }
+        }
+    }
     void Awake()
     {
-        SFX_Manager.sfxInstance.BackgroundAudio.PlayOneShot(SFX_Manager.sfxInstance.tutorialBackgroundMusic, 0.2f);
         if (evironmentHandlerInstance != null && evironmentHandlerInstance != this)
         {
             Destroy(gameObject);
@@ -42,17 +54,9 @@ public class Environment_Handler : MonoBehaviour
 
         if (isFatherEnvironment)
         {
-            //Destroy(currentFatherFloor);
-           // currentFatherFloor = null;
             Destroy(currentFatherBackGround);
             currentFatherBackGround = null;
         }
-
-        //if (currentGhostFloor == null)
-        //{
-           // Vector3 spawnPosition = new Vector3(floorX, floorY, 0f);
-            //currentGhostFloor = Instantiate(ghostFloor, spawnPosition, Quaternion.identity);
-        //}
 
         if (currentGhostBackGround == null)
         {
@@ -61,6 +65,22 @@ public class Environment_Handler : MonoBehaviour
         }
 
         isFatherEnvironment = false;
+        if (shouldLoadPlatforms)
+        {
+            currentGhostBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.SetActive(true);
+            currentGhostBackGround.transform.Find("TutorialPlatforms/Tut2").gameObject.SetActive(true);
+            currentGhostBackGround.transform.Find("TutorialPlatforms/Tut3").gameObject.SetActive(true);
+        }
+        if (switchOff)
+        {
+            currentGhostBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(true);
+            currentGhostBackGround.transform.Find("Switches/Ghost switch On").gameObject.SetActive(false);
+        }
+        else
+        {
+            currentGhostBackGround.transform.Find("Switches/Ghost switch On").gameObject.SetActive(true);
+            currentGhostBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(false);
+        }
     }
 
     public void spawnFatherEnvironment()
@@ -69,17 +89,10 @@ public class Environment_Handler : MonoBehaviour
 
         if (!isFatherEnvironment)
         {
-            //Destroy(currentGhostFloor);
-           // currentGhostFloor = null;
             Destroy(currentGhostBackGround);
             currentGhostBackGround = null;
         }
 
-       // if (currentFatherFloor == null)
-        //{
-           // Vector3 spawnPosition = new Vector3(floorX, floorY, 0f);
-            //currentFatherFloor = Instantiate(fatherFloor, spawnPosition, Quaternion.identity);
-       // }
 
         if (currentFatherBackGround == null)
         {
@@ -88,5 +101,22 @@ public class Environment_Handler : MonoBehaviour
         }
 
         isFatherEnvironment = true;
+
+        if (shouldLoadPlatforms)
+        {
+            currentFatherBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.SetActive(true);
+            currentFatherBackGround.transform.Find("TutorialPlatforms/Tut2").gameObject.SetActive(true);
+            currentFatherBackGround.transform.Find("TutorialPlatforms/Tut3").gameObject.SetActive(true);
+        }
+        if (switchOff)
+        {
+            currentFatherBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(true);
+            currentFatherBackGround.transform.Find("Switches/Ghost switch On").gameObject.SetActive(false);
+        }
+        else
+        {
+            currentFatherBackGround.transform.Find("Switches/Ghost switch On").gameObject.SetActive(true);
+            currentFatherBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(false);
+        }
     }
 }

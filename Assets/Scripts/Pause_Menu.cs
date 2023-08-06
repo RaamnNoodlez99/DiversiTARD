@@ -13,11 +13,14 @@ public class Pause_Menu : MonoBehaviour
     public float VolumeChangeDuration = 1.0f;
     private float initialVolume;
     private Coroutine volumeChangeCoroutine;
+    //GameObject Switch = GameObject.FindWithTag("switch");
+    //GameObject tutorialPlatforms = GameObject.FindWithTag("TurorialPlatforms");
+
 
 
     void Start()
     {
-        initialVolume = SFX_Manager.sfxInstance.BackgroundAudio.volume;
+        //initialVolume = SFX_Manager.sfxInstance.BackgroundAudio.volume;
         pauseMenu.SetActive(false);
     }
 
@@ -27,13 +30,11 @@ public class Pause_Menu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.JoystickButton7))
             {
-               // Debug.Log("piel");
                 ResumeGame();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-               // Debug.Log("drol");
                 ResumeGame();
             }
         }
@@ -41,13 +42,11 @@ public class Pause_Menu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.JoystickButton7))
             {
-               // Debug.Log("piel2");
                 PauseGame();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-               // Debug.Log("drol2");
                 PauseGame();
             }
         }
@@ -59,7 +58,7 @@ public class Pause_Menu : MonoBehaviour
         if (!gameManager.GetComponent<Game_Over>().isGameOver() && !levelComplete.GetComponent<Level_Complete>().isLevelOver())
         {
            // Debug.Log("Hello dian");
-            volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, initialVolume, 0.13f));
+            //volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, initialVolume, 0.13f));
 
             pauseMenu.SetActive(true);
             isPaused = true;
@@ -82,6 +81,8 @@ public class Pause_Menu : MonoBehaviour
 
     public void ToMenu()
     {
+        //tutorialPlatforms.GetComponent<Tutorial_Platfrom_Movement>().ResetState();
+        //Switch.GetComponent<Tutorial_Platfrom_Movement>().ResetState();
         SFX_Manager.sfxInstance.BackgroundAudio.volume = 1f;
         SFX_Manager.sfxInstance.BackgroundAudio.Stop();
         isPaused = false;

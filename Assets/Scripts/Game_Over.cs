@@ -50,6 +50,7 @@ public class Game_Over : MonoBehaviour
         isOver = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
     public void ToMenu()
