@@ -15,7 +15,7 @@ public class Parallax : MonoBehaviour
         cam = Camera.main;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         float distance = cam.transform.position.x * parallaxAmount;
 

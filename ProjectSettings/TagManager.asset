@@ -12,6 +12,7 @@ TagManager:
   - Projectile
   - Button
   - Text
+  - Ghost Bone
   layers:
   - Default
   - TransparentFX

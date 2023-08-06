@@ -12,6 +12,8 @@ public class Character_Switch : MonoBehaviour
     public CinemachineVirtualCamera cinemachine;
     private Transform activeCharacter;
     public static string currentCharacter;
+    
+    public GameObject healthBar;
 
     public string getCurCharacter()
     {
@@ -29,6 +31,18 @@ public class Character_Switch : MonoBehaviour
             otherCharacter.GetComponent<Player_Controller>().enabled = false;
             //otherCharacter.GetComponent<Character_Switch>().enabled = false;
             activeCharacter = thisCharacter.transform;
+            
+            foreach (Renderer renderer in activeCharacter.GetComponentsInChildren<Renderer>())
+            {
+                renderer.sortingOrder += 10;
+            }
+                    
+            foreach (Renderer renderer in otherCharacter.GetComponentsInChildren<Renderer>())
+            {
+                renderer.sortingOrder -= 10;
+            }
+            
+            
             cinemachine.LookAt = activeCharacter;
             cinemachine.Follow = activeCharacter;
             thisCharacter.transform.position = new Vector3(thisCharacter.transform.position.x, thisCharacter.transform.position.y, -0.1f);
@@ -50,6 +64,8 @@ public class Character_Switch : MonoBehaviour
         {
             if (activeCharacter.CompareTag("WoodenMan"))
             {
+                healthBar.SetActive(false);
+                
                 if (thisCharacter.CompareTag("Ghost"))
                 {
                     //Debug.Log("One");
@@ -59,6 +75,17 @@ public class Character_Switch : MonoBehaviour
                     thisCharacter.GetComponent<Player_Controller>().enabled = true;
                     otherCharacter.GetComponent<Player_Controller>().enabled = false;
                     activeCharacter = thisCharacter.transform;
+                    
+                    foreach (Renderer renderer in activeCharacter.GetComponentsInChildren<Renderer>())
+                    {
+                        renderer.sortingOrder += 10;
+                    }
+                    
+                    foreach (Renderer renderer in otherCharacter.GetComponentsInChildren<Renderer>())
+                    {
+                        renderer.sortingOrder -= 10;
+                    }
+                    
                     thisCharacter.transform.position = new Vector3(thisCharacter.transform.position.x, thisCharacter.transform.position.y, -0.1f);
                     otherCharacter.transform.position = new Vector3(otherCharacter.transform.position.x, otherCharacter.transform.position.y, 0f);
                     //otherCharacter.GetComponent<Character_Switch>().enabled = false;
@@ -72,6 +99,16 @@ public class Character_Switch : MonoBehaviour
                     otherCharacter.GetComponent<Player_Controller>().enabled = true;
                     thisCharacter.GetComponent<Player_Controller>().enabled = false;
                     activeCharacter = otherCharacter.transform;
+                    
+                    foreach (Renderer renderer in activeCharacter.GetComponentsInChildren<Renderer>())
+                    {
+                        renderer.sortingOrder += 10;
+                    }
+                    
+                    foreach (Renderer renderer in thisCharacter.GetComponentsInChildren<Renderer>())
+                    {
+                        renderer.sortingOrder -= 10;
+                    }
                     //Debug.Log(activeCharacter.tag);
                     otherCharacter.transform.position = new Vector3(otherCharacter.transform.position.x, otherCharacter.transform.position.y, -0.1f);
                     thisCharacter.transform.position = new Vector3(thisCharacter.transform.position.x, thisCharacter.transform.position.y, 0f);
@@ -80,6 +117,8 @@ public class Character_Switch : MonoBehaviour
             }
             else if (activeCharacter.CompareTag("Ghost"))
             {
+                healthBar.SetActive(true);
+                
                 if (thisCharacter.CompareTag("WoodenMan"))
                 {
                     //Debug.Log("Three");
@@ -89,6 +128,17 @@ public class Character_Switch : MonoBehaviour
                     thisCharacter.GetComponent<Player_Controller>().enabled = true;
                     otherCharacter.GetComponent<Player_Controller>().enabled = false;
                     activeCharacter = thisCharacter.transform;
+                    
+                    foreach (Renderer renderer in activeCharacter.GetComponentsInChildren<Renderer>())
+                    {
+                        renderer.sortingOrder += 10;
+                    }
+                    
+                    foreach (Renderer renderer in otherCharacter.GetComponentsInChildren<Renderer>())
+                    {
+                        renderer.sortingOrder -= 10;
+                    }
+                    
                     thisCharacter.transform.position = new Vector3(thisCharacter.transform.position.x, thisCharacter.transform.position.y, -0.1f);
                     otherCharacter.transform.position = new Vector3(otherCharacter.transform.position.x, otherCharacter.transform.position.y, 0f);
                     //otherCharacter.GetComponent<Character_Switch>().enabled = false;
@@ -102,6 +152,17 @@ public class Character_Switch : MonoBehaviour
                     otherCharacter.GetComponent<Player_Controller>().enabled = true;
                     thisCharacter.GetComponent<Player_Controller>().enabled = false;
                     activeCharacter = otherCharacter.transform;
+                    
+                    foreach (Renderer renderer in activeCharacter.GetComponentsInChildren<Renderer>())
+                    {
+                        renderer.sortingOrder += 10;
+                    }
+                    
+                    foreach (Renderer renderer in thisCharacter.GetComponentsInChildren<Renderer>())
+                    {
+                        renderer.sortingOrder -= 10;
+                    }
+                    
                     otherCharacter.transform.position = new Vector3(otherCharacter.transform.position.x, otherCharacter.transform.position.y, -0.1f);
                     thisCharacter.transform.position = new Vector3(thisCharacter.transform.position.x, thisCharacter.transform.position.y, 0f);
                     //thisCharacter.GetComponent<Character_Switch>().enabled = false;

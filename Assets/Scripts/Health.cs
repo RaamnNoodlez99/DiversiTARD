@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,13 @@ public class Health : MonoBehaviour
     public int health = 100;
     public int MAX_HEALTH = 100;
 
+    public HealthBar healthBar;
+
+    public void Awake()
+    {
+        healthBar.setMaxHealth(300);
+    }
+
     public void Damage(int amount)
     {
         if (amount < 0)
@@ -15,6 +23,7 @@ public class Health : MonoBehaviour
         }
 
         health -= amount;
+        healthBar.setHealth(health);
 
         if(health <= 0)
         {

@@ -13,6 +13,7 @@ public class ghostPlatform : MonoBehaviour
 
 
     // Start is called before the first frame update
+    
     void Start()
     {
         ghost = GameObject.Find("Ghost");
@@ -39,13 +40,17 @@ public class ghostPlatform : MonoBehaviour
                 SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.platformDestroy);
                 Destroy(gameObject);
             }  
+        }else if (despawnDelay - despawnTimer <= 0.5f)
+        {
+            Animator platformAnimator = GetComponent<Animator>();
+            platformAnimator.SetBool("isBoneActive", false);
         }
 
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ghost"))
+        if (collision.gameObject.CompareTag("Ghost") && despawnDelay - despawnTimer >= 0.5f)
         {
             //Debug.Log("Ghost on Platform");
             ghostOffPlatform = false;

@@ -43,8 +43,10 @@ public class Player_Controller : MonoBehaviour
     public float knockbackTotalTime = 0.4f;
     public bool knockFromRight;
 
-    private bool facingLeft = true; 
+    private bool facingLeft = true;
 
+    private GameObject currentGhostPlatform = null;
+    
     private void Awake()
     {
         playerBody = GetComponent<Rigidbody2D>();
@@ -107,11 +109,21 @@ public class Player_Controller : MonoBehaviour
         if(moveInput.x > 0 && facingLeft)
         {
             Flip();
+            if(gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+            {
+                Vector3 newPosition = transform.position + Vector3.right * 3;
+                transform.position = newPosition;
+            }
         }
 
         if(moveInput.x < 0 && !facingLeft)
         {
             Flip();
+            if(gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+            {
+                Vector3 newPosition = transform.position - Vector3.right * 3;
+                transform.position = newPosition;
+            }
         }
 
         if (activateJump)
@@ -175,6 +187,10 @@ public class Player_Controller : MonoBehaviour
 
     public void OnSpawnPlatform(InputAction.CallbackContext context)
     {
+        if (currentGhostPlatform != null) 
+        {
+            Debug.Log("But I still exist");
+        }
         Debug.Log(gameObject.GetComponent<Character_Switch>().getCurCharacter());
         if (context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && !Pause_Menu.isPaused)
             SpawnPlatform();
@@ -255,7 +271,9 @@ public class Player_Controller : MonoBehaviour
     private void SpawnDelayedPlatform()
     {
         Vector3 spawnPosition = playerBody.position - new Vector2(0f, platformOffset);
-        Instantiate(ghostPlatform, spawnPosition, Quaternion.identity);
+        currentGhostPlatform = Instantiate(ghostPlatform, spawnPosition, Quaternion.identity);
+        Animator ghostPlatformAnimator = currentGhostPlatform.GetComponent<Animator>();
+        ghostPlatformAnimator.SetBool("isBoneActive", true);
     }
 
     public void setIsJumping(bool value)
