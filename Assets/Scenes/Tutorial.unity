@@ -202,7 +202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 357780617838947694, guid: e8a90795f336d45988897473054f5e73, type: 3}
       propertyPath: m_TagString
-      value: WoodenMan
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 741399904703212890, guid: e8a90795f336d45988897473054f5e73, type: 3}
       propertyPath: healthBar

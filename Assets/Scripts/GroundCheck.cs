@@ -16,11 +16,7 @@ public class GroundCheck : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Bone"))
-        {
-            if (gameObject.CompareTag("WoodenMan"))
-                //SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.footstep,1.5f);
-           
-
+        { 
             characterToCheckController.setIsJumping(false);
 
             // if (gameObject.name == "Ground Check Ghost")
