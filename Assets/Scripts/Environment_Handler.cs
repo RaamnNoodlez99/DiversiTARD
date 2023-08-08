@@ -38,6 +38,7 @@ public class Environment_Handler : MonoBehaviour
     }
     void Awake()
     {
+        Cursor.visible = false;
         if (evironmentHandlerInstance != null && evironmentHandlerInstance != this)
         {
             Destroy(gameObject);
@@ -45,7 +46,7 @@ public class Environment_Handler : MonoBehaviour
         }
 
         evironmentHandlerInstance = this;
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     public void spawnGhostEnvironment()
@@ -67,10 +68,17 @@ public class Environment_Handler : MonoBehaviour
         isFatherEnvironment = false;
         if (shouldLoadPlatforms)
         {
-            currentGhostBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.SetActive(true);
+            currentGhostBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.transform.Translate(0f, -9f, 0f);
             currentGhostBackGround.transform.Find("TutorialPlatforms/Tut2").gameObject.SetActive(true);
             currentGhostBackGround.transform.Find("TutorialPlatforms/Tut3").gameObject.SetActive(true);
         }
+        else
+        {
+            //currentGhostBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.transform.Translate(0f, -9f, 0f);
+            currentGhostBackGround.transform.Find("TutorialPlatforms/Tut2").gameObject.SetActive(false);
+            currentGhostBackGround.transform.Find("TutorialPlatforms/Tut3").gameObject.SetActive(false);
+        }
+
         if (switchOff)
         {
             currentGhostBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(true);
@@ -104,10 +112,17 @@ public class Environment_Handler : MonoBehaviour
 
         if (shouldLoadPlatforms)
         {
-            currentFatherBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.SetActive(true);
+            currentFatherBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.transform.Translate(0f, -9f, 0f);
             currentFatherBackGround.transform.Find("TutorialPlatforms/Tut2").gameObject.SetActive(true);
             currentFatherBackGround.transform.Find("TutorialPlatforms/Tut3").gameObject.SetActive(true);
         }
+        else
+        {
+            //currentFatherBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.SetActive(false);
+            currentFatherBackGround.transform.Find("TutorialPlatforms/Tut2").gameObject.SetActive(false);
+            currentFatherBackGround.transform.Find("TutorialPlatforms/Tut3").gameObject.SetActive(false);
+        }
+
         if (switchOff)
         {
             currentFatherBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(true);

@@ -1568,7 +1568,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5497830067160748649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 147.05, y: -10.28, z: 0}
+  m_LocalPosition: {x: 146.4, y: -2.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3137,7 +3137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 717889749842010114, guid: 6904086a5f3bb3e4cb54e3b390c04f3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 717889749842010114, guid: 6904086a5f3bb3e4cb54e3b390c04f3f, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -3149,7 +3149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 717889749842010115, guid: 6904086a5f3bb3e4cb54e3b390c04f3f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 717889749842010116, guid: 6904086a5f3bb3e4cb54e3b390c04f3f, type: 3}
       propertyPath: m_Size.y
@@ -3302,7 +3302,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformAddDelay: 0.5
-  platform: {fileID: 127216135239169093}
+  mainPlatform: {fileID: 127216135239169093}
+  smallPlatform1: {fileID: 6128173047315681157}
+  smallPlatform2: {fileID: 6483916866079670449}
 --- !u!1 &6128173047315681157 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6718849892787493827, guid: 6904086a5f3bb3e4cb54e3b390c04f3f, type: 3}

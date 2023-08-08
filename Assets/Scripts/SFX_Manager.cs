@@ -17,6 +17,9 @@ public class SFX_Manager : MonoBehaviour
     public AudioClip footstep;
     public AudioClip click;
     public AudioClip stoneShort;
+    public AudioClip stoneSlide;
+    public AudioClip jumpGrunt;
+    public AudioClip jumpLand;
 
 
 

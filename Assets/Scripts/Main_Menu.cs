@@ -38,6 +38,7 @@ public class Main_Menu : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
+                Menu_Audio.menuAudioInstance.menuAudio.PlayOneShot(Menu_Audio.menuAudioInstance.buttonPopup);
                 StartCoroutine(MoveTitleUp());
             }
         }

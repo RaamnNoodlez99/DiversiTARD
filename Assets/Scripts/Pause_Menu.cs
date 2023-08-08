@@ -12,22 +12,23 @@ public class Pause_Menu : MonoBehaviour
     public GameObject gameManager;
     public GameObject levelComplete;
     public GameObject characterCheck;
+    public GameObject environmentHandler;
+
     public TextMeshProUGUI characterNameTextMeshPro;
     public TextMeshProUGUI button1;
     public TextMeshProUGUI button2;
     public TextMeshProUGUI button3;
+
     public static bool isPaused;
+
     public float VolumeChangeDuration = 1.0f;
     private float initialVolume;
     private Coroutine volumeChangeCoroutine;
-    //GameObject Switch = GameObject.FindWithTag("switch");
-    //GameObject tutorialPlatforms = GameObject.FindWithTag("TurorialPlatforms");
-
 
 
     void Start()
     {
-        //initialVolume = SFX_Manager.sfxInstance.BackgroundAudio.volume;
+        initialVolume = SFX_Manager.sfxInstance.BackgroundAudio.volume;
         pauseMenu.SetActive(false);
     }
 
@@ -61,12 +62,9 @@ public class Pause_Menu : MonoBehaviour
 
     public void PauseGame()
     {
-        Debug.Log(gameManager.GetComponent<Game_Over>().isGameOver());
         if (!gameManager.GetComponent<Game_Over>().isGameOver() && !levelComplete.GetComponent<Level_Complete>().isLevelOver())
         {
-           // Debug.Log("Hello dian");
-            //volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, initialVolume, 0.13f));
-
+            volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, AudioListener.volume, 0.13f));
             pauseMenu.SetActive(true);
             isPaused = true;
             Time.timeScale = 0f;
@@ -89,12 +87,8 @@ public class Pause_Menu : MonoBehaviour
 
     public void ResumeGame()
     {
-        if (volumeChangeCoroutine != null)
-        {
-            StopCoroutine(volumeChangeCoroutine);
-        }
+        volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, AudioListener.volume, 1f));
 
-        volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, SFX_Manager.sfxInstance.BackgroundAudio.volume, initialVolume)); 
         pauseMenu.SetActive(false);
         isPaused = false;
         Time.timeScale = 1f;
@@ -102,15 +96,17 @@ public class Pause_Menu : MonoBehaviour
 
     public void ToMenu()
     {
+        AudioListener.volume = 1f;
         //tutorialPlatforms.GetComponent<Tutorial_Platfrom_Movement>().ResetState();
         //Switch.GetComponent<Tutorial_Platfrom_Movement>().ResetState();
+        environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
+        environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
         SFX_Manager.sfxInstance.BackgroundAudio.volume = 1f;
         SFX_Manager.sfxInstance.BackgroundAudio.Stop();
         isPaused = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
-
 
     private IEnumerator ChangeVolumeOverTime(float duration, float startVolume, float targetVolume)
     {
@@ -120,12 +116,13 @@ public class Pause_Menu : MonoBehaviour
         {
             float t = elapsedTime / duration;
             float newVolume = Mathf.Lerp(startVolume, targetVolume, t);
-            SFX_Manager.sfxInstance.BackgroundAudio.volume = newVolume;
+            AudioListener.volume = newVolume;
 
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
 
-        SFX_Manager.sfxInstance.BackgroundAudio.volume = targetVolume;
+        AudioListener.volume = targetVolume;
     }
+
 }

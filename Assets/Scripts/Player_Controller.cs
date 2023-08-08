@@ -163,8 +163,11 @@ public class Player_Controller : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && !isJumping && gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && !Pause_Menu.isPaused)
+        if (context.performed && !isJumping && gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && !Pause_Menu.isPaused && !Level_Complete.levelIsOver)
         {
+            if(gameObject.CompareTag("WoodenMan"))
+                SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.jumpGrunt);
+
             animator.SetTrigger("takeOff");
             activateJump = true;
             startTimer = true;
