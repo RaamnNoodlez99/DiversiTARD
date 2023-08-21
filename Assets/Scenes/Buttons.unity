@@ -1602,6 +1602,7 @@ MonoBehaviour:
   fatherBackground: {fileID: 469531862451862332, guid: 548d0277e13334521894f524cb8b5a77, type: 3}
   floorX: 0
   floorY: 0
+  brittlePlatforms: []
   backGroundX: 0
   backGroundY: 1.33
   switchOff: 1
@@ -6001,7 +6002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8573240007032835894, guid: 2f8d63685015e479697ea8020483b9bc, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8573240007032835894, guid: 2f8d63685015e479697ea8020483b9bc, type: 3}
       propertyPath: m_TagString
