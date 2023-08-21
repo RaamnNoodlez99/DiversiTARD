@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Switch : MonoBehaviour
 {
@@ -8,7 +9,13 @@ public class Switch : MonoBehaviour
     public GameObject offSwitch;
     public GameObject onSwitch;
     public GameObject tutorialPlatforms;
+    private Button buttonComponent;
 
+
+    private void Start()
+    {
+        buttonComponent = GetComponent<Button>();
+    }
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("WoodenManAttackArea"))
@@ -35,6 +42,7 @@ public class Switch : MonoBehaviour
         {
             tutorialPlatforms.GetComponent<Tutorial_Platfrom_Movement>().AddPlatforms();
         }
+        buttonComponent.onClick.Invoke();
     }
 
     private void Off()
@@ -42,5 +50,6 @@ public class Switch : MonoBehaviour
         offSwitch.SetActive(true);
         onSwitch.SetActive(false);
         isSwitchedOn = false;
+        buttonComponent.onClick.Invoke();
     }
 }

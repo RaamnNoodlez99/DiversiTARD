@@ -23,7 +23,10 @@ public class Player_Controller : MonoBehaviour
     bool isJumping = false;
     bool activateJump = false;
     bool startTimer = false;
+    bool controllingGhost = false;
     bool earlyRelease = false;
+    bool despawnAvaialable = false;
+    static bool queueSwitch = false;
     float timer;
     public static bool canSwitch = true;
 
@@ -68,6 +71,14 @@ public class Player_Controller : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(queueSwitch && !Pause_Menu.isPaused && canSwitch)
+        {
+            gameObject.GetComponent<Character_Switch>().SwitchCharacter();
+            canSwitch = false;
+            queueSwitch = false;
+            StartCoroutine(EnableSwitchAfterDelay());
+        }
+
         if (knockbackCounter <= 0)
         {
             playerBody.velocity = new Vector2(moveInput.x * walkSpeed, playerBody.velocity.y);
@@ -196,18 +207,44 @@ public class Player_Controller : MonoBehaviour
         {
             Debug.Log("But I still exist");
         }
+
+        if (despawnAvaialable)
+        {
+            if(currentGhostPlatform != null)
+                currentGhostPlatform.GetComponent<ghostPlatform>().SetDespawnTimer();
+
+            despawnAvaialable = false;
+            return;
+        }
+
         Debug.Log(gameObject.GetComponent<Character_Switch>().getCurCharacter());
         if (context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && !Pause_Menu.isPaused)
             SpawnPlatform();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (currentGhostPlatform != null && collision.gameObject.CompareTag("Platform") && collision.gameObject != currentGhostPlatform && gameObject.CompareTag("Ghost"))
+        {
+            despawnAvaialable = true;
+        }
+    }
+
     public void OnSwitchCharacter(InputAction.CallbackContext context)
     {
-        if (context.performed && canSwitch && !Pause_Menu.isPaused)
+        if(gameObject.CompareTag("WoodenMan") && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
         {
-            gameObject.GetComponent<Character_Switch>().SwitchCharacter();
-            canSwitch = false;
-            StartCoroutine(EnableSwitchAfterDelay());
+            if (context.performed)
+            {
+                gameObject.GetComponent<Character_Switch>().SwitchCharacter();
+            }
+        }
+        else if (gameObject.CompareTag("Ghost") && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost")
+        {
+            if (context.canceled)
+            {
+                gameObject.GetComponent<Character_Switch>().SwitchCharacter();
+            }
         }
     }
 
@@ -217,6 +254,7 @@ public class Player_Controller : MonoBehaviour
         yield return new WaitForSeconds(switchDelay);
         canSwitch = true;
     }
+
     // void OnTriggerEnter2D(Collider2D collision)
     // {
     //     if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Platform"))

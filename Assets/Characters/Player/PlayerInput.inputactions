@@ -242,7 +242,7 @@
                 {
                     "name": "",
                     "id": "f9f30be3-1d75-4705-a9b0-101ef3e3ecd7",
-                    "path": "<Keyboard>/tab",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -253,7 +253,7 @@
                 {
                     "name": "",
                     "id": "e54362f3-0959-488e-becf-337814b83a15",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

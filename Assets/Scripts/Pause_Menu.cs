@@ -24,6 +24,7 @@ public class Pause_Menu : MonoBehaviour
     public float VolumeChangeDuration = 1.0f;
     private float initialVolume;
     private Coroutine volumeChangeCoroutine;
+    bool shouldSwitch = false;
 
 
     void Start()
@@ -87,6 +88,7 @@ public class Pause_Menu : MonoBehaviour
 
     public void ResumeGame()
     {
+
         volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, AudioListener.volume, 1f));
 
         pauseMenu.SetActive(false);
@@ -123,6 +125,11 @@ public class Pause_Menu : MonoBehaviour
         }
 
         AudioListener.volume = targetVolume;
+    }
+
+    public void queueSwitch()
+    {
+        shouldSwitch = true;
     }
 
 }

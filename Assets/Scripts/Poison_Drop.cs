@@ -9,16 +9,30 @@ public class Poison_Drop : MonoBehaviour
     public Player_Controller player;
     public Animator dropAnimator;
     public Vector2 positionOffset = new Vector2(-0.3f, 0.5f);
+    public LayerMask platformLayer;
 
 
     private void Awake()
     {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, platformLayer);
+
         dropAnimator = gameObject.GetComponent<Animator>();
+    }
+
+    public void Start()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, platformLayer);
+
+        if (hit.collider != null && hit.collider.CompareTag("Platform"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Health objectHealth = collision.collider.GetComponent<Health>();
+
         if (objectHealth != null)
         {
             Player_Controller player = null;

@@ -16,6 +16,7 @@ TagManager:
   - switch
   - WoodenManAttackArea
   - TutorialPlatforms
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -27,9 +28,9 @@ TagManager:
   - WoodenMan
   - Poison Drop
   - Invisible Ghost Barrier
-  - 
-  - 
-  - 
+  - StoneBall
+  - Platform
+  - Wooden Man Barrier
   - 
   - 
   - 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ghostPlatform : MonoBehaviour
 {
 
-    public float despawnDelay = 3f;
+    public float despawnDelay = 8f;
     float despawnTimer = 0f;
     bool ghostOffPlatform = false;
     public bool platformTimerResests = true;
@@ -25,6 +25,11 @@ public class ghostPlatform : MonoBehaviour
         Despawn();
     }
 
+    public void SetDespawnTimer()
+    {
+        despawnTimer = despawnDelay - 0.7f; 
+    }
+
     public void Despawn()
     {
         if (ghostOffPlatform)
@@ -40,7 +45,7 @@ public class ghostPlatform : MonoBehaviour
                 SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.platformDestroy);
                 Destroy(gameObject);
             }  
-        }else if (despawnDelay - despawnTimer <= 0.5f)
+        }else if (despawnDelay - despawnTimer <= 0.7f)
         {
             Animator platformAnimator = GetComponent<Animator>();
             platformAnimator.SetBool("isBoneActive", false);

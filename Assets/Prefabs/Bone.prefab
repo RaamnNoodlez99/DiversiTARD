@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8772739507353115183}
   - component: {fileID: 7086567772302436084}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: left side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4904568293389849447}
   - component: {fileID: 5054313121971124980}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 7360825275417923714}
   - component: {fileID: 6325404404170922922}
   - component: {fileID: 5822979984658504777}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a30937c3a16daa429b55ee2ec1a0d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnDelay: 3
+  despawnDelay: 6
   platformTimerResests: 1
   ghost: {fileID: 2070880847499565589, guid: a36188a0c93264e1385fb02c751aadf8, type: 3}
 --- !u!1 &3082879728940762770
@@ -274,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8807569743525522221}
   - component: {fileID: 522969987230191810}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: right side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1089681820897403398}
   - component: {fileID: 9194060730517829168}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: crack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7725039616432712331}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bone Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}

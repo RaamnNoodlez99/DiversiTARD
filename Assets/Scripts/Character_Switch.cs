@@ -25,7 +25,8 @@ public class Character_Switch : MonoBehaviour
         if (thisCharacter.CompareTag("WoodenMan"))
         {
             currentCharacter = "WoodenMan";
-            Environment_Handler.evironmentHandlerInstance.spawnFatherEnvironment();
+            if(Environment_Handler.evironmentHandlerInstance != null)
+                Environment_Handler.evironmentHandlerInstance.spawnFatherEnvironment();
 
             thisCharacter.GetComponent<Player_Controller>().enabled = true;
             otherCharacter.GetComponent<Player_Controller>().enabled = false;
@@ -62,6 +63,7 @@ public class Character_Switch : MonoBehaviour
        // Debug.Log("Active: " + activeCharacter.tag);
         if ( activeCharacter != null )
         {
+
             otherCharacter.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             thisCharacter.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             if (activeCharacter.CompareTag("WoodenMan"))
@@ -71,7 +73,9 @@ public class Character_Switch : MonoBehaviour
                 if (thisCharacter.CompareTag("Ghost"))
                 {
                     //Debug.Log("One");
-                    Environment_Handler.evironmentHandlerInstance.spawnGhostEnvironment();
+                    if (Environment_Handler.evironmentHandlerInstance != null)
+                        Environment_Handler.evironmentHandlerInstance.spawnGhostEnvironment();
+
                     currentCharacter = "Ghost";
                     otherCharacter.GetComponent<Character_Switch>().activeCharacter = otherCharacter.transform;
                     thisCharacter.GetComponent<Player_Controller>().enabled = true;
@@ -95,7 +99,9 @@ public class Character_Switch : MonoBehaviour
                 else
                 {
                     //Debug.Log("Two");
-                    Environment_Handler.evironmentHandlerInstance.spawnGhostEnvironment();
+                    if (Environment_Handler.evironmentHandlerInstance != null)
+                        Environment_Handler.evironmentHandlerInstance.spawnGhostEnvironment();
+
                     currentCharacter = "Ghost";
                     otherCharacter.GetComponent<Character_Switch>().activeCharacter = otherCharacter.transform;
                     otherCharacter.GetComponent<Player_Controller>().enabled = true;
@@ -124,7 +130,9 @@ public class Character_Switch : MonoBehaviour
                 if (thisCharacter.CompareTag("WoodenMan"))
                 {
                     //Debug.Log("Three");
-                    Environment_Handler.evironmentHandlerInstance.spawnFatherEnvironment();
+                    if (Environment_Handler.evironmentHandlerInstance != null)
+                        Environment_Handler.evironmentHandlerInstance.spawnFatherEnvironment();
+
                     currentCharacter = "WoodenMan";
                     otherCharacter.GetComponent<Character_Switch>().activeCharacter = otherCharacter.transform;
                     thisCharacter.GetComponent<Player_Controller>().enabled = true;
@@ -148,7 +156,9 @@ public class Character_Switch : MonoBehaviour
                 else
                 {
                     //Debug.Log("Four");
-                    Environment_Handler.evironmentHandlerInstance.spawnFatherEnvironment();
+                    if (Environment_Handler.evironmentHandlerInstance != null)
+                        Environment_Handler.evironmentHandlerInstance.spawnFatherEnvironment();
+
                     currentCharacter = "WoodenMan";
                     otherCharacter.GetComponent<Character_Switch>().activeCharacter = otherCharacter.transform;
                     otherCharacter.GetComponent<Player_Controller>().enabled = true;

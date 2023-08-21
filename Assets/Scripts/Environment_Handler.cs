@@ -12,7 +12,7 @@ public class Environment_Handler : MonoBehaviour
 
     public float floorX = 2;
     public float floorY = -47;
-
+    public List<GameObject> brittlePlatforms = new List<GameObject>();
     public float backGroundX = 0;
     public float backGroundY = 0;
 
@@ -51,6 +51,11 @@ public class Environment_Handler : MonoBehaviour
 
     public void spawnGhostEnvironment()
     {
+        foreach(GameObject brittlePlatform in brittlePlatforms)
+        {
+            brittlePlatform.GetComponent<Platform_Life>().LoseHealth(1);
+        }
+
         SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.environmentChange);
 
         if (isFatherEnvironment)
@@ -93,6 +98,11 @@ public class Environment_Handler : MonoBehaviour
 
     public void spawnFatherEnvironment()
     {
+        foreach (GameObject brittlePlatform in brittlePlatforms)
+        {
+            brittlePlatform.GetComponent<Platform_Life>().LoseHealth(1);
+        }
+
         SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.environmentChange);
 
         if (!isFatherEnvironment)
