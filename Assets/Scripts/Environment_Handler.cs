@@ -10,13 +10,13 @@ public class Environment_Handler : MonoBehaviour
     public GameObject fatherBackground;
     bool isFatherEnvironment = true;
 
-    public float floorX = 2;
-    public float floorY = -47;
+    public float floorX;
+    public float floorY;
 
     public float backGroundX = 0;
     public float backGroundY = 0;
 
-    private GameObject currentFatherFloor;
+    private GameObject cuFloorrrentFather;
     private GameObject currentGhostFloor;
     private GameObject currentFatherBackGround;
     private GameObject currentGhostBackGround;

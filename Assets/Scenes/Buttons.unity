@@ -518,7 +518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070880847499565586, guid: a36188a0c93264e1385fb02c751aadf8, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2070880847499565586, guid: a36188a0c93264e1385fb02c751aadf8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1561,10 +1561,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd7180edc2331644a59ea74f33c4fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostBackground: {fileID: 7601599187869785049, guid: 2ce93c786efb65f43a3d8336c3d960b1, type: 3}
-  fatherBackground: {fileID: 469531862451862332, guid: 2cec4a01386f8bd4f93042925e65d919, type: 3}
-  floorX: 100
-  floorY: 100
+  ghostBackground: {fileID: 7601599187869785049, guid: 0621ccc9ea4764833b65be4a90423823, type: 3}
+  fatherBackground: {fileID: 469531862451862332, guid: 548d0277e13334521894f524cb8b5a77, type: 3}
+  floorX: 0
+  floorY: 0
   backGroundX: 0
   backGroundY: 1.33
   switchOff: 1
@@ -2133,7 +2133,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &593480066
 AudioSource:
@@ -2436,7 +2436,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &651659013
 GameObject:
@@ -6794,7 +6794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3888955888052508252, guid: 93f6514ebea3ad14b80d99e8fdd53be5, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3888955888052508252, guid: 93f6514ebea3ad14b80d99e8fdd53be5, type: 3}
       propertyPath: m_LocalPosition.x
