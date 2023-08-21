@@ -16,7 +16,7 @@ public class Environment_Handler : MonoBehaviour
     public float backGroundX = 0;
     public float backGroundY = 0;
 
-    private GameObject currentFatherFloor;
+    private GameObject cuFloorrrentFather;
     private GameObject currentGhostFloor;
     private GameObject currentFatherBackGround;
     private GameObject currentGhostBackGround;

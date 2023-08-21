@@ -15,8 +15,19 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Bone"))
+        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Bone") || collision.gameObject.CompareTag("Button"))
         { 
+            GameObject parentObject = this.transform.parent.gameObject;
+            string currChar = parentObject.GetComponent<Character_Switch>().getCurCharacter();
+
+            if (currChar == "WoodenMan" && collision.gameObject.CompareTag("Button"))
+            {
+                characterToCheckController.setIsJumping(false);
+            } else if (currChar == "Ghost" && collision.gameObject.CompareTag("Button"))
+            {
+                return;
+            }
+                
             characterToCheckController.setIsJumping(false);
 
             // if (gameObject.name == "Ground Check Ghost")
@@ -45,8 +56,19 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Platform"))
+        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Platform") || collision.gameObject.CompareTag("Button"))
         {
+            GameObject parentObject = this.transform.parent.gameObject;
+            string currChar = parentObject.GetComponent<Character_Switch>().getCurCharacter();
+
+            if (currChar == "WoodenMan" && collision.gameObject.CompareTag("Button"))
+            {
+                characterToCheckController.setIsJumping(true);
+            } else if (currChar == "Ghost" && collision.gameObject.CompareTag("Button"))
+            {
+                return;
+            }
+            
             characterToCheckController.setIsJumping(true);
         }
     }

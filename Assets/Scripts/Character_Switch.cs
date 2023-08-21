@@ -42,10 +42,13 @@ public class Character_Switch : MonoBehaviour
             {
                 renderer.sortingOrder -= 10;
             }
-            
-            
-            cinemachine.LookAt = activeCharacter;
-            cinemachine.Follow = activeCharacter;
+
+            if (cinemachine)
+            {
+                cinemachine.LookAt = activeCharacter;
+                cinemachine.Follow = activeCharacter;
+            }
+
             thisCharacter.transform.position = new Vector3(thisCharacter.transform.position.x, thisCharacter.transform.position.y, -0.1f);
         }
         else
@@ -69,7 +72,7 @@ public class Character_Switch : MonoBehaviour
             if (activeCharacter.CompareTag("WoodenMan"))
             {
                 healthBar.SetActive(false);
-                
+
                 if (thisCharacter.CompareTag("Ghost"))
                 {
                     //Debug.Log("One");
@@ -80,6 +83,10 @@ public class Character_Switch : MonoBehaviour
                     otherCharacter.GetComponent<Character_Switch>().activeCharacter = otherCharacter.transform;
                     thisCharacter.GetComponent<Player_Controller>().enabled = true;
                     otherCharacter.GetComponent<Player_Controller>().enabled = false;
+
+                    Animator otherCharactersAnimator = otherCharacter.GetComponent<Animator>();
+                    otherCharactersAnimator.SetFloat("Speed", 0);
+                    
                     activeCharacter = thisCharacter.transform;
                     
                     foreach (Renderer renderer in activeCharacter.GetComponentsInChildren<Renderer>())
@@ -106,6 +113,10 @@ public class Character_Switch : MonoBehaviour
                     otherCharacter.GetComponent<Character_Switch>().activeCharacter = otherCharacter.transform;
                     otherCharacter.GetComponent<Player_Controller>().enabled = true;
                     thisCharacter.GetComponent<Player_Controller>().enabled = false;
+                    
+                    Animator otherCharactersAnimator = otherCharacter.GetComponent<Animator>();
+                    otherCharactersAnimator.SetFloat("Speed", 0);
+                    
                     activeCharacter = otherCharacter.transform;
                     
                     foreach (Renderer renderer in activeCharacter.GetComponentsInChildren<Renderer>())
@@ -137,6 +148,10 @@ public class Character_Switch : MonoBehaviour
                     otherCharacter.GetComponent<Character_Switch>().activeCharacter = otherCharacter.transform;
                     thisCharacter.GetComponent<Player_Controller>().enabled = true;
                     otherCharacter.GetComponent<Player_Controller>().enabled = false;
+                    
+                    Animator otherCharactersAnimator = otherCharacter.GetComponent<Animator>();
+                    otherCharactersAnimator.SetFloat("Speed", 0);
+                    
                     activeCharacter = thisCharacter.transform;
                     
                     foreach (Renderer renderer in activeCharacter.GetComponentsInChildren<Renderer>())
@@ -163,6 +178,10 @@ public class Character_Switch : MonoBehaviour
                     otherCharacter.GetComponent<Character_Switch>().activeCharacter = otherCharacter.transform;
                     otherCharacter.GetComponent<Player_Controller>().enabled = true;
                     thisCharacter.GetComponent<Player_Controller>().enabled = false;
+                    
+                    Animator thisCharactersAnimator = thisCharacter.GetComponent<Animator>();
+                    thisCharactersAnimator.SetFloat("Speed", 0);
+                    
                     activeCharacter = otherCharacter.transform;
                     
                     foreach (Renderer renderer in activeCharacter.GetComponentsInChildren<Renderer>())
