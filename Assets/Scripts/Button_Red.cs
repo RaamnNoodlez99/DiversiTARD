@@ -26,7 +26,7 @@ public class Button_Red : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("WoodenMan"))
+        if (other.CompareTag("WoodenMan") && !_animator.GetBool("isPressed"))
         {
             _animator.SetBool("isPressed", true);
             if (linkedTorch != null)
@@ -43,11 +43,18 @@ public class Button_Red : MonoBehaviour
 
         if (other.CompareTag("Projectile") && !_animator.GetBool("isPressed"))
         {
+            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.stoneShort);
+
             _animator.SetBool("isPressed", true);
             if (linkedTorch != null)
                 torchesFlame.SetActive(true);
 
             StartCoroutine(PopUpButton());
+        }
+
+        if (other.CompareTag("WoodenMan") && !_animator.GetBool("isPressed"))
+        {
+            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.stoneShort);
         }
     }
 
@@ -64,9 +71,7 @@ public class Button_Red : MonoBehaviour
     {
         if (other.CompareTag("WoodenMan"))
         {
-            _animator.SetBool("isPressed", false);
-            if (linkedTorch != null)
-                torchesFlame.SetActive(false);
+            StartCoroutine(PopUpButton());
         }
     }
 }
