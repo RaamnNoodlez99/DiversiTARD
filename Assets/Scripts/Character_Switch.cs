@@ -105,7 +105,7 @@ public class Character_Switch : MonoBehaviour
                 }
                 else
                 {
-                    //Debug.Log("Two");
+                    Debug.Log("Two");
                     if (Environment_Handler.evironmentHandlerInstance != null)
                         Environment_Handler.evironmentHandlerInstance.spawnGhostEnvironment();
 
@@ -114,8 +114,8 @@ public class Character_Switch : MonoBehaviour
                     otherCharacter.GetComponent<Player_Controller>().enabled = true;
                     thisCharacter.GetComponent<Player_Controller>().enabled = false;
                     
-                    Animator otherCharactersAnimator = otherCharacter.GetComponent<Animator>();
-                    otherCharactersAnimator.SetFloat("Speed", 0);
+                    Animator thisCharactersAnimator = thisCharacter.GetComponent<Animator>();
+                    thisCharactersAnimator.SetFloat("Speed", 0);
                     
                     activeCharacter = otherCharacter.transform;
                     
