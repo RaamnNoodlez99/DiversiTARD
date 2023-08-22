@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Button_Red : MonoBehaviour
 {
     public GameObject linkedTorch;
+    public float buttonPressedTime;
 
     private GameObject torchesFlame;
     private Animator _animator;
@@ -25,7 +26,7 @@ public class Button_Red : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("WoodenMan") || other.CompareTag("Projectile"))
+        if (other.CompareTag("WoodenMan"))
         {
             _animator.SetBool("isPressed", true);
             if (linkedTorch != null)
@@ -36,20 +37,36 @@ public class Button_Red : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("WoodenMan") || other.CompareTag("Projectile"))
-        { 
+        {
             buttonComponent.onClick.Invoke();
         }
+
+        if (other.CompareTag("Projectile") && !_animator.GetBool("isPressed"))
+        {
+            _animator.SetBool("isPressed", true);
+            if (linkedTorch != null)
+                torchesFlame.SetActive(true);
+
+            StartCoroutine(PopUpButton());
+        }
+    }
+
+    private IEnumerator PopUpButton()
+    {
+        yield return new WaitForSeconds(buttonPressedTime);
+        _animator.SetBool("isPressed", false);
+        if (linkedTorch != null)
+            torchesFlame.SetActive(false);
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("WoodenMan") || other.CompareTag("Projectile"))
+        if (other.CompareTag("WoodenMan"))
         {
             _animator.SetBool("isPressed", false);
             if (linkedTorch != null)
                 torchesFlame.SetActive(false);
-
-
         }
     }
 }
