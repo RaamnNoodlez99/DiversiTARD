@@ -8,17 +8,42 @@ public class Moving_Wall : MonoBehaviour
 
     bool hitPlatform = false;
     bool movingUp = false;
+    bool movingDown = false;
     public bool isWallDown = false;
+    private Coroutine moveCounterReference;
+    private bool hitGhostPlatform = false;
     string lastDirection = "up";
 
     Vector3 originalPosition; 
     public LayerMask platformLayerMask;
-
+    public LayerMask clampLayerMask;
+    public float wallStuckTime = 1f;
     public Transform bottomCenterPoint;
+    public GameObject ghost;
 
     private void Start()
     {
         originalPosition = transform.position;
+    }
+
+    private void Update()
+    {
+        if(ghost.GetComponent<Player_Controller>().ghostPlatformExists && hitPlatform)
+        {
+            Debug.Log("On Ghost Platform");
+            hitGhostPlatform = true;
+        }
+
+        if (hitGhostPlatform)
+        {
+            if (!ghost.GetComponent<Player_Controller>().ghostPlatformExists)
+            {
+                Debug.Log("Out of my way");
+                hitPlatform = false;
+                hitGhostPlatform = false;
+                MoveWallDown();
+            }
+        }
     }
 
     public void MoveWall()
@@ -36,7 +61,6 @@ public class Moving_Wall : MonoBehaviour
     {
         isWallDown = true;
         lastDirection = "down";
-        //StopCoroutine(MoveWallUpCoroutine());
         StartCoroutine(MoveWallDownCoroutine());
     }
 
@@ -44,21 +68,36 @@ public class Moving_Wall : MonoBehaviour
     {
         isWallDown = false;
         lastDirection = "up";
-        //StopCoroutine(MoveWallDownCoroutine());
         StartCoroutine(MoveWallUpCoroutine());
     }
 
     private IEnumerator MoveWallDownCoroutine()
     {
-        while (!hitPlatform)
+        if (moveCounterReference != null)
+        {
+            StopCoroutine(moveCounterReference);
+        }
+
+        movingDown = true;
+        while (!hitPlatform && !movingUp)
         {
             Vector3 direction = Vector3.down;
 
             RaycastHit2D hit = Physics2D.Raycast(bottomCenterPoint.position, direction, moveSpeed * Time.deltaTime, platformLayerMask);
+            RaycastHit2D clampHit = Physics2D.Raycast(bottomCenterPoint.position, direction, moveSpeed * Time.deltaTime, clampLayerMask);
+
 
             if (hit.collider != null)
             {
                 hitPlatform = true;
+                moveCounterReference = StartCoroutine(MoveCounter());
+            }
+            else if (clampHit.collider != null)
+            {
+                hitPlatform = true;
+
+                if (moveCounterReference != null)
+                    StopCoroutine(moveCounterReference);
             }
             else
             {
@@ -68,12 +107,24 @@ public class Moving_Wall : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+        movingDown = false;
+    }
+
+    private IEnumerator MoveCounter()
+    {
+        yield return new WaitForSeconds(wallStuckTime);
+        MoveWallUp();
     }
 
     private IEnumerator MoveWallUpCoroutine()
     {
+        if (moveCounterReference != null)
+        {
+            StopCoroutine(moveCounterReference);
+        }
+
         movingUp = true;
-        while (transform.position.y < originalPosition.y)
+        while (transform.position.y < originalPosition.y && !movingDown)
         {
             Vector3 direction = Vector3.up;
             Vector3 newPosition = transform.position + direction * moveSpeed * Time.deltaTime;

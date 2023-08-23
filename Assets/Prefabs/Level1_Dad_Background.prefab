@@ -1326,7 +1326,7 @@ GameObject:
   - component: {fileID: 8093489860138638332}
   - component: {fileID: 3419328433738935879}
   - component: {fileID: 4559785065304723359}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: IMG_0367 (1)
   m_TagString: Platform
   m_Icon: {fileID: 0}
