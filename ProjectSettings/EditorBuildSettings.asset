@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CutScene.unity
     guid: c1a54afda153d467b8c9483c00464f38
   - enabled: 1
-    path: Assets/Scenes/Buttons.unity
+    path: Assets/Scenes/Buttons Old.unity
     guid: ee063fc84065348bcb85f18260872482
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: aa6b0e39b6199c845a2db60bded992ae, type: 2}

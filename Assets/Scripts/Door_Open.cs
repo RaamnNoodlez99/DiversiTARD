@@ -5,6 +5,7 @@ using UnityEngine;
 public class Door_Open : MonoBehaviour
 {
     public GameObject[] linkedTorches;
+    public GameObject doorSprite;
     public float openSpeed = 10f;
     public float doorLength = 18f;
     
@@ -21,7 +22,7 @@ public class Door_Open : MonoBehaviour
     void Update()
     {
         calculateTargetPosition();
-        transform.position = Vector3.MoveTowards(transform.position,
+        doorSprite.transform.position = Vector3.MoveTowards(doorSprite.transform.position,
             new Vector3(initialPosition.x, targetY, initialPosition.z), openSpeed * Time.deltaTime);
     }
 
