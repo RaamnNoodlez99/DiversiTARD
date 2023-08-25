@@ -14,14 +14,18 @@ public class Follow_Shooter : MonoBehaviour
     public float moveSpeed;
 
     Renderer railRenderer;
+    private Vector3 initialShooterPosition;
     Bounds railBounds;
     GameObject followedObject;
     bool shouldSwitch = true;
     bool shooterToRight;
+    private bool isResettingPosition = false;
+
 
 
     private void Start()
     {
+        initialShooterPosition = shooter.transform.position;
         railRenderer = rail.GetComponent<Renderer>();
         railBounds = railRenderer.bounds;
 
@@ -41,70 +45,97 @@ public class Follow_Shooter : MonoBehaviour
         }
     }
 
+    public void ResetPosition()
+    {
+        if (!isResettingPosition)
+        {
+            isResettingPosition = true;
+            //StartCoroutine(MoveToOriginalPosition());
+        }
+    }
+
     void Update()
     {
-        if(shouldSwitch && !followedObject.CompareTag(followedObject.GetComponent<Character_Switch>().getCurCharacter()))
+        //Debug.Log(initialShooterPosition.position.x);
+        if (!isResettingPosition)
         {
-            if(followedObject == woodenMan)
+            if (shouldSwitch && !followedObject.CompareTag(followedObject.GetComponent<Character_Switch>().getCurCharacter()))
             {
-                followedObject = ghost;
+                if (followedObject == woodenMan)
+                {
+                    followedObject = ghost;
+                }
+                else
+                {
+                    followedObject = woodenMan;
+                }
             }
-            else
-            {
-                followedObject = woodenMan;
-            }
-        }
 
-        if (stopWall.GetComponent<Moving_Wall>().isWallDown)
-        {
-            if(shooter.transform.position.x > stopWall.transform.position.x)
+            if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
             {
-                shooterToRight = true;
+                if (shooter.transform.position.x > stopWall.transform.position.x)
+                {
+                    shooterToRight = true;
+                }
+                else
+                {
+                    shooterToRight = false;
+                }
             }
-            else
-            {
-                shooterToRight = false;
-            }
-        }
 
-        if(shooter.transform.position.x < railBounds.max.x && shooter.transform.position.x < followedObject.transform.position.x)
-        {
-            //Move right 
-
-            if (stopWall.GetComponent<Moving_Wall>().isWallDown)
+            if (shooter.transform.position.x < railBounds.max.x && shooter.transform.position.x < followedObject.transform.position.x)
             {
-                if (shooterToRight)
+                //Move right 
+
+                if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
+                {
+                    if (shooterToRight)
+                    {
+                        shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                    }
+                    else if (!shooterToRight && shooter.transform.position.x < stopWall.transform.position.x - 1)
+                    {
+                        shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                    }
+                }
+                else
                 {
                     shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
                 }
-                else if(!shooterToRight && shooter.transform.position.x < stopWall.transform.position.x - 1)
+            }
+            else if (shooter.transform.position.x > railBounds.min.x && shooter.transform.position.x > followedObject.transform.position.x)
+            {
+                //Move left
+
+                if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
                 {
-                    shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                    if (shooterToRight && shooter.transform.position.x > stopWall.transform.position.x + 1)
+                    {
+                        shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                    }
+                    else if (!shooterToRight)
+                    {
+                        shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                    }
+                }
+                else
+                {
+                    shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
                 }
             }
-            else
-            {
+        }
+        else
+        {
+            Debug.Log("OG: " + initialShooterPosition.x + "   Current: " + shooter.transform.position.x);
+            if (initialShooterPosition.x > shooter.transform.position.x)
                 shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
-            }
-        }
-        else if (shooter.transform.position.x > railBounds.min.x && shooter.transform.position.x > followedObject.transform.position.x)
-        {
-            //Move left
-
-            if (stopWall.GetComponent<Moving_Wall>().isWallDown)
-            {
-                if (shooterToRight && shooter.transform.position.x > stopWall.transform.position.x + 1)
-                {
-                    shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
-                }
-                else if (!shooterToRight)
-                {
-                    shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
-                }
-            }
             else
-            {
                 shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+
+            if(shooter.transform.position.x > initialShooterPosition.x -1 && shooter.transform.position.x < initialShooterPosition.x + 1)
+            {
+                isResettingPosition = false;
+                Debug.Log("Koei");
             }
         }
     }

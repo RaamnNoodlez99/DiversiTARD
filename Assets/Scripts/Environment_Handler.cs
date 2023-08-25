@@ -15,6 +15,8 @@ public class Environment_Handler : MonoBehaviour
     public List<GameObject> brittlePlatforms = new List<GameObject>();
     public float backGroundX = 0;
     public float backGroundY = 0;
+    public bool lookForSwitch = false;
+    public bool lookForTutPlatforms = false;
 
     private GameObject cuFloorrrentFather;
     private GameObject currentGhostFloor;
@@ -27,7 +29,7 @@ public class Environment_Handler : MonoBehaviour
 
     private void Update()
     {
-        if(currentFatherBackGround != null)
+        if(currentFatherBackGround != null && lookForSwitch)
         {
             if (currentFatherBackGround.transform.Find("Switches").gameObject.GetComponent<Switch>().isSwitchedOn)
             {
@@ -71,25 +73,25 @@ public class Environment_Handler : MonoBehaviour
         }
 
         isFatherEnvironment = false;
-        if (shouldLoadPlatforms)
+        if (shouldLoadPlatforms && lookForTutPlatforms)
         {
             currentGhostBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.transform.Translate(0f, -9f, 0f);
             currentGhostBackGround.transform.Find("TutorialPlatforms/Tut2").gameObject.SetActive(true);
             currentGhostBackGround.transform.Find("TutorialPlatforms/Tut3").gameObject.SetActive(true);
         }
-        else
+        else if(lookForTutPlatforms)
         {
             //currentGhostBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.transform.Translate(0f, -9f, 0f);
             currentGhostBackGround.transform.Find("TutorialPlatforms/Tut2").gameObject.SetActive(false);
             currentGhostBackGround.transform.Find("TutorialPlatforms/Tut3").gameObject.SetActive(false);
         }
 
-        if (switchOff)
+        if (lookForSwitch && switchOff)
         {
             currentGhostBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(true);
             currentGhostBackGround.transform.Find("Switches/Ghost switch On").gameObject.SetActive(false);
         }
-        else
+        else if(lookForSwitch)
         {
             currentGhostBackGround.transform.Find("Switches/Ghost switch On").gameObject.SetActive(true);
             currentGhostBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(false);
@@ -120,25 +122,25 @@ public class Environment_Handler : MonoBehaviour
 
         isFatherEnvironment = true;
 
-        if (shouldLoadPlatforms)
+        if (shouldLoadPlatforms && lookForTutPlatforms)
         {
             currentFatherBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.transform.Translate(0f, -9f, 0f);
             currentFatherBackGround.transform.Find("TutorialPlatforms/Tut2").gameObject.SetActive(true);
             currentFatherBackGround.transform.Find("TutorialPlatforms/Tut3").gameObject.SetActive(true);
         }
-        else
+        else if (lookForTutPlatforms)
         {
             //currentFatherBackGround.transform.Find("TutorialPlatforms/Tut1").gameObject.SetActive(false);
             currentFatherBackGround.transform.Find("TutorialPlatforms/Tut2").gameObject.SetActive(false);
             currentFatherBackGround.transform.Find("TutorialPlatforms/Tut3").gameObject.SetActive(false);
         }
 
-        if (switchOff)
+        if (switchOff && lookForSwitch)
         {
             currentFatherBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(true);
             currentFatherBackGround.transform.Find("Switches/Ghost switch On").gameObject.SetActive(false);
         }
-        else
+        else if(lookForSwitch)
         {
             currentFatherBackGround.transform.Find("Switches/Ghost switch On").gameObject.SetActive(true);
             currentFatherBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(false);
