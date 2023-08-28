@@ -922,6 +922,7 @@ GameObject:
   - component: {fileID: 3401214636959577451}
   - component: {fileID: 4326396345050790466}
   - component: {fileID: 835850906353933069}
+  - component: {fileID: 5353864738569073553}
   m_Layer: 0
   m_Name: IMG_0309
   m_TagString: Platform
@@ -1009,6 +1010,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxAmount: 0
+--- !u!61 &5353864738569073553
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4306814520206710019}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.14653778, y: -26.66988}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 106.666664, y: 60}
+    newSize: {x: 96, y: 54}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 106.37358, y: 6.66024}
+  m_EdgeRadius: 0
 --- !u!1 &5062801915529983818
 GameObject:
   m_ObjectHideFlags: 0

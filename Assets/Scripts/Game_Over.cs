@@ -9,7 +9,8 @@ public class Game_Over : MonoBehaviour
 {
     public GameObject gameOverScreen;
     public GameObject environmentHandler;
-    public GameObject player;
+    public GameObject woodenMan;
+    public GameObject ghost;
     public static bool isOver;
     public GameObject firstSelectedButton;
 
@@ -30,7 +31,7 @@ public class Game_Over : MonoBehaviour
 
     private void Update()
     {
-        if (player == null)
+        if (woodenMan == null || ghost == null)
         {
             Invoke("GameOver", 1.0f);
         }

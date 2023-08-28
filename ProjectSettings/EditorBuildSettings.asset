@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 7534008369a22f84b8bb79937fc8cfeb
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
+    path: Assets/Scenes/TutorialNew.unity
     guid: 50eb8703491cece4eba77f790b979faf
   - enabled: 1
-    path: Assets/Scenes/CutScene.unity
+    path: Assets/Scenes/CutSceneNew.unity
     guid: c1a54afda153d467b8c9483c00464f38
   - enabled: 1
     path: Assets/Scenes/Buttons Old.unity

@@ -2145,7 +2145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 737900686}
   environmentHandler: {fileID: 982792483}
-  player: {fileID: 1801007777}
+  woodenMan: {fileID: 1801007777}
+  ghost: {fileID: 961770066}
   firstSelectedButton: {fileID: 621577471}
   VolumeChangeDuration: 1
 --- !u!114 &499432784
@@ -3815,8 +3816,11 @@ MonoBehaviour:
   fatherBackground: {fileID: 469531862451862332, guid: 548d0277e13334521894f524cb8b5a77, type: 3}
   floorX: 0
   floorY: 0
+  brittlePlatforms: []
   backGroundX: 0
   backGroundY: 1.33
+  lookForSwitch: 0
+  lookForTutPlatforms: 0
   switchOff: 1
   shouldLoadPlatforms: 0
 --- !u!4 &982792485

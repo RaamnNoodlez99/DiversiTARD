@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5204371865539790164}
   - component: {fileID: 370704847902584936}
   m_Layer: 0
-  m_Name: Falling_Platform_Holder_Dad
+  m_Name: Falling_Platform_Holder_Ghost
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,8 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20c15baee7774a5e9f3f2cae102f3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodenManPlatformSprite: {fileID: 985784886, guid: 41835783fe8e7064ba16ede29798cc5f, type: 3}
-  ghostPlatformSprite: {fileID: 490541726, guid: 226ff485488aa5f4a8f8472438c19316, type: 3}
 --- !u!1 &9023358218734571200
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +169,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 985784886, guid: 41835783fe8e7064ba16ede29798cc5f, type: 3}
+  m_Sprite: {fileID: 490541726, guid: 226ff485488aa5f4a8f8472438c19316, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

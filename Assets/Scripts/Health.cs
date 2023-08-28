@@ -13,7 +13,8 @@ public class Health : MonoBehaviour
 
     public void Awake()
     {
-        healthBar.setMaxHealth(300);
+        if(gameObject.CompareTag("WoodenMan"))
+            healthBar.setMaxHealth(300);
     }
 
     public void Damage(int amount)
