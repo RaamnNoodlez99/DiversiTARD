@@ -126,7 +126,6 @@ public class Follow_Shooter : MonoBehaviour
         }
         else
         {
-            Debug.Log("OG: " + initialShooterPosition.x + "   Current: " + shooter.transform.position.x);
             if (initialShooterPosition.x > shooter.transform.position.x)
                 shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
             else
@@ -135,7 +134,6 @@ public class Follow_Shooter : MonoBehaviour
             if(shooter.transform.position.x > initialShooterPosition.x -1 && shooter.transform.position.x < initialShooterPosition.x + 1)
             {
                 isResettingPosition = false;
-                Debug.Log("Koei");
             }
         }
     }

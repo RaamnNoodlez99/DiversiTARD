@@ -5,7 +5,7 @@ using UnityEngine;
 public class Death_Platform : MonoBehaviour
 {
 
-    public bool killsGhost = false;
+    public bool killsGhost = true;
     public bool killsFather = true;
     public HealthBar healthBar;
     private void OnCollisionEnter2D(Collision2D collision)
@@ -13,13 +13,14 @@ public class Death_Platform : MonoBehaviour
         Health objectHealth = collision.collider.GetComponent<Health>();
         if (objectHealth != null)
         {
-            healthBar.setHealth(0);
             if (collision.gameObject.CompareTag("Ghost") && killsGhost)
             {
+                Debug.Log("ghost entered");
                 collision.gameObject.GetComponent<Health>().Die();
             }
             if (collision.gameObject.CompareTag("WoodenMan") && killsFather)
             {
+                healthBar.setHealth(0);
                 collision.gameObject.GetComponent<Health>().Die();
             }
         }

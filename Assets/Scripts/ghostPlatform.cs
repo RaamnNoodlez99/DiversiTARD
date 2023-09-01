@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class ghostPlatform : MonoBehaviour
     bool ghostOffPlatform = false;
     public bool platformTimerResests = true;
     public GameObject ghost;
+    
+    private GameObject GhostHUD;
 
 
     // Start is called before the first frame update
@@ -17,6 +20,17 @@ public class ghostPlatform : MonoBehaviour
     void Start()
     {
         ghost = GameObject.Find("Ghost");
+        
+
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.name == "Ghost_HUD")
+            {
+                GhostHUD = obj;
+                break;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -44,6 +58,12 @@ public class ghostPlatform : MonoBehaviour
                 ghost.GetComponent<Player_Controller>().ghostPlatformExists = false;
                 SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.platformDestroy);
                 Destroy(gameObject);
+                
+                if (GhostHUD != null)
+                {
+                    Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();
+                    ghostHud.resetTimer();
+                }
             }  
         }else if (despawnDelay - despawnTimer <= 0.7f)
         {
@@ -55,6 +75,16 @@ public class ghostPlatform : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Ghost"))
+        {
+            Debug.Log("Ghost jumping");
+            if (GhostHUD != null)
+            {
+                Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();
+                ghostHud.pauseTimer();
+            }
+        }
+        
         if (collision.gameObject.CompareTag("Ghost") && despawnDelay - despawnTimer >= 0.5f)
         {
             //Debug.Log("Ghost on Platform");
@@ -70,6 +100,21 @@ public class ghostPlatform : MonoBehaviour
         {
             //Debug.Log("Ghost off Platform");
             ghostOffPlatform = true;
+            
+            if (GhostHUD != null)
+            {
+                Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();
+                ghostHud.doCountDown();
+            }
         }
     }
+
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("Ghost") && GhostHUD != null)
+    //     {
+    //         Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();
+    //         ghostHud.pauseTimer();
+    //     }
+    // }
 }

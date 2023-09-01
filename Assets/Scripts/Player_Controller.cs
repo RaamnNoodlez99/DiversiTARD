@@ -29,6 +29,8 @@ public class Player_Controller : MonoBehaviour
     static bool switchToFather = false;
     float timer;
     public static bool canSwitch = true;
+    
+    public GameObject GhostHUD;
 
 
     Vector2 moveInput;
@@ -50,7 +52,7 @@ public class Player_Controller : MonoBehaviour
     private bool facingLeft = true;
 
     private GameObject currentGhostPlatform = null;
-    
+
     private void Awake()
     {
         playerBody = GetComponent<Rigidbody2D>();
@@ -81,6 +83,30 @@ public class Player_Controller : MonoBehaviour
             }
             switchToGhost = false;
             switchToFather = false;
+        }
+
+        if (CompareTag("Ghost"))
+        {
+            if (gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost")
+            {
+                if (GhostHUD != null)
+                {
+                    Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();
+                    if (isJumping && !ghostPlatformExists)
+                    {
+                        ghostHud.removeIconOpaque();
+                    }
+                    else if(!isJumping && ghostPlatformExists && despawnAvaialable)
+                    {
+                        Debug.Log("I wont print first time?");
+                        ghostHud.removeIconOpaque();
+                    }
+                    else if(!despawnAvaialable)
+                    {
+                        ghostHud.setIconOpaque();
+                    }
+                }
+            }
         }
     }
 
@@ -145,7 +171,7 @@ public class Player_Controller : MonoBehaviour
         {
            playerBody.velocity = new Vector2(playerBody.velocity.x, jumpForce);
 
-            if (earlyRelease)
+           if (earlyRelease)
             {
                 playerBody.gravityScale = gravityScale;
                 timer = jumpTimer;
@@ -234,6 +260,9 @@ public class Player_Controller : MonoBehaviour
         if (currentGhostPlatform != null && collision.gameObject.CompareTag("Platform") && collision.gameObject != currentGhostPlatform && gameObject.CompareTag("Ghost"))
         {
             despawnAvaialable = true;
+        } else if (currentGhostPlatform != null && collision.gameObject == currentGhostPlatform && gameObject.CompareTag("Ghost"))
+        {
+            despawnAvaialable = false;
         }
         else if (currentGhostPlatform != null && collision.gameObject == currentGhostPlatform && gameObject.CompareTag("Ghost"))
         {

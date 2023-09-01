@@ -10,8 +10,9 @@ public class Game_Over : MonoBehaviour
 {
     public GameObject gameOverScreen;
     public GameObject environmentHandler;
-    public GameObject player;
-    public static bool isOver = false;
+    public GameObject woodenMan;
+    public GameObject ghost;
+    public static bool isOver;
     public GameObject firstSelectedButton;
     public AudioSource audioSource;
     public AudioClip gameOver;
@@ -33,7 +34,7 @@ public class Game_Over : MonoBehaviour
 
     private void Update()
     {
-        if (player == null && !isOver)
+        if (woodenMan == null || ghost == null)
         {
             //audioSource.PlayOneShot(gameOver, 0.2f);
             Invoke("GameOver", 1.5f);
