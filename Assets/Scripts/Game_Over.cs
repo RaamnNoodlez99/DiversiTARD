@@ -4,23 +4,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 
 public class Game_Over : MonoBehaviour
 {
     public GameObject gameOverScreen;
     public GameObject environmentHandler;
     public GameObject player;
-    public static bool isOver;
+    public static bool isOver = false;
     public GameObject firstSelectedButton;
+    public AudioSource audioSource;
+    public AudioClip gameOver;
 
-    public float VolumeChangeDuration = 1.0f;
+    private float VolumeChangeDuration = 2.7f;
     private float initialVolume;
     private Coroutine volumeChangeCoroutine;
+    public AudioMixer audioMixer;
 
     void Start()
     {
-        initialVolume = SFX_Manager.sfxInstance.BackgroundAudio.volume;
-        gameOverScreen.SetActive(false);
+        initialVolume = SFX_Manager.sfxInstance.Audio.volume;
     }
 
     public bool isGameOver()
@@ -30,17 +33,20 @@ public class Game_Over : MonoBehaviour
 
     private void Update()
     {
-        if (player == null)
+        if (player == null && !isOver)
         {
-            Invoke("GameOver", 1.0f);
+            //audioSource.PlayOneShot(gameOver, 0.2f);
+            Invoke("GameOver", 1.5f);
         }
     }
 
     public void GameOver()
     {
-        volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, AudioListener.volume, 0.13f));
         gameOverScreen.SetActive(true);
+        audioSource.Play();
         isOver = true;
+        volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, AudioListener.volume, 0f));
+        //AudioListener.volume = 0f;
         Time.timeScale = 0f;
 
         if (firstSelectedButton != null)
@@ -51,24 +57,28 @@ public class Game_Over : MonoBehaviour
 
     public void ResetGame()
     {
-        AudioListener.volume = 1f;
-        SFX_Manager.sfxInstance.BackgroundAudio.Play();
+        if (volumeChangeCoroutine != null)
+            StopCoroutine(volumeChangeCoroutine);
+
+        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(initialVolume));
         environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
         environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
-        gameOverScreen.SetActive(false);
         isOver = false;
+        gameOverScreen.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
     }
 
     public void ToMenu()
     {
-        AudioListener.volume = 1f;
+        if (volumeChangeCoroutine != null)
+            StopCoroutine(volumeChangeCoroutine);
+
+        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(initialVolume));
         environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
         environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
-        SFX_Manager.sfxInstance.BackgroundAudio.volume = 1f;
-        SFX_Manager.sfxInstance.BackgroundAudio.Stop();
+        SFX_Manager.sfxInstance.Audio.volume = 1f;
+        SFX_Manager.sfxInstance.Audio.Stop();
         isOver = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
@@ -82,12 +92,21 @@ public class Game_Over : MonoBehaviour
         {
             float t = elapsedTime / duration;
             float newVolume = Mathf.Lerp(startVolume, targetVolume, t);
-            AudioListener.volume = newVolume;
+
+            float decibelVolume = ConvertToDecibel(newVolume);
+
+            audioMixer.SetFloat("BackgroundVolume", decibelVolume);
 
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
-
-        AudioListener.volume = targetVolume;
     }
+
+    private float ConvertToDecibel(float linearValue)
+    {
+        return 20f * Mathf.Log10(linearValue);
+    }
+
+
+
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using TMPro;
@@ -19,18 +20,18 @@ public class Pause_Menu : MonoBehaviour
     public TextMeshProUGUI button2;
     public TextMeshProUGUI button3;
 
+    public AudioMixer audioMixer;
+
     public static bool isPaused;
 
     public float VolumeChangeDuration = 1.0f;
+    public float volumeWhilePaused = 0.7f;
     private float initialVolume;
     private Coroutine volumeChangeCoroutine;
-    bool shouldSwitch = false;
-
 
     void Start()
     {
-        initialVolume = SFX_Manager.sfxInstance.BackgroundAudio.volume;
-        pauseMenu.SetActive(false);
+        initialVolume = SFX_Manager.sfxInstance.Audio.volume;
     }
 
     public void Update()
@@ -63,9 +64,12 @@ public class Pause_Menu : MonoBehaviour
 
     public void PauseGame()
     {
-        if (!gameManager.GetComponent<Game_Over>().isGameOver() && !levelComplete.GetComponent<Level_Complete>().isLevelOver())
+        if (!gameManager.GetComponent<Game_Over>().isGameOver() && (levelComplete == null || !levelComplete.GetComponent<Level_Complete>().isLevelOver()))
         {
-            volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, AudioListener.volume, 0.13f));
+
+            if(PlayerPrefs.GetFloat("backgroundVolume") > volumeWhilePaused)
+                volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, PlayerPrefs.GetFloat("backgroundVolume"), volumeWhilePaused));
+
             pauseMenu.SetActive(true);
             isPaused = true;
             Time.timeScale = 0f;
@@ -89,7 +93,11 @@ public class Pause_Menu : MonoBehaviour
     public void ResumeGame()
     {
 
-        volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, AudioListener.volume, 1f));
+        //volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, 0.1f, PlayerPrefs.GetFloat("backgroundVolume")) );
+        
+        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
+        audioMixer.SetFloat("MasterVolume", ConvertToDecibel(PlayerPrefs.GetFloat("masterVolume")));
+        audioMixer.SetFloat("SoundEffectsVolume", ConvertToDecibel(PlayerPrefs.GetFloat("soundEffectsVolume")));
 
         pauseMenu.SetActive(false);
         isPaused = false;
@@ -98,13 +106,18 @@ public class Pause_Menu : MonoBehaviour
 
     public void ToMenu()
     {
-        AudioListener.volume = 1f;
-        //tutorialPlatforms.GetComponent<Tutorial_Platfrom_Movement>().ResetState();
+        if(volumeChangeCoroutine != null)
+            StopCoroutine(volumeChangeCoroutine);
+
+        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
+        audioMixer.SetFloat("MasterVolume", ConvertToDecibel(PlayerPrefs.GetFloat("masterVolume")));
+        audioMixer.SetFloat("SoundEffectsVolume", ConvertToDecibel(PlayerPrefs.GetFloat("soundEffectsVolume")));
+
         //Switch.GetComponent<Tutorial_Platfrom_Movement>().ResetState();
         environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
         environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
-        SFX_Manager.sfxInstance.BackgroundAudio.volume = 1f;
-        SFX_Manager.sfxInstance.BackgroundAudio.Stop();
+        //SFX_Manager.sfxInstance.Audio.volume = 1f;
+        //SFX_Manager.sfxInstance.Audio.Stop();
         isPaused = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
@@ -118,18 +131,18 @@ public class Pause_Menu : MonoBehaviour
         {
             float t = elapsedTime / duration;
             float newVolume = Mathf.Lerp(startVolume, targetVolume, t);
-            AudioListener.volume = newVolume;
+
+            float decibelVolume = ConvertToDecibel(newVolume);
+
+            audioMixer.SetFloat("BackgroundVolume", decibelVolume);
 
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
-
-        AudioListener.volume = targetVolume;
     }
 
-    public void queueSwitch()
+    private float ConvertToDecibel(float linearValue)
     {
-        shouldSwitch = true;
+        return 20f * Mathf.Log10(linearValue);
     }
-
 }

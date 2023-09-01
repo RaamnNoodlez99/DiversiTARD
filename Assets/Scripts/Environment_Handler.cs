@@ -40,7 +40,7 @@ public class Environment_Handler : MonoBehaviour
     }
     void Awake()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         if (evironmentHandlerInstance != null && evironmentHandlerInstance != this)
         {
             Destroy(gameObject);
@@ -88,13 +88,13 @@ public class Environment_Handler : MonoBehaviour
 
         if (lookForSwitch && switchOff)
         {
-            currentGhostBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(true);
-            currentGhostBackGround.transform.Find("Switches/Ghost switch On").gameObject.SetActive(false);
+            currentGhostBackGround.transform.Find("Ghost_Switch/Ghost switch Off").gameObject.SetActive(true);
+            currentGhostBackGround.transform.Find("Ghost_Switch/Ghost switch On").gameObject.SetActive(false);
         }
         else if(lookForSwitch)
         {
-            currentGhostBackGround.transform.Find("Switches/Ghost switch On").gameObject.SetActive(true);
-            currentGhostBackGround.transform.Find("Switches/Ghost switch Off").gameObject.SetActive(false);
+            currentGhostBackGround.transform.Find("Ghost_Switch/Ghost switch On").gameObject.SetActive(true);
+            currentGhostBackGround.transform.Find("Ghost_Switch/Ghost switch Off").gameObject.SetActive(false);
         }
     }
 

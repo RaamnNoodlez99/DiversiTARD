@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 
 public class Level_Complete : MonoBehaviour
@@ -14,6 +15,11 @@ public class Level_Complete : MonoBehaviour
     public GameObject player;
     public static bool levelIsOver;
     public GameObject firstSelectedButton;
+    public AudioSource audioSource;
+    public AudioClip levelComplete;
+
+    public AudioMixer audioMixer;
+
 
     public float VolumeChangeDuration = 1.0f;
     private float initialVolume;
@@ -21,8 +27,7 @@ public class Level_Complete : MonoBehaviour
 
     void Start()
     {
-        initialVolume = SFX_Manager.sfxInstance.BackgroundAudio.volume;
-        levelOverScreen.SetActive(false);
+        initialVolume = SFX_Manager.sfxInstance.Audio.volume;
     }
 
     public bool isLevelOver()
@@ -32,8 +37,10 @@ public class Level_Complete : MonoBehaviour
 
     public void LevelOver()
     {
+        //SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.LevelComplete);
+        audioSource.PlayOneShot(levelComplete,0.5f);
         volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, AudioListener.volume, 0.13f));
-        SFX_Manager.sfxInstance.BackgroundAudio.Stop();
+        SFX_Manager.sfxInstance.Audio.Stop();
         levelOverScreen.SetActive(true);
         levelIsOver = true;
         Time.timeScale = 0f;
@@ -46,8 +53,11 @@ public class Level_Complete : MonoBehaviour
 
     public void RestartLevel()
     {
-        AudioListener.volume = 1f;
-        SFX_Manager.sfxInstance.BackgroundAudio.Play();
+        if (volumeChangeCoroutine != null)
+            StopCoroutine(volumeChangeCoroutine);
+
+        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(initialVolume));
+        //SFX_Manager.sfxInstance.Audio.Play();
         environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
         environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
         levelOverScreen.SetActive(false);
@@ -58,11 +68,14 @@ public class Level_Complete : MonoBehaviour
 
     public void ToMenu()
     {
-        AudioListener.volume = 1f;
+        if (volumeChangeCoroutine != null)
+            StopCoroutine(volumeChangeCoroutine);
+
+        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(initialVolume));
         environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
         environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
-        SFX_Manager.sfxInstance.BackgroundAudio.volume = 1f;
-        SFX_Manager.sfxInstance.BackgroundAudio.Stop();
+        //SFX_Manager.sfxInstance.Audio.volume = 1f;
+        //SFX_Manager.sfxInstance.Audio.Stop();
         levelIsOver = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
@@ -92,13 +105,19 @@ public class Level_Complete : MonoBehaviour
         {
             float t = elapsedTime / duration;
             float newVolume = Mathf.Lerp(startVolume, targetVolume, t);
-            AudioListener.volume = newVolume;
+
+            float decibelVolume = ConvertToDecibel(newVolume);
+
+            audioMixer.SetFloat("BackgroundVolume", decibelVolume);
 
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
+    }
 
-        AudioListener.volume = targetVolume;
+    private float ConvertToDecibel(float linearValue)
+    {
+        return 20f * Mathf.Log10(linearValue);
     }
 
 }

@@ -105,7 +105,6 @@ public class Character_Switch : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Two");
                     if (Environment_Handler.evironmentHandlerInstance != null)
                         Environment_Handler.evironmentHandlerInstance.spawnGhostEnvironment();
 

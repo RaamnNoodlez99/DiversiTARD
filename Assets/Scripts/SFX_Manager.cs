@@ -10,7 +10,6 @@ public class SFX_Manager : MonoBehaviour
     public AudioClip axeSwing;
     public AudioClip axeSwingWithHit;
     public AudioClip environmentChange;
-    public AudioClip tutorialBackgroundMusic;
     public AudioClip poisonDrop;
     public AudioClip deathGrunt;
     public AudioClip painGrunt;
@@ -20,12 +19,12 @@ public class SFX_Manager : MonoBehaviour
     public AudioClip stoneSlide;
     public AudioClip jumpGrunt;
     public AudioClip jumpLand;
+    public AudioClip JourneyOver;
+    public AudioClip LevelComplete;
 
 
 
     public AudioSource Audio;
-    public AudioSource BackgroundAudio;
-
 
 
     public static SFX_Manager sfxInstance;
@@ -33,20 +32,6 @@ public class SFX_Manager : MonoBehaviour
 
     private void Awake()
     {
-       // fatherBackground.Add(WindBackground);
-        //fatherBackground.Add(BirdBackground);
-
-       // ghostBackground.Add(BatBackGround);
-        //ghostBackground.Add(CaveBackground);
-
-        //bothBackground.Add(MusicBackground);
-
-        //allBackground.Add(MusicBackground);
-        //allBackground.Add(CaveBackground);
-        //allBackground.Add(BatBackGround);
-        //allBackground.Add(BirdBackground);
-        //allBackground.Add(WindBackground);
-
         if (sfxInstance != null && sfxInstance != this)
         {
             Destroy(gameObject);
@@ -55,6 +40,5 @@ public class SFX_Manager : MonoBehaviour
 
         sfxInstance = this;
         DontDestroyOnLoad(this);
-
     }
 }

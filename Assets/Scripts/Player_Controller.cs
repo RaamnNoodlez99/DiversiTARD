@@ -23,10 +23,10 @@ public class Player_Controller : MonoBehaviour
     bool isJumping = false;
     bool activateJump = false;
     bool startTimer = false;
-    bool controllingGhost = false;
     bool earlyRelease = false;
     bool despawnAvaialable = false;
-    static bool queueSwitch = false;
+    static bool switchToGhost = false;
+    static bool switchToFather = false;
     float timer;
     public static bool canSwitch = true;
 
@@ -45,6 +45,7 @@ public class Player_Controller : MonoBehaviour
     public float knockbackCounter;
     public float knockbackTotalTime = 0.4f;
     public bool knockFromRight;
+
 
     private bool facingLeft = true;
 
@@ -67,18 +68,24 @@ public class Player_Controller : MonoBehaviour
                 earlyRelease = true;
             }
         }
+
+        if (!Pause_Menu.isPaused)
+        {
+            if(switchToGhost && gameObject.CompareTag("WoodenMan") && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+            {
+                gameObject.GetComponent<Character_Switch>().SwitchCharacter();
+            }
+            else if (switchToFather && gameObject.CompareTag("Ghost") && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost")
+            {
+                gameObject.GetComponent<Character_Switch>().SwitchCharacter();
+            }
+            switchToGhost = false;
+            switchToFather = false;
+        }
     }
 
     private void FixedUpdate()
     {
-        if(queueSwitch && !Pause_Menu.isPaused && canSwitch)
-        {
-            gameObject.GetComponent<Character_Switch>().SwitchCharacter();
-            canSwitch = false;
-            queueSwitch = false;
-            StartCoroutine(EnableSwitchAfterDelay());
-        }
-
         if (knockbackCounter <= 0)
         {
             playerBody.velocity = new Vector2(moveInput.x * walkSpeed, playerBody.velocity.y);
@@ -228,31 +235,62 @@ public class Player_Controller : MonoBehaviour
         {
             despawnAvaialable = true;
         }
+        else if (currentGhostPlatform != null && collision.gameObject == currentGhostPlatform && gameObject.CompareTag("Ghost"))
+        {
+            despawnAvaialable = false;
+        }
     }
 
     public void OnSwitchCharacter(InputAction.CallbackContext context)
     {
-        if(gameObject.CompareTag("WoodenMan") && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+        if (PlayerPrefs.GetInt("toggleSwitch") == 1)
         {
             if (context.performed)
             {
-                gameObject.GetComponent<Character_Switch>().SwitchCharacter();
+                if (gameObject.CompareTag("WoodenMan") && !Pause_Menu.isPaused)
+                {
+                    GameObject currentCharacter = GameObject.FindWithTag(gameObject.GetComponent<Character_Switch>().getCurCharacter());
+                    currentCharacter.GetComponent<Character_Switch>().SwitchCharacter();
+                }
             }
         }
-        else if (gameObject.CompareTag("Ghost") && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost")
+        else
         {
+            if (gameObject.CompareTag("WoodenMan") && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+            {
+                if (context.performed)
+                {
+                    if (!Pause_Menu.isPaused)
+                    {
+                        gameObject.GetComponent<Character_Switch>().SwitchCharacter();
+                    }
+                }
+            }
+            else if (gameObject.CompareTag("Ghost") && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost")
+            {
+                if (context.canceled)
+                {
+                    if (!Pause_Menu.isPaused)
+                    {
+                        gameObject.GetComponent<Character_Switch>().SwitchCharacter();
+                    }
+                }
+            }
+        }
+
+        if (Pause_Menu.isPaused && PlayerPrefs.GetInt("toggleSwitch") == 0)
+        {
+            if(context.performed)
+            {
+                switchToGhost = true;
+                switchToFather = false;
+            }
             if (context.canceled)
             {
-                gameObject.GetComponent<Character_Switch>().SwitchCharacter();
+                switchToGhost = false;
+                switchToFather = true;
             }
         }
-    }
-
-
-    private IEnumerator EnableSwitchAfterDelay()
-    {
-        yield return new WaitForSeconds(switchDelay);
-        canSwitch = true;
     }
 
     // void OnTriggerEnter2D(Collider2D collision)
