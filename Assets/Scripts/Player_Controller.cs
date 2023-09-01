@@ -69,6 +69,30 @@ public class Player_Controller : MonoBehaviour
                 earlyRelease = true;
             }
         }
+        
+        if (CompareTag("Ghost"))
+        {
+            if (gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost")
+            {
+                if (GhostHUD != null)
+                {
+                    Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();
+                    if (isJumping && !ghostPlatformExists)
+                    {
+                        ghostHud.removeIconOpaque();
+                    }
+                    else if(!isJumping && ghostPlatformExists && despawnAvaialable)
+                    {
+                        Debug.Log("I wont print first time?");
+                        ghostHud.removeIconOpaque();
+                    }
+                    else if(!despawnAvaialable)
+                    {
+                        ghostHud.setIconOpaque();
+                    }
+                }
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -229,6 +253,9 @@ public class Player_Controller : MonoBehaviour
         if (currentGhostPlatform != null && collision.gameObject.CompareTag("Platform") && collision.gameObject != currentGhostPlatform && gameObject.CompareTag("Ghost"))
         {
             despawnAvaialable = true;
+        } else if (currentGhostPlatform != null && collision.gameObject == currentGhostPlatform && gameObject.CompareTag("Ghost"))
+        {
+            despawnAvaialable = false;
         }
     }
 
@@ -327,26 +354,6 @@ public class Player_Controller : MonoBehaviour
         if (CompareTag("Ghost") || CompareTag("WoodenMan"))
         {
             animator.SetBool("isJumping", value);
-        }
-        
-        if (CompareTag("Ghost"))
-        {
-            if (gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost")
-            {
-                if (GhostHUD != null)
-                {
-                    if (isJumping)
-                    {
-                        Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();
-                        ghostHud.removeIconOpaque();
-                    }
-                    else
-                    {
-                        Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();
-                        ghostHud.setIconOpaque();
-                    }
-                }
-            }
         }
     }
 }
