@@ -188,6 +188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f11f4710c00c4c4b93a9f507a6d179a, type: 3}
+--- !u!1 &36841849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4600852475080767457, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+  m_PrefabInstance: {fileID: 966599613}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &63423092
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +277,7 @@ PrefabInstance:
     - target: {fileID: 741399904703212890, guid: e8a90795f336d45988897473054f5e73, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 487399894}
     - target: {fileID: 741399904703212890, guid: e8a90795f336d45988897473054f5e73, type: 3}
       propertyPath: damageFlickerer
       value: 
@@ -344,7 +349,7 @@ PrefabInstance:
     - target: {fileID: 5068456077889257147, guid: e8a90795f336d45988897473054f5e73, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 487399892}
     - target: {fileID: 5068456077889257147, guid: e8a90795f336d45988897473054f5e73, type: 3}
       propertyPath: cinemachine
       value: 
@@ -907,6 +912,7 @@ MonoBehaviour:
   switchDelay: 0.001
   inputManager: {fileID: 1883137707}
   ghostPlatform: {fileID: 2675158141671572417, guid: 730ec2a9bc7e44fd6af9211dbe35ae93, type: 3}
+  GhostHUD: {fileID: 36841849}
   animator: {fileID: 462617583}
   knockbackForce: 12
   footstepInterval: 0.3
@@ -933,7 +939,7 @@ MonoBehaviour:
   otherCharacter: {fileID: 1731100109}
   thisCharacter: {fileID: 462617581}
   cinemachine: {fileID: 510400369}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 487399892}
 --- !u!70 &462617585
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1026,6 +1032,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &487399892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5103723223496601475, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+  m_PrefabInstance: {fileID: 966599613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &487399894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5103723223496601473, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+  m_PrefabInstance: {fileID: 966599613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487399892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885b018b6391c4f5288da6e4b174d816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &510400368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,6 +1841,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5103723222998102282, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: ghost
+      value: 
+      objectReference: {fileID: 462617581}
+    - target: {fileID: 5103723222998102282, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: woodenMan
+      value: 
+      objectReference: {fileID: 1731100109}
+    - target: {fileID: 5103723222998102282, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: environmentHandler
+      value: 
+      objectReference: {fileID: 486434282}
+    - target: {fileID: 5103723222998102285, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: characterCheck
+      value: 
+      objectReference: {fileID: 462617581}
+    - target: {fileID: 5103723222998102285, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: environmentHandler
+      value: 
+      objectReference: {fileID: 486434282}
     - target: {fileID: 5103723223517623459, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2024,7 +2066,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 0}
   environmentHandler: {fileID: 486434282}
-  player: {fileID: 1731100109}
+  woodenMan: {fileID: 0}
+  ghost: {fileID: 0}
   firstSelectedButton: {fileID: 0}
   audioSource: {fileID: 0}
   gameOver: {fileID: 0}

@@ -71,6 +71,11 @@ public class Player_Controller : MonoBehaviour
             }
         }
 
+        if (currentGhostPlatform == null)
+        {
+            despawnAvaialable = false;
+        }
+
         if (!Pause_Menu.isPaused)
         {
             if(switchToGhost && gameObject.CompareTag("WoodenMan") && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
@@ -98,8 +103,11 @@ public class Player_Controller : MonoBehaviour
                     }
                     else if(!isJumping && ghostPlatformExists && despawnAvaialable)
                     {
-                        Debug.Log("I wont print first time?");
                         ghostHud.removeIconOpaque();
+                    }
+                    else if (!isJumping && !despawnAvaialable && !ghostPlatformExists)
+                    {
+                        ghostHud.setIconOpaque();
                     }
                     else if(!despawnAvaialable)
                     {
