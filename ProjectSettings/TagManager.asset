@@ -18,6 +18,7 @@ TagManager:
   - TutorialPlatforms
   - Wall
   - GhostGroundCheck
+  - ButtonHolder
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,7 @@ TagManager:
   - Wooden Man Barrier
   - Button
   - Clamp
-  - 
+  - IgnorePlayer
   - 
   - 
   - 

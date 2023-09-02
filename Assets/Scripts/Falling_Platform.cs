@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class Falling_Platform : MonoBehaviour
 {
-    public Sprite woodenManPlatformSprite;
-    public Sprite ghostPlatformSprite;
     public float destroyTime;
     public float restoreTime;
     public bool shouldRestore = true;
     public AudioSource crackSound;
     public AudioSource rattleSound;
+    public Sprite startingPlatformSprite;
 
 
     bool hasCracked = false;
@@ -21,7 +20,9 @@ public class Falling_Platform : MonoBehaviour
     private SpriteRenderer childRenderer;
     private GameObject characterCheck;
     private Vector3 initialPosition;
-    
+
+    public Color dadPlatformColor;
+    public Color ghostPlatformColor;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class Falling_Platform : MonoBehaviour
         Transform platformSprite = transform.GetChild(0);
         childAnimator = platformSprite.GetComponent<Animator>();
         childRenderer = platformSprite.GetComponent<SpriteRenderer>();
+        childRenderer.color = Color.white;
         initialPosition = transform.position; 
     }
 
@@ -38,9 +40,13 @@ public class Falling_Platform : MonoBehaviour
         if (characterCheck != null)
         {
             if (characterCheck.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
-                childRenderer.sprite = woodenManPlatformSprite;
+            {
+                childRenderer.color = dadPlatformColor;
+            }
             else
-                childRenderer.sprite = ghostPlatformSprite;
+            {
+                childRenderer.color = ghostPlatformColor;
+            }
         }
     }
 
@@ -63,25 +69,59 @@ public class Falling_Platform : MonoBehaviour
     {
         rattleSound.loop = true;
         rattleSound.Play();
-        childAnimator.enabled = true;
-        Invoke("DropPlatform", destroyTime);
+        childAnimator.SetBool("shakePlatform", true);
+        childAnimator.SetBool("dropPlatform", false);
+        childAnimator.SetBool("makeIdle", false);
+        Invoke("SetDrop", destroyTime - 2);
+    }
+
+    void SetDrop()
+    {
+        childAnimator.SetBool("shakePlatform", false);
+        childAnimator.SetBool("dropPlatform", true);
+        childAnimator.SetBool("makeIdle", false);
+        Invoke("DropPlatform", 1);
     }
 
     void DropPlatform()
     {
+        int layerIndex = LayerMask.NameToLayer("IgnorePlayer");
+        SetLayerRecursively(gameObject, layerIndex);
+        
         rattleSound.Stop();
         rb.isKinematic = false;
         hasCracked = false;
 
         if(shouldRestore)
-            Invoke("RestorePlatform", restoreTime);
+            Invoke("SetRestore", 1);
+    }
+    
+    void SetRestore()
+    {
+        childAnimator.SetBool("shakePlatform", false);
+        childAnimator.SetBool("dropPlatform", false);
+        childAnimator.SetBool("makeIdle", true);
+        Invoke("RestorePlatform", restoreTime - 1);
     }
 
     void RestorePlatform()
     {
+        int layerIndex = LayerMask.NameToLayer("Default");
+        SetLayerRecursively(gameObject, layerIndex);
+        
         rb.isKinematic = true;
         rb.velocity = Vector2.zero;
-        transform.position = initialPosition; 
-        childAnimator.enabled = false;
+        transform.position = initialPosition;
+        childRenderer.sprite = startingPlatformSprite;
+    }
+    
+    void SetLayerRecursively(GameObject obj, int layerIndex)
+    {
+        obj.layer = layerIndex;
+        
+        foreach (Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, layerIndex);
+        }
     }
 }

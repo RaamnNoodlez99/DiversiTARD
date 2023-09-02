@@ -101,7 +101,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0033245087, y: 0.42428446}
+  m_Offset: {x: 0.0033245087, y: 0.7915523}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -112,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93523693, y: 0.2773428}
+  m_Size: {x: 0.93523693, y: 2.9751267}
   m_EdgeRadius: 0
 --- !u!61 &8573240007032835897
 BoxCollider2D:
@@ -127,7 +127,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.9295037}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -138,7 +138,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.6237435}
   m_EdgeRadius: 0
 --- !u!114 &8573240007032835900
 MonoBehaviour:
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkedTorch: {fileID: 0}
   buttonPressedTime: 0
+  isPopUpButton: 1
 --- !u!95 &8573240007032835901
 Animator:
   serializedVersion: 5

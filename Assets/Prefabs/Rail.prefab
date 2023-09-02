@@ -177,6 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1887259267537529137}
+  - component: {fileID: 126100572529348013}
   m_Layer: 0
   m_Name: Rail
   m_TagString: Untagged
@@ -202,6 +203,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &126100572529348013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7205711378954980264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d1a3eb4629f49d1898c0887e1c98a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerRailSpriteDad: {fileID: 654274106, guid: d74c336a40f634304ac51299e753fb8e, type: 3}
+  leftRailSpriteDad: {fileID: -2110350703, guid: d74c336a40f634304ac51299e753fb8e, type: 3}
+  rightRailSpriteDad: {fileID: 1535040435, guid: d74c336a40f634304ac51299e753fb8e, type: 3}
+  centerRailSpriteGhost: {fileID: 1434945115, guid: cf4ef8440d1354069ab8e970019b0ff4, type: 3}
+  leftRailSpriteGhost: {fileID: -565363365, guid: cf4ef8440d1354069ab8e970019b0ff4, type: 3}
+  rightRailSpriteGhost: {fileID: 1644835569, guid: cf4ef8440d1354069ab8e970019b0ff4, type: 3}
+  centerRail: {fileID: 2153688413670014828}
+  leftRail: {fileID: 6535339520585958524}
+  rightRail: {fileID: 8393363497113037856}
 --- !u!1 &8393363497113037856
 GameObject:
   m_ObjectHideFlags: 0

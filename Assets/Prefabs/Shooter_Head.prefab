@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 7389351844059137565}
   - component: {fileID: 8987599928719743311}
   - component: {fileID: 3497291950457384917}
+  - component: {fileID: 6719925289531071664}
   m_Layer: 0
   m_Name: Shooter_Head
   m_TagString: Untagged
@@ -372,6 +373,30 @@ MonoBehaviour:
   stoneBall: {fileID: 4874840905579856782, guid: 96b8fedcbd1d4a5479476c4c8fa55481, type: 3}
   ballOrigin: {fileID: 8301605081218726989}
   ballSpawnInterval: 0.3
+--- !u!114 &6719925289531071664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3969689845586190236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d80dcbad8764ffd901d9fdda7c5bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circleSpriteDad: {fileID: -730550811, guid: 909aa9499c1304878b7660989fb0abdd, type: 3}
+  headSpriteDad: {fileID: 1029438613, guid: d42f26de49c7c400ca5ef76a0d7054c1, type: 3}
+  mouthSpriteDad: {fileID: -1598105793, guid: 386158663041e4d55b2e937638906045, type: 3}
+  mouthOpenSpriteDad: {fileID: -1081539556, guid: ffa20e193a5894362b2e916416b70bfd, type: 3}
+  circleSpriteGhost: {fileID: -1194280519, guid: 59a9beec5bfb2492bb02b8e414fb6a27, type: 3}
+  headSpriteGhost: {fileID: -843534013, guid: 3a091f58be52b427e8c99fc33632d5e5, type: 3}
+  mouthSpriteGhost: {fileID: -693399819, guid: ded7bb53ac18444ce9efe8f54ab6cc4a, type: 3}
+  mouthOpenSpriteGhost: {fileID: -303211947, guid: b750da098cef24d7384c1d626402efd2, type: 3}
+  circle: {fileID: 3447068844784611569}
+  head: {fileID: 3447068843837940770}
+  mouth: {fileID: 6668473016762501193}
+  mouthOpen: {fileID: 3292548701353562026}
 --- !u!1 &6668473016762501193
 GameObject:
   m_ObjectHideFlags: 0

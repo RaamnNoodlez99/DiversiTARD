@@ -50,7 +50,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010829926, y: 0}
+  m_Offset: {x: 0.1362381, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -61,7 +61,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.937325, y: 2.2602806}
+  m_Size: {x: 15.643188, y: 2.2602806}
   m_EdgeRadius: 0
 --- !u!50 &5204371865539790164
 Rigidbody2D:
@@ -78,7 +78,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 15
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -96,13 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20c15baee7774a5e9f3f2cae102f3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodenManPlatformSprite: {fileID: 985784886, guid: 41835783fe8e7064ba16ede29798cc5f, type: 3}
-  ghostPlatformSprite: {fileID: 490541726, guid: 226ff485488aa5f4a8f8472438c19316, type: 3}
-  destroyTime: 7.2
-  restoreTime: 4.38
+  destroyTime: 5
+  restoreTime: 4
   shouldRestore: 1
   crackSound: {fileID: 6188598041444563712}
   rattleSound: {fileID: 6712667376700086026}
+  startingPlatformSprite: {fileID: 1912887410, guid: be3b11d5516ec4e76ad0946950e9f0ae, type: 3}
+  dadPlatformColor: {r: 0.36078432, g: 0.47058827, b: 0.30980393, a: 1}
+  ghostPlatformColor: {r: 0.14509805, g: 0.16470589, b: 0.1764706, a: 1}
 --- !u!82 &6188598041444563712
 AudioSource:
   m_ObjectHideFlags: 0
@@ -321,8 +322,8 @@ Transform:
   m_PrefabInstance: {fileID: 1154318408288104111}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9023358218734571200}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.00672338, w: 0.9999774}
+  m_LocalPosition: {x: 0.21144485, y: 0.061573982, z: 0}
   m_LocalScale: {x: 8.6, y: 6.9, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -370,7 +371,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 985784886, guid: 41835783fe8e7064ba16ede29798cc5f, type: 3}
+  m_Sprite: {fileID: 1912887410, guid: be3b11d5516ec4e76ad0946950e9f0ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -402,7 +403,7 @@ Animator:
   m_PrefabInstance: {fileID: 1154318408288104111}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9023358218734571200}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 45da07cb660614f84b919abf4cc4ab17, type: 2}
   m_CullingMode: 0
@@ -423,7 +424,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6265234636851332785, guid: c5eb36ee3d883431f9da2c8fbfaa4213, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7323006995811037420, guid: c5eb36ee3d883431f9da2c8fbfaa4213, type: 3}
       propertyPath: m_RootOrder
