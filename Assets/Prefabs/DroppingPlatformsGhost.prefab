@@ -15774,6 +15774,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919840156972148809}
     m_Modifications:
+    - target: {fileID: 3986824773054483766, guid: 66ac9c54f3f28b64aa90713b99d93974, type: 3}
+      propertyPath: m_SortingOrder
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8368120840023999621, guid: 66ac9c54f3f28b64aa90713b99d93974, type: 3}
       propertyPath: m_Name
       value: Platform Ghost World (2)
