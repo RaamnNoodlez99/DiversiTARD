@@ -37,9 +37,10 @@ public class Level_Complete : MonoBehaviour
 
     public void LevelOver()
     {
+        Cursor.visible = true;
         //SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.LevelComplete);
         audioSource.PlayOneShot(levelComplete,0.5f);
-        volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, AudioListener.volume, 0.13f));
+        volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, PlayerPrefs.GetFloat("backgroundVolume"), 0.13f));
         SFX_Manager.sfxInstance.Audio.Stop();
         levelOverScreen.SetActive(true);
         levelIsOver = true;
@@ -56,8 +57,10 @@ public class Level_Complete : MonoBehaviour
         if (volumeChangeCoroutine != null)
             StopCoroutine(volumeChangeCoroutine);
 
-        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(initialVolume));
-        //SFX_Manager.sfxInstance.Audio.Play();
+        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
+        audioMixer.SetFloat("MasterVolume", ConvertToDecibel(PlayerPrefs.GetFloat("masterVolume")));
+        audioMixer.SetFloat("SoundEffectsVolume", ConvertToDecibel(PlayerPrefs.GetFloat("soundEffectsVolume")));
+
         environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
         environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
         levelOverScreen.SetActive(false);
@@ -71,8 +74,9 @@ public class Level_Complete : MonoBehaviour
         if (volumeChangeCoroutine != null)
             StopCoroutine(volumeChangeCoroutine);
 
-        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(initialVolume));
-        environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
+        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
+        audioMixer.SetFloat("MasterVolume", ConvertToDecibel(PlayerPrefs.GetFloat("masterVolume")));
+        audioMixer.SetFloat("SoundEffectsVolume", ConvertToDecibel(PlayerPrefs.GetFloat("soundEffectsVolume"))); environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
         environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
         //SFX_Manager.sfxInstance.Audio.volume = 1f;
         //SFX_Manager.sfxInstance.Audio.Stop();

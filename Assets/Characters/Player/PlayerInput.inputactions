@@ -220,7 +220,7 @@
                 {
                     "name": "",
                     "id": "f7ece763-ff41-4a57-8549-a2a6a02e101d",
-                    "path": "<Keyboard>/f",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -257,6 +257,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "SwitchCharacter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "308c89ac-3aee-4276-8234-b2611faa8ac5",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "SwitchCharacter",
                     "isComposite": false,
                     "isPartOfComposite": false

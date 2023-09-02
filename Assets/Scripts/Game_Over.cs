@@ -43,11 +43,12 @@ public class Game_Over : MonoBehaviour
 
     public void GameOver()
     {
+        Cursor.visible = true;
         gameOverScreen.SetActive(true);
         audioSource.Play();
         isOver = true;
-        volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, AudioListener.volume, 0f));
-        //AudioListener.volume = 0f;
+        volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, PlayerPrefs.GetFloat("backgroundVolume"), 0f));
+
         Time.timeScale = 0f;
 
         if (firstSelectedButton != null)
@@ -61,7 +62,10 @@ public class Game_Over : MonoBehaviour
         if (volumeChangeCoroutine != null)
             StopCoroutine(volumeChangeCoroutine);
 
-        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(initialVolume));
+        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
+        audioMixer.SetFloat("MasterVolume", ConvertToDecibel(PlayerPrefs.GetFloat("masterVolume")));
+        audioMixer.SetFloat("SoundEffectsVolume", ConvertToDecibel(PlayerPrefs.GetFloat("soundEffectsVolume")));
+        
         environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
         environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
         isOver = false;
@@ -75,7 +79,10 @@ public class Game_Over : MonoBehaviour
         if (volumeChangeCoroutine != null)
             StopCoroutine(volumeChangeCoroutine);
 
-        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(initialVolume));
+        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
+        audioMixer.SetFloat("MasterVolume", ConvertToDecibel(PlayerPrefs.GetFloat("masterVolume")));
+        audioMixer.SetFloat("SoundEffectsVolume", ConvertToDecibel(PlayerPrefs.GetFloat("soundEffectsVolume")));
+        
         environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
         environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
         SFX_Manager.sfxInstance.Audio.volume = 1f;

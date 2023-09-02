@@ -6,9 +6,13 @@ public class Door_Open : MonoBehaviour
 {
     public GameObject[] linkedTorches;
     public GameObject doorSprite;
+    public BoxCollider2D doorCollider;
     public float openSpeed = 10f;
     public float doorLength = 18f;
-    
+    public AudioSource stoneInPlace;
+
+
+    bool stoneIsInPlace = false;
     private Vector3 initialPosition;
     private Vector3 openPosition;
     private float targetY;
@@ -24,6 +28,16 @@ public class Door_Open : MonoBehaviour
         calculateTargetPosition();
         doorSprite.transform.position = Vector3.MoveTowards(doorSprite.transform.position,
             new Vector3(initialPosition.x, targetY, initialPosition.z), openSpeed * Time.deltaTime);
+
+        if (doorSprite.transform.position == openPosition)
+        {
+            if (!stoneIsInPlace)
+            {
+                stoneInPlace.Play();
+                stoneIsInPlace = true;
+            }
+            doorCollider.enabled = false;
+        }
     }
 
     private void calculateTargetPosition()

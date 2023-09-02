@@ -40,7 +40,7 @@ public class Environment_Handler : MonoBehaviour
     }
     void Awake()
     {
-        //Cursor.visible = false;
+        Cursor.visible = false;
         if (evironmentHandlerInstance != null && evironmentHandlerInstance != this)
         {
             Destroy(gameObject);

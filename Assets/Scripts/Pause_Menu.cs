@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.EventSystems;
 
 
 public class Pause_Menu : MonoBehaviour
@@ -14,6 +16,7 @@ public class Pause_Menu : MonoBehaviour
     public GameObject levelComplete;
     public GameObject characterCheck;
     public GameObject environmentHandler;
+    public GameObject settingScreen;
 
     public TextMeshProUGUI characterNameTextMeshPro;
     public TextMeshProUGUI button1;
@@ -66,12 +69,20 @@ public class Pause_Menu : MonoBehaviour
     {
         if (!gameManager.GetComponent<Game_Over>().isGameOver() && (levelComplete == null || !levelComplete.GetComponent<Level_Complete>().isLevelOver()))
         {
+            Cursor.visible = true;
 
-            if(PlayerPrefs.GetFloat("backgroundVolume") > volumeWhilePaused)
+            if (volumeChangeCoroutine != null)
+                StopCoroutine(volumeChangeCoroutine);
+
+            if (PlayerPrefs.GetFloat("masterVolume") > volumeWhilePaused)
                 volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, PlayerPrefs.GetFloat("backgroundVolume"), volumeWhilePaused));
 
             pauseMenu.SetActive(true);
             isPaused = true;
+
+            GameObject firstChild = pauseMenu.transform.GetChild(1).gameObject;
+            EventSystem.current.SetSelectedGameObject(firstChild);
+
             Time.timeScale = 0f;
             if(characterCheck.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
             {
@@ -93,6 +104,19 @@ public class Pause_Menu : MonoBehaviour
     public void ResumeGame()
     {
 
+        if (volumeChangeCoroutine != null)
+            StopCoroutine(volumeChangeCoroutine);
+
+        Cursor.visible = false;
+        if (settingScreen.activeSelf)
+        {
+            settingScreen.SetActive(false);
+
+            foreach (Transform child in pauseMenu.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
         //volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, 0.1f, PlayerPrefs.GetFloat("backgroundVolume")) );
         
         audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
@@ -106,7 +130,7 @@ public class Pause_Menu : MonoBehaviour
 
     public void ToMenu()
     {
-        if(volumeChangeCoroutine != null)
+        if (volumeChangeCoroutine != null)
             StopCoroutine(volumeChangeCoroutine);
 
         audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));

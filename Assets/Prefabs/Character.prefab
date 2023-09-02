@@ -619,8 +619,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 30
-  jumpForce: 30
-  gravityScale: 40
+  jumpForce: 37
+  gravityScale: 50
   jumpTimer: 0.4
   platformOffset: 1
   ghostPlatSpawnDelay: 0
@@ -628,6 +628,7 @@ MonoBehaviour:
   switchDelay: 0.001
   inputManager: {fileID: 0}
   ghostPlatform: {fileID: 6849975941971926316, guid: 607304796dc15bc4386c5f3ab5c8ffd6, type: 3}
+  GhostHUD: {fileID: 0}
   animator: {fileID: 4573405270768568801}
   knockbackForce: 12
   footstepInterval: 0.3

@@ -33,7 +33,6 @@ public class ghostPlatform : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         Despawn();
@@ -41,7 +40,7 @@ public class ghostPlatform : MonoBehaviour
 
     public void SetDespawnTimer()
     {
-        despawnTimer = despawnDelay - 0.7f; 
+        despawnTimer = despawnDelay - 0.01f; 
     }
 
     public void Despawn()
@@ -55,7 +54,9 @@ public class ghostPlatform : MonoBehaviour
         {
             if(gameObject != null)
             {
-                ghost.GetComponent<Player_Controller>().ghostPlatformExists = false;
+                if(ghost != null)
+                    ghost.GetComponent<Player_Controller>().ghostPlatformExists = false;
+
                 SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.platformDestroy);
                 Destroy(gameObject);
                 
@@ -65,7 +66,7 @@ public class ghostPlatform : MonoBehaviour
                     ghostHud.resetTimer();
                 }
             }  
-        }else if (despawnDelay - despawnTimer <= 0.7f)
+        }else if (despawnDelay - despawnTimer <= 0.01f)
         {
             Animator platformAnimator = GetComponent<Animator>();
             platformAnimator.SetBool("isBoneActive", false);
@@ -85,7 +86,7 @@ public class ghostPlatform : MonoBehaviour
             }
         }
         
-        if (collision.gameObject.CompareTag("Ghost") && despawnDelay - despawnTimer >= 0.5f)
+        if (collision.gameObject.CompareTag("Ghost") && despawnDelay - despawnTimer >= 0.01f)
         {
             //Debug.Log("Ghost on Platform");
             ghostOffPlatform = false;

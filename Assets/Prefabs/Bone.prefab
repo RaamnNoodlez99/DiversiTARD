@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a30937c3a16daa429b55ee2ec1a0d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnDelay: 6
+  despawnDelay: 7
   platformTimerResests: 1
   ghost: {fileID: 2070880847499565589, guid: a36188a0c93264e1385fb02c751aadf8, type: 3}
 --- !u!1 &3082879728940762770

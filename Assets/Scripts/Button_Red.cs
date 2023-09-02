@@ -8,6 +8,7 @@ public class Button_Red : MonoBehaviour
 {
     public GameObject linkedTorch;
     public float buttonPressedTime;
+    public bool isPopUpButton = true;
 
     private GameObject torchesFlame;
     private Animator _animator;
@@ -49,7 +50,8 @@ public class Button_Red : MonoBehaviour
             if (linkedTorch != null)
                 torchesFlame.SetActive(true);
 
-            StartCoroutine(PopUpButton());
+            if(isPopUpButton)
+                StartCoroutine(PopUpButton());
         }
 
         if (other.CompareTag("WoodenMan") && !_animator.GetBool("isPressed"))
@@ -69,7 +71,7 @@ public class Button_Red : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("WoodenMan"))
+        if (other.CompareTag("WoodenMan") && isPopUpButton)
         {
             StartCoroutine(PopUpButton());
         }
