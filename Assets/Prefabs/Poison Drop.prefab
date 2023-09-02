@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyDelay: 0.2
-  damage: 100
+  damage: 30
   player: {fileID: 0}
   dropAnimator: {fileID: 0}
   positionOffset: {x: -0.6, y: 1}

@@ -76,7 +76,9 @@ public class Level_Complete : MonoBehaviour
 
         audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
         audioMixer.SetFloat("MasterVolume", ConvertToDecibel(PlayerPrefs.GetFloat("masterVolume")));
-        audioMixer.SetFloat("SoundEffectsVolume", ConvertToDecibel(PlayerPrefs.GetFloat("soundEffectsVolume"))); environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
+        audioMixer.SetFloat("SoundEffectsVolume", ConvertToDecibel(PlayerPrefs.GetFloat("soundEffectsVolume")));
+        
+        environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
         environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
         //SFX_Manager.sfxInstance.Audio.volume = 1f;
         //SFX_Manager.sfxInstance.Audio.Stop();
@@ -87,8 +89,27 @@ public class Level_Complete : MonoBehaviour
 
     public void NextLevel()
     {
+        if (volumeChangeCoroutine != null)
+            StopCoroutine(volumeChangeCoroutine);
 
+        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
+        audioMixer.SetFloat("MasterVolume", ConvertToDecibel(PlayerPrefs.GetFloat("masterVolume")));
+        audioMixer.SetFloat("SoundEffectsVolume", ConvertToDecibel(PlayerPrefs.GetFloat("soundEffectsVolume")));
+
+        environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
+        environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
+
+        levelIsOver = false;
+        Time.timeScale = 1f;
+
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ghost") && ghostRequired)

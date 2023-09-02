@@ -72,7 +72,7 @@ public class Setting_Changer : MonoBehaviour
         //Debug.Log(backgroundVol);
         float sfxVol = PlayerPrefs.GetFloat(SFXVOL_KEY, 1f);
         //Debug.Log(sfxVol);
-        int toggleSwitchVal = PlayerPrefs.GetInt(TOGGLESWITCH_KEY, 1);
+        int toggleSwitchVal = PlayerPrefs.GetInt(TOGGLESWITCH_KEY, 0);
 
         masterVolSlider.value = masterVol;
         backgroundVolSlider.value = backgroundVol;

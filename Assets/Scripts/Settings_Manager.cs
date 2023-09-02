@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class Settings_Manager : MonoBehaviour
 {
@@ -14,6 +15,15 @@ public class Settings_Manager : MonoBehaviour
     const string BACKGROUNDVOL_KEY = "backgroundVolume";
     const string TOGGLESWITCH_KEY = "toggleSwitch";
 
+    void Update()
+    {
+        //Debug.Log(SceneManager.GetActiveScene().buildIndex);
+
+        if (SceneManager.GetActiveScene().buildIndex != 0 && PlayerPrefs.GetInt("currentLevel") != SceneManager.GetActiveScene().buildIndex)
+        {
+            PlayerPrefs.SetInt("currentLevel", SceneManager.GetActiveScene().buildIndex);
+        }
+    }
 
     private void Awake()
     {

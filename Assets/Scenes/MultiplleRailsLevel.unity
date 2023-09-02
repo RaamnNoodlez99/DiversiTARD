@@ -929,7 +929,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.22876, y: -10.110878, z: -10.045361}
+  m_LocalPosition: {x: -32.22606, y: -8.071999, z: -10.045361}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1375,6 +1375,14 @@ PrefabInstance:
       propertyPath: environmentHandler
       value: 
       objectReference: {fileID: 486434282}
+    - target: {fileID: 5103723223334785654, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1884634093}
+    - target: {fileID: 5103723223334785654, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 5103723223517623459, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1382,6 +1390,42 @@ PrefabInstance:
     - target: {fileID: 5103723223517623459, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103723224095229492, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1884634093}
+    - target: {fileID: 5103723224095229492, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1884634093}
+    - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Level_Complete, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5103723224531647520, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
       propertyPath: m_Name
@@ -2080,8 +2124,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 37.395462, y: 21.184626}
       - {x: -52.780586, y: 21.24834}
-      - {x: -52.854652, y: -15.881571}
-      - {x: 37.450375, y: -15.87674}
+      - {x: -52.854652, y: -14.8}
+      - {x: 37.450375, y: -14.8}
 --- !u!1 &2089206246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,9 +2154,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4412599394785456188, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 062e3463b7a056c4fb7b52f5e6a84dab, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 76626ab012f011348b6b14e8c4a44fb3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2208,7 +2252,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4412599394785456188, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
   m_audioClip: {fileID: 8300000, guid: 644d0efced0b47844bce81ee3b67b7e7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0

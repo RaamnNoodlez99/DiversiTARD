@@ -5,17 +5,31 @@ using UnityEngine;
 public class Stone_Ball : MonoBehaviour
 {
     public float timeToDestroy;
-    
+    public AudioSource stoneSource;
+    public AudioClip[] stoneFallSounds;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Keep track of the last played audio clip.
+    private AudioClip lastPlayedSound;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider != null && !collision.gameObject.CompareTag("Projectile"))
-            Destroy(gameObject, timeToDestroy);
+        {
+            AudioClip randomSound;
+
+            // Keep generating a random sound until it's different from the last one played.
+            do
+            {
+                randomSound = stoneFallSounds[Random.Range(0, stoneFallSounds.Length)];
+            } while (randomSound == lastPlayedSound);
+
+            stoneSource.clip = randomSound;
+            stoneSource.Play();
+
+            // Update the last played sound.
+            lastPlayedSound = randomSound;
+
+            Destroy(gameObject, randomSound.length);
+        }
     }
 }

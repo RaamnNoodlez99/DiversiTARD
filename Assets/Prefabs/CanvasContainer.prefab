@@ -2455,7 +2455,7 @@ MonoBehaviour:
   levelComplete: {fileID: 0}
   characterCheck: {fileID: 0}
   environmentHandler: {fileID: 0}
-  settingScreen: {fileID: 5103723223636766000}
+  settingScreen: {fileID: 3742602821962898106}
   characterNameTextMeshPro: {fileID: 5103723224057591443}
   button1: {fileID: 5103723223875821502}
   button2: {fileID: 5103723224266608280}

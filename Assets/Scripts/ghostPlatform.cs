@@ -66,7 +66,7 @@ public class ghostPlatform : MonoBehaviour
                     ghostHud.resetTimer();
                 }
             }  
-        }else if (despawnDelay - despawnTimer <= 0.01f)
+        }else if (despawnDelay - despawnTimer <= 0.1f)
         {
             Animator platformAnimator = GetComponent<Animator>();
             platformAnimator.SetBool("isBoneActive", false);
@@ -78,7 +78,7 @@ public class ghostPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ghost"))
         {
-            Debug.Log("Ghost jumping");
+            //Debug.Log("Ghost jumping");
             if (GhostHUD != null)
             {
                 Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();

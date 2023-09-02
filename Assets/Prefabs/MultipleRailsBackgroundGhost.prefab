@@ -9817,7 +9817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca27e59ee7a54b9296230f42de306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxAmount: 0
+  parallaxAmount: 0.1
 --- !u!1 &2739539479093925135
 GameObject:
   m_ObjectHideFlags: 0
@@ -10169,7 +10169,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4412599394785456188, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
   m_audioClip: {fileID: 8300000, guid: fe4dd9dc904daed4898f6b3813bdbbb6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -10546,7 +10546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca27e59ee7a54b9296230f42de306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxAmount: 0.1
+  parallaxAmount: 0.2
 --- !u!1 &7093933446053006960
 GameObject:
   m_ObjectHideFlags: 0

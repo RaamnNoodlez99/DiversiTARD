@@ -247,7 +247,7 @@ public class Player_Controller : MonoBehaviour
     {
         if (currentGhostPlatform != null) 
         {
-            Debug.Log("But I still exist");
+            //Debug.Log("But I still exist");
         }
 
         if (despawnAvaialable)
@@ -259,7 +259,7 @@ public class Player_Controller : MonoBehaviour
             return;
         }
 
-        Debug.Log(gameObject.GetComponent<Character_Switch>().getCurCharacter());
+        //Debug.Log(gameObject.GetComponent<Character_Switch>().getCurCharacter());
         if (context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && !Pause_Menu.isPaused)
             SpawnPlatform();
     }

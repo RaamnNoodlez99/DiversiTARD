@@ -88,7 +88,12 @@ public class Main_Menu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+       // Debug.Log(PlayerPrefs.GetInt("currentLevel"));
+
+        if(PlayerPrefs.GetInt("currentLevel") != 0)
+            SceneManager.LoadScene(PlayerPrefs.GetInt("currentLevel"));
+        else
+            SceneManager.LoadScene(1);
     }
 
     public void PlayTutorial()
