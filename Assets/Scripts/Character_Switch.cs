@@ -84,6 +84,9 @@ public class Character_Switch : MonoBehaviour
                     thisCharacter.GetComponent<Player_Controller>().enabled = true;
                     otherCharacter.GetComponent<Player_Controller>().enabled = false;
 
+                    Rigidbody2D otherCharactersRigidBody = otherCharacter.GetComponent<Rigidbody2D>();
+                    otherCharactersRigidBody.gravityScale = 25f;
+
                     Animator otherCharactersAnimator = otherCharacter.GetComponent<Animator>();
                     otherCharactersAnimator.SetFloat("Speed", 0);
                     
@@ -112,6 +115,9 @@ public class Character_Switch : MonoBehaviour
                     otherCharacter.GetComponent<Character_Switch>().activeCharacter = otherCharacter.transform;
                     otherCharacter.GetComponent<Player_Controller>().enabled = true;
                     thisCharacter.GetComponent<Player_Controller>().enabled = false;
+                    
+                    Rigidbody2D thisCharactersRigidBody = thisCharacter.GetComponent<Rigidbody2D>();
+                    thisCharactersRigidBody.gravityScale = 25f;
                     
                     Animator thisCharactersAnimator = thisCharacter.GetComponent<Animator>();
                     thisCharactersAnimator.SetFloat("Speed", 0);
@@ -148,6 +154,9 @@ public class Character_Switch : MonoBehaviour
                     thisCharacter.GetComponent<Player_Controller>().enabled = true;
                     otherCharacter.GetComponent<Player_Controller>().enabled = false;
                     
+                    Rigidbody2D otherCharactersRigidBody = otherCharacter.GetComponent<Rigidbody2D>();
+                    otherCharactersRigidBody.gravityScale = 25f;
+                    
                     Animator otherCharactersAnimator = otherCharacter.GetComponent<Animator>();
                     otherCharactersAnimator.SetFloat("Speed", 0);
                     
@@ -177,6 +186,9 @@ public class Character_Switch : MonoBehaviour
                     otherCharacter.GetComponent<Character_Switch>().activeCharacter = otherCharacter.transform;
                     otherCharacter.GetComponent<Player_Controller>().enabled = true;
                     thisCharacter.GetComponent<Player_Controller>().enabled = false;
+                    
+                    Rigidbody2D thisCharactersRigidBody = thisCharacter.GetComponent<Rigidbody2D>();
+                    thisCharactersRigidBody.gravityScale = 25f;
                     
                     Animator thisCharactersAnimator = thisCharacter.GetComponent<Animator>();
                     thisCharactersAnimator.SetFloat("Speed", 0);

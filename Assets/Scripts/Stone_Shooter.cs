@@ -8,7 +8,7 @@ public class Stone_Shooter : MonoBehaviour
     public GameObject stoneBall;
     public Transform ballOrigin;
     public float ballSpawnInterval = 1;
-    
+
     void Start()
     {
         InvokeRepeating("SpawnStoneBall", ballSpawnInterval, ballSpawnInterval);

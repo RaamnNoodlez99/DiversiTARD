@@ -17,6 +17,7 @@ TagManager:
   - WoodenManAttackArea
   - TutorialPlatforms
   - Wall
+  - GhostGroundCheck
   layers:
   - Default
   - TransparentFX
@@ -33,6 +34,9 @@ TagManager:
   - Wooden Man Barrier
   - Button
   - Clamp
+  - 
+  - 
+  - 
   - 
   - 
   - 

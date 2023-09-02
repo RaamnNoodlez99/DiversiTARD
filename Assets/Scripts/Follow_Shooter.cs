@@ -21,7 +21,7 @@ public class Follow_Shooter : MonoBehaviour
     bool shooterToRight;
     private bool isResettingPosition = false;
 
-
+    public Animator shooterCircleAnimator;
 
     private void Start()
     {
@@ -87,6 +87,9 @@ public class Follow_Shooter : MonoBehaviour
             {
                 //Move right 
 
+                shooterCircleAnimator.speed = 1f;
+                Debug.Log("going right");
+
                 if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
                 {
                     if (shooterToRight)
@@ -106,6 +109,8 @@ public class Follow_Shooter : MonoBehaviour
             else if (shooter.transform.position.x > railBounds.min.x && shooter.transform.position.x > followedObject.transform.position.x)
             {
                 //Move left
+                shooterCircleAnimator.speed = 1f;
+                Debug.Log("going left");
 
                 if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
                 {
@@ -126,6 +131,7 @@ public class Follow_Shooter : MonoBehaviour
         }
         else
         {
+
             if (initialShooterPosition.x > shooter.transform.position.x)
                 shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
             else
