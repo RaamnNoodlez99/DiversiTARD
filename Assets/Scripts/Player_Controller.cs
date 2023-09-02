@@ -97,6 +97,7 @@ public class Player_Controller : MonoBehaviour
                 if (GhostHUD != null)
                 {
                     Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();
+                    
                     if (isJumping && !ghostPlatformExists)
                     {
                         ghostHud.removeIconOpaque();
@@ -180,13 +181,13 @@ public class Player_Controller : MonoBehaviour
            playerBody.velocity = new Vector2(playerBody.velocity.x, jumpForce);
 
            if (earlyRelease)
-            {
+           {
                 playerBody.gravityScale = gravityScale;
                 timer = jumpTimer;
                 startTimer = false;
                 earlyRelease = false;
                 activateJump = false;
-            }
+           }
         }
            
     }
@@ -399,7 +400,7 @@ public class Player_Controller : MonoBehaviour
         isJumping = value;
         if (CompareTag("Ghost") || CompareTag("WoodenMan"))
         {
-            animator.SetBool("isJumping", value);
+           animator.SetBool("isJumping", value);
         }
     }
 }
