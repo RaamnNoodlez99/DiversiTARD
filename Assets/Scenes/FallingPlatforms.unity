@@ -727,6 +727,10 @@ MonoBehaviour:
   thisCharacter: {fileID: 462617581}
   cinemachine: {fileID: 510400369}
   healthBar: {fileID: 110932602}
+  Rails: []
+  ShooterHeads: []
+  dadButtonSprite: {fileID: 0}
+  ghostButtonSprite: {fileID: 0}
 --- !u!70 &462617585
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2052,6 +2056,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4473636805923328167, guid: 4d4b10c9ecbf54a8b91651e83198f24a, type: 3}
   m_PrefabInstance: {fileID: 221554585}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1421608993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 51156360701843961, guid: 7389779d0eb8f4e87983608c00c8e5ee, type: 3}
+  m_PrefabInstance: {fileID: 529378725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1421609000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421608993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 0}
 --- !u!1 &1438791756
 GameObject:
   m_ObjectHideFlags: 0

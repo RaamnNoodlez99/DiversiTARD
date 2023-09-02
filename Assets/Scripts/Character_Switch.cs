@@ -15,6 +15,9 @@ public class Character_Switch : MonoBehaviour
     
     public GameObject healthBar;
 
+    public GameObject[] Rails;
+    public GameObject[] ShooterHeads;
+    
     public string getCurCharacter()
     {
         return currentCharacter;
@@ -22,6 +25,7 @@ public class Character_Switch : MonoBehaviour
 
     private void Awake()
     {
+
         if (thisCharacter.CompareTag("WoodenMan"))
         {
             currentCharacter = "WoodenMan";
@@ -72,6 +76,21 @@ public class Character_Switch : MonoBehaviour
             if (activeCharacter.CompareTag("WoodenMan"))
             {
                 healthBar.SetActive(false);
+
+                if (Rails != null && Rails.Length != 0)
+                {
+                    foreach (var rail in Rails)
+                    {
+                        Rail_Swapper railSwapper = rail.GetComponent<Rail_Swapper>();
+                        railSwapper.swapToGhostRails();
+                    }
+                    
+                    foreach (var shooterHead in ShooterHeads)
+                    {
+                        Shooter_Head_Swapper shooterHeadSwapper = shooterHead.GetComponent<Shooter_Head_Swapper>();
+                        shooterHeadSwapper.swapToGhostShooterHead();
+                    }
+                }
 
                 if (thisCharacter.CompareTag("Ghost"))
                 {
@@ -143,6 +162,21 @@ public class Character_Switch : MonoBehaviour
             {
                 healthBar.SetActive(true);
                 
+                if (Rails != null && Rails.Length != 0)
+                {
+                    foreach (var rail in Rails)
+                    {
+                        Rail_Swapper railSwapper = rail.GetComponent<Rail_Swapper>();
+                        railSwapper.swapToDadRails();
+                    }
+                    
+                    foreach (var shooterHead in ShooterHeads)
+                    {
+                        Shooter_Head_Swapper shooterHeadSwapper = shooterHead.GetComponent<Shooter_Head_Swapper>();
+                        shooterHeadSwapper.swapToDadShooterHead();
+                    }
+                }
+
                 if (thisCharacter.CompareTag("WoodenMan"))
                 {
                     //Debug.Log("Three");

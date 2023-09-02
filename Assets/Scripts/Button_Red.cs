@@ -13,15 +13,54 @@ public class Button_Red : MonoBehaviour
     private GameObject torchesFlame;
     private Animator _animator;
     private Button buttonComponent;
+    private GameObject characterCheck;
+    
+    public Color dadButtonColor;
+    public Color dadPressedButtonColor;
+    public Color dadCupColor;
+    public Color ghostButtonColor;
+    public Color ghostPressedButtonColor;
+    public Color ghostCupColor;
 
     void Start()
     {
+        characterCheck = GameObject.Find("Ghost");
         buttonComponent = GetComponent<Button>();
-        _animator = this.gameObject.GetComponent<Animator>();
+        GameObject buttonChild = this.transform.GetChild(0).gameObject;
+        _animator = buttonChild.gameObject.GetComponent<Animator>();
 
         if (linkedTorch != null && linkedTorch.transform.childCount > 0)
         {
             torchesFlame = linkedTorch.transform.GetChild(0).gameObject;
+        }
+    }
+
+    private void Update()
+    {
+        if (characterCheck != null)
+        {
+            GameObject buttonGameObject = transform.GetChild(0).gameObject;
+            SpriteRenderer buttonSpriteRenderer = buttonGameObject.GetComponent<SpriteRenderer>();
+                            
+            GameObject cupGameObject = transform.GetChild(1).gameObject;
+            SpriteRenderer cupSpriteRenderer = cupGameObject.GetComponent<SpriteRenderer>();
+
+            if (characterCheck.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+            {
+                buttonSpriteRenderer.color = dadButtonColor;
+                cupSpriteRenderer.color = dadCupColor;
+
+                if (_animator.GetBool("isPressed"))
+                    buttonSpriteRenderer.color = dadPressedButtonColor;
+            }
+            else
+            {
+                buttonSpriteRenderer.color = ghostButtonColor;
+                cupSpriteRenderer.color = ghostCupColor;
+                
+                if (_animator.GetBool("isPressed"))
+                    buttonSpriteRenderer.color = ghostPressedButtonColor;
+            }
         }
     }
 
