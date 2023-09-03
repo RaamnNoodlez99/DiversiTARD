@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8096406760865644555}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ButtonHolding
   m_TagString: ButtonHolder
   m_Icon: {fileID: 0}
