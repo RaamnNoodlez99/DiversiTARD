@@ -174,6 +174,34 @@ PrefabInstance:
       propertyPath: offSwitch
       value: 
       objectReference: {fileID: 2107562259}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: dadSwitchOn
+      value: 
+      objectReference: {fileID: -1202723952, guid: 04f1c8dfd70be794bb7d1dab34843401, type: 3}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: dadSwitchOff
+      value: 
+      objectReference: {fileID: -441331291, guid: 04f1c8dfd70be794bb7d1dab34843401, type: 3}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: ghostSwitchOn
+      value: 
+      objectReference: {fileID: 594562171, guid: 04f1c8dfd70be794bb7d1dab34843401, type: 3}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: checkCharacter
+      value: 
+      objectReference: {fileID: 1731100109}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: ghostSwitchOff
+      value: 
+      objectReference: {fileID: -721921882, guid: 04f1c8dfd70be794bb7d1dab34843401, type: 3}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: switchOnRenderer
+      value: 
+      objectReference: {fileID: 1659530049}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: switchOffRenderer
+      value: 
+      objectReference: {fileID: 722777450}
     - target: {fileID: 5386354532446249420, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -462,6 +490,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 885b018b6391c4f5288da6e4b174d816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &152781536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 152781538}
+  - component: {fileID: 152781537}
+  m_Layer: 0
+  m_Name: Invisible Wall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &152781537
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152781536}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 31.57639}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 64.15278}
+  m_EdgeRadius: 0
+--- !u!4 &152781538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152781536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 76.7, y: -9.5, z: -21.112974}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &160369239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,6 +1874,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodenMan Switch (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1011581532332322674, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
       propertyPath: onSwitch
       value: 
@@ -1796,6 +1886,10 @@ PrefabInstance:
       propertyPath: offSwitch
       value: 
       objectReference: {fileID: 1139453733}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: checkCharacter
+      value: 
+      objectReference: {fileID: 1731100109}
     - target: {fileID: 5386354532446249420, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -1842,6 +1936,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+--- !u!212 &722777450 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6675797369302504743, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+  m_PrefabInstance: {fileID: 21585857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &858547504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2288,6 +2387,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8763455606131447553, guid: 4d4b10c9ecbf54a8b91651e83198f24a, type: 3}
   m_PrefabInstance: {fileID: 1910953720}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1659530049 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7127427384289123433, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+  m_PrefabInstance: {fileID: 21585857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1694124972 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3742602821962898106, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
@@ -2314,14 +2418,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8760069496857899003, guid: e8a90795f336d45988897473054f5e73, type: 3}
   m_PrefabInstance: {fileID: 97228454}
   m_PrefabAsset: {fileID: 0}
---- !u!81 &1731100119
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731100109}
-  m_Enabled: 1
 --- !u!1 &1789313741
 GameObject:
   m_ObjectHideFlags: 3

@@ -89,7 +89,7 @@ public class Follow_Shooter : MonoBehaviour
 
             if(shooter.transform.position.x - 2 < followedObject.transform.position.x && shooter.transform.position.x + 2 > followedObject.transform.position.x )
             {
-                Debug.Log("Shooter standing still");
+                //Debug.Log("Shooter standing still");
                 shooterCircleAnimator.speed = 0f;
                 
                 shouldPlayAudio = false;
@@ -104,7 +104,7 @@ public class Follow_Shooter : MonoBehaviour
                 //Move right 
                 
 
-                Debug.Log("going right");
+                //Debug.Log("going right");
 
                 if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
                 {
@@ -146,7 +146,7 @@ public class Follow_Shooter : MonoBehaviour
                             shooterMovement.Pause();
                             isPlayingAudio = false;
                         }
-                        Debug.Log("Stopped by wall");
+                        //Debug.Log("Stopped by wall");
                     }
                 }
                 else
@@ -168,7 +168,7 @@ public class Follow_Shooter : MonoBehaviour
             {
                 //Move left
                 
-                Debug.Log("going left");
+                //Debug.Log("going left");
 
                 if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
                 {
@@ -209,7 +209,7 @@ public class Follow_Shooter : MonoBehaviour
                             isPlayingAudio = false;
                         }
 
-                        Debug.Log("Stopped by wall");
+                        //Debug.Log("Stopped by wall");
                     }
                 }
                 else
@@ -228,7 +228,7 @@ public class Follow_Shooter : MonoBehaviour
             }
             else
             {
-                Debug.Log("Rail Edge");
+                //Debug.Log("Rail Edge");
                 shooterCircleAnimator.speed = 0f;
                 
                 shouldPlayAudio = false;

@@ -2912,9 +2912,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9156875847985191518}
     - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: dadSwitchOn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
       propertyPath: secondChild
       value: 
       objectReference: {fileID: 187952223539130104}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: dadSwitchOff
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: ghostSwitchOn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: ghostSwitchOff
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: switchOnRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
+      propertyPath: switchOffRenderer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2488695306128907354, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}
       propertyPath: tutorialPlatforms
       value: 

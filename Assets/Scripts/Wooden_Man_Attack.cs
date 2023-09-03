@@ -46,7 +46,7 @@ public class Wooden_Man_Attack : MonoBehaviour
     {
         isAttacking = true;
         animator.SetBool("isAttacking", true);
-        StartCoroutine(activateAttackCollider(1f));
+        StartCoroutine(activateAttackCollider(0.85f));
     }
 
     private IEnumerator activateAttackCollider(float duration)

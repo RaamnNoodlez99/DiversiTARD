@@ -75,9 +75,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSwitchedOn: 0
-  offSwitch: {fileID: 0}
-  onSwitch: {fileID: 0}
+  offSwitch: {fileID: 1999152744229929482}
+  onSwitch: {fileID: 7365097642123802284}
   tutorialPlatforms: {fileID: 0}
+  checkCharacter: {fileID: 0}
+  switchOffRenderer: {fileID: 6675797369302504743}
+  switchOnRenderer: {fileID: 7127427384289123433}
+  ghostSwitchOff: {fileID: -721921882, guid: 04f1c8dfd70be794bb7d1dab34843401, type: 3}
+  ghostSwitchOn: {fileID: 594562171, guid: 04f1c8dfd70be794bb7d1dab34843401, type: 3}
+  dadSwitchOff: {fileID: -441331291, guid: 04f1c8dfd70be794bb7d1dab34843401, type: 3}
+  dadSwitchOn: {fileID: -1202723952, guid: 04f1c8dfd70be794bb7d1dab34843401, type: 3}
 --- !u!114 &-2024946549655086280
 MonoBehaviour:
   m_ObjectHideFlags: 0

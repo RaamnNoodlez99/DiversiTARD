@@ -132,7 +132,9 @@ public class Moving_Wall : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         movingUp = false;
-        hitPlatform = false;
         isWallDown = false;
+        hitPlatform = false;
+        hitGhostPlatform = false;
+        Debug.Log("Done Moving Up");
     }
 }

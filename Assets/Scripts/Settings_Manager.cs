@@ -43,11 +43,11 @@ public class Settings_Manager : MonoBehaviour
     public void LoadVolume()
     {
         float masterVol = PlayerPrefs.GetFloat(MASTERVOL_KEY, 1f);
-        Debug.Log(masterVol);
+        //Debug.Log(masterVol);
         float backgroundVol = PlayerPrefs.GetFloat(BACKGROUNDVOL_KEY, 1f);
-        Debug.Log(backgroundVol);
+       // Debug.Log(backgroundVol);
         float sfxVol = PlayerPrefs.GetFloat(SFXVOL_KEY, 1f);
-        Debug.Log(sfxVol);
+        //Debug.Log(sfxVol);
 
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(masterVol) * 20);
         audioMixer.SetFloat("BackgroundVolume", Mathf.Log10(backgroundVol) * 20);

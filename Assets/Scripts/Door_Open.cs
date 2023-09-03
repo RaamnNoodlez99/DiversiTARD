@@ -12,12 +12,16 @@ public class Door_Open : MonoBehaviour
     public float openSpeed = 10f;
     public float doorLength = 18f;
     public AudioSource stoneInPlace;
+    public AudioSource allButtonsDown;
 
 
     bool stoneIsInPlace = false;
     private Vector3 initialPosition;
     private Vector3 openPosition;
+    private bool havePlayedSound= false;
     private float targetY;
+
+
     void Start()
     {
         initialPosition = transform.position;
@@ -61,6 +65,13 @@ public class Door_Open : MonoBehaviour
         {
             if (allButtonsPressed)
             {
+                Debug.Log("All buttons Pressed");
+                if (!havePlayedSound)
+                {
+                    havePlayedSound = true;
+                    Invoke("playAllButtonsDown", 0.2f);
+                }
+
                 foreach (var linkedButton in linkedButtons)
                 {
                     GameObject childButton = linkedButton.transform.GetChild(0).gameObject;
@@ -69,6 +80,12 @@ public class Door_Open : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    void playAllButtonsDown()
+    {
+        allButtonsDown.Play();
     }
 
     private void calculateTargetPosition()
