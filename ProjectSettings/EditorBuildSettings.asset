@@ -12,14 +12,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: 50eb8703491cece4eba77f790b979faf
   - enabled: 1
-    path: Assets/Scenes/SingleRailLevel.unity
-    guid: 7eee7e1c3121774449c9bd5be6bd1724
+    path: Assets/Scenes/NewestCutscene.unity
+    guid: f09ad7153f1534eb181daca986ac4e0a
   - enabled: 1
-    path: Assets/Scenes/MultiplleRailsLevel.unity
-    guid: b14d3828e66cfaa4d8bf49f720b07a4e
+    path: Assets/Scenes/MultiplleRailsLevel 1.unity
+    guid: 321e8e1182d554a38a5920e6b385e8cc
   - enabled: 1
     path: Assets/Scenes/FallingPlatforms.unity
     guid: f3c5e352ddf1e46e9a09ceec86376b35
+  - enabled: 0
+    path: Assets/Scenes/SingleRailLevel.unity
+    guid: 7eee7e1c3121774449c9bd5be6bd1724
+  - enabled: 0
+    path: Assets/Scenes/MultiplleRailsLevel.unity
+    guid: b14d3828e66cfaa4d8bf49f720b07a4e
   - enabled: 0
     path: Assets/Scenes/Level3.unity
     guid: 724f16df47b540e4f954f6897ba9c932
