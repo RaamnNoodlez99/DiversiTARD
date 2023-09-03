@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8096406760865644555}
   m_Layer: 13
-  m_Name: ButtonHolding
+  m_Name: Button_Holder_Latest
   m_TagString: ButtonHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
