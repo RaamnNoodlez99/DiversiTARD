@@ -158,4 +158,9 @@ public class Moving_Wall : MonoBehaviour
         vineAnimation1.SetBool("makeIdle", false);
         vineAnimation2.SetBool("makeIdle", false);
     }
+
+    public bool getHittingClamp()
+    {
+        return hittingClamp;
+    }
 }

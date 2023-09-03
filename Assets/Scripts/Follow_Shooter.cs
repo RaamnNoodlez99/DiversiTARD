@@ -24,10 +24,26 @@ public class Follow_Shooter : MonoBehaviour
     bool shouldPlayAudio = false;
     bool isPlayingAudio = false;
 
+    private bool passedStage1 = false;
+
     public Animator shooterCircleAnimator;
 
+    public GameObject firefliesStage1;
+    public GameObject firefliesStage2;
+    public GameObject movingWall;
+    
+    private bool shouldCheck = false;
+    private float startTime;
+    private bool startSecondTime = false;
+
+    private bool shouldCheck2 = false;
+
+    private bool doOnce = false;
+
+    private float firstStageCompletionTime;
     private void Start()
     {
+        startTime = Time.time;
         shooterMovement.loop = true;
         initialShooterPosition = shooter.transform.position;
         railRenderer = rail.GetComponent<Renderer>();
@@ -60,6 +76,52 @@ public class Follow_Shooter : MonoBehaviour
 
     void Update()
     {
+
+        if (Time.time - startTime >= 120f)
+        {
+            shouldCheck = true;
+        }
+
+        if (startSecondTime)
+        {
+           // Debug.Log("in second time");
+           // Debug.Log("time: " + Time.time);
+          //  Debug.Log("first stage" + firstStageCompletionTime);
+            if (Time.time - firstStageCompletionTime >= 120f)
+            {
+             //   Debug.Log("lolol");
+                shouldCheck2 = true;
+            }
+        }
+
+        if (shouldCheck2)
+        {
+            if(firefliesStage2 != null)
+                firefliesStage2.SetActive(true);
+        }
+        
+
+        if (shouldCheck)
+        {
+            if (firefliesStage1 != null)
+            {
+                if (!passedStage1)
+                {
+                    firefliesStage1.SetActive(true);
+                }
+                else
+                {
+                    if (!doOnce)
+                    {
+                        firefliesStage1.SetActive(false);
+                        startSecondTime = true;
+                        firstStageCompletionTime = Time.time;
+                        doOnce = true;
+                    }
+                }
+            }
+        }
+
         //Debug.Log(initialShooterPosition.position.x);
         if (!isResettingPosition)
         {
@@ -89,7 +151,7 @@ public class Follow_Shooter : MonoBehaviour
 
             if(shooter.transform.position.x - 2 < followedObject.transform.position.x && shooter.transform.position.x + 2 > followedObject.transform.position.x )
             {
-                Debug.Log("Shooter standing still");
+              //  Debug.Log("Shooter standing still");
                 shooterCircleAnimator.speed = 0f;
                 
                 shouldPlayAudio = false;
@@ -104,7 +166,7 @@ public class Follow_Shooter : MonoBehaviour
                 //Move right 
                 
 
-                Debug.Log("going right");
+              //  Debug.Log("going right");
 
                 if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
                 {
@@ -146,7 +208,18 @@ public class Follow_Shooter : MonoBehaviour
                             shooterMovement.Pause();
                             isPlayingAudio = false;
                         }
-                        Debug.Log("Stopped by wall");
+                    //    Debug.Log("Stopped by wall");
+                        
+                        if (shouldCheck)
+                        {
+                            if (movingWall != null)
+                            {
+                                if (!movingWall.GetComponent<Moving_Wall>().getHittingClamp())
+                                {
+                                    passedStage1 = true;
+                                }
+                            }
+                        }
                     }
                 }
                 else
@@ -168,7 +241,7 @@ public class Follow_Shooter : MonoBehaviour
             {
                 //Move left
                 
-                Debug.Log("going left");
+               // Debug.Log("going left");
 
                 if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
                 {
@@ -209,7 +282,19 @@ public class Follow_Shooter : MonoBehaviour
                             isPlayingAudio = false;
                         }
 
-                        Debug.Log("Stopped by wall");
+                  //      Debug.Log("Stopped by wall");
+
+                        if (shouldCheck)
+                        {
+                            if (movingWall != null)
+                            {
+                                if (!movingWall.GetComponent<Moving_Wall>().getHittingClamp())
+                                {
+                                    passedStage1 = true;
+                                }
+                            }
+                        }
+
                     }
                 }
                 else
@@ -228,7 +313,7 @@ public class Follow_Shooter : MonoBehaviour
             }
             else
             {
-                Debug.Log("Rail Edge");
+           //     Debug.Log("Rail Edge");
                 shooterCircleAnimator.speed = 0f;
                 
                 shouldPlayAudio = false;
@@ -257,12 +342,12 @@ public class Follow_Shooter : MonoBehaviour
             if(shooter.transform.position.x > initialShooterPosition.x -1 && shooter.transform.position.x < initialShooterPosition.x + 1)
             {
                 isResettingPosition = false;
-               /* shouldPlayAudio = false;
+                shouldPlayAudio = false;
                 if (!shouldPlayAudio && isPlayingAudio)
                 {
                     shooterMovement.Pause();
                     isPlayingAudio = false;
-                }*/
+                }
             }
         }
     }
