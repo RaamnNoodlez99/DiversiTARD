@@ -19,6 +19,8 @@ public class Stone_Ball : MonoBehaviour
 
     public Sprite woodenManRock;
     public Sprite ghostRock;
+
+    public bool doDamage = false;
     
     private void Start()
     {
@@ -70,20 +72,55 @@ public class Stone_Ball : MonoBehaviour
         {
            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
             AudioClip randomSound;
-
+        
             // Keep generating a random sound until it's different from the last one played.
             do
             {
                 randomSound = stoneFallSounds[Random.Range(0, stoneFallSounds.Length)];
             } while (randomSound == lastPlayedSound);
-
+        
             stoneSource.clip = randomSound;
             stoneSource.Play();
-
+        
             // Update the last played sound.
             lastPlayedSound = randomSound;
-
+        
             Destroy(gameObject, randomSound.length);
+        }
+        
+        if (doDamage && (collision.gameObject.CompareTag("WoodenMan") || collision.gameObject.CompareTag("Ghost")))
+        {
+            Health objectHealth = collision.collider.GetComponent<Health>();
+            
+            if (objectHealth != null)
+            {
+                Player_Controller player = null;
+                if (collision.gameObject.CompareTag("Ghost"))
+                {
+                    player = GameObject.FindGameObjectWithTag("Ghost").GetComponent<Player_Controller>();
+                }
+                else if (collision.gameObject.CompareTag("WoodenMan"))
+                {
+                    player = GameObject.FindGameObjectWithTag("WoodenMan").GetComponent<Player_Controller>();
+                }
+
+                if (player != null)
+                {
+                    player.knockbackForce = 25;
+                    player.knockbackCounter = player.knockbackTotalTime;
+
+                    if (collision.transform.position.x <= transform.position.x)
+                    {
+                        player.knockFromRight = true;
+                    }
+                    else
+                    {
+                        player.knockFromRight = false;
+                    }
+
+                    objectHealth.Damage(10);
+                }
+            }
         }
     }
 

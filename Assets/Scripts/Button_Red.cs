@@ -22,6 +22,10 @@ public class Button_Red : MonoBehaviour
     public Color ghostPressedButtonColor;
     public Color ghostCupColor;
 
+    private bool isButtonPressed = false;
+
+    public BoxCollider2D buttonsTriggerCollider;
+
     void Start()
     {
         characterCheck = GameObject.Find("Ghost");
@@ -69,6 +73,7 @@ public class Button_Red : MonoBehaviour
         if (other.CompareTag("WoodenMan") && !_animator.GetBool("isPressed"))
         {
             _animator.SetBool("isPressed", true);
+            isButtonPressed = true;
             if (linkedTorch != null)
                 torchesFlame.SetActive(true);
         }
@@ -86,6 +91,7 @@ public class Button_Red : MonoBehaviour
             SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.stoneShort);
 
             _animator.SetBool("isPressed", true);
+            isButtonPressed = true;
             if (linkedTorch != null)
                 torchesFlame.SetActive(true);
 
@@ -103,6 +109,7 @@ public class Button_Red : MonoBehaviour
     {
         yield return new WaitForSeconds(buttonPressedTime);
         _animator.SetBool("isPressed", false);
+        isButtonPressed = false;
         if (linkedTorch != null)
             torchesFlame.SetActive(false);
 
@@ -114,5 +121,24 @@ public class Button_Red : MonoBehaviour
         {
             StartCoroutine(PopUpButton());
         }
+    }
+
+    public bool getButtonPressedState()
+    {
+        return isButtonPressed;
+    }
+
+    public void allButtonsPressed()
+    {
+        buttonsTriggerCollider.enabled = false;
+        Invoke("PressAllButtons", 0.01f);
+    }
+
+    private void PressAllButtons()
+    {
+        isButtonPressed = true;
+        _animator.SetBool("isPressed", true);
+        if (linkedTorch != null)
+            torchesFlame.SetActive(true);
     }
 }
