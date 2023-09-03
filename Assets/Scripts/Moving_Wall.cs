@@ -20,6 +20,7 @@ public class Moving_Wall : MonoBehaviour
     public float wallStuckTime = 1f;
     public Transform bottomCenterPoint;
     public GameObject ghost;
+    public AudioSource vineWrapping;
 
     private void Start()
     {
@@ -93,6 +94,7 @@ public class Moving_Wall : MonoBehaviour
             }
             else if (clampHit.collider != null)
             {
+                vineWrapping.Play();
                 hitPlatform = true;
 
                 if (moveCounterReference != null)
