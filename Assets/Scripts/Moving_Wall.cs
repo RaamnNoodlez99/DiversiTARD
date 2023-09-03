@@ -21,6 +21,10 @@ public class Moving_Wall : MonoBehaviour
     public Transform bottomCenterPoint;
     public GameObject ghost;
 
+    public Animator vineAnimation1;
+    public Animator vineAnimation2;
+
+    private bool hittingClamp = false;
     private void Start()
     {
         originalPosition = transform.position;
@@ -66,6 +70,14 @@ public class Moving_Wall : MonoBehaviour
 
     public void MoveWallUp()
     {
+        if (hittingClamp)
+        {
+            Debug.Log("set idle");
+            vineAnimation1.SetBool("makeIdle", true);
+            vineAnimation2.SetBool("makeIdle", true);
+            hittingClamp = false;
+        }
+            
         lastDirection = "up";
         StartCoroutine(MoveWallUpCoroutine());
     }
@@ -94,6 +106,11 @@ public class Moving_Wall : MonoBehaviour
             else if (clampHit.collider != null)
             {
                 hitPlatform = true;
+                
+                //hits clamp
+                vineAnimation1.SetTrigger("triggerVine");
+                vineAnimation2.SetTrigger("triggerVine");
+                hittingClamp = true;
 
                 if (moveCounterReference != null)
                     StopCoroutine(moveCounterReference);
@@ -121,6 +138,9 @@ public class Moving_Wall : MonoBehaviour
         {
             StopCoroutine(moveCounterReference);
         }
+        
+        vineAnimation1.SetTrigger("triggerIdle");
+        vineAnimation2.SetTrigger("triggerIdle");
 
         movingUp = true;
         while (transform.position.y < originalPosition.y && !movingDown)
@@ -134,5 +154,8 @@ public class Moving_Wall : MonoBehaviour
         movingUp = false;
         hitPlatform = false;
         isWallDown = false;
+        
+        vineAnimation1.SetBool("makeIdle", false);
+        vineAnimation2.SetBool("makeIdle", false);
     }
 }

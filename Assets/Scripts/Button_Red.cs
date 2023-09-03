@@ -26,6 +26,8 @@ public class Button_Red : MonoBehaviour
 
     public BoxCollider2D buttonsTriggerCollider;
 
+    public GameObject[] shootersToReset;
+
     void Start()
     {
         characterCheck = GameObject.Find("Ghost");
@@ -76,6 +78,15 @@ public class Button_Red : MonoBehaviour
             isButtonPressed = true;
             if (linkedTorch != null)
                 torchesFlame.SetActive(true);
+        }
+
+        if (shootersToReset != null && shootersToReset.Length != 0)
+        {
+            foreach (var shooterToReset in shootersToReset)
+            {
+                Follow_Shooter shooterScript = shooterToReset.GetComponent<Follow_Shooter>();
+                shooterScript.ResetPosition();
+            }
         }
     }
 
