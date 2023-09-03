@@ -58,6 +58,7 @@ public class Player_Controller : MonoBehaviour
     {
         playerBody = GetComponent<Rigidbody2D>();
         timer = jumpTimer;
+        playerBody.gravityScale = gravityScale;
     }
 
     // Update is called once per frame

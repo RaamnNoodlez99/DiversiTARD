@@ -5,6 +5,8 @@ using UnityEngine;
 public class Door_Open : MonoBehaviour
 {
     public GameObject[] linkedTorches;
+    public GameObject[] linkedButtons;
+    
     public GameObject doorSprite;
     public BoxCollider2D doorCollider;
     public float openSpeed = 10f;
@@ -37,6 +39,35 @@ public class Door_Open : MonoBehaviour
                 stoneIsInPlace = true;
             }
             doorCollider.enabled = false;
+        }
+
+        bool allButtonsPressed = true;
+        if (linkedButtons != null && linkedButtons.Length != 0)
+        {
+            foreach (var linkedButton in linkedButtons)
+            {
+                GameObject childButton = linkedButton.transform.GetChild(0).gameObject;
+                Button_Red buttonScript = childButton.GetComponent<Button_Red>();
+
+                if (buttonScript.getButtonPressedState() == false)
+                {
+                    allButtonsPressed = false;
+                    break;
+                }
+            }
+        }
+
+        if (linkedButtons != null && linkedButtons.Length != 0)
+        {
+            if (allButtonsPressed)
+            {
+                foreach (var linkedButton in linkedButtons)
+                {
+                    GameObject childButton = linkedButton.transform.GetChild(0).gameObject;
+                    Button_Red buttonScript = childButton.GetComponent<Button_Red>();
+                    buttonScript.allButtonsPressed();
+                }
+            }
         }
     }
 

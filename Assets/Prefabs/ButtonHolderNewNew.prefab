@@ -93,10 +93,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8175120606923081707}
-  - component: {fileID: 6152486488333494398}
   - component: {fileID: 2120463897206531022}
   - component: {fileID: 25190574634033724}
   - component: {fileID: 5994828345852728066}
+  - component: {fileID: 6152486488333494398}
   - component: {fileID: 3750749073673415222}
   - component: {fileID: 8766623431562847375}
   - component: {fileID: 2900631340799429363}
@@ -125,32 +125,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &6152486488333494398
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8175120606923081706}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.003186226, y: 0.7915523}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.7, y: 2.2000842}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.204733, y: 2.9751267}
-  m_EdgeRadius: 0
 --- !u!61 &2120463897206531022
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -198,6 +172,7 @@ MonoBehaviour:
   ghostButtonColor: {r: 0, g: 0, b: 0, a: 0}
   ghostPressedButtonColor: {r: 0, g: 0, b: 0, a: 0}
   ghostCupColor: {r: 0, g: 0, b: 0, a: 0}
+  buttonsTriggerCollider: {fileID: 6152486488333494398}
 --- !u!95 &5994828345852728066
 Animator:
   serializedVersion: 5
@@ -218,6 +193,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!61 &6152486488333494398
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8175120606923081706}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.003186226, y: 0.7915523}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.7, y: 2.2000842}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.204733, y: 2.9751267}
+  m_EdgeRadius: 0
 --- !u!114 &3750749073673415222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d20ad53d5e62a748b57b07d42ff9ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSource: {fileID: 0}
+  buttonSource: {fileID: 2900631340799429363}
   buttonMove: {fileID: 8300000, guid: 5b2c0b518c30d164192a0be6dea33c85, type: 3}
 --- !u!82 &2900631340799429363
 AudioSource:
