@@ -21,6 +21,7 @@ public class Player_Controller : MonoBehaviour
     //public GameObject gameManager;
 
     bool isJumping = false;
+    bool isAttacking = false;
     bool activateJump = false;
     bool startTimer = false;
     bool earlyRelease = false;
@@ -74,6 +75,16 @@ public class Player_Controller : MonoBehaviour
         if (currentGhostPlatform == null)
         {
             despawnAvaialable = false;
+        }
+
+        if (gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+        {
+            Animator woodenManAnimator = gameObject.GetComponent<Animator>();
+            if (woodenManAnimator.GetBool("isAttacking") == false)
+            {
+                isAttacking = false;
+                gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
         }
 
         if (!Pause_Menu.isPaused)
@@ -201,46 +212,57 @@ public class Player_Controller : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && knockbackCounter <= 0)
+        if (!isAttacking)
         {
-            moveInput = context.ReadValue<Vector2>();
-            IsMoving = moveInput != Vector2.zero;
-        }
-        else
-        {
-            moveInput = Vector2.zero;
-            IsMoving = false;
+            if (gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && knockbackCounter <= 0)
+            {
+                moveInput = context.ReadValue<Vector2>();
+                IsMoving = moveInput != Vector2.zero;
+            }
+            else
+            {
+                moveInput = Vector2.zero;
+                IsMoving = false;
+            }
         }
     }
 
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && !isJumping && gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && !Pause_Menu.isPaused && !Level_Complete.levelIsOver)
+        if (!isAttacking)
         {
-            if(gameObject.CompareTag("WoodenMan"))
-                SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.jumpGrunt);
+            if (context.performed && !isJumping && gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && !Pause_Menu.isPaused && !Level_Complete.levelIsOver)
+            {
+                if(gameObject.CompareTag("WoodenMan"))
+                    SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.jumpGrunt);
 
-            animator.SetTrigger("takeOff");
-            activateJump = true;
-            startTimer = true;
-            playerBody.gravityScale = 0;
-        }
+                animator.SetTrigger("takeOff");
+                activateJump = true;
+                startTimer = true;
+                playerBody.gravityScale = 0;
+            }
 
-        if (context.canceled || earlyRelease)
-        {
-            playerBody.gravityScale = gravityScale;
-            timer = jumpTimer;
-            startTimer = false;
-            earlyRelease = false;
-            activateJump = false;
+            if (context.canceled || earlyRelease)
+            {
+                playerBody.gravityScale = gravityScale;
+                timer = jumpTimer;
+                startTimer = false;
+                earlyRelease = false;
+                activateJump = false;
+            }
         }
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if(context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan" && !Pause_Menu.isPaused)
+        if (context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan" &&
+            !Pause_Menu.isPaused)
+        {
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             gameObject.GetComponent<Wooden_Man_Attack>().Attack();
+            isAttacking = true;
+        }
     }
 
     public void OnSpawnPlatform(InputAction.CallbackContext context)

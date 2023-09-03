@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Stone_Ball : MonoBehaviour
 {
@@ -10,6 +12,27 @@ public class Stone_Ball : MonoBehaviour
 
     // Keep track of the last played audio clip.
     private AudioClip lastPlayedSound;
+    private GameObject woodenManReference;
+    private Character_Switch woodenMansCharacterSwitch;
+    private SpriteRenderer spriteRenderer;
+
+    public Sprite woodenManRock;
+    public Sprite ghostRock;
+    
+    private void Start()
+    {
+        woodenManReference = GameObject.Find("Wooden Man");
+        woodenMansCharacterSwitch = woodenManReference.GetComponent<Character_Switch>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if (woodenMansCharacterSwitch.getCurCharacter() == "WoodenMan")
+            spriteRenderer.sprite = woodenManRock;
+        else
+            spriteRenderer.sprite = ghostRock;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
