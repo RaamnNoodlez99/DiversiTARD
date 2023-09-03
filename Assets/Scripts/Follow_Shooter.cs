@@ -90,7 +90,8 @@ public class Follow_Shooter : MonoBehaviour
             if(shooter.transform.position.x - 2 < followedObject.transform.position.x && shooter.transform.position.x + 2 > followedObject.transform.position.x )
             {
                 Debug.Log("Shooter standing still");
-
+                shooterCircleAnimator.speed = 0f;
+                
                 shouldPlayAudio = false;
                 if(!shouldPlayAudio && isPlayingAudio)
                 {
@@ -160,6 +161,8 @@ public class Follow_Shooter : MonoBehaviour
             else
             {
                 Debug.Log("Rail Edge");
+                shooterCircleAnimator.speed = 0f;
+                
                 shouldPlayAudio = false;
                 if (!shouldPlayAudio && isPlayingAudio)
                 {
