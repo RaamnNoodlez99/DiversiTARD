@@ -17,11 +17,44 @@ public class ChangeScreenOnTimer : MonoBehaviour
 
     public GameObject actualCamera;
     public GameObject stateMachineToDisable;
+
+    public bool isFallingPlatformsLevel = false;
+    public bool isTutorialLevel = false;
     private void Awake()
     {
-        levelInput.enabled = false;
-        sceneAnimator.SetBool("startCutscene", true);
-        Invoke("StopCutscene", changeTime);
+        if (PlayerPrefs.GetInt("hasSeenFallingPlatformsCutscene") == 0 && isFallingPlatformsLevel)
+        {
+            levelInput.enabled = false;
+            sceneAnimator.SetBool("startCutscene", true);
+            Invoke("StopCutscene", changeTime);
+            PlayerPrefs.SetInt("hasSeenFallingPlatformsCutscene", 1);
+        } else if (!isFallingPlatformsLevel && !isTutorialLevel)
+        {
+            levelInput.enabled = false;
+            sceneAnimator.SetBool("startCutscene", true);
+            Invoke("StopCutscene", changeTime);
+        } else if (PlayerPrefs.GetInt("hasSeenFallingPlatformsCutscene") == 1 && isFallingPlatformsLevel)
+        {
+            healthbar.SetActive(true);
+            ghostHUD.SetActive(true);
+        }
+        
+        if (PlayerPrefs.GetInt("hasSeenTutorialCutscene") == 0 && isTutorialLevel)
+        {
+            levelInput.enabled = false;
+            sceneAnimator.SetBool("startCutscene", true);
+            Invoke("StopCutscene", changeTime);
+            PlayerPrefs.SetInt("hasSeenTutorialCutscene", 1);
+        } else if (!isFallingPlatformsLevel && !isTutorialLevel)
+        {
+            levelInput.enabled = false;
+            sceneAnimator.SetBool("startCutscene", true);
+            Invoke("StopCutscene", changeTime);
+        } else if (PlayerPrefs.GetInt("hasSeenTutorialCutscene") == 1 && isTutorialLevel)
+        {
+            healthbar.SetActive(true);
+            ghostHUD.SetActive(true);
+        }
     }
 
     // private void Update()
