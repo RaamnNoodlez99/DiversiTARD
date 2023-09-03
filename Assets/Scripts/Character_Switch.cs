@@ -10,6 +10,7 @@ public class Character_Switch : MonoBehaviour
     public GameObject thisCharacter;
 
     public CinemachineVirtualCamera cinemachine;
+    //public CinemachineStateDrivenCamera cinemachine;
     private Transform activeCharacter;
     public static string currentCharacter;
     
@@ -49,6 +50,7 @@ public class Character_Switch : MonoBehaviour
 
             if (cinemachine)
             {
+                Debug.Log("look at active: " + activeCharacter);
                 cinemachine.LookAt = activeCharacter;
                 cinemachine.Follow = activeCharacter;
             }
@@ -245,6 +247,7 @@ public class Character_Switch : MonoBehaviour
                 }
             }
 
+            Debug.Log("look at active: " + activeCharacter);
             cinemachine.LookAt = activeCharacter;
             cinemachine.Follow = activeCharacter;
         }

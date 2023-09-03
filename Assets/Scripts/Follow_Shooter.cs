@@ -77,7 +77,7 @@ public class Follow_Shooter : MonoBehaviour
     void Update()
     {
 
-        if (Time.time - startTime >= 120f)
+        if (Time.time - startTime >= 2f)
         {
             shouldCheck = true;
         }
@@ -87,7 +87,7 @@ public class Follow_Shooter : MonoBehaviour
            // Debug.Log("in second time");
            // Debug.Log("time: " + Time.time);
           //  Debug.Log("first stage" + firstStageCompletionTime);
-            if (Time.time - firstStageCompletionTime >= 120f)
+            if (Time.time - firstStageCompletionTime >= 4f)
             {
              //   Debug.Log("lolol");
                 shouldCheck2 = true;

@@ -14,6 +14,9 @@ public class ChangeScreenOnTimer : MonoBehaviour
 
     public GameObject healthbar;
     public GameObject ghostHUD;
+
+    public GameObject actualCamera;
+    public GameObject stateMachineToDisable;
     private void Awake()
     {
         levelInput.enabled = false;
@@ -34,5 +37,7 @@ public class ChangeScreenOnTimer : MonoBehaviour
         sceneAnimator.SetBool("startCutscene", false);
         healthbar.SetActive(true);
         ghostHUD.SetActive(true);
+        stateMachineToDisable.SetActive(false);
+        actualCamera.SetActive(true);
     }
 }

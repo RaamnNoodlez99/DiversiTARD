@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 49
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1941031789, guid: c29c3c6f35f0c7b46a6ccf6b76ab0017, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -304,11 +304,13 @@ MonoBehaviour:
   linkedTorches:
   - {fileID: 0}
   - {fileID: 0}
+  linkedButtons: []
   doorSprite: {fileID: 5437469402914873003}
   doorCollider: {fileID: 5632482676363395425}
   openSpeed: 10
   doorLength: 18
   stoneInPlace: {fileID: -8107998230865320195}
+  allButtonsDown: {fileID: 0}
 --- !u!61 &5632482676363395425
 BoxCollider2D:
   m_ObjectHideFlags: 0
