@@ -9,6 +9,7 @@ public class Stone_Ball : MonoBehaviour
     public float timeToDestroy;
     public AudioSource stoneSource;
     public AudioClip[] stoneFallSounds;
+    public int damage = 50;
 
     // Keep track of the last played audio clip.
     private AudioClip lastPlayedSound;
@@ -36,6 +37,35 @@ public class Stone_Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+       /* Health objectHealth = collision.collider.GetComponent<Health>();
+
+        if (objectHealth != null)
+        {
+            Player_Controller player = null;
+            if (collision.gameObject.CompareTag("WoodenMan"))
+            {
+                player = GameObject.FindGameObjectWithTag("WoodenMan").GetComponent<Player_Controller>();
+            }
+
+            if (player != null)
+            {
+                player.knockbackCounter = player.knockbackTotalTime;
+
+                if (collision.transform.position.x <= transform.position.x)
+                {
+                    player.knockFromRight = true;
+                }
+                else
+                {
+                    player.knockFromRight = false;
+                }
+
+                objectHealth.Damage(damage);
+            } 
+        }*/
+
+
         if (collision.collider != null && !collision.gameObject.CompareTag("StoneBall"))
         {
            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;

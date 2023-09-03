@@ -12,7 +12,7 @@ public class Player_Controller : MonoBehaviour
     public float gravityScale = 25f;
     public float jumpTimer = 0.4f;
 
-    public float platformOffset = 1f;
+    public float platformOffset = 4f;
     public float ghostPlatSpawnDelay = 0f;
     public bool ghostPlatformExists = false;
     public float switchDelay = 0.001f;
@@ -272,7 +272,7 @@ public class Player_Controller : MonoBehaviour
             //Debug.Log("But I still exist");
         }
 
-        if (despawnAvaialable)
+        if (despawnAvaialable && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && !Pause_Menu.isPaused)
         {
             if(currentGhostPlatform != null)
                 currentGhostPlatform.GetComponent<ghostPlatform>().SetDespawnTimer();
@@ -386,14 +386,15 @@ public class Player_Controller : MonoBehaviour
 
     public bool CanSpawnGhostPlatform()
     {
+        Debug.Log(isJumping);
         if (isJumping && !ghostPlatformExists)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, platformOffset);
+           /* Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, platformOffset);
             foreach (Collider2D collider in colliders)
             {
                 if (collider.gameObject.CompareTag("Platform"))
                     return false;
-            }
+            }*/
             return true;
         }
         return false;

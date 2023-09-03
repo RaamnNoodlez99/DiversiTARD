@@ -102,59 +102,127 @@ public class Follow_Shooter : MonoBehaviour
             else if (shooter.transform.position.x < railBounds.max.x && shooter.transform.position.x < followedObject.transform.position.x)
             {
                 //Move right 
-                shouldPlayAudio = true;
+                
 
-                if(shouldPlayAudio && !isPlayingAudio)
-                {
-                    shooterMovement.Play();
-                    isPlayingAudio = true;
-                }
-
-                shooterCircleAnimator.speed = 1f;
                 Debug.Log("going right");
 
                 if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
                 {
                     if (shooterToRight)
                     {
+                        shooterCircleAnimator.speed = 1f;
+
+                        shouldPlayAudio = true;
+
+                        if (shouldPlayAudio && !isPlayingAudio)
+                        {
+                            shooterMovement.Play();
+                            isPlayingAudio = true;
+                        }
+
                         shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
                     }
-                    else if (!shooterToRight && shooter.transform.position.x < stopWall.transform.position.x - 1)
+                    else if (!shooterToRight && shooter.transform.position.x < stopWall.transform.position.x - 5)
                     {
+                        shooterCircleAnimator.speed = 1f;
+
+                        shouldPlayAudio = true;
+
+                        if (shouldPlayAudio && !isPlayingAudio)
+                        {
+                            shooterMovement.Play();
+                            isPlayingAudio = true;
+                        }
+
                         shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                    }
+                    else
+                    {
+                        shooterCircleAnimator.speed = 0f;
+
+                        shouldPlayAudio = false;
+                        if (!shouldPlayAudio && isPlayingAudio)
+                        {
+                            shooterMovement.Pause();
+                            isPlayingAudio = false;
+                        }
+                        Debug.Log("Stopped by wall");
                     }
                 }
                 else
                 {
+                    shooterCircleAnimator.speed = 1f;
+
+                    shouldPlayAudio = true;
+
+                    if (shouldPlayAudio && !isPlayingAudio)
+                    {
+                        shooterMovement.Play();
+                        isPlayingAudio = true;
+                    }
+
                     shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
                 }
             }
             else if (shooter.transform.position.x > railBounds.min.x && shooter.transform.position.x > followedObject.transform.position.x)
             {
                 //Move left
-                shouldPlayAudio = true;
-
-                if (shouldPlayAudio && !isPlayingAudio)
-                {
-                    shooterMovement.Play();
-                    isPlayingAudio = true;
-                }
-                shooterCircleAnimator.speed = 1f;
+                
                 Debug.Log("going left");
 
                 if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
                 {
-                    if (shooterToRight && shooter.transform.position.x > stopWall.transform.position.x + 1)
+                    if (shooterToRight && shooter.transform.position.x > stopWall.transform.position.x + 5)
                     {
+                        shouldPlayAudio = true;
+
+                        if (shouldPlayAudio && !isPlayingAudio)
+                        {
+                            shooterMovement.Play();
+                            isPlayingAudio = true;
+                        }
+                        shooterCircleAnimator.speed = 1f;
+
                         shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
                     }
                     else if (!shooterToRight)
                     {
+                        shouldPlayAudio = true;
+
+                        if (shouldPlayAudio && !isPlayingAudio)
+                        {
+                            shooterMovement.Play();
+                            isPlayingAudio = true;
+                        }
+                        shooterCircleAnimator.speed = 1f;
+
                         shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                    }
+                    else
+                    {
+                        shooterCircleAnimator.speed = 0f;
+
+                        shouldPlayAudio = false;
+                        if (!shouldPlayAudio && isPlayingAudio)
+                        {
+                            shooterMovement.Pause();
+                            isPlayingAudio = false;
+                        }
+
+                        Debug.Log("Stopped by wall");
                     }
                 }
                 else
                 {
+                    shouldPlayAudio = true;
+
+                    if (shouldPlayAudio && !isPlayingAudio)
+                    {
+                        shooterMovement.Play();
+                        isPlayingAudio = true;
+                    }
+                    shooterCircleAnimator.speed = 1f;
+
                     shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
                 }
             }
@@ -189,6 +257,12 @@ public class Follow_Shooter : MonoBehaviour
             if(shooter.transform.position.x > initialShooterPosition.x -1 && shooter.transform.position.x < initialShooterPosition.x + 1)
             {
                 isResettingPosition = false;
+               /* shouldPlayAudio = false;
+                if (!shouldPlayAudio && isPlayingAudio)
+                {
+                    shooterMovement.Pause();
+                    isPlayingAudio = false;
+                }*/
             }
         }
     }

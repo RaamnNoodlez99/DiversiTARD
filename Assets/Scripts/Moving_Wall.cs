@@ -66,7 +66,6 @@ public class Moving_Wall : MonoBehaviour
 
     public void MoveWallUp()
     {
-        isWallDown = false;
         lastDirection = "up";
         StartCoroutine(MoveWallUpCoroutine());
     }
@@ -133,6 +132,7 @@ public class Moving_Wall : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         movingUp = false;
-        hitPlatform = false; 
+        hitPlatform = false;
+        isWallDown = false;
     }
 }

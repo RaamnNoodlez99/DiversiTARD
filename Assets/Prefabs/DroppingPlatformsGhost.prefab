@@ -15782,6 +15782,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform Ghost World (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8368120840023999621, guid: 66ac9c54f3f28b64aa90713b99d93974, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8988229952081662982, guid: 66ac9c54f3f28b64aa90713b99d93974, type: 3}
       propertyPath: m_RootOrder
       value: 9

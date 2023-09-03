@@ -88,6 +88,10 @@ PrefabInstance:
       value: 0.21176472
       objectReference: {fileID: 0}
     - target: {fileID: 25190574634033724, guid: ceb0adc5383e044bcaa58a6320a13d95, type: 3}
+      propertyPath: buttonPressedTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 25190574634033724, guid: ceb0adc5383e044bcaa58a6320a13d95, type: 3}
       propertyPath: ghostButtonColor.a
       value: 1
       objectReference: {fileID: 0}
@@ -250,10 +254,16 @@ PrefabInstance:
     - target: {fileID: 8766623431562847375, guid: ceb0adc5383e044bcaa58a6320a13d95, type: 3}
       propertyPath: buttonSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 593424546173696521}
     m_RemovedComponents:
     - {fileID: 2584607848502745686, guid: ceb0adc5383e044bcaa58a6320a13d95, type: 3}
+    - {fileID: 5978062302810095336, guid: ceb0adc5383e044bcaa58a6320a13d95, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ceb0adc5383e044bcaa58a6320a13d95, type: 3}
+--- !u!82 &593424546173696521 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2900631340799429363, guid: ceb0adc5383e044bcaa58a6320a13d95, type: 3}
+  m_PrefabInstance: {fileID: 2341124881876857082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5840751236293949201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8175120606923081707, guid: ceb0adc5383e044bcaa58a6320a13d95, type: 3}

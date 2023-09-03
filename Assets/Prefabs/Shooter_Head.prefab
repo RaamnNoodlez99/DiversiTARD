@@ -393,6 +393,7 @@ MonoBehaviour:
   headSpriteGhost: {fileID: -843534013, guid: 3a091f58be52b427e8c99fc33632d5e5, type: 3}
   mouthSpriteGhost: {fileID: -693399819, guid: ded7bb53ac18444ce9efe8f54ab6cc4a, type: 3}
   mouthOpenSpriteGhost: {fileID: -303211947, guid: b750da098cef24d7384c1d626402efd2, type: 3}
+  followShooter: {fileID: 0}
   circle: {fileID: 3447068844784611569}
   head: {fileID: 3447068843837940770}
   mouth: {fileID: 6668473016762501193}
