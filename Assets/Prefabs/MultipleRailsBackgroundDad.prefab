@@ -9817,7 +9817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca27e59ee7a54b9296230f42de306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxAmount: 0.1
+  parallaxAmount: 0.2
 --- !u!1 &3064128807618320092
 GameObject:
   m_ObjectHideFlags: 0
@@ -9999,7 +9999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca27e59ee7a54b9296230f42de306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxAmount: 0.4
+  parallaxAmount: 0.5
 --- !u!1 &4665109233558850795
 GameObject:
   m_ObjectHideFlags: 0
@@ -10225,7 +10225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca27e59ee7a54b9296230f42de306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxAmount: 0.8
+  parallaxAmount: 1.1
 --- !u!1 &5779096061836449468
 GameObject:
   m_ObjectHideFlags: 0
@@ -10324,7 +10324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca27e59ee7a54b9296230f42de306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxAmount: 0.6
+  parallaxAmount: 0.8
 --- !u!1 &6004366101379956867
 GameObject:
   m_ObjectHideFlags: 0
@@ -10422,7 +10422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca27e59ee7a54b9296230f42de306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxAmount: 0.2
+  parallaxAmount: 0.3
 --- !u!1 &7093933446053006960
 GameObject:
   m_ObjectHideFlags: 0
@@ -15679,7 +15679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca27e59ee7a54b9296230f42de306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxAmount: 0.7
+  parallaxAmount: 0.9
 --- !u!1 &8956625864429145946
 GameObject:
   m_ObjectHideFlags: 0
@@ -15778,7 +15778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca27e59ee7a54b9296230f42de306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxAmount: 0.75
+  parallaxAmount: 1
 --- !u!1 &8960612622793871800
 GameObject:
   m_ObjectHideFlags: 0
@@ -15876,4 +15876,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ca27e59ee7a54b9296230f42de306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxAmount: 1
+  parallaxAmount: 1.3

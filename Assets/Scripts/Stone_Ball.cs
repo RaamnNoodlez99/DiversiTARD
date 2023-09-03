@@ -13,8 +13,9 @@ public class Stone_Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider != null && !collision.gameObject.CompareTag("Projectile"))
+        if (collision.collider != null && !collision.gameObject.CompareTag("StoneBall"))
         {
+           gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
             AudioClip randomSound;
 
             // Keep generating a random sound until it's different from the last one played.
@@ -31,5 +32,20 @@ public class Stone_Ball : MonoBehaviour
 
             Destroy(gameObject, randomSound.length);
         }
+    }
+
+    public float playRandomAudio()
+    {
+        AudioClip randomSound;
+        do
+        {
+            randomSound = stoneFallSounds[Random.Range(0, stoneFallSounds.Length)];
+        } while (randomSound == lastPlayedSound);
+
+        stoneSource.clip = randomSound;
+        stoneSource.Play();
+        lastPlayedSound = randomSound;
+
+        return randomSound.length;
     }
 }

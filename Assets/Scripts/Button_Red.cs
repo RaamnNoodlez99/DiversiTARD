@@ -76,12 +76,12 @@ public class Button_Red : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("WoodenMan") || other.CompareTag("Projectile"))
+        if (other.CompareTag("WoodenMan") || other.CompareTag("StoneBall"))
         {
             buttonComponent.onClick.Invoke();
         }
 
-        if (other.CompareTag("Projectile") && !_animator.GetBool("isPressed"))
+        if (other.CompareTag("StoneBall") && !_animator.GetBool("isPressed"))
         {
             SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.stoneShort);
 

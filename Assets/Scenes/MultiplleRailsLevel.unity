@@ -636,6 +636,8 @@ MonoBehaviour:
   thisCharacter: {fileID: 462617581}
   cinemachine: {fileID: 510400369}
   healthBar: {fileID: 1856628273}
+  Rails: []
+  ShooterHeads: []
 --- !u!70 &462617585
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -768,7 +770,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1731100112}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 25
+    OrthographicSize: 33
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -905,7 +907,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 25
+  orthographic size: 33
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -929,7 +931,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.22606, y: -8.071999, z: -10.045361}
+  m_LocalPosition: {x: -17.974258, y: -0.071998596, z: -10.045361}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

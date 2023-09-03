@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Input_Device_Manager : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class Input_Device_Manager : MonoBehaviour
     public Sprite attackGamepad;
     public Sprite attackKeyboard;
 
+    public Image buttonRenderer;
+    public Sprite gamepadSprite;
+    public Sprite keyboardSprite;
+
 
     private void Awake()
     {
@@ -37,6 +42,10 @@ public class Input_Device_Manager : MonoBehaviour
             {
                 attackRenderer.sprite = attackKeyboard;
             }
+            if(buttonRenderer != null)
+            {
+                buttonRenderer.sprite = keyboardSprite;
+            }
         }
         else
         {
@@ -51,6 +60,10 @@ public class Input_Device_Manager : MonoBehaviour
             if (attackRenderer != null)
             {
                 attackRenderer.sprite = attackGamepad;
+            }
+            if(buttonRenderer != null)
+            {
+                buttonRenderer.sprite = gamepadSprite;
             }
         }
     }
@@ -102,6 +115,10 @@ public class Input_Device_Manager : MonoBehaviour
             {
                 attackRenderer.sprite = attackKeyboard;
             }
+            if (buttonRenderer != null)
+            {
+                buttonRenderer.sprite = keyboardSprite;
+            }
         }
         else if (isControllerInput)
         {
@@ -116,6 +133,10 @@ public class Input_Device_Manager : MonoBehaviour
             if (attackRenderer != null)
             {
                 attackRenderer.sprite = attackGamepad;
+            }
+            if (buttonRenderer != null)
+            {
+                buttonRenderer.sprite = gamepadSprite;
             }
         }
     }

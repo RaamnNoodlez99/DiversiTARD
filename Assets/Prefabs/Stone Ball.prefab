@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7289866227123822167}
   m_Layer: 10
   m_Name: Stone Ball
-  m_TagString: Projectile
+  m_TagString: StoneBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,10 +126,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 3
+  m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 20
+  m_AngularDrag: 0
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -167,7 +167,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 8245071106484847466, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0

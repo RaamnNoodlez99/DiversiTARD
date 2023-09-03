@@ -619,8 +619,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 30
-  jumpForce: 37
-  gravityScale: 50
+  jumpForce: 40
+  gravityScale: 40
   jumpTimer: 0.4
   platformOffset: 1
   ghostPlatSpawnDelay: 0
@@ -651,6 +651,8 @@ MonoBehaviour:
   thisCharacter: {fileID: 3034942747674360919}
   cinemachine: {fileID: 0}
   healthBar: {fileID: 0}
+  Rails: []
+  ShooterHeads: []
 --- !u!114 &4189188203714929208
 MonoBehaviour:
   m_ObjectHideFlags: 0

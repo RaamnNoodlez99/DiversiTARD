@@ -20,7 +20,6 @@ public class ghostPlatform : MonoBehaviour
     void Start()
     {
         ghost = GameObject.Find("Ghost");
-        
 
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
         foreach (GameObject obj in allObjects)

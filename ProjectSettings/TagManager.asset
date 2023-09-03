@@ -19,6 +19,7 @@ TagManager:
   - Wall
   - GhostGroundCheck
   - ButtonHolder
+  - StoneBall
   layers:
   - Default
   - TransparentFX

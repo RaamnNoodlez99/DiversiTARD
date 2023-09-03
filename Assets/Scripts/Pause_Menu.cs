@@ -74,7 +74,7 @@ public class Pause_Menu : MonoBehaviour
             if (volumeChangeCoroutine != null)
                 StopCoroutine(volumeChangeCoroutine);
 
-            if (PlayerPrefs.GetFloat("masterVolume") > volumeWhilePaused)
+            if (PlayerPrefs.GetFloat("backgroundVolume") > volumeWhilePaused)
                 volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, PlayerPrefs.GetFloat("backgroundVolume"), volumeWhilePaused));
 
             pauseMenu.SetActive(true);
