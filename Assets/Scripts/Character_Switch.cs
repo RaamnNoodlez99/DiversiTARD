@@ -18,6 +18,7 @@ public class Character_Switch : MonoBehaviour
 
     public GameObject[] Rails;
     public GameObject[] ShooterHeads;
+    public GameObject[] TeleportDoors;
     
     public string getCurCharacter()
     {
@@ -50,7 +51,6 @@ public class Character_Switch : MonoBehaviour
 
             if (cinemachine)
             {
-                Debug.Log("look at active: " + activeCharacter);
                 cinemachine.LookAt = activeCharacter;
                 cinemachine.Follow = activeCharacter;
             }
@@ -91,6 +91,14 @@ public class Character_Switch : MonoBehaviour
                     {
                         Shooter_Head_Swapper shooterHeadSwapper = shooterHead.GetComponent<Shooter_Head_Swapper>();
                         shooterHeadSwapper.swapToGhostShooterHead();
+                    }
+                }
+
+                if(TeleportDoors != null && TeleportDoors.Length != 0)
+                {
+                    foreach(var door in TeleportDoors)
+                    {
+                        door.GetComponent<Teleport_Door>().SetToGhostDoor();
                     }
                 }
 
@@ -179,6 +187,14 @@ public class Character_Switch : MonoBehaviour
                     }
                 }
 
+                if (TeleportDoors != null && TeleportDoors.Length != 0)
+                {
+                    foreach (var door in TeleportDoors)
+                    {
+                        door.GetComponent<Teleport_Door>().SetToDadDoor();
+                    }
+                }
+
                 if (thisCharacter.CompareTag("WoodenMan"))
                 {
                     //Debug.Log("Three");
@@ -247,7 +263,6 @@ public class Character_Switch : MonoBehaviour
                 }
             }
 
-            Debug.Log("look at active: " + activeCharacter);
             cinemachine.LookAt = activeCharacter;
             cinemachine.Follow = activeCharacter;
         }

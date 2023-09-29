@@ -20,6 +20,7 @@ public class Moving_Wall : MonoBehaviour
     public float wallStuckTime = 1f;
     public Transform bottomCenterPoint;
     public GameObject ghost;
+    public GameObject alternatingWall;
     public AudioSource vineWrapping;
 
     public Animator vineAnimation1;
@@ -49,6 +50,13 @@ public class Moving_Wall : MonoBehaviour
                 MoveWallDown();
             }
         }
+
+        if(alternatingWall != null)
+        {
+            if (alternatingWall.GetComponent<Moving_Wall>().movingUp || alternatingWall.GetComponent<Moving_Wall>().movingDown)
+                MoveWall();
+        }
+        
     }
 
     public void MoveWall()

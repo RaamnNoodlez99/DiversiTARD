@@ -89,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 25190574634033724, guid: ceb0adc5383e044bcaa58a6320a13d95, type: 3}
       propertyPath: buttonPressedTime
-      value: 0.9
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 25190574634033724, guid: ceb0adc5383e044bcaa58a6320a13d95, type: 3}
       propertyPath: ghostButtonColor.a

@@ -13,7 +13,7 @@ public class Player_Controller : MonoBehaviour
     public float jumpTimer = 0.4f;
 
     public float platformOffset = 4f;
-    public float ghostPlatSpawnDelay = 0f;
+    public float ghostPlatSpawnDelay = 0.015f;
     public bool ghostPlatformExists = false;
     public float switchDelay = 0.001f;
     public GameObject inputManager;
@@ -51,6 +51,7 @@ public class Player_Controller : MonoBehaviour
 
 
     private bool facingLeft = true;
+    private bool movementFrozen = false;
 
     private GameObject currentGhostPlatform = null;
 
@@ -204,6 +205,15 @@ public class Player_Controller : MonoBehaviour
            
     }
 
+    public IEnumerator FreezeMovementInputForDuration(float duration)
+    {
+        moveInput = Vector2.zero;
+        Debug.Log("Freesing movement for: " + gameObject.tag);
+        movementFrozen = true;
+        yield return new WaitForSeconds(duration);
+        movementFrozen = false;
+    }
+
     IEnumerator DisableInputForDuration(float duration)
     {
         inputManager.GetComponent<PlayerInput>().enabled = false;
@@ -213,7 +223,7 @@ public class Player_Controller : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (!isAttacking)
+        if (!isAttacking && !movementFrozen)
         {
             if (gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && knockbackCounter <= 0)
             {
@@ -231,7 +241,7 @@ public class Player_Controller : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (!isAttacking)
+        if (!isAttacking && !movementFrozen)
         {
             if (context.performed && !isJumping && gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && !Pause_Menu.isPaused && !Level_Complete.levelIsOver)
             {
@@ -268,23 +278,25 @@ public class Player_Controller : MonoBehaviour
 
     public void OnSpawnPlatform(InputAction.CallbackContext context)
     {
-        if (currentGhostPlatform != null) 
-        {
-            //Debug.Log("But I still exist");
-        }
-
         if (despawnAvaialable && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && !Pause_Menu.isPaused)
         {
             if(currentGhostPlatform != null)
+            {
+                Debug.Log(currentGhostPlatform);
                 currentGhostPlatform.GetComponent<ghostPlatform>().SetDespawnTimer();
+                ghostPlatformExists = false;
+                SpawnPlatform();
+            }
 
             despawnAvaialable = false;
             return;
         }
 
-        //Debug.Log(gameObject.GetComponent<Character_Switch>().getCurCharacter());
         if (context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && !Pause_Menu.isPaused)
-            SpawnPlatform();
+        {
+            if (currentGhostPlatform == null)
+                SpawnPlatform();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -387,7 +399,6 @@ public class Player_Controller : MonoBehaviour
 
     public bool CanSpawnGhostPlatform()
     {
-        Debug.Log(isJumping);
         if (isJumping && !ghostPlatformExists)
         {
            /* Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, platformOffset);

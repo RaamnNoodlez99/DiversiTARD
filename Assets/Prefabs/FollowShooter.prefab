@@ -53,8 +53,11 @@ MonoBehaviour:
   shooterMovement: {fileID: 8872239146826599411}
   followOnlyGhost: 0
   followOnlyWoodenMan: 0
-  moveSpeed: 12
+  moveSpeed: 17
   shooterCircleAnimator: {fileID: 0}
+  firefliesStage1: {fileID: 0}
+  firefliesStage2: {fileID: 0}
+  movingWall: {fileID: 0}
 --- !u!82 &8872239146826599411
 AudioSource:
   m_ObjectHideFlags: 0
