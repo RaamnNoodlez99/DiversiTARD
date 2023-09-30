@@ -11,6 +11,8 @@ public class Player_Controller : MonoBehaviour
     public float jumpForce = 18f;
     public float gravityScale = 25f;
     public float jumpTimer = 0.4f;
+    public float coyoteTime = 0.2f;
+    public float coyoteTimeCounter;
 
     public float platformOffset = 4f;
     public float ghostPlatSpawnDelay = 0.015f;
@@ -55,11 +57,41 @@ public class Player_Controller : MonoBehaviour
 
     private GameObject currentGhostPlatform = null;
 
+    private GameObject ghostObject;
+    public bool ghostCanFollow;
+    
+    
+    
+    private Animator ghostObjectAnimator;
+    private Animator woodenManAnimator;
+    private GameObject dadObject;
+    private bool doOnce = false;
+    
+    bool isFlickering = false;
+    bool didDisappear = false;
+
     private void Awake()
     {
+        if (ghostCanFollow)
+        {
+            ghostObject = GameObject.FindWithTag("Ghost");
+            dadObject = GameObject.FindWithTag("WoodenMan");
+            ghostObjectAnimator = ghostObject.GetComponent<Animator>();
+            woodenManAnimator = dadObject.GetComponent<Animator>();
+        }
         playerBody = GetComponent<Rigidbody2D>();
         timer = jumpTimer;
         playerBody.gravityScale = gravityScale;
+    }
+    
+    bool isGrounded()
+    {
+        int groundLayerMask = LayerMask.GetMask("Platform", "FallingPlatform");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 5f, groundLayerMask);
+
+        Debug.DrawRay(transform.position, Vector2.down * 5f, Color.yellow, 0.1f);
+        
+        return hit.collider != null;
     }
 
     // Update is called once per frame
@@ -79,8 +111,68 @@ public class Player_Controller : MonoBehaviour
             despawnAvaialable = false;
         }
 
+        if (isGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+            coyoteTimeCounter -= Time.deltaTime;
+
         if (gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
         {
+            if (ghostCanFollow)
+            {
+                float woodenManMoveSpeed = this.woodenManAnimator.GetFloat("Speed");
+
+                if (woodenManMoveSpeed > 0f)
+                {
+                    ghostObjectAnimator.SetFloat("Speed", 0.1f);
+
+                    if (!doOnce)
+                    {
+                        ghostObject.GetComponent<Player_Controller>().Flip();
+                        doOnce = true;
+                    }
+                }
+                else
+                {
+                    ghostObjectAnimator.SetFloat("Speed", 0f);
+
+                    if (doOnce)
+                    {
+                        ghostObject.GetComponent<Player_Controller>().Flip();
+                        doOnce = false;
+                    }
+                }
+                
+                float distance = Vector3.Distance(transform.position, ghostObject.transform.position);
+                if (distance < 4f)
+                {
+                    this.EnableRenderers(ghostObject.transform);
+                    
+                    ghostObject.GetComponent<FollowCharacter>().enabled = false;
+                }
+                else
+                {
+                    if (distance > 20f)
+                    {
+                        // Make the ghost object invisible
+                        this.DisableRenderers(ghostObject.transform);
+                        this.didDisappear = true;
+                    }
+                    
+                    if (distance <= 5f)
+                    {
+                        if (!isFlickering && didDisappear)
+                        {
+                            StartCoroutine(Flicker());
+                        }
+                    }
+                    
+                    ghostObject.GetComponent<FollowCharacter>().enabled = true;
+                }
+            }
+            
             Animator woodenManAnimator = gameObject.GetComponent<Animator>();
             if (woodenManAnimator.GetBool("isAttacking") == false)
             {
@@ -107,6 +199,8 @@ public class Player_Controller : MonoBehaviour
         {
             if (gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost")
             {
+                if(ghostCanFollow)
+                    gameObject.GetComponent<FollowCharacter>().enabled = false;
                 if (GhostHUD != null)
                 {
                     Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();
@@ -130,6 +224,23 @@ public class Player_Controller : MonoBehaviour
                 }
             }
         }
+    }
+    
+    IEnumerator Flicker()
+    {
+        isFlickering = true;
+
+        for (int i = 0; i < 5; i++)
+        {
+            EnableRenderers(ghostObject.transform);
+            yield return new WaitForSeconds(0.1f);
+            DisableRenderers(ghostObject.transform);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        EnableRenderers(ghostObject.transform);
+        isFlickering = false;
+        didDisappear = false;
     }
 
     private void FixedUpdate()
@@ -191,6 +302,7 @@ public class Player_Controller : MonoBehaviour
 
         if (activateJump)
         {
+            coyoteTimeCounter = 0;
            playerBody.velocity = new Vector2(playerBody.velocity.x, jumpForce);
 
            if (earlyRelease)
@@ -238,22 +350,21 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-
     public void OnJump(InputAction.CallbackContext context)
     {
         if (!isAttacking && !movementFrozen)
         {
-            if (context.performed && !isJumping && gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && !Pause_Menu.isPaused && !Level_Complete.levelIsOver)
+            if (context.performed && coyoteTimeCounter > 0 && !Pause_Menu.isPaused && !Level_Complete.levelIsOver)
             {
                 if(gameObject.CompareTag("WoodenMan"))
                     SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.jumpGrunt);
-
+    
                 animator.SetTrigger("takeOff");
                 activateJump = true;
                 startTimer = true;
                 playerBody.gravityScale = 0;
             }
-
+    
             if (context.canceled || earlyRelease)
             {
                 playerBody.gravityScale = gravityScale;
@@ -267,12 +378,15 @@ public class Player_Controller : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan" &&
-            !Pause_Menu.isPaused)
+        if (!isJumping)
         {
-            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-            gameObject.GetComponent<Wooden_Man_Attack>().Attack();
-            isAttacking = true;
+            if (context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan" &&
+                !Pause_Menu.isPaused)
+            {
+                gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+                gameObject.GetComponent<Wooden_Man_Attack>().Attack();
+                isAttacking = true;
+            }
         }
     }
 
@@ -287,11 +401,11 @@ public class Player_Controller : MonoBehaviour
                 ghostPlatformExists = false;
                 SpawnPlatform();
             }
-
+    
             despawnAvaialable = false;
             return;
         }
-
+    
         if (context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && !Pause_Menu.isPaused)
         {
             if (currentGhostPlatform == null)
@@ -350,7 +464,7 @@ public class Player_Controller : MonoBehaviour
                 }
             }
         }
-
+    
         if (Pause_Menu.isPaused && PlayerPrefs.GetInt("toggleSwitch") == 0)
         {
             if(context.performed)
@@ -366,30 +480,9 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    // void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Platform"))
-    //     {
-    //         isJumping = false;
-    //
-    //         if (CompareTag("Ghost") || CompareTag("WoodenMan"))
-    //             animator.SetBool("isJumping", false);
-    //     }
-    // }
+    
 
-    // void OnTriggerExit2D(Collider2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Platform"))
-    //     {
-    //         isJumping = true;
-    //
-    //         if (CompareTag("Ghost") || CompareTag("WoodenMan"))
-    //             animator.SetTrigger("takeOff");
-    //             animator.SetBool("isJumping", true);
-    //     }
-    // }
-
-    void Flip()
+    public void Flip()
     {
         Vector3 currentScale = gameObject.transform.localScale;
         currentScale.x *= -1;
@@ -436,6 +529,36 @@ public class Player_Controller : MonoBehaviour
         if (CompareTag("Ghost") || CompareTag("WoodenMan"))
         {
            animator.SetBool("isJumping", value);
+        }
+    }
+    
+    private void DisableRenderers(Transform parentTransform)
+    {
+        foreach (Transform child in parentTransform)
+        {
+            Renderer renderer = child.GetComponent<Renderer>();
+
+            if (renderer != null)
+            {
+                renderer.enabled = false;
+            }
+
+            DisableRenderers(child);
+        }
+    }
+
+    private void EnableRenderers(Transform parentTransform)
+    {
+        foreach (Transform child in parentTransform)
+        {
+            Renderer renderer = child.GetComponent<Renderer>();
+
+            if (renderer != null)
+            {
+                renderer.enabled = true;
+            }
+
+            EnableRenderers(child);
         }
     }
 }

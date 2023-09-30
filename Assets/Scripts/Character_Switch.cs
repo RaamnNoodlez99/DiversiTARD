@@ -10,7 +10,7 @@ public class Character_Switch : MonoBehaviour
     public GameObject thisCharacter;
 
     public CinemachineVirtualCamera cinemachine;
-    //public CinemachineStateDrivenCamera cinemachine;
+    // public CinemachineStateDrivenCamera cinemachine;
     private Transform activeCharacter;
     public static string currentCharacter;
     
@@ -262,9 +262,12 @@ public class Character_Switch : MonoBehaviour
                     //thisCharacter.GetComponent<Character_Switch>().enabled = false;
                 }
             }
-
-            cinemachine.LookAt = activeCharacter;
-            cinemachine.Follow = activeCharacter;
+            
+            if (cinemachine != null)
+            {
+                cinemachine.LookAt = activeCharacter;
+                cinemachine.Follow = activeCharacter;
+            }
         }
     }
 

@@ -24,6 +24,8 @@ public class Falling_Platform : MonoBehaviour
     public Color dadPlatformColor;
     public Color ghostPlatformColor;
 
+    public bool playFast = false;
+
     void Start()
     {
         characterCheck = GameObject.Find("Ghost");
@@ -60,7 +62,10 @@ public class Falling_Platform : MonoBehaviour
                 hasCracked = true;
             }
 
-            Invoke("AnimatePlatform", 0.5f);
+            if (playFast)
+                AnimatePlatform();
+            else
+                Invoke("AnimatePlatform", 0f);
             //Destroy(gameObject, destroyTime + 2);
         }
     }
@@ -72,7 +77,11 @@ public class Falling_Platform : MonoBehaviour
         childAnimator.SetBool("shakePlatform", true);
         childAnimator.SetBool("dropPlatform", false);
         childAnimator.SetBool("makeIdle", false);
-        Invoke("SetDrop", destroyTime - 2);
+        
+        if (playFast)
+            SetDrop();
+        else
+            Invoke("SetDrop", destroyTime - 2);
     }
 
     void SetDrop()
@@ -80,7 +89,11 @@ public class Falling_Platform : MonoBehaviour
         childAnimator.SetBool("shakePlatform", false);
         childAnimator.SetBool("dropPlatform", true);
         childAnimator.SetBool("makeIdle", false);
-        Invoke("DropPlatform", 1);
+        
+        if (playFast)
+            Invoke("DropPlatform", 1);
+        else
+            Invoke("DropPlatform", 1);
     }
 
     void DropPlatform()
@@ -125,3 +138,4 @@ public class Falling_Platform : MonoBehaviour
         }
     }
 }
+

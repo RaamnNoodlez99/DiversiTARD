@@ -13,6 +13,13 @@ public class GroundCheck : MonoBehaviour
 
     public GameObject RespawnPlatformHUDIcon;
 
+    private GameObject dadObject;
+
+    private void Awake()
+    {
+        dadObject = GameObject.FindWithTag("WoodenMan");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Ghost Bone") || collision.gameObject.CompareTag("Button"))
@@ -26,31 +33,16 @@ public class GroundCheck : MonoBehaviour
             } else if (currChar == "Ghost" && collision.gameObject.CompareTag("Button"))
             {
                 return;
+            } else if (currChar == "Ghost" && collision.gameObject.CompareTag("Platform"))
+            {
+                if (ghostReference.GetComponent<FollowCharacter>() && collision.gameObject.name.Contains("Bone"))
+                {
+                    dadObject.GetComponent<Player_Controller>().ghostCanFollow = false;
+                    ghostReference.GetComponent<FollowCharacter>().enabled = false;
+                }
             }
                 
             characterToCheckController.setIsJumping(false);
-
-            // if (gameObject.name == "Ground Check Ghost")
-            // {
-            //     Player_Controller ghostController = ghostReference.GetComponent<Player_Controller>();
-            //
-            //     if (ghostController.ghostPlatformExists && collision.gameObject.CompareTag("Platform"))
-            //     {
-            //         Image platformHUDImage = RespawnPlatformHUDIcon.GetComponent<Image>();
-            //         Color currentColor = platformHUDImage.color;
-            //         currentColor.a = 1f;
-            //         platformHUDImage.color = currentColor;
-            //         ghostController.ghostPlatformExists = false;
-            //     } else if (ghostController.ghostPlatformExists && collision.gameObject.CompareTag("Ghost Bone"))
-            //     {
-            //         Image platformHUDImage = RespawnPlatformHUDIcon.GetComponent<Image>();
-            //         Color currentColor = platformHUDImage.color;
-            //         currentColor.a = 0.5f;
-            //         platformHUDImage.color = currentColor;
-            //         ghostController.ghostPlatformExists = true;
-            //     }
-            // }
-            
         }
     }
 
@@ -67,6 +59,12 @@ public class GroundCheck : MonoBehaviour
             } else if (currChar == "Ghost" && collision.gameObject.CompareTag("Button"))
             {
                 return;
+            } else if (currChar == "Ghost" && collision.gameObject.CompareTag("Platform"))
+            {
+                if (ghostReference.GetComponent<FollowCharacter>() && collision.gameObject.name.Contains("Bone"))
+                {
+                    dadObject.GetComponent<Player_Controller>().ghostCanFollow = true;
+                }
             }
             
             characterToCheckController.setIsJumping(true);
