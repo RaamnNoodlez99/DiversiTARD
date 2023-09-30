@@ -6,12 +6,13 @@ public class Moving_Wall : MonoBehaviour
 {
     public float moveSpeed = 10.0f;
 
-    bool hitPlatform = false;
+    private bool hitPlatform = false;
     bool movingUp = false;
     bool movingDown = false;
     public bool isWallDown = false;
     private Coroutine moveCounterReference;
     private bool hitGhostPlatform = false;
+    private bool hasNotPlayedTrap = true;
     string lastDirection = "up";
 
     Vector3 originalPosition; 
@@ -20,8 +21,9 @@ public class Moving_Wall : MonoBehaviour
     public float wallStuckTime = 1f;
     public Transform bottomCenterPoint;
     public GameObject ghost;
-    public GameObject alternatingWall;
     public AudioSource vineWrapping;
+    public bool startDownwards = false;
+    public bool onlyMoveOnce = false;
 
     public Animator vineAnimation1;
     public Animator vineAnimation2;
@@ -30,13 +32,23 @@ public class Moving_Wall : MonoBehaviour
     private void Start()
     {
         originalPosition = transform.position;
+
+        if (startDownwards)
+            StartCoroutine(DelayedStart());
     }
+
+    private IEnumerator DelayedStart()
+    {
+        yield return new WaitForSeconds(0.8f); // Adjust the delay time as needed
+        MoveWall();
+    }
+
 
     private void Update()
     {
         if(ghost.GetComponent<Player_Controller>().ghostPlatformExists && hitPlatform)
         {
-            Debug.Log("On Ghost Platform");
+            Debug.Log(hitPlatform);
             hitGhostPlatform = true;
         }
 
@@ -50,24 +62,40 @@ public class Moving_Wall : MonoBehaviour
                 MoveWallDown();
             }
         }
-
-        if(alternatingWall != null)
-        {
-            if (alternatingWall.GetComponent<Moving_Wall>().movingUp || alternatingWall.GetComponent<Moving_Wall>().movingDown)
-                MoveWall();
-        }
         
     }
 
+    int moveCounter = -1;
+
     public void MoveWall()
     {
-        hitPlatform = false;
-        if (lastDirection == "up")
+        if (onlyMoveOnce)
         {
-            MoveWallDown();
+            if( moveCounter < 0)
+            {
+                hitPlatform = false;
+                if (lastDirection == "up")
+                {
+                    MoveWallDown();
+                }
+                else
+                {
+                    MoveWallUp();
+                }
+            }
+            moveCounter++;
         }
-        else{
-            MoveWallUp();
+        else
+        {
+            hitPlatform = false;
+            if (lastDirection == "up")
+            {
+                MoveWallDown();
+            }
+            else
+            {
+                MoveWallUp();
+            }
         }
     }
     public void MoveWallDown()
@@ -81,9 +109,9 @@ public class Moving_Wall : MonoBehaviour
     {
         if (hittingClamp)
         {
-            Debug.Log("set idle");
-            vineAnimation1.SetBool("makeIdle", true);
-            vineAnimation2.SetBool("makeIdle", true);
+           // Debug.Log("set idle");
+           vineAnimation1.SetBool("makeIdle", true);
+           vineAnimation2.SetBool("makeIdle", true);
             hittingClamp = false;
         }
             
@@ -99,7 +127,7 @@ public class Moving_Wall : MonoBehaviour
         }
 
         movingDown = true;
-        while (!hitPlatform && !movingUp)
+        while (!hitPlatform && !hittingClamp && !movingUp)
         {
             Vector3 direction = Vector3.down;
 
@@ -109,13 +137,15 @@ public class Moving_Wall : MonoBehaviour
 
             if (hit.collider != null)
             {
+                Debug.Log("Hit Platform");
                 hitPlatform = true;
                 moveCounterReference = StartCoroutine(MoveCounter());
             }
             else if (clampHit.collider != null)
             {
+                Debug.Log("Hit Vine");
                 vineWrapping.Play();
-                hitPlatform = true;
+                //hitPlatform = true;
                 
                 //hits clamp
                 vineAnimation1.SetTrigger("triggerVine");
@@ -136,6 +166,15 @@ public class Moving_Wall : MonoBehaviour
         movingDown = false;
     }
 
+    public void PlayTrapped()
+    {
+        if (hasNotPlayedTrap)
+        {
+            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.trapped);
+            hasNotPlayedTrap = false;
+        }
+    }
+
     private IEnumerator MoveCounter()
     {
         yield return new WaitForSeconds(wallStuckTime);
@@ -149,12 +188,14 @@ public class Moving_Wall : MonoBehaviour
             StopCoroutine(moveCounterReference);
         }
         
-        vineAnimation1.SetTrigger("triggerIdle");
-        vineAnimation2.SetTrigger("triggerIdle");
+       // vineAnimation1.SetTrigger("triggerIdle");
+        //vineAnimation2.SetTrigger("triggerIdle");
 
         movingUp = true;
+       // Debug.Log("Current Position: " + transform.position.y + "    Target Position: " + originalPosition.y);
         while (transform.position.y < originalPosition.y && !movingDown)
         {
+           // Debug.Log("moving");
             Vector3 direction = Vector3.up;
             Vector3 newPosition = transform.position + direction * moveSpeed * Time.deltaTime;
             transform.position = newPosition;

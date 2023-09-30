@@ -21,6 +21,10 @@ public class SFX_Manager : MonoBehaviour
     public AudioClip jumpLand;
     public AudioClip JourneyOver;
     public AudioClip LevelComplete;
+    public AudioClip teleport;
+    public AudioClip trapped;
+
+
 
 
 

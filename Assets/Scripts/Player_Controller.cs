@@ -48,6 +48,7 @@ public class Player_Controller : MonoBehaviour
     public float knockbackCounter;
     public float knockbackTotalTime = 0.4f;
     public bool knockFromRight;
+    public bool IsBusyTeleporting = false;
 
 
     private bool facingLeft = true;
@@ -110,22 +111,34 @@ public class Player_Controller : MonoBehaviour
                 if (GhostHUD != null)
                 {
                     Ghost_Platform_HUD ghostHud = GhostHUD.GetComponent<Ghost_Platform_HUD>();
-                    
-                    if (isJumping && !ghostPlatformExists)
+
+                    /* if (isJumping && !ghostPlatformExists)
+                     {
+                         ghostHud.removeIconOpaque();
+                     }
+                     else if(!isJumping && ghostPlatformExists && despawnAvaialable)
+                     {
+                         ghostHud.removeIconOpaque();
+                     }
+                     else if (!isJumping && !despawnAvaialable && !ghostPlatformExists)
+                     {
+                         ghostHud.setIconOpaque();
+                     }
+                     else if(!despawnAvaialable)
+                     {
+                         ghostHud.setIconOpaque();
+                     }*/
+                    if (isJumping)
                     {
                         ghostHud.removeIconOpaque();
                     }
-                    else if(!isJumping && ghostPlatformExists && despawnAvaialable)
+                    else if(!isJumping && currentGhostPlatform == null)
+                    {
+                        ghostHud.setIconOpaque();
+                    }
+                    else if (!isJumping && currentGhostPlatform != null)
                     {
                         ghostHud.removeIconOpaque();
-                    }
-                    else if (!isJumping && !despawnAvaialable && !ghostPlatformExists)
-                    {
-                        ghostHud.setIconOpaque();
-                    }
-                    else if(!despawnAvaialable)
-                    {
-                        ghostHud.setIconOpaque();
                     }
                 }
             }
@@ -153,9 +166,9 @@ public class Player_Controller : MonoBehaviour
             knockbackCounter -= Time.deltaTime;
         }
 
-        if (IsMoving && !isJumping && footstepTimer <= 0f && gameObject.CompareTag("WoodenMan"))
+        if (IsMoving && !isJumping && footstepTimer <= 0f && gameObject.CompareTag("WoodenMan") && !IsBusyTeleporting)
         {
-            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.footstep);
+            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.footstep,0.6f);
             footstepTimer = footstepInterval;
         }
         if (footstepTimer > 0f)
@@ -214,6 +227,12 @@ public class Player_Controller : MonoBehaviour
         movementFrozen = false;
     }
 
+    public void FreezeMovementIndefinetely()
+    {
+        moveInput = Vector2.zero;
+        movementFrozen = true;
+    }
+
     IEnumerator DisableInputForDuration(float duration)
     {
         inputManager.GetComponent<PlayerInput>().enabled = false;
@@ -225,6 +244,7 @@ public class Player_Controller : MonoBehaviour
     {
         if (!isAttacking && !movementFrozen)
         {
+            IsBusyTeleporting = false;
             if (gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && knockbackCounter <= 0)
             {
                 moveInput = context.ReadValue<Vector2>();
@@ -277,25 +297,33 @@ public class Player_Controller : MonoBehaviour
     }
 
     public void OnSpawnPlatform(InputAction.CallbackContext context)
-    {
-        if (despawnAvaialable && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && !Pause_Menu.isPaused)
+    { 
+        if(gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && gameObject.CompareTag("Ghost") && !Pause_Menu.isPaused && isJumping && context.performed)
         {
-            if(currentGhostPlatform != null)
+            Debug.Log("1");
+            if (currentGhostPlatform != null)
             {
-                Debug.Log(currentGhostPlatform);
+                Debug.Log("Destroying Old Creating New");
                 currentGhostPlatform.GetComponent<ghostPlatform>().SetDespawnTimer();
                 ghostPlatformExists = false;
                 SpawnPlatform();
             }
-
-            despawnAvaialable = false;
-            return;
-        }
-
-        if (context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && !Pause_Menu.isPaused)
-        {
-            if (currentGhostPlatform == null)
+            else
+            {
+                Debug.Log("Creating New");
                 SpawnPlatform();
+            }
+        }
+        else if (gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && gameObject.CompareTag("Ghost") && !Pause_Menu.isPaused && !isJumping && context.performed)
+        {
+            Debug.Log("2");
+            if (currentGhostPlatform != null)
+            {
+                Debug.Log("Destroying Old");
+                SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.platformDestroy,0.55f);
+                currentGhostPlatform.GetComponent<ghostPlatform>().SetDespawnTimer();
+                ghostPlatformExists = false;
+            }
         }
     }
 
@@ -305,10 +333,6 @@ public class Player_Controller : MonoBehaviour
         {
             despawnAvaialable = true;
         } else if (currentGhostPlatform != null && collision.gameObject == currentGhostPlatform && gameObject.CompareTag("Ghost"))
-        {
-            despawnAvaialable = false;
-        }
-        else if (currentGhostPlatform != null && collision.gameObject == currentGhostPlatform && gameObject.CompareTag("Ghost"))
         {
             despawnAvaialable = false;
         }
@@ -399,7 +423,7 @@ public class Player_Controller : MonoBehaviour
 
     public bool CanSpawnGhostPlatform()
     {
-        if (isJumping && !ghostPlatformExists)
+        if (isJumping)
         {
            /* Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, platformOffset);
             foreach (Collider2D collider in colliders)
@@ -417,7 +441,7 @@ public class Player_Controller : MonoBehaviour
         if (CanSpawnGhostPlatform() && CompareTag("Ghost"))
         {
             Invoke("SpawnDelayedPlatform", ghostPlatSpawnDelay);
-            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.platfromCreation);
+            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.platfromCreation,0.55f);
             ghostPlatformExists = true;
         }
     }
