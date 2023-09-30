@@ -56,7 +56,7 @@ public class ghostPlatform : MonoBehaviour
                 if(ghost != null)
                     ghost.GetComponent<Player_Controller>().ghostPlatformExists = false;
 
-                SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.platformDestroy);
+                //SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.platformDestroy);
                 Destroy(gameObject);
                 
                 if (GhostHUD != null)

@@ -162,7 +162,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 8
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -216,14 +216,14 @@ MonoBehaviour:
   seedSpriteRenderer: {fileID: 8711719228391775}
   vineBackRenderer: {fileID: 1138211854675869306}
   vineFrontRenderer: {fileID: 2611375014797515465}
-  dadSeedLeafColor: {r: 0.6, g: 0.73333335, b: 0.58431375, a: 1}
-  dadSeedColor: {r: 0, g: 0, b: 0, a: 0}
-  dadVineBackColor: {r: 0, g: 0, b: 0, a: 0}
-  dadVineFrontColor: {r: 0, g: 0, b: 0, a: 0}
-  ghostSeedLeafColor: {r: 0, g: 0, b: 0, a: 0}
-  ghostSeedColor: {r: 0, g: 0, b: 0, a: 0}
-  ghostVineBackColor: {r: 0, g: 0, b: 0, a: 0}
-  ghostVineFrontColor: {r: 0, g: 0, b: 0, a: 0}
+  dadSeedLeafColor: {r: 0.3019608, g: 0.50980395, b: 0.22745098, a: 1}
+  dadSeedColor: {r: 0.7372549, g: 0.5294118, b: 0.5764706, a: 0}
+  dadVineBackColor: {r: 0.20392157, g: 0.3529412, b: 0.16470589, a: 0}
+  dadVineFrontColor: {r: 0.20392157, g: 0.3529412, b: 0.16470589, a: 0}
+  ghostSeedLeafColor: {r: 0.105882354, g: 0.12156863, b: 0.12941177, a: 0}
+  ghostSeedColor: {r: 0.3137255, g: 0.32941177, b: 0.34117648, a: 0}
+  ghostVineBackColor: {r: 0.654902, g: 0.6666667, b: 0.6784314, a: 0}
+  ghostVineFrontColor: {r: 0.654902, g: 0.6666667, b: 0.6784314, a: 0}
 --- !u!1 &7213257227463318826
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +363,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -109489759, guid: bb02a6212fb2a4cff919ed83f16ff12b, type: 3}
+    - target: {fileID: 863839604439117250, guid: db6d68ca395424a78afa16c60f3fabe4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4352923919156067912, guid: db6d68ca395424a78afa16c60f3fabe4, type: 3}
       propertyPath: m_Name
       value: Front_Vine

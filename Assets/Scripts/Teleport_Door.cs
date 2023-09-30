@@ -87,6 +87,10 @@ public class Teleport_Door : MonoBehaviour
     IEnumerator TeleportCharacter(GameObject character)
     {
         isTeleporting = true;
+        character.GetComponent<Player_Controller>().IsBusyTeleporting = true;
+
+        SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.teleport);
+        DisableRenderers(character.transform);
 
         StartCoroutine(character.GetComponent<Player_Controller>().FreezeMovementInputForDuration(1f));
         yield return new WaitForSeconds(1.0f);
@@ -95,20 +99,49 @@ public class Teleport_Door : MonoBehaviour
 
         if (dad.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
         {
-            // Teleport the character to the right of the connected dad door
-            teleportPosition = connectedDadDoor.transform.position + new Vector3(10f, 0f, 0f); // Adjust the values as needed
+            teleportPosition = connectedDadDoor.transform.position + new Vector3(7f, 0f, 0f); 
         }
         else
         {
-            // Teleport the character to the right of the connected ghost door
-            teleportPosition = connectedGhostDoor.transform.position + new Vector3(10f, 0f, 0f); // Adjust the values as needed
+            teleportPosition = connectedGhostDoor.transform.position + new Vector3(7f, 0f, 0f); 
         }
 
         character.transform.position = teleportPosition;
 
-        isTeleporting = false;
+
+        EnableRenderers(character.transform); isTeleporting = false;
 
         yield return new WaitForSeconds(0f);
+    }
+
+    private void DisableRenderers(Transform parentTransform)
+    {
+        foreach (Transform child in parentTransform)
+        {
+            Renderer renderer = child.GetComponent<Renderer>();
+
+            if (renderer != null)
+            {
+                renderer.enabled = false;
+            }
+
+            DisableRenderers(child);
+        }
+    }
+
+    private void EnableRenderers(Transform parentTransform)
+    {
+        foreach (Transform child in parentTransform)
+        {
+            Renderer renderer = child.GetComponent<Renderer>();
+
+            if (renderer != null)
+            {
+                renderer.enabled = true;
+            }
+
+            EnableRenderers(child);
+        }
     }
 
 }
