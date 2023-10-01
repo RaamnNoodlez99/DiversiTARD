@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartCutscene : MonoBehaviour
 {
@@ -10,11 +11,14 @@ public class StartCutscene : MonoBehaviour
 
     private Player_Controller dadPlayerController;
     private Player_Controller ghostPlayerController;
+
+    public bool loadNextScene = false;
     private void Awake()
     {
         dadPlayerController = GameObject.FindWithTag("WoodenMan").GetComponent<Player_Controller>();
         ghostPlayerController = GameObject.FindWithTag("Ghost").GetComponent<Player_Controller>();
-        Phase1StartScript.SetActive(false);
+        if(Phase1StartScript != null)
+            Phase1StartScript.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,10 +27,26 @@ public class StartCutscene : MonoBehaviour
         {
             dadPlayerController.inputManager.SetActive(false);
             ghostPlayerController.inputManager.SetActive(false);
-            cutsceneAnimator.SetBool("cutscene1", true);
-            Phase1StartScript.SetActive(true);
-            Invoke("stopCutscene", 3f);
+            if(Phase1StartScript != null)
+                Phase1StartScript.SetActive(true);
+
+            if (loadNextScene)
+            {
+                cutsceneAnimator.SetBool("startCutscene", true);
+                Invoke("loadNextLevel", 3f);
+            }
+            else
+            {
+                cutsceneAnimator.SetBool("cutscene1", true);
+                Invoke("stopCutscene", 3f);
+            }
         }
+    }
+
+    void loadNextLevel()
+    {
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
     }
 
     void stopCutscene()

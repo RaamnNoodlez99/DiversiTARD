@@ -2759,7 +2759,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 40
+    OrthographicSize: 35.07
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -3613,11 +3613,11 @@ PrefabInstance:
     - target: {fileID: 1880723246588523923, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1731100112}
     - target: {fileID: 1880723246588523923, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_LookAt
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1731100112}
     - target: {fileID: 1880723246588523923, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_ComponentOwner
       value: 
@@ -3628,7 +3628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1880723247291989248, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 30.2
+      value: 35.07
       objectReference: {fileID: 0}
     - target: {fileID: 1880723247291989250, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_IsActive
@@ -3636,11 +3636,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1880723247291989251, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -60.32299
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1880723247291989251, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -21.499493
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 1880723247291989251, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3653,11 +3653,11 @@ PrefabInstance:
     - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 1731100112}
+      objectReference: {fileID: 0}
     - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_LookAt
       value: 
-      objectReference: {fileID: 1731100112}
+      objectReference: {fileID: 0}
     - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_AnimatedTarget
       value: 
@@ -3676,7 +3676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_ChildCameras.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1880723248015024308, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_Name

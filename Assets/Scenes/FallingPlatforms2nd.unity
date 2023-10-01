@@ -1032,6 +1032,8 @@ MonoBehaviour:
   jumpForce: 40
   gravityScale: 40
   jumpTimer: 0.4
+  coyoteTime: 0.2
+  coyoteTimeCounter: 0
   platformOffset: 5
   ghostPlatSpawnDelay: 0
   ghostPlatformExists: 0
@@ -1046,6 +1048,7 @@ MonoBehaviour:
   knockbackTotalTime: 0.4
   knockFromRight: 0
   IsBusyTeleporting: 0
+  ghostCanFollow: 0
 --- !u!95 &462617583 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3273507237165259418, guid: a36188a0c93264e1385fb02c751aadf8, type: 3}
@@ -1467,22 +1470,22 @@ PrefabInstance:
     - target: {fileID: 1880723246588523923, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1731100112}
     - target: {fileID: 1880723246588523923, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_LookAt
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1731100112}
     - target: {fileID: 1880723246588523923, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_ComponentOwner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 83087114}
     - target: {fileID: 1880723246588523923, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_Lens.OrthographicSize
       value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1880723247291989248, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 30.2
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1880723247291989250, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_IsActive
@@ -1490,11 +1493,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1880723247291989251, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50.92299
+      value: 29.6
       objectReference: {fileID: 0}
     - target: {fileID: 1880723247291989251, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.119492
+      value: 6.6
       objectReference: {fileID: 0}
     - target: {fileID: 1880723247291989251, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1503,11 +1506,11 @@ PrefabInstance:
     - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 1731100112}
+      objectReference: {fileID: 0}
     - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_LookAt
       value: 
-      objectReference: {fileID: 1731100112}
+      objectReference: {fileID: 0}
     - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_AnimatedTarget
       value: 
@@ -1708,6 +1711,7 @@ MonoBehaviour:
   JourneyOver: {fileID: 0}
   LevelComplete: {fileID: 0}
   teleport: {fileID: 0}
+  trapped: {fileID: 0}
   Audio: {fileID: 593480067}
 --- !u!4 &593480065
 Transform:

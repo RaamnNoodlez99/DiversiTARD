@@ -221,7 +221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747592223720191093}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.182042, y: 1.421609, z: 0.04536075}
+  m_LocalPosition: {x: -1.76, y: 0.43, z: 0.04536075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -269,7 +269,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 2092253707, guid: 1e3c723cf7dc446f3a4d2dde9ae21aa9, type: 3}
+  m_Sprite: {fileID: -139312514, guid: c6e215e7c2cfb41998b4bd0c67267cce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.49019608}
   m_FlipX: 0
   m_FlipY: 0
@@ -422,10 +422,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -16.102905, y: 12.612552}
-      - {x: -16.192135, y: 15.864789}
-      - {x: -8.530845, y: 23.164516}
-      - {x: -8.226968, y: 9.976963}
+    - - {x: -16.727242, y: 12.81178}
+      - {x: -16.72042, y: 16.064014}
+      - {x: -14.045672, y: 22.68}
+      - {x: -14.266538, y: 10.505789}
 --- !u!114 &5687228424973130808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,7 +455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1597987876712156484
 Transform:
   m_ObjectHideFlags: 0
@@ -622,6 +622,8 @@ MonoBehaviour:
   jumpForce: 40
   gravityScale: 40
   jumpTimer: 0.4
+  coyoteTime: 0.2
+  coyoteTimeCounter: 0
   platformOffset: 1
   ghostPlatSpawnDelay: 0
   ghostPlatformExists: 0
@@ -635,6 +637,8 @@ MonoBehaviour:
   knockbackCounter: 0
   knockbackTotalTime: 0.4
   knockFromRight: 0
+  IsBusyTeleporting: 0
+  ghostCanFollow: 0
 --- !u!114 &5068456077889257147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,6 +657,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   Rails: []
   ShooterHeads: []
+  TeleportDoors: []
 --- !u!114 &4189188203714929208
 MonoBehaviour:
   m_ObjectHideFlags: 0

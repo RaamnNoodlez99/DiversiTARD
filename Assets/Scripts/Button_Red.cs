@@ -18,15 +18,20 @@ public class Button_Red : MonoBehaviour
     public Color dadButtonColor;
     public Color dadPressedButtonColor;
     public Color dadCupColor;
+    public Color dadEyesColor;
+    
     public Color ghostButtonColor;
     public Color ghostPressedButtonColor;
     public Color ghostCupColor;
+    public Color ghostEyesColor;
 
     private bool isButtonPressed = false;
 
     public BoxCollider2D buttonsTriggerCollider;
 
     public GameObject[] shootersToReset;
+
+    public bool isResetButton = false;
 
     void Start()
     {
@@ -51,10 +56,21 @@ public class Button_Red : MonoBehaviour
             GameObject cupGameObject = transform.GetChild(1).gameObject;
             SpriteRenderer cupSpriteRenderer = cupGameObject.GetComponent<SpriteRenderer>();
 
+            SpriteRenderer eyesSpriteRenderer = null;
+                
+            if (isResetButton)
+            {
+                GameObject eyesGameObject = buttonGameObject.transform.GetChild(0).gameObject;
+                eyesSpriteRenderer = eyesGameObject.GetComponent<SpriteRenderer>();
+            }
+
             if (characterCheck.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
             {
                 buttonSpriteRenderer.color = dadButtonColor;
                 cupSpriteRenderer.color = dadCupColor;
+
+                if (isResetButton)
+                    eyesSpriteRenderer.color = dadEyesColor;
 
                 if (_animator.GetBool("isPressed"))
                     buttonSpriteRenderer.color = dadPressedButtonColor;
@@ -63,6 +79,9 @@ public class Button_Red : MonoBehaviour
             {
                 buttonSpriteRenderer.color = ghostButtonColor;
                 cupSpriteRenderer.color = ghostCupColor;
+                
+                if (isResetButton)
+                    eyesSpriteRenderer.color = ghostEyesColor;
                 
                 if (_animator.GetBool("isPressed"))
                     buttonSpriteRenderer.color = ghostPressedButtonColor;
