@@ -179,6 +179,14 @@ public class Player_Controller : MonoBehaviour
             {
                 isAttacking = false;
                 gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+                movementFrozen = false;
+            }
+            else
+            {
+                inputManager.SetActive(false);
+                Invoke("resetInputManager", 1f);
+                movementFrozen = true;
+                gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             }
         }
 
@@ -238,6 +246,11 @@ public class Player_Controller : MonoBehaviour
             }
         }
     }
+
+    private void resetInputManager()
+    {
+        inputManager.SetActive(true);
+    }
     
     IEnumerator Flicker()
     {
@@ -293,7 +306,7 @@ public class Player_Controller : MonoBehaviour
         }
         
 
-        if(moveInput.x > 0 && facingLeft)
+        if(!isAttacking && moveInput.x > 0 && facingLeft)
         {
             Flip();
             if(gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
@@ -303,7 +316,7 @@ public class Player_Controller : MonoBehaviour
             }
         }
 
-        if(moveInput.x < 0 && !facingLeft)
+        if(!isAttacking && moveInput.x < 0 && !facingLeft)
         {
             Flip();
             if(gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
@@ -354,7 +367,7 @@ public class Player_Controller : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (!isAttacking && !movementFrozen)
+        if (!movementFrozen)
         {
             IsBusyTeleporting = false;
             if (gameObject.CompareTag(gameObject.GetComponent<Character_Switch>().getCurCharacter()) && knockbackCounter <= 0)
@@ -398,12 +411,14 @@ public class Player_Controller : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (!isJumping)
+        if (!isJumping && !isAttacking)
         {
             if (context.performed && gameObject.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan" &&
                 !Pause_Menu.isPaused)
             {
-                gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+                // gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+                // gameObject.GetComponent<Wooden_Man_Attack>().Attack();
+                // isAttacking = true;
                 gameObject.GetComponent<Wooden_Man_Attack>().Attack();
                 isAttacking = true;
             }

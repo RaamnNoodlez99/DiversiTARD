@@ -1084,6 +1084,8 @@ MonoBehaviour:
   jumpForce: 40
   gravityScale: 40
   jumpTimer: 0.4
+  coyoteTime: 0.2
+  coyoteTimeCounter: 0
   platformOffset: 4
   ghostPlatSpawnDelay: 0
   ghostPlatformExists: 0
@@ -1097,6 +1099,8 @@ MonoBehaviour:
   knockbackCounter: 0
   knockbackTotalTime: 0.4
   knockFromRight: 0
+  IsBusyTeleporting: 0
+  ghostCanFollow: 0
 --- !u!95 &462617583 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3273507237165259418, guid: a36188a0c93264e1385fb02c751aadf8, type: 3}
@@ -1126,6 +1130,7 @@ MonoBehaviour:
   - {fileID: 1615062227}
   - {fileID: 1778472393}
   - {fileID: 631035681}
+  TeleportDoors: []
 --- !u!70 &462617585
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1593,6 +1598,8 @@ MonoBehaviour:
   jumpLand: {fileID: 8300000, guid: 4763d9893b2ae3f41a2168e5b23ec98d, type: 3}
   JourneyOver: {fileID: 0}
   LevelComplete: {fileID: 0}
+  teleport: {fileID: 0}
+  trapped: {fileID: 0}
   Audio: {fileID: 593480067}
 --- !u!4 &593480065
 Transform:
@@ -2375,10 +2382,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2233267511658419634, guid: 8ca2c67bf6adc754ca917143705b6a65, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8472420759860904512, guid: 8ca2c67bf6adc754ca917143705b6a65, type: 3}
       propertyPath: UVModule.mode
       value: 0
