@@ -861,6 +861,8 @@ MonoBehaviour:
   jumpForce: 40
   gravityScale: 40
   jumpTimer: 0.4
+  coyoteTime: 0.2
+  coyoteTimeCounter: 0
   platformOffset: 4
   ghostPlatSpawnDelay: 0
   ghostPlatformExists: 0
@@ -875,6 +877,7 @@ MonoBehaviour:
   knockbackTotalTime: 0.4
   knockFromRight: 0
   IsBusyTeleporting: 0
+  ghostCanFollow: 0
 --- !u!95 &462617583 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3273507237165259418, guid: a36188a0c93264e1385fb02c751aadf8, type: 3}
@@ -1960,6 +1963,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cameraControl
       objectReference: {fileID: 0}
+    - target: {fileID: 341897252179587296, guid: fc239c4c99a014bcba471fd8fbbe5308, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 341897252179587298, guid: fc239c4c99a014bcba471fd8fbbe5308, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2502,7 +2509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &973553340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3095,7 +3102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1880723248015024308, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1880723248015024309, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_RootOrder
