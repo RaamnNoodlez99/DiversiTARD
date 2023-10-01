@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu0190.unity
     guid: 7534008369a22f84b8bb79937fc8cfeb
   - enabled: 1
+    path: Assets/Scenes/OpeningCutscene.unity
+    guid: a879bf9f05a159a499d0b4029bb4764e
+  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 50eb8703491cece4eba77f790b979faf
   - enabled: 1
@@ -32,6 +35,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FallingPlatforms2nd.unity
     guid: a97e630c086984044a118a5219a190c4
+  - enabled: 1
+    path: Assets/Scenes/BossLevel.unity
+    guid: 8faec9f5d9af74432ab35663d9ca92e0
+  - enabled: 1
+    path: Assets/Scenes/Boss Phase 3.unity
+    guid: 53ac7c9e408974f43ad612300b4ccd7f
   - enabled: 1
     path: Assets/Scenes/FinalOrb.unity
     guid: 0cf74d2055f8044e28c9023307808600

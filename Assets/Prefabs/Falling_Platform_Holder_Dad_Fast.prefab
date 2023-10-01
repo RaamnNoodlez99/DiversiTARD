@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6188598041444563712}
   - component: {fileID: 6712667376700086026}
   m_Layer: 16
-  m_Name: Falling_Platform_Holder_Dad 1
+  m_Name: Falling_Platform_Holder_Dad_Fast
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,14 +96,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20c15baee7774a5e9f3f2cae102f3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 5
-  restoreTime: 4
+  destroyTime: 2
+  restoreTime: 3
   shouldRestore: 1
   crackSound: {fileID: 6188598041444563712}
   rattleSound: {fileID: 6712667376700086026}
   startingPlatformSprite: {fileID: 1912887410, guid: be3b11d5516ec4e76ad0946950e9f0ae, type: 3}
   dadPlatformColor: {r: 0.36078432, g: 0.47058827, b: 0.30980393, a: 1}
   ghostPlatformColor: {r: 0.14509805, g: 0.16470589, b: 0.1764706, a: 1}
+  playFast: 1
 --- !u!82 &6188598041444563712
 AudioSource:
   m_ObjectHideFlags: 0
@@ -370,7 +371,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1912887410, guid: be3b11d5516ec4e76ad0946950e9f0ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -119,7 +119,7 @@ public class Falling_Platform : MonoBehaviour
 
     void RestorePlatform()
     {
-        int layerIndex = LayerMask.NameToLayer("Default");
+        int layerIndex = LayerMask.NameToLayer("FallingPlatform");
         SetLayerRecursively(gameObject, layerIndex);
         
         rb.isKinematic = true;

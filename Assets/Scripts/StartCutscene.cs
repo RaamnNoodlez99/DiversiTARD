@@ -27,7 +27,8 @@ public class StartCutscene : MonoBehaviour
     {
         if (other.CompareTag("WoodenMan") || other.CompareTag("Ghost"))
         {
-            bossRoar.Play();
+            if(bossRoar != null)
+                bossRoar.Play();
             dadPlayerController.inputManager.SetActive(false);
             ghostPlayerController.inputManager.SetActive(false);
             if(Phase1StartScript != null)
