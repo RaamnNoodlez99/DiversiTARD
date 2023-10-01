@@ -23,7 +23,7 @@ public class ChangeScreenOnTimer : MonoBehaviour
     private void Awake()
     {
 
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             if (PlayerPrefs.GetInt("hasSeenTutorialCutscene") == 0)
             {
@@ -41,7 +41,7 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
         }
         
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             if (PlayerPrefs.GetInt("hasSeenSingleRailCutscene") == 0)
             {
@@ -59,7 +59,7 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
         }
         
-        if (SceneManager.GetActiveScene().buildIndex == 3)
+        if (SceneManager.GetActiveScene().buildIndex == 4)
         {
             if (PlayerPrefs.GetInt("hasSeenMultipleRailCutscene") == 0)
             {
@@ -77,7 +77,7 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
         }
         
-        if (SceneManager.GetActiveScene().buildIndex == 4)
+        if (SceneManager.GetActiveScene().buildIndex == 5)
         {
             if (PlayerPrefs.GetInt("hasSeenFallingPlatformsCutscene") == 0)
             {
@@ -95,7 +95,7 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
         }
         
-        if (SceneManager.GetActiveScene().buildIndex == 5)
+        if (SceneManager.GetActiveScene().buildIndex == 6)
         {
             if (PlayerPrefs.GetInt("hasSeenSingleTeleportCutscene") == 0)
             {
@@ -113,7 +113,7 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
         }
         
-        if (SceneManager.GetActiveScene().buildIndex == 6)
+        if (SceneManager.GetActiveScene().buildIndex == 7)
         {
             if (PlayerPrefs.GetInt("hasSeenAlternatingWallsCutscene") == 0)
             {
@@ -131,7 +131,7 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
         }
         
-        if (SceneManager.GetActiveScene().buildIndex == 7)
+        if (SceneManager.GetActiveScene().buildIndex == 8)
         {
             if (PlayerPrefs.GetInt("hasSeenDamageRailsCutscene") == 0)
             {
@@ -149,7 +149,7 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
         }
         
-        if (SceneManager.GetActiveScene().buildIndex == 8)
+        if (SceneManager.GetActiveScene().buildIndex == 9)
         {
             if (PlayerPrefs.GetInt("hasSeenFallingPlatformsCutscene") == 0)
             {

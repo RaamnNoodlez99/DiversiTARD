@@ -25,16 +25,20 @@ public class Stone_Ball : MonoBehaviour
     private void Start()
     {
         woodenManReference = GameObject.Find("Wooden Man");
-        woodenMansCharacterSwitch = woodenManReference.GetComponent<Character_Switch>();
+        if(woodenManReference != null)
+            woodenMansCharacterSwitch = woodenManReference.GetComponent<Character_Switch>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        if (woodenMansCharacterSwitch.getCurCharacter() == "WoodenMan")
-            spriteRenderer.sprite = woodenManRock;
-        else
-            spriteRenderer.sprite = ghostRock;
+        if (woodenMansCharacterSwitch)
+        {
+            if (woodenMansCharacterSwitch.getCurCharacter() == "WoodenMan")
+                spriteRenderer.sprite = woodenManRock;
+            else
+                spriteRenderer.sprite = ghostRock;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -88,7 +92,7 @@ public class Stone_Ball : MonoBehaviour
             Destroy(gameObject, randomSound.length);
         }
         
-        if (doDamage && (collision.gameObject.CompareTag("WoodenMan") || collision.gameObject.CompareTag("Ghost")))
+        if (doDamage && (collision.gameObject.CompareTag("WoodenMan")))
         {
             Health objectHealth = collision.collider.GetComponent<Health>();
             
@@ -106,7 +110,7 @@ public class Stone_Ball : MonoBehaviour
 
                 if (player != null)
                 {
-                    player.knockbackForce = 25;
+                    player.knockbackForce = 35;
                     player.knockbackCounter = player.knockbackTotalTime;
 
                     if (collision.transform.position.x <= transform.position.x)
@@ -118,7 +122,7 @@ public class Stone_Ball : MonoBehaviour
                         player.knockFromRight = false;
                     }
 
-                    objectHealth.Damage(10);
+                    objectHealth.Damage(damage);
                 }
             }
         }

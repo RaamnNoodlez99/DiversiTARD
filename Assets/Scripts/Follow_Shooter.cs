@@ -125,15 +125,18 @@ public class Follow_Shooter : MonoBehaviour
         //Debug.Log(initialShooterPosition.position.x);
         if (!isResettingPosition)
         {
-            if (shouldSwitch && !followedObject.CompareTag(followedObject.GetComponent<Character_Switch>().getCurCharacter()))
+            if (followedObject != null)
             {
-                if (followedObject == woodenMan)
+                if (shouldSwitch && !followedObject.CompareTag(followedObject.GetComponent<Character_Switch>().getCurCharacter()))
                 {
-                    followedObject = ghost;
-                }
-                else
-                {
-                    followedObject = woodenMan;
+                    if (followedObject == woodenMan)
+                    {
+                        followedObject = ghost;
+                    }
+                    else
+                    {
+                        followedObject = woodenMan;
+                    }
                 }
             }
 
@@ -149,28 +152,82 @@ public class Follow_Shooter : MonoBehaviour
                 }
             }
 
-            if(shooter.transform.position.x - 2 < followedObject.transform.position.x && shooter.transform.position.x + 2 > followedObject.transform.position.x )
+            if (followedObject)
             {
-              //  Debug.Log("Shooter standing still");
-                shooterCircleAnimator.speed = 0f;
-                
-                shouldPlayAudio = false;
-                if(!shouldPlayAudio && isPlayingAudio)
+                if(shooter.transform.position.x - 2 < followedObject.transform.position.x && shooter.transform.position.x + 2 > followedObject.transform.position.x )
                 {
-                    shooterMovement.Pause();
-                    isPlayingAudio = false;
+                    //  Debug.Log("Shooter standing still");
+                    shooterCircleAnimator.speed = 0f;
+                
+                    shouldPlayAudio = false;
+                    if(!shouldPlayAudio && isPlayingAudio)
+                    {
+                        shooterMovement.Pause();
+                        isPlayingAudio = false;
+                    }
                 }
-            }
-            else if (shooter.transform.position.x < railBounds.max.x && shooter.transform.position.x < followedObject.transform.position.x)
-            {
-                //Move right 
-                
-
-              //  Debug.Log("going right");
-
-                if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
+                else if (shooter.transform.position.x < railBounds.max.x && shooter.transform.position.x < followedObject.transform.position.x)
                 {
-                    if (shooterToRight)
+                    //Move right 
+                    
+
+                  //  Debug.Log("going right");
+
+                    if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
+                    {
+                        if (shooterToRight)
+                        {
+                            shooterCircleAnimator.speed = 1f;
+
+                            shouldPlayAudio = true;
+
+                            if (shouldPlayAudio && !isPlayingAudio)
+                            {
+                                shooterMovement.Play();
+                                isPlayingAudio = true;
+                            }
+
+                            shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                        }
+                        else if (!shooterToRight && shooter.transform.position.x < stopWall.transform.position.x - 5)
+                        {
+                            shooterCircleAnimator.speed = 1f;
+
+                            shouldPlayAudio = true;
+
+                            if (shouldPlayAudio && !isPlayingAudio)
+                            {
+                                shooterMovement.Play();
+                                isPlayingAudio = true;
+                            }
+
+                            shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                        }
+                        else
+                        {
+                            shooterCircleAnimator.speed = 0f;
+
+                            shouldPlayAudio = false;
+                            if (!shouldPlayAudio && isPlayingAudio)
+                            {
+                                shooterMovement.Pause();
+                                isPlayingAudio = false;
+                            }
+                        //    Debug.Log("Stopped by wall");
+                            
+                            if (shouldCheck)
+                            {
+                                if (movingWall != null)
+                                {
+                                    if (!movingWall.GetComponent<Moving_Wall>().getHittingClamp())
+                                    {
+                                        passedStage1 = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
                     {
                         shooterCircleAnimator.speed = 1f;
 
@@ -184,68 +241,68 @@ public class Follow_Shooter : MonoBehaviour
 
                         shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
                     }
-                    else if (!shooterToRight && shooter.transform.position.x < stopWall.transform.position.x - 5)
+                }
+                else if (shooter.transform.position.x > railBounds.min.x && shooter.transform.position.x > followedObject.transform.position.x)
+                {
+                    //Move left
+                    
+                   // Debug.Log("going left");
+
+                    if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
                     {
-                        shooterCircleAnimator.speed = 1f;
-
-                        shouldPlayAudio = true;
-
-                        if (shouldPlayAudio && !isPlayingAudio)
+                        if (shooterToRight && shooter.transform.position.x > stopWall.transform.position.x + 5)
                         {
-                            shooterMovement.Play();
-                            isPlayingAudio = true;
-                        }
+                            shouldPlayAudio = true;
 
-                        shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
-                    }
-                    else
-                    {
-                        shooterCircleAnimator.speed = 0f;
-
-                        shouldPlayAudio = false;
-                        if (!shouldPlayAudio && isPlayingAudio)
-                        {
-                            shooterMovement.Pause();
-                            isPlayingAudio = false;
-                        }
-                    //    Debug.Log("Stopped by wall");
-                        
-                        if (shouldCheck)
-                        {
-                            if (movingWall != null)
+                            if (shouldPlayAudio && !isPlayingAudio)
                             {
-                                if (!movingWall.GetComponent<Moving_Wall>().getHittingClamp())
+                                shooterMovement.Play();
+                                isPlayingAudio = true;
+                            }
+                            shooterCircleAnimator.speed = 1f;
+
+                            shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                        }
+                        else if (!shooterToRight)
+                        {
+                            shouldPlayAudio = true;
+
+                            if (shouldPlayAudio && !isPlayingAudio)
+                            {
+                                shooterMovement.Play();
+                                isPlayingAudio = true;
+                            }
+                            shooterCircleAnimator.speed = 1f;
+
+                            shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                        }
+                        else
+                        {
+                            shooterCircleAnimator.speed = 0f;
+
+                            shouldPlayAudio = false;
+                            if (!shouldPlayAudio && isPlayingAudio)
+                            {
+                                shooterMovement.Pause();
+                                isPlayingAudio = false;
+                            }
+
+                      //      Debug.Log("Stopped by wall");
+
+                            if (shouldCheck)
+                            {
+                                if (movingWall != null)
                                 {
-                                    passedStage1 = true;
+                                    if (!movingWall.GetComponent<Moving_Wall>().getHittingClamp())
+                                    {
+                                        passedStage1 = true;
+                                    }
                                 }
                             }
+
                         }
                     }
-                }
-                else
-                {
-                    shooterCircleAnimator.speed = 1f;
-
-                    shouldPlayAudio = true;
-
-                    if (shouldPlayAudio && !isPlayingAudio)
-                    {
-                        shooterMovement.Play();
-                        isPlayingAudio = true;
-                    }
-
-                    shooter.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
-                }
-            }
-            else if (shooter.transform.position.x > railBounds.min.x && shooter.transform.position.x > followedObject.transform.position.x)
-            {
-                //Move left
-                
-               // Debug.Log("going left");
-
-                if (stopWall != null && stopWall.GetComponent<Moving_Wall>().isWallDown)
-                {
-                    if (shooterToRight && shooter.transform.position.x > stopWall.transform.position.x + 5)
+                    else
                     {
                         shouldPlayAudio = true;
 
@@ -258,71 +315,22 @@ public class Follow_Shooter : MonoBehaviour
 
                         shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
                     }
-                    else if (!shooterToRight)
-                    {
-                        shouldPlayAudio = true;
-
-                        if (shouldPlayAudio && !isPlayingAudio)
-                        {
-                            shooterMovement.Play();
-                            isPlayingAudio = true;
-                        }
-                        shooterCircleAnimator.speed = 1f;
-
-                        shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
-                    }
-                    else
-                    {
-                        shooterCircleAnimator.speed = 0f;
-
-                        shouldPlayAudio = false;
-                        if (!shouldPlayAudio && isPlayingAudio)
-                        {
-                            shooterMovement.Pause();
-                            isPlayingAudio = false;
-                        }
-
-                  //      Debug.Log("Stopped by wall");
-
-                        if (shouldCheck)
-                        {
-                            if (movingWall != null)
-                            {
-                                if (!movingWall.GetComponent<Moving_Wall>().getHittingClamp())
-                                {
-                                    passedStage1 = true;
-                                }
-                            }
-                        }
-
-                    }
                 }
                 else
                 {
-                    shouldPlayAudio = true;
-
-                    if (shouldPlayAudio && !isPlayingAudio)
+               //     Debug.Log("Rail Edge");
+                    shooterCircleAnimator.speed = 0f;
+                    
+                    shouldPlayAudio = false;
+                    if (!shouldPlayAudio && isPlayingAudio)
                     {
-                        shooterMovement.Play();
-                        isPlayingAudio = true;
+                        shooterMovement.Pause();
+                        isPlayingAudio = false;
                     }
-                    shooterCircleAnimator.speed = 1f;
+                }
+            }
 
-                    shooter.transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
-                }
-            }
-            else
-            {
-           //     Debug.Log("Rail Edge");
-                shooterCircleAnimator.speed = 0f;
-                
-                shouldPlayAudio = false;
-                if (!shouldPlayAudio && isPlayingAudio)
-                {
-                    shooterMovement.Pause();
-                    isPlayingAudio = false;
-                }
-            }
+            
         }
         else
         {

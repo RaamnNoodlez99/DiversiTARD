@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4874840905579856782
+--- !u!1 &413842115048582327
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4874840905579856882}
-  - component: {fileID: 4874840905579856883}
-  - component: {fileID: 4874840905579856780}
-  - component: {fileID: 4874840905579856781}
-  - component: {fileID: 8870421098413842710}
-  - component: {fileID: -7289866227123822167}
-  - component: {fileID: 4900423876941033987}
-  m_Layer: 10
-  m_Name: Stone Ball Damage
+  - component: {fileID: 7917131086288812693}
+  - component: {fileID: 4729404811237867657}
+  - component: {fileID: 5994973411753045863}
+  - component: {fileID: 431658740685587892}
+  - component: {fileID: 6081212112373550043}
+  - component: {fileID: 7542971038791976213}
+  m_Layer: 18
+  m_Name: Arrow_Damage
   m_TagString: StoneBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4874840905579856882
+--- !u!4 &7917131086288812693
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4874840905579856782}
+  m_GameObject: {fileID: 413842115048582327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -43.77, y: 26.14, z: 0}
+  m_LocalPosition: {x: -51.78, y: -5.24, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4874840905579856883
+--- !u!212 &4729404811237867657
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4874840905579856782}
+  m_GameObject: {fileID: 413842115048582327}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -57,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,96 +76,25 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 280
-  m_Sprite: {fileID: 774449714, guid: 98dcebf11653448ff922c9ba98eb32d9, type: 3}
+  m_SortingOrder: 15
+  m_Sprite: {fileID: -632639934, guid: 33619a780db80d342bb5084a34943716, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.4, y: 1.35}
+  m_Size: {x: 0.73, y: 2.58}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4874840905579856780
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4874840905579856782}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4, y: 1.35}
-    newSize: {x: 1.4, y: 1.35}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!50 &4874840905579856781
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4874840905579856782}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 8
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &8870421098413842710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4874840905579856782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54cc87f3735335347bb8d4e00664950c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToDestroy: 0.3
-  stoneSource: {fileID: -7289866227123822167}
-  stoneFallSounds:
-  - {fileID: 8300000, guid: 1040f37cec376c74eb600852938a6829, type: 3}
-  - {fileID: 8300000, guid: 2dcc4c9cc575c254a99d2dc84992ab1f, type: 3}
-  - {fileID: 8300000, guid: 57c7d2314d5e5774784c771e8d03fd13, type: 3}
-  - {fileID: 8300000, guid: 6e91432ead909994ba596f3aed415d79, type: 3}
-  - {fileID: 8300000, guid: 393f2050aa2748c47b9432c6138ac726, type: 3}
-  damage: 50
-  woodenManRock: {fileID: 774449714, guid: 98dcebf11653448ff922c9ba98eb32d9, type: 3}
-  ghostRock: {fileID: 774449714, guid: 98dcebf11653448ff922c9ba98eb32d9, type: 3}
-  doDamage: 1
---- !u!82 &-7289866227123822167
+--- !u!82 &5994973411753045863
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4874840905579856782}
+  m_GameObject: {fileID: 413842115048582327}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8245071106484847466, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
@@ -256,23 +184,74 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &4900423876941033987
-Animator:
-  serializedVersion: 5
+--- !u!114 &431658740685587892
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4874840905579856782}
+  m_GameObject: {fileID: 413842115048582327}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fba0c07fa65374582873b6b50b95949b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54cc87f3735335347bb8d4e00664950c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 0.3
+  stoneSource: {fileID: 5994973411753045863}
+  stoneFallSounds:
+  - {fileID: 8300000, guid: 1040f37cec376c74eb600852938a6829, type: 3}
+  - {fileID: 8300000, guid: 2dcc4c9cc575c254a99d2dc84992ab1f, type: 3}
+  - {fileID: 8300000, guid: 57c7d2314d5e5774784c771e8d03fd13, type: 3}
+  - {fileID: 8300000, guid: 6e91432ead909994ba596f3aed415d79, type: 3}
+  - {fileID: 8300000, guid: 393f2050aa2748c47b9432c6138ac726, type: 3}
+  damage: 30
+  woodenManRock: {fileID: -632639934, guid: 33619a780db80d342bb5084a34943716, type: 3}
+  ghostRock: {fileID: -632639934, guid: 33619a780db80d342bb5084a34943716, type: 3}
+  doDamage: 1
+--- !u!50 &6081212112373550043
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413842115048582327}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 8
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &7542971038791976213
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413842115048582327}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0115766525, y: -0.84121895}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.73, y: 2.58}
+    newSize: {x: 0.73, y: 2.58}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5909672, y: 0.87651825}
+  m_EdgeRadius: 0
