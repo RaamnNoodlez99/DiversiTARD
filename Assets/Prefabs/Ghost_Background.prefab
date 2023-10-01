@@ -2825,7 +2825,7 @@ GameObject:
   - component: {fileID: 7601599187947222464}
   - component: {fileID: 7601599187947222471}
   - component: {fileID: 7601599187947222465}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: IMG_0309
   m_TagString: Platform
   m_Icon: {fileID: 0}

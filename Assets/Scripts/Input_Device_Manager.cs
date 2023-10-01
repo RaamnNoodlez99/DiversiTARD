@@ -26,6 +26,10 @@ public class Input_Device_Manager : MonoBehaviour
     public Sprite keyboardSprite;
 
 
+    public SpriteRenderer hintRenderer;
+    public Sprite hintGamepad;
+    public Sprite hintKeyboard;
+
     private void Awake()
     {
         if(PlayerPrefs.GetInt("keyboardLastInput") == 1)
@@ -119,6 +123,10 @@ public class Input_Device_Manager : MonoBehaviour
             {
                 buttonRenderer.sprite = keyboardSprite;
             }
+            if (hintRenderer != null)
+            {
+                hintRenderer.sprite = hintKeyboard;
+            }
         }
         else if (isControllerInput)
         {
@@ -137,6 +145,10 @@ public class Input_Device_Manager : MonoBehaviour
             if (buttonRenderer != null)
             {
                 buttonRenderer.sprite = gamepadSprite;
+            }
+            if (hintRenderer != null)
+            {
+                hintRenderer.sprite = hintGamepad;
             }
         }
     }
