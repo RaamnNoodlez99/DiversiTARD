@@ -36,6 +36,10 @@ public class Arrow : MonoBehaviour
             {
                 player = GameObject.FindGameObjectWithTag("WoodenMan").GetComponent<Player_Controller>();
             }
+            else if (collision.gameObject.CompareTag("Boss"))
+            {
+                collision.gameObject.GetComponent<Boss_Phase3>().flickerBoss();
+            }
             
             if (player != null)
             {

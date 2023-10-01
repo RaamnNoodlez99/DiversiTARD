@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 8
   m_Sprite: {fileID: -1263148680, guid: 100e64865c3bae140be859ef3e46ced9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 5406549034018571992, guid: 15dddc167792e424093503fa531b691b, type: 3}
   arrowOrigin: {fileID: 2505853046749172571}
+  dropCooldown: 1
 --- !u!1 &2155667524643212776
 GameObject:
   m_ObjectHideFlags: 0

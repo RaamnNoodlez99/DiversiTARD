@@ -20,6 +20,7 @@ public class Player_Controller : MonoBehaviour
     public float switchDelay = 0.001f;
     public GameObject inputManager;
     public GameObject ghostPlatform;
+    public bool poisonKnockback = true;
     //public GameObject gameManager;
 
     bool isJumping = false;
@@ -277,17 +278,34 @@ public class Player_Controller : MonoBehaviour
         }
         else
         {
-            StartCoroutine(DisableInputForDuration(knockbackTotalTime + 0.4f));
-            if (knockFromRight == true)
+            if (poisonKnockback)
             {
-                moveInput = Vector2.zero;
-                playerBody.velocity = new Vector2(knockbackForce + moveInput.x * walkSpeed, knockbackForce);
+                StartCoroutine(DisableInputForDuration(knockbackTotalTime + 0.4f));
+                if (knockFromRight == true)
+                {
+                    moveInput = Vector2.zero;
+                    playerBody.velocity = new Vector2(knockbackForce + moveInput.x * walkSpeed, knockbackForce);
+                }
+                else
+                {
+                    playerBody.velocity = new Vector2(-knockbackForce + moveInput.x * walkSpeed, knockbackForce);
+                }
+                knockbackCounter -= Time.deltaTime;
             }
             else
             {
-                playerBody.velocity = new Vector2(-knockbackForce + moveInput.x * walkSpeed, knockbackForce);
+                StartCoroutine(DisableInputForDuration(knockbackTotalTime + 0.4f));
+                if (knockFromRight == true)
+                {
+                    moveInput = Vector2.zero;
+                    playerBody.velocity = new Vector2(-knockbackForce + moveInput.x * walkSpeed, knockbackForce);
+                }
+                else
+                {
+                    playerBody.velocity = new Vector2(knockbackForce + moveInput.x * walkSpeed, knockbackForce);
+                }
+                knockbackCounter -= Time.deltaTime;
             }
-            knockbackCounter -= Time.deltaTime;
         }
 
         if (IsMoving && !isJumping && footstepTimer <= 0f && gameObject.CompareTag("WoodenMan") && !IsBusyTeleporting)
