@@ -1101,6 +1101,7 @@ MonoBehaviour:
   switchDelay: 0.001
   inputManager: {fileID: 1883137707}
   ghostPlatform: {fileID: 2675158141671572417, guid: 730ec2a9bc7e44fd6af9211dbe35ae93, type: 3}
+  poisonKnockback: 1
   GhostHUD: {fileID: 600320928}
   animator: {fileID: 462617583}
   knockbackForce: 12
@@ -3608,6 +3609,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+--- !u!1 &2027793134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5103723222998102287, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+  m_PrefabInstance: {fileID: 2027793133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2027793135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027793134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2158eee1f3818f4193a21a809890fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostRequired: 0
+  fatherRequired: 1
+  environmentHandler: {fileID: 486434282}
+  levelOverScreen: {fileID: 1831506761}
+  player: {fileID: 1731100109}
+  firstSelectedButton: {fileID: 1023996240}
+  audioSource: {fileID: 0}
+  levelComplete: {fileID: 0}
+  audioMixer: {fileID: 0}
+  VolumeChangeDuration: 1
 --- !u!1001 &2044896012
 PrefabInstance:
   m_ObjectHideFlags: 0
