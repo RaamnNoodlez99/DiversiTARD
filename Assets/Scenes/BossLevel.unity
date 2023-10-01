@@ -1251,6 +1251,8 @@ MonoBehaviour:
   jumpLand: {fileID: 8300000, guid: 4763d9893b2ae3f41a2168e5b23ec98d, type: 3}
   JourneyOver: {fileID: 0}
   LevelComplete: {fileID: 0}
+  teleport: {fileID: 0}
+  trapped: {fileID: 0}
   Audio: {fileID: 480285849}
 --- !u!4 &480285851
 Transform:
@@ -1623,6 +1625,7 @@ MonoBehaviour:
   knockbackCounter: 0
   knockbackTotalTime: 0.4
   knockFromRight: 0
+  IsBusyTeleporting: 0
   ghostCanFollow: 1
 --- !u!114 &720915873
 MonoBehaviour:
@@ -1712,6 +1715,7 @@ MonoBehaviour:
   followDelay: 1
   followDistance: 4
   moveSpeed: 4
+  gameManager: {fileID: 1551486366}
 --- !u!1001 &830358750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2199,9 +2203,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4412599394785456188, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 526d8d9023b0a214f8d58db0f848986c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2fb012ea5c3aeab4db0d5e0983465b00, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2295,9 +2299,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4412599394785456188, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 644d0efced0b47844bce81ee3b67b7e7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f9a1c29dde951144ea288b688350c94f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.9
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2599,6 +2603,11 @@ PrefabInstance:
 Animator:
   m_CorrespondingSourceObject: {fileID: 341897252179587297, guid: fc239c4c99a014bcba471fd8fbbe5308, type: 3}
   m_PrefabInstance: {fileID: 1533077364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1551486366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5103723222998102287, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+  m_PrefabInstance: {fileID: 1089251646}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1574574852
 GameObject:

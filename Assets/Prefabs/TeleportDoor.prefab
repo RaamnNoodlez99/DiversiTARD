@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7577108559301771445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.12, y: -23.09, z: 0}
-  m_LocalScale: {x: 10.949069, y: 14.38293, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.7, y: 3.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 45
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 1720002298, guid: ccf7de26e0ccb884aa2e0fb32288d165, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,18 +99,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025496721, y: 0}
+  m_Offset: {x: 0.046470612, y: 0.3705392}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3.7099998, y: 5.2502003}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.082126096, y: 1}
+  m_Size: {x: 0.6693954, y: 4.383792}
   m_EdgeRadius: 0
 --- !u!114 &7577108559301771441
 MonoBehaviour:
@@ -130,3 +130,6 @@ MonoBehaviour:
   connectedGhostDoor: {fileID: 0}
   dad: {fileID: 0}
   ghost: {fileID: 0}
+  doorRenderer: {fileID: 7577108559301771443}
+  ghostSprite: {fileID: -406229904, guid: 29eafcc67f1d81c46bee9618d8d7b995, type: 3}
+  dadSprite: {fileID: 1720002298, guid: ccf7de26e0ccb884aa2e0fb32288d165, type: 3}

@@ -10,7 +10,14 @@ public class Teleport_Door : MonoBehaviour
     public GameObject connectedGhostDoor;
     public GameObject dad;
     public GameObject ghost;
+    public SpriteRenderer doorRenderer;
+    public Sprite ghostSprite;
+    public Sprite dadSprite;
+    public GameObject hint;
     private bool isTeleporting = false;
+    public float teleportTimer = 180f;
+    private bool showHint = false;
+
 
     private bool qeueDeActivation = false;
 
@@ -24,15 +31,32 @@ public class Teleport_Door : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        else if (isDadDoor)
-        {
-            //Swap sprites
-        }
-
     }
 
     void Update()
     {
+
+        if (teleportTimer > 0)
+        {
+            teleportTimer -= Time.deltaTime;
+
+            if (teleportTimer <= 0)
+            {
+                showHint = true;
+            }
+        }
+
+        if (isTeleporting && showHint)
+        {
+            if(hint != null)
+                hint.SetActive(true);
+        }
+        else
+        {
+            if (hint != null)
+                hint.SetActive(false);
+        }
+
         if (qeueDeActivation)
         {
             if (!isTeleporting)
@@ -40,6 +64,15 @@ public class Teleport_Door : MonoBehaviour
                 qeueDeActivation = false;
                 gameObject.SetActive(false);
             }
+        }
+
+        if (dad.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+        {
+            doorRenderer.sprite = dadSprite;
+        }
+        else
+        {
+            doorRenderer.sprite = ghostSprite;
         }
     }
 
@@ -56,7 +89,6 @@ public class Teleport_Door : MonoBehaviour
         else if(isGhostDoor)
         {
             gameObject.SetActive(true);
-            //SwapSprites
         }
     }
 
@@ -65,7 +97,6 @@ public class Teleport_Door : MonoBehaviour
         if (isDadDoor)
         {
             gameObject.SetActive(true);
-            //SwapSprites
         }
         else if(isGhostDoor && !isDadDoor)
         {

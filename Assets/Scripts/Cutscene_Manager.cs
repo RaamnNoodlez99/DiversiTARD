@@ -9,11 +9,15 @@ public class Cutscene_Manager : MonoBehaviour
     public float fadeOutTime;
     private SpriteRenderer fadeScreenSpriteRenderer;
     private Color originalColor;
+    public AudioSource backgroundMusic;
+    private float originalVolume;
 
     private void Start()
     {
+        backgroundMusic.Play();
         fadeScreenSpriteRenderer = fadeScreen.GetComponent<SpriteRenderer>();
         originalColor = fadeScreenSpriteRenderer.color;
+        originalVolume = backgroundMusic.volume;
 
         StartCoroutine(PlayCutscene());
     }
@@ -36,9 +40,14 @@ public class Cutscene_Manager : MonoBehaviour
         float fadeOutStartTime = Time.time;
         while (Time.time < fadeOutStartTime + fadeOutTime)
         {
+            // Fade out backgroundMusic
             float fadeElapsedTime = Time.time - fadeOutStartTime;
             float fadeProgress = fadeElapsedTime / fadeOutTime;
             fadeScreenSpriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, fadeProgress);
+
+            // Reduce the volume of backgroundMusic gradually
+            backgroundMusic.volume = Mathf.Lerp(originalVolume, 0f, fadeProgress);
+
             yield return null;
         }
 
@@ -51,12 +60,13 @@ public class Cutscene_Manager : MonoBehaviour
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            //SceneManager.LoadScene(nextSceneIndex);
+            SceneManager.LoadScene(nextSceneIndex);
         }
         else
         {
             // Handle what happens when there are no more scenes to load
-            Debug.LogWarning("No more scenes to load.");
+            SceneManager.LoadScene(0);
+            //Debug.LogWarning("No more scenes to load.");
         }
     }
 }
