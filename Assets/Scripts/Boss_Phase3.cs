@@ -12,6 +12,7 @@ public class Boss_Phase3 : MonoBehaviour
     private bool hitSomething = false;
     private bool isOnCooldown = false;
     private string direction = "left";
+    public AudioSource bossRoar;
 
     public GameObject bossObject;
     private Animator bossObjectAnimator;
@@ -74,7 +75,7 @@ public class Boss_Phase3 : MonoBehaviour
     {
         hitSomething = false;
         isRushing = true;
-        
+        bossRoar.Play();
         bossObjectAnimator.SetBool("isRushing", true);
 
         Vector3 targetPosition;
@@ -136,5 +137,10 @@ public class Boss_Phase3 : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         hitSomething = true;
+    }
+
+    public void flicker()
+    {
+
     }
 }

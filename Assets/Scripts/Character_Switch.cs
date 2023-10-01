@@ -70,7 +70,7 @@ public class Character_Switch : MonoBehaviour
         //Debug.Log("Inside function");
         //Debug.Log("before: " + activeCharacter.tag);
        // Debug.Log("Active: " + activeCharacter.tag);
-        if ( activeCharacter != null )
+        if ( activeCharacter != null  && otherCharacter != null)
         {
 
             otherCharacter.GetComponent<Rigidbody2D>().velocity = Vector3.zero;

@@ -8,6 +8,8 @@ public class StartCutscene : MonoBehaviour
 {
     public Animator cutsceneAnimator;
     public GameObject Phase1StartScript;
+    public GameObject[] backgroundAudios;
+    public AudioSource bossRoar;
 
     private Player_Controller dadPlayerController;
     private Player_Controller ghostPlayerController;
@@ -25,6 +27,7 @@ public class StartCutscene : MonoBehaviour
     {
         if (other.CompareTag("WoodenMan") || other.CompareTag("Ghost"))
         {
+            bossRoar.Play();
             dadPlayerController.inputManager.SetActive(false);
             ghostPlayerController.inputManager.SetActive(false);
             if(Phase1StartScript != null)
@@ -54,6 +57,12 @@ public class StartCutscene : MonoBehaviour
         dadPlayerController.inputManager.SetActive(true);
         ghostPlayerController.inputManager.SetActive(true);
         cutsceneAnimator.SetBool("cutscene1", false);
+
+        foreach(GameObject source in backgroundAudios)
+        {
+            source.GetComponent<AudioSource>().Play();
+        }
+
         Destroy(gameObject);
     }
 }

@@ -25,7 +25,9 @@ public class Health : MonoBehaviour
         }
 
         health -= amount;
-        healthBar.setHealth(health);
+
+        if(healthBar != null)
+            healthBar.setHealth(health);
 
         if(health <= 0)
         {

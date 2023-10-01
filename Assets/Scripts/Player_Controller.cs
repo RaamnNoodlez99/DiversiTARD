@@ -389,7 +389,7 @@ public class Player_Controller : MonoBehaviour
         {
             if (context.performed && coyoteTimeCounter > 0 && !Pause_Menu.isPaused && !Level_Complete.levelIsOver)
             {
-                if(gameObject.CompareTag("WoodenMan"))
+                if(gameObject.CompareTag("WoodenMan") && GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
                     SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.jumpGrunt);
     
                 animator.SetTrigger("takeOff");

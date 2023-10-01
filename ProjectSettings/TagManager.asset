@@ -20,6 +20,7 @@ TagManager:
   - GhostGroundCheck
   - ButtonHolder
   - StoneBall
+  - Boss
   layers:
   - Default
   - TransparentFX

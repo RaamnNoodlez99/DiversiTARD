@@ -13,6 +13,7 @@ public class Teleport_Door : MonoBehaviour
     public SpriteRenderer doorRenderer;
     public Sprite ghostSprite;
     public Sprite dadSprite;
+    public bool spawnToTheLeft = false;
     public GameObject hint;
     private bool isTeleporting = false;
     public float teleportTimer = 180f;
@@ -109,7 +110,7 @@ public class Teleport_Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isTeleporting && (collision.CompareTag("WoodenMan") || collision.CompareTag("Ghost")))
+        if (!isTeleporting && (collision.CompareTag("WoodenMan") || collision.CompareTag("Ghost")) || collision.CompareTag("Boss"))
         {
             StartCoroutine(TeleportCharacter(collision.gameObject));
         }
@@ -118,23 +119,41 @@ public class Teleport_Door : MonoBehaviour
     IEnumerator TeleportCharacter(GameObject character)
     {
         isTeleporting = true;
-        character.GetComponent<Player_Controller>().IsBusyTeleporting = true;
+
+        if(character.CompareTag("WoodenMan") || character.CompareTag("Ghost"))
+            character.GetComponent<Player_Controller>().IsBusyTeleporting = true;
 
         SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.teleport);
         DisableRenderers(character.transform);
 
-        StartCoroutine(character.GetComponent<Player_Controller>().FreezeMovementInputForDuration(1f));
+        if (character.CompareTag("WoodenMan") || character.CompareTag("Ghost"))
+            StartCoroutine(character.GetComponent<Player_Controller>().FreezeMovementInputForDuration(1f));
+
         yield return new WaitForSeconds(1.0f);
 
         Vector3 teleportPosition;
 
         if (dad.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
         {
-            teleportPosition = connectedDadDoor.transform.position + new Vector3(7f, 0f, 0f); 
+            if (spawnToTheLeft)
+            {
+                teleportPosition = connectedDadDoor.transform.position + new Vector3(-7f, 0f, 0f);
+            }
+            else
+            {
+                teleportPosition = connectedDadDoor.transform.position + new Vector3(7f, 0f, 0f);
+            }
         }
         else
         {
-            teleportPosition = connectedGhostDoor.transform.position + new Vector3(7f, 0f, 0f); 
+            if (spawnToTheLeft)
+            {
+                teleportPosition = connectedGhostDoor.transform.position + new Vector3(-7f, 0f, 0f);
+            }
+            else
+            {
+                teleportPosition = connectedGhostDoor.transform.position + new Vector3(7f, 0f, 0f);
+            }
         }
 
         character.transform.position = teleportPosition;
