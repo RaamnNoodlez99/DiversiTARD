@@ -28,7 +28,7 @@ public class FollowCharacter : MonoBehaviour
     
     private void Update()
     {
-        if (canFollow && !gameOverScript.isGameOver())
+        if (canFollow && !gameOverScript.isGameOver() && dadTransform != null)
         {
             Vector3 targetPosition = dadTransform.position - (dadTransform.right * followDistance);
             transform.position = Vector3.Lerp(transform.position, targetPosition, followDelay * Time.deltaTime * moveSpeed);
