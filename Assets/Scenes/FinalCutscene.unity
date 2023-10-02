@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 696008349}
   cutSceneTotalTime: 80
-  fadeOutTime: 4
+  fadeOutTime: 2
   backgroundMusic: {fileID: 47870524}
 --- !u!82 &47870524
 AudioSource:
@@ -1973,8 +1973,8 @@ Camera:
   m_GameObject: {fileID: 1585846682}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

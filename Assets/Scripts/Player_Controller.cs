@@ -52,6 +52,7 @@ public class Player_Controller : MonoBehaviour
     public float knockbackTotalTime = 0.4f;
     public bool knockFromRight;
     public bool IsBusyTeleporting = false;
+    public GameObject movingWall;
 
 
     private bool facingLeft = true;
@@ -445,6 +446,11 @@ public class Player_Controller : MonoBehaviour
 
 public void OnSpawnPlatform(InputAction.CallbackContext context)
     { 
+        if(movingWall != null)
+        {
+            movingWall.GetComponent<Moving_Wall>().togglePlatform();
+        }
+
         if(gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && gameObject.CompareTag("Ghost") && !Pause_Menu.isPaused && isJumping && context.performed)
         {
             Debug.Log("1");

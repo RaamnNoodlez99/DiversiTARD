@@ -1048,12 +1048,15 @@ MonoBehaviour:
   jumpForce: 40
   gravityScale: 40
   jumpTimer: 0.4
+  coyoteTime: 0.2
+  coyoteTimeCounter: 0
   platformOffset: 5
   ghostPlatSpawnDelay: 0
   ghostPlatformExists: 0
   switchDelay: 0.001
   inputManager: {fileID: 1883137707}
   ghostPlatform: {fileID: 2675158141671572417, guid: 730ec2a9bc7e44fd6af9211dbe35ae93, type: 3}
+  poisonKnockback: 1
   GhostHUD: {fileID: 600320928}
   animator: {fileID: 462617583}
   knockbackForce: 12
@@ -1061,6 +1064,8 @@ MonoBehaviour:
   knockbackCounter: 0
   knockbackTotalTime: 0.4
   knockFromRight: 0
+  IsBusyTeleporting: 0
+  ghostCanFollow: 0
 --- !u!95 &462617583 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3273507237165259418, guid: a36188a0c93264e1385fb02c751aadf8, type: 3}
@@ -1084,6 +1089,7 @@ MonoBehaviour:
   healthBar: {fileID: 110932602}
   Rails: []
   ShooterHeads: []
+  TeleportDoors: []
 --- !u!70 &462617585
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1782,6 +1788,8 @@ MonoBehaviour:
   jumpLand: {fileID: 8300000, guid: 4763d9893b2ae3f41a2168e5b23ec98d, type: 3}
   JourneyOver: {fileID: 0}
   LevelComplete: {fileID: 0}
+  teleport: {fileID: 0}
+  trapped: {fileID: 0}
   Audio: {fileID: 593480067}
 --- !u!4 &593480065
 Transform:
@@ -3738,15 +3746,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1884634093}
+    - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Level_Complete, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103723224448238763, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5103723224531647520, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
       propertyPath: m_Name

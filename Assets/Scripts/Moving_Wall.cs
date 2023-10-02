@@ -43,12 +43,30 @@ public class Moving_Wall : MonoBehaviour
         MoveWall();
     }
 
+    public void togglePlatform()
+    {
+        if (hitGhostPlatform)
+        {
+            hitPlatform = false;
+            hitGhostPlatform = false;
+            MoveWallDown();
+        }
+        else
+            Invoke("checkHitStatus", 0.01f);
+    }
+
+    private void checkHitStatus()
+    {
+        if (hitPlatform)
+        {
+            hitGhostPlatform = true;
+        }
+    }
 
     private void Update()
     {
-        if(ghost.GetComponent<Player_Controller>().ghostPlatformExists && hitPlatform)
+        /*if(ghost.GetComponent<Player_Controller>().ghostPlatformExists && hitPlatform)
         {
-            Debug.Log(hitPlatform);
             hitGhostPlatform = true;
         }
 
@@ -61,7 +79,7 @@ public class Moving_Wall : MonoBehaviour
                 hitGhostPlatform = false;
                 MoveWallDown();
             }
-        }
+        }*/
         
     }
 

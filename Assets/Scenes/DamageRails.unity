@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd7180edc2331644a59ea74f33c4fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostBackground: {fileID: 469531862451862332, guid: 5ea62df0154c87645bfabf5fc4e1780a, type: 3}
+  ghostBackground: {fileID: 469531862451862332, guid: 9d9bbfa729f8d16419baf89e3efcc5a2, type: 3}
   fatherBackground: {fileID: 469531862451862332, guid: 5ea62df0154c87645bfabf5fc4e1780a, type: 3}
   floorX: 4.35
   floorY: -15.22
@@ -2718,7 +2718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 653793464540597669, guid: 17b40e82d5c7e44a1a6bc8bf46918878, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -29.28
+      value: -27.19
       objectReference: {fileID: 0}
     - target: {fileID: 653793464540597669, guid: 17b40e82d5c7e44a1a6bc8bf46918878, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3735,7 +3735,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884634092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 78.95, y: -26.19, z: 3092.0938}
+  m_LocalPosition: {x: 77.7, y: -28.6, z: 3092.0938}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

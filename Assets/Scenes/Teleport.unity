@@ -888,6 +888,7 @@ MonoBehaviour:
   switchDelay: 0.001
   inputManager: {fileID: 1883137707}
   ghostPlatform: {fileID: 2675158141671572417, guid: 730ec2a9bc7e44fd6af9211dbe35ae93, type: 3}
+  poisonKnockback: 1
   GhostHUD: {fileID: 1499954355}
   animator: {fileID: 462617583}
   knockbackForce: 12
@@ -3485,12 +3486,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089206246}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4412599394785456188, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
   m_audioClip: {fileID: 8300000, guid: 76626ab012f011348b6b14e8c4a44fb3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3581,14 +3582,14 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089206246}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4412599394785456188, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
   m_audioClip: {fileID: 8300000, guid: ee83d98626a38184c8a9b9156a60a8fc, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.12
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3700,7 +3701,7 @@ MonoBehaviour:
   characterCheck: {fileID: 1731100109}
   audioToPauseInDadWorld: []
   audioToPauseInGhostWorld:
-  - {fileID: 2089206248}
+  - {fileID: 2089206247}
 --- !u!114 &2122579275 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3176041345883049606, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}

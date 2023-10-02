@@ -20,6 +20,12 @@ public class Main_Menu : MonoBehaviour
 
     private void Awake()
     {
+        if (PlayerPrefs.GetInt("hasPlayedBefore") != 1)
+        {
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.SetInt("hasPlayedBefore", 1);
+        }
+
         initialTitlePosition = title.transform.position;
         foreach (Button child in GetComponentsInChildren<Button>())
         {
@@ -90,7 +96,7 @@ public class Main_Menu : MonoBehaviour
     {
        // Debug.Log(PlayerPrefs.GetInt("currentLevel"));
 
-        if(PlayerPrefs.GetInt("currentLevel") != 0)
+        if(PlayerPrefs.GetInt("currentLevel") != 0 || PlayerPrefs.GetInt("currentLevel") == 13)
             SceneManager.LoadScene(PlayerPrefs.GetInt("currentLevel"));
         else
             SceneManager.LoadScene(1);
@@ -98,20 +104,44 @@ public class Main_Menu : MonoBehaviour
 
     public void PlayTutorial()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void PlayLevel1()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
     public void PlayLevel2()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
     public void PlayLevel3()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(5);
+    }
+    public void PlayLevel4()
+    {
+        SceneManager.LoadScene(6);
+    }
+    public void PlayLevel5()
+    {
+        SceneManager.LoadScene(7);
+    }
+    public void PlayLevel6()
+    {
+        SceneManager.LoadScene(8);
+    }
+    public void PlayLevel7()
+    {
+        SceneManager.LoadScene(9);
+    }
+    public void PlayLevel8()
+    {
+        SceneManager.LoadScene(10);
+    }
+    public void PlayLevel9()
+    {
+        SceneManager.LoadScene(11);
     }
 
     public void QuitGame()

@@ -19,16 +19,14 @@ public class Cutscene : MonoBehaviour
     private float journeyLength;
     private bool hasChangedCamPosition = false;
 
-    void Start()
+    void Awake()
     {
         DisableAllChildRenderers();
         mainCamera = Camera.main;
         originalPosition = mainCamera.transform.position;
-
-       
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Time.time >= startTime && Time.time <= endTime)
         {
@@ -37,7 +35,6 @@ public class Cutscene : MonoBehaviour
                 isCutsceneActive = true;
                 EnableAllChildRenderers();
             }
-
 
             if (!hasChangedCamPosition)
             {
@@ -60,8 +57,6 @@ public class Cutscene : MonoBehaviour
 
                 hasChangedCamPosition = true;
             }
-            
-
 
             // Calculate the progress based on elapsed time within the endTime range
             float progress = (Time.time - startTime) / (endTime - startTime);

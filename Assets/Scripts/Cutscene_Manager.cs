@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +11,12 @@ public class Cutscene_Manager : MonoBehaviour
     public AudioSource backgroundMusic;
     private float originalVolume;
 
+    private bool isFadingIn = true;
+    private float fadeInTimer = 1f;
+    private float cutsceneTimer = 0f;
+    private bool isFadingOut = false; // Added flag
+    private float fadeOutTimer = 0f;
+
     private void Start()
     {
         backgroundMusic.Play();
@@ -19,40 +24,52 @@ public class Cutscene_Manager : MonoBehaviour
         originalColor = fadeScreenSpriteRenderer.color;
         originalVolume = backgroundMusic.volume;
 
-        StartCoroutine(PlayCutscene());
+        // Set initial opacity to fully visible
+        fadeScreenSpriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
     }
 
-    private IEnumerator PlayCutscene()
+    private void FixedUpdate()
     {
         // Fade in
-        float elapsedTime = 0f;
-        while (elapsedTime < 1f)
+        if (isFadingIn)
         {
-            elapsedTime += Time.deltaTime / 1f;
-            fadeScreenSpriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f - elapsedTime);
-            yield return null;
+            fadeInTimer -= Time.fixedDeltaTime / 1f;
+            fadeScreenSpriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, fadeInTimer);
+
+            if (fadeInTimer <= 0f)
+            {
+                isFadingIn = false;
+            }
         }
-
-        // Wait for the duration of the cutscene
-        yield return new WaitForSeconds(cutSceneTotalTime);
-
-        // Fade out
-        float fadeOutStartTime = Time.time;
-        while (Time.time < fadeOutStartTime + fadeOutTime)
+        else
         {
-            // Fade out backgroundMusic
-            float fadeElapsedTime = Time.time - fadeOutStartTime;
-            float fadeProgress = fadeElapsedTime / fadeOutTime;
-            fadeScreenSpriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, fadeProgress);
+            // Cutscene duration
+            cutsceneTimer += Time.fixedDeltaTime;
 
-            // Reduce the volume of backgroundMusic gradually
-            backgroundMusic.volume = Mathf.Lerp(originalVolume, 0f, fadeProgress);
+            // Fade out (only if not already fading out)
+            if (!isFadingOut && cutsceneTimer >= cutSceneTotalTime)
+            {
+                isFadingOut = true; // Start fading out
+                fadeOutTimer = 0f;
+            }
 
-            yield return null;
+            if (isFadingOut)
+            {
+                fadeOutTimer += Time.fixedDeltaTime;
+                float fadeProgress = Mathf.Clamp01(fadeOutTimer / fadeOutTime);
+                fadeScreenSpriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f + fadeProgress);
+
+                // Reduce the volume of backgroundMusic gradually
+                float volumeChanger = 1f - fadeProgress;
+                backgroundMusic.volume = Mathf.Lerp(originalVolume, 0f, volumeChanger);
+
+                // Load the next scene when fade out is complete
+                if (fadeProgress >= 1f)
+                {
+                    LoadNextScene();
+                }
+            }
         }
-
-        // Load the next scene (assuming you want to load the next scene by index)
-        LoadNextScene();
     }
 
     private void LoadNextScene()
@@ -64,9 +81,7 @@ public class Cutscene_Manager : MonoBehaviour
         }
         else
         {
-            // Handle what happens when there are no more scenes to load
             SceneManager.LoadScene(0);
-            //Debug.LogWarning("No more scenes to load.");
         }
     }
 }

@@ -6,6 +6,7 @@ public class BossFight_Checker : MonoBehaviour
 {
     public GameObject levelOver;
     public GameObject boss;
+    public AudioSource bossdeath;
 
     private bool hasCalledLevelOver;
 
@@ -13,6 +14,7 @@ public class BossFight_Checker : MonoBehaviour
     {
         if(!hasCalledLevelOver && boss == null)
         {
+            bossdeath.Play();
             hasCalledLevelOver = true;
             Invoke("callLevelOver", 2f);
         }

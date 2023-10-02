@@ -70,7 +70,7 @@ public class Poison_Drop : MonoBehaviour
                 gameObject.transform.position = newPosition;
                 dropAnimator.SetTrigger("Hit");
             }
-            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.poisonDrop,0.3f);
+            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.poisonDrop,0.1f);
             Destroy(gameObject, destroyDelay);
         }
     }

@@ -15,7 +15,7 @@ public class StartCutscene : MonoBehaviour
     private Player_Controller ghostPlayerController;
 
     public bool loadNextScene = false;
-    private void Awake()
+    private void Start()
     {
         dadPlayerController = GameObject.FindWithTag("WoodenMan").GetComponent<Player_Controller>();
         ghostPlayerController = GameObject.FindWithTag("Ghost").GetComponent<Player_Controller>();

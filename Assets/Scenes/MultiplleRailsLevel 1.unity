@@ -895,6 +895,7 @@ MonoBehaviour:
   switchDelay: 0.001
   inputManager: {fileID: 1883137707}
   ghostPlatform: {fileID: 2675158141671572417, guid: 730ec2a9bc7e44fd6af9211dbe35ae93, type: 3}
+  poisonKnockback: 1
   GhostHUD: {fileID: 1499954355}
   animator: {fileID: 462617583}
   knockbackForce: 12
@@ -903,6 +904,7 @@ MonoBehaviour:
   knockbackTotalTime: 0.4
   knockFromRight: 0
   IsBusyTeleporting: 0
+  movingWall: {fileID: 433210655}
   ghostCanFollow: 0
 --- !u!95 &462617583 stripped
 Animator:
@@ -4899,9 +4901,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4412599394785456188, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 76626ab012f011348b6b14e8c4a44fb3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ee83d98626a38184c8a9b9156a60a8fc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0

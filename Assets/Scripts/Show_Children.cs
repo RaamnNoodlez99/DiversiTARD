@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Show_Children : MonoBehaviour
@@ -10,6 +8,7 @@ public class Show_Children : MonoBehaviour
     private Transform[] children;
     private int currentIndex = 0;
     private float timer = 0f;
+    private bool isActivationStarted = false;
 
     void Start()
     {
@@ -23,20 +22,18 @@ public class Show_Children : MonoBehaviour
 
         // Calculate the time interval between each child activation
         childActivationInterval = totalTime / children.Length;
-
-        // Start the activation process after the specified startTime
-        StartCoroutine(ActivateChildrenWithDelay());
     }
 
-    IEnumerator ActivateChildrenWithDelay()
+    void FixedUpdate()
     {
-        // Wait for the specified startTime before starting the activation
-        yield return new WaitForSeconds(startTime);
-
-        // Activate children one by one
-        while (currentIndex < children.Length)
+        if (!isActivationStarted && Time.time >= startTime)
         {
-            timer += Time.deltaTime;
+            isActivationStarted = true;
+        }
+
+        if (isActivationStarted && currentIndex < children.Length)
+        {
+            timer += Time.fixedDeltaTime;
 
             // Check if it's time to activate the next child
             if (timer >= childActivationInterval)
@@ -45,8 +42,6 @@ public class Show_Children : MonoBehaviour
                 currentIndex++;
                 timer = 0f;
             }
-
-            yield return null;
         }
     }
 }
