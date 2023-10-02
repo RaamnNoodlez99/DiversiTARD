@@ -21,6 +21,7 @@ TagManager:
   - ButtonHolder
   - StoneBall
   - Boss
+  - Portal
   layers:
   - Default
   - TransparentFX

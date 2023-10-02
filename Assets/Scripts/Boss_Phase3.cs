@@ -6,9 +6,10 @@ public class Boss_Phase3 : MonoBehaviour
 {
     public GameObject woodenMan;
     public float rushDistance = 10.0f; // The distance the boss should rush
+    public float secondRushDistance = 10.0f; // The distance the boss should rush
     public float rushSpeed = 5.0f; // Adjust the speed at which the boss rushes
     public float cooldownTime = 2.0f; // Cooldown time in seconds
-    private bool isRushing = false;
+    public bool isRushing = false;
     private bool hitSomething = false;
     private bool isOnCooldown = false;
     private string direction = "left";
@@ -19,6 +20,9 @@ public class Boss_Phase3 : MonoBehaviour
     public GameObject bossObject;
     private Animator bossObjectAnimator;
     private bool isFlickering;
+    private bool waitForLoad = true;
+    private bool hasTeleported = false;
+    private int typeRush = 1;
 
     private bool facingLeft = false;
 
@@ -63,7 +67,6 @@ public class Boss_Phase3 : MonoBehaviour
                 facingLeft = !facingLeft;
             }
         }
-        Debug.Log(direction);
 
         if(!isOnCooldown && !isRushing)
         {
@@ -76,25 +79,40 @@ public class Boss_Phase3 : MonoBehaviour
 
     IEnumerator StartRush(string direction)
     {
+        float currentRushDist = 0;
+        if(typeRush == 1)
+        {
+            currentRushDist = rushDistance;
+            typeRush = 2;
+        }
+        else
+        {
+            currentRushDist = secondRushDistance;
+            typeRush = 1;
+        }
+
         hitSomething = false;
         isRushing = true;
         bossRoar.Play();
         bossObjectAnimator.SetBool("isRushing", true);
 
+
         Vector3 targetPosition;
         if (direction == "right")
         {
-             targetPosition = new Vector3(transform.position.x + rushDistance, transform.position.y, transform.position.z);
+             targetPosition = new Vector3(transform.position.x + currentRushDist, transform.position.y, transform.position.z);
         }
         else
         {
-             targetPosition = new Vector3(transform.position.x - rushDistance, transform.position.y, transform.position.z);
+             targetPosition = new Vector3(transform.position.x - currentRushDist, transform.position.y, transform.position.z);
         }
 
         while (Mathf.Abs(transform.position.x - targetPosition.x) > 0.01f)
         {
-            if (hitSomething)
+            if (hitSomething || hasTeleported)
             {
+                Debug.Log("Hit Something");
+                hasTeleported = false;
                 isRushing = false;
                 isOnCooldown = true;
                 StartCoroutine(StartCooldown());
@@ -119,14 +137,21 @@ public class Boss_Phase3 : MonoBehaviour
 
     IEnumerator StartCooldown()
     {
-        //Boss standing still before rushing again
+
+        if (waitForLoad)
+        {
+            waitForLoad = false;
+            yield return new WaitForSeconds(2.0f);
+        }
+
         bossObjectAnimator.SetBool("isRushing", false);
+
+        //Boss standing still before rushing again
 
         while (Time.time - startTime < cooldownTime)
         {
             if (Time.time - startTime >= aboutToAttackTime)
             {
-                Debug.Log("aboutToAttack");
                 auraAnimator.SetBool("aboutToAttack", true);
             }
 
@@ -148,6 +173,8 @@ public class Boss_Phase3 : MonoBehaviour
         if (player != null)
         {
             player.knockbackCounter = player.knockbackTotalTime;
+            if(SFX_Manager.sfxInstance.bossLaugh != null)
+                SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.bossLaugh);
 
             if (collision.transform.position.x <= transform.position.x)
             {
@@ -168,13 +195,22 @@ public class Boss_Phase3 : MonoBehaviour
         }
         else
         {
-            hitSomething = true;
+            if(!collision.gameObject.CompareTag("Platform") && !collision.gameObject.CompareTag("Portal"))
+            {
+                hitSomething = true;
+                if (facingLeft)
+                {
+                    Vector3 newPosition = new Vector3(transform.position.x - 2f, transform.position.y, transform.position.z);
+                    transform.position = newPosition;
+                }
+                else
+                {
+                    Vector3 newPosition = new Vector3(transform.position.x + 2f, transform.position.y, transform.position.z);
+                    transform.position = newPosition;
+                }
+
+            }
         }
-    }
-
-    public void flicker()
-    {
-
     }
 
     private void DisableRenderers(Transform parentTransform)
@@ -227,5 +263,10 @@ public class Boss_Phase3 : MonoBehaviour
     {
         if (!isFlickering)
             StartCoroutine(Flicker(gameObject.transform));
+    }
+
+    public void HasTelported()
+    {
+        hasTeleported = true;
     }
 }

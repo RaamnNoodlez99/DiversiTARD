@@ -120,10 +120,16 @@ public class Teleport_Door : MonoBehaviour
     {
         isTeleporting = true;
 
-        if(character.CompareTag("WoodenMan") || character.CompareTag("Ghost"))
+        if (character.CompareTag("Boss"))
+            character.GetComponent<Boss_Phase3>().HasTelported();
+
+
+        if (character.CompareTag("WoodenMan") || character.CompareTag("Ghost"))
             character.GetComponent<Player_Controller>().IsBusyTeleporting = true;
 
-        SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.teleport);
+        if(SFX_Manager.sfxInstance.teleport != null)
+            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.teleport);
+
         DisableRenderers(character.transform);
 
         if (character.CompareTag("WoodenMan") || character.CompareTag("Ghost"))

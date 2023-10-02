@@ -4,7 +4,6 @@ public class Show_Children : MonoBehaviour
 {
     public float totalTime = 5.0f; // Total time in seconds
     private float childActivationInterval; // Time interval between each child activation
-    public float startTime = 2.0f; // Delay before starting the activation
     private Transform[] children;
     private int currentIndex = 0;
     private float timer = 0f;
@@ -20,17 +19,11 @@ public class Show_Children : MonoBehaviour
             children[i].gameObject.SetActive(false);
         }
 
-        // Calculate the time interval between each child activation
         childActivationInterval = totalTime / children.Length;
     }
 
     void FixedUpdate()
     {
-        if (!isActivationStarted && Time.time >= startTime)
-        {
-            isActivationStarted = true;
-        }
-
         if (isActivationStarted && currentIndex < children.Length)
         {
             timer += Time.fixedDeltaTime;
@@ -43,5 +36,10 @@ public class Show_Children : MonoBehaviour
                 timer = 0f;
             }
         }
+    }
+
+    public void ShowChildren()
+    {
+        isActivationStarted = true;
     }
 }

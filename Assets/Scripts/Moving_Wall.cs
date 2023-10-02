@@ -226,8 +226,12 @@ public class Moving_Wall : MonoBehaviour
         hitGhostPlatform = false;
         Debug.Log("Done Moving Up");
         
-        vineAnimation1.SetBool("makeIdle", false);
-        vineAnimation2.SetBool("makeIdle", false);
+        if(vineAnimation1 != null && vineAnimation2 != null)
+        {
+            vineAnimation1.SetBool("makeIdle", false);
+            vineAnimation2.SetBool("makeIdle", false);
+        }
+       
     }
 
     public bool getHittingClamp()

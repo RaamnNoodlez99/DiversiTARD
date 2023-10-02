@@ -628,6 +628,10 @@ MonoBehaviour:
   cameraX: 4.63
   cameraY: 0
   cameraSize: 4.3
+  nextCutscene: {fileID: 0}
+  cutsceneManager: {fileID: 0}
+  ressurectPhases: {fileID: 0}
+  isFirstCutscene: 0
 --- !u!4 &268370871
 Transform:
   m_ObjectHideFlags: 0
@@ -2042,6 +2046,10 @@ MonoBehaviour:
   cameraX: 0
   cameraY: 0
   cameraSize: 5.35
+  nextCutscene: {fileID: 268370869}
+  cutsceneManager: {fileID: 0}
+  ressurectPhases: {fileID: 0}
+  isFirstCutscene: 0
 --- !u!4 &1064021091
 Transform:
   m_ObjectHideFlags: 0
@@ -2293,6 +2301,10 @@ MonoBehaviour:
   cameraX: 2.34
   cameraY: -1.24
   cameraSize: 4
+  nextCutscene: {fileID: 1977738716}
+  cutsceneManager: {fileID: 47870521}
+  ressurectPhases: {fileID: 0}
+  isFirstCutscene: 1
 --- !u!4 &1235328346
 Transform:
   m_ObjectHideFlags: 0
@@ -2960,6 +2972,10 @@ MonoBehaviour:
   cameraX: 0
   cameraY: 0
   cameraSize: 5.35
+  nextCutscene: {fileID: 2092263162}
+  cutsceneManager: {fileID: 0}
+  ressurectPhases: {fileID: 0}
+  isFirstCutscene: 0
 --- !u!4 &1977738718
 Transform:
   m_ObjectHideFlags: 0
@@ -3211,6 +3227,10 @@ MonoBehaviour:
   cameraX: 0
   cameraY: 0
   cameraSize: 5.35
+  nextCutscene: {fileID: 1064021089}
+  cutsceneManager: {fileID: 0}
+  ressurectPhases: {fileID: 0}
+  isFirstCutscene: 0
 --- !u!4 &2092263164
 Transform:
   m_ObjectHideFlags: 0

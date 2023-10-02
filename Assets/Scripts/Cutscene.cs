@@ -12,28 +12,56 @@ public class Cutscene : MonoBehaviour
     public float cameraX;
     public float cameraY;
     public float cameraSize;
+    public GameObject nextCutscene;
+    public GameObject cutsceneManager;
+    public GameObject ressurectPhases;
+    public bool isFirstCutscene = false;
 
     private Camera mainCamera;
     private Vector3 originalPosition;
     private Vector3 targetPosition;
     private float journeyLength;
     private bool hasChangedCamPosition = false;
+    private float totalTime;
+    private bool shouldStart = false;
+    private float progress = 0f; // New progress variable
+    private float currentTime = 0f; // New currentTime variable
+
+
 
     void Awake()
     {
+        totalTime = endTime - startTime;
         DisableAllChildRenderers();
         mainCamera = Camera.main;
         originalPosition = mainCamera.transform.position;
+
+        if (isFirstCutscene)
+        {
+            if (cutsceneManager != null)
+                cutsceneManager.GetComponent<Cutscene_Manager>().StartCutsceneCount();
+
+            PlayCutscene();
+        }
+    }
+
+    public void PlayCutscene()
+    {
+        shouldStart = true;
+
+        if (ressurectPhases != null)
+            ressurectPhases.GetComponent<Show_Children>().ShowChildren();
     }
 
     void FixedUpdate()
     {
-        if (Time.time >= startTime && Time.time <= endTime)
+        if (shouldStart)
         {
             if (!isCutsceneActive)
             {
                 isCutsceneActive = true;
                 EnableAllChildRenderers();
+                currentTime = 0f; // Reset currentTime when the cutscene starts
             }
 
             if (!hasChangedCamPosition)
@@ -58,22 +86,29 @@ public class Cutscene : MonoBehaviour
                 hasChangedCamPosition = true;
             }
 
-            // Calculate the progress based on elapsed time within the endTime range
-            float progress = (Time.time - startTime) / (endTime - startTime);
-            progress = Mathf.Clamp01(progress); // Ensure progress stays within [0, 1]
+            // Calculate the current time within the cutscene
+            currentTime += Time.fixedDeltaTime;
+
+            // Calculate the progress based on currentTime and totalTime
+            progress = Mathf.Clamp01(currentTime / totalTime);
 
             // Move the camera based on the progress
             mainCamera.transform.position = Vector3.Lerp(originalPosition, targetPosition, progress);
-        }
-        else if (Time.time > endTime && isCutsceneActive)
-        {
-            isCutsceneActive = false;
-            DisableAllChildRenderers();
-            mainCamera.transform.position = originalPosition;
+
+            // Check if the cutscene should end
+            if (currentTime >= totalTime)
+            {
+                isCutsceneActive = false;
+                shouldStart = false;
+                DisableAllChildRenderers();
+                mainCamera.transform.position = originalPosition;
+
+                if (nextCutscene != null)
+                    nextCutscene.GetComponent<Cutscene>().PlayCutscene();
+            }
         }
     }
 
-    // When end time is reached
     void DisableAllChildRenderers()
     {
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
@@ -83,7 +118,6 @@ public class Cutscene : MonoBehaviour
         }
     }
 
-    // When start time is reached
     void EnableAllChildRenderers()
     {
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
