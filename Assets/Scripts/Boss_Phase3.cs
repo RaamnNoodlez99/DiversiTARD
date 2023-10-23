@@ -17,6 +17,7 @@ public class Boss_Phase3 : MonoBehaviour
     public int bossDamage;
     public AudioSource bossHurt;
 
+
     public GameObject bossObject;
     private Animator bossObjectAnimator;
     private bool isFlickering;
@@ -107,28 +108,57 @@ public class Boss_Phase3 : MonoBehaviour
              targetPosition = new Vector3(transform.position.x - currentRushDist, transform.position.y, transform.position.z);
         }
 
-        while (Mathf.Abs(transform.position.x - targetPosition.x) > 0.01f)
+        if(direction == "right")
         {
-            if (hitSomething || hasTeleported)
+            while (transform.position.x <= targetPosition.x)
             {
-                Debug.Log("Hit Something");
-                hasTeleported = false;
-                isRushing = false;
-                isOnCooldown = true;
-                StartCoroutine(StartCooldown());
-                yield break;
+                if (hitSomething || hasTeleported)
+                {
+                    //hitBlock.SetActive(true);
+                    Debug.Log("Hit Something");
+                    hasTeleported = false;
+                    isRushing = false;
+                    isOnCooldown = true;
+                    StartCoroutine(StartCooldown());
+                    yield break;
+                }
+                // Calculate the movement direction
+                Vector3 moveDirection = (targetPosition - transform.position).normalized;
+
+                // Move the boss towards the target position with the specified rushSpeed
+                transform.position += moveDirection * rushSpeed * Time.deltaTime;
+
+                yield return null;
             }
-            // Calculate the movement direction
-            Vector3 moveDirection = (targetPosition - transform.position).normalized;
+        }
+        else
+        {
+            while (transform.position.x >= targetPosition.x)
+            {
+                if (hitSomething || hasTeleported)
+                {
+                    //hitBlock.SetActive(true);
+                    Debug.Log("Hit Something");
+                    hasTeleported = false;
+                    isRushing = false;
+                    isOnCooldown = true;
+                    StartCoroutine(StartCooldown());
+                    yield break;
+                }
+                // Calculate the movement direction
+                Vector3 moveDirection = (targetPosition - transform.position).normalized;
 
-            // Move the boss towards the target position with the specified rushSpeed
-            transform.position += moveDirection * rushSpeed * Time.deltaTime;
+                // Move the boss towards the target position with the specified rushSpeed
+                transform.position += moveDirection * rushSpeed * Time.deltaTime;
 
-            yield return null;
+                yield return null;
+            }
         }
 
         isOnCooldown = true;
         isRushing = false;
+
+       // stopBlock.SetActive(true);
 
         StartCoroutine(StartCooldown());
         yield return null;
@@ -157,7 +187,8 @@ public class Boss_Phase3 : MonoBehaviour
 
             yield return null;
         }
-        
+
+
         // yield return new WaitForSeconds(cooldownTime);
         isOnCooldown = false;
     }

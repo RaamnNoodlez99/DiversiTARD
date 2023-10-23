@@ -20,11 +20,8 @@ public class Main_Menu : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.GetInt("hasPlayedBefore1") != 1)
-        {
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.SetInt("hasPlayedBefore1", 1);
-        }
+       
+        //PlayerPrefs.DeleteAll();
 
         initialTitlePosition = title.transform.position;
         foreach (Button child in GetComponentsInChildren<Button>())
