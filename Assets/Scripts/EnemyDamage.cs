@@ -21,7 +21,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (other.gameObject.CompareTag("WoodenMan"))
         {
-            _playerHealth.Damage(damage);
+            _playerHealth.RemoveLife();
         }
     }
 }

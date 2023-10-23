@@ -54,11 +54,11 @@ public class Arrow : MonoBehaviour
                     player.knockFromRight = false;
                 }
 
-                objectHealth.Damage(damage);
+                objectHealth.RemoveLife();
             }
             else
             {
-                objectHealth.Damage(damage);
+                objectHealth.RemoveLife();
             }
         }
 

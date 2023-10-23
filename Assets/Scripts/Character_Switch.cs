@@ -14,7 +14,8 @@ public class Character_Switch : MonoBehaviour
     private Transform activeCharacter;
     public static string currentCharacter;
     
-    public GameObject healthBar;
+    //public GameObject healthBar;
+    public GameObject lives;
 
     public GameObject[] Rails;
     public GameObject[] ShooterHeads;
@@ -77,7 +78,7 @@ public class Character_Switch : MonoBehaviour
             thisCharacter.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             if (activeCharacter.CompareTag("WoodenMan"))
             {
-                healthBar.SetActive(false);
+                lives.SetActive(false);
 
                 if (Rails != null && Rails.Length != 0)
                 {
@@ -170,7 +171,7 @@ public class Character_Switch : MonoBehaviour
             }
             else if (activeCharacter.CompareTag("Ghost"))
             {
-                healthBar.SetActive(true);
+                lives.SetActive(true);
                 
                 if (Rails != null && Rails.Length != 0)
                 {

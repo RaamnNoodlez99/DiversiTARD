@@ -5,78 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbbf0830-a335-4d67-9b70-26899a0de1fb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.DiversiTARD/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.DiversiTARD/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Boss.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Boss/Boss.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Boss/Boss.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Boss/Phase1.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Boss/Phase1.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Falling Platform/new Platform.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Falling Platform/new Platform/Fall.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Falling Platform/new Platform/Fall.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Falling Platform/new Platform/Falling Platform Dad 1 (1).controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Falling Platform/new Platform/Falling Platform Dad 1 (1).controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Falling Platform/new Platform/Idle.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Falling Platform/new Platform/Idle.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BossLevelDad 1.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BossLevelDad 1.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BossLevelGhost 1.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BossLevelGhost 1.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Falling_Platform_Holder_Dad 1.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Falling_Platform_Holder_Dad 1.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Falling_Platform_Holder_Wrapper_Dad.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Falling_Platform_Holder_Wrapper_Dad.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/BillingMode.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/BillingMode.json.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BossLevel.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BossLevel.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BossLevelGhost.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/BossLevelGhost.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FollowCharacter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FollowCharacter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Phase1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Phase1.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Bossframe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Bossframe.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss1.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss2.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss3.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss4.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss5.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss6.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss7.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss8.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase1/boss9.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/dad_backgroundv3/Floor_Dad_Copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/dad_backgroundv3/Floor_Dad_Copy.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/ghost_backgroundV2/Floor_Ghost_Copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/ghost_backgroundV2/Floor_Ghost_Copy.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/AudioManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/AudioManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DiversiTARD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiversiTARD/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Boss/Human Boss/Human_Boss.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Boss/Human Boss/Human_Boss.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/woodenman/Attack.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/woodenman/Attack.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/woodenman/Character.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/woodenman/Character.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CanvasContainer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/CanvasContainer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Character.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Human_Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Human_Boss.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Poison Drop.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Poison Drop.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boss Phase 3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boss Phase 3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DamageRails.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DamageRails.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tutorial.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Arrow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Arrow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Boss_Phase3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boss_Phase3.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChangeScreenOnTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChangeScreenOnTimer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character_Switch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character_Switch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyDamage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Phase1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Phase1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Poison_Drop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Poison_Drop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stone_Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stone_Ball.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wooden_Man_Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wooden_Man_Attack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wooden_Man_Attack_Area.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wooden_Man_Attack_Area.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,6 +144,7 @@
       <workItem from="1694117139503" duration="343000" />
       <workItem from="1695996877405" duration="16864000" />
       <workItem from="1696063812394" duration="24299000" />
+      <workItem from="1698063218602" duration="7396000" />
     </task>
     <servers />
   </component>

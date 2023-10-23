@@ -58,7 +58,8 @@ public class Poison_Drop : MonoBehaviour
                     player.knockFromRight = false;
                 }
 
-                objectHealth.Damage(damage);
+                //objectHealth.Damage(damage);
+                objectHealth.RemoveLife();
             }
         }
 

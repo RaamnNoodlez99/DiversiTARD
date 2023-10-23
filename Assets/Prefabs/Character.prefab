@@ -269,7 +269,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -139312514, guid: c6e215e7c2cfb41998b4bd0c67267cce, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.49019608}
   m_FlipX: 0
   m_FlipY: 0
@@ -277,7 +277,7 @@ SpriteRenderer:
   m_Size: {x: 10.65, y: 15.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2573527982920994319
@@ -424,8 +424,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -16.727242, y: 12.81178}
       - {x: -16.72042, y: 16.064014}
-      - {x: -14.045672, y: 22.68}
-      - {x: -14.266538, y: 10.505789}
+      - {x: -15.384513, y: 20.748207}
+      - {x: -15.547162, y: 10.445419}
 --- !u!114 &5687228424973130808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,6 +630,7 @@ MonoBehaviour:
   switchDelay: 0.001
   inputManager: {fileID: 0}
   ghostPlatform: {fileID: 6849975941971926316, guid: 607304796dc15bc4386c5f3ab5c8ffd6, type: 3}
+  poisonKnockback: 1
   GhostHUD: {fileID: 0}
   animator: {fileID: 4573405270768568801}
   knockbackForce: 12
@@ -638,6 +639,7 @@ MonoBehaviour:
   knockbackTotalTime: 0.4
   knockFromRight: 0
   IsBusyTeleporting: 0
+  movingWall: {fileID: 0}
   ghostCanFollow: 0
 --- !u!114 &5068456077889257147
 MonoBehaviour:
@@ -654,7 +656,7 @@ MonoBehaviour:
   otherCharacter: {fileID: 0}
   thisCharacter: {fileID: 3034942747674360919}
   cinemachine: {fileID: 0}
-  healthBar: {fileID: 0}
+  lives: {fileID: 0}
   Rails: []
   ShooterHeads: []
   TeleportDoors: []
@@ -671,7 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4573405270768568801}
-  timeToAttack: 1.2
+  timeToAttack: 0.3
 --- !u!114 &741399904703212890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,9 +687,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 300
-  MAX_HEALTH: 300
   damageFlickerer: {fileID: 0}
-  healthBar: {fileID: 0}
+  lives: {fileID: 0}
 --- !u!70 &3422936355668847860
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

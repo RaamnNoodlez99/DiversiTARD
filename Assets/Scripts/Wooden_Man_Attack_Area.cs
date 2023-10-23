@@ -23,6 +23,6 @@ public class Wooden_Man_Attack_Area : MonoBehaviour
     private void RemoveEnemyHealth()
     {
         Health enemyHealth = colliderToRemove.GetComponent<Health>();
-        enemyHealth.Damage(damage);
+        enemyHealth.RemoveLife();
     }
 }

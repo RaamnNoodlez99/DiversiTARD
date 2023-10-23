@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Phase1 : MonoBehaviour
 {
@@ -9,6 +11,22 @@ public class Phase1 : MonoBehaviour
    // public Transform camera;
     public Transform flowerBoss;
     public Transform followObject;
+
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 10)
+        {
+            if (PlayerPrefs.GetInt("hasSeenBossLevelCutscene") == 0)
+            {
+                PlayerPrefs.SetInt("hasSeenFallingPlatformsCutscene", 1);
+            }
+            else
+            {
+                //healthbar.SetActive(true);
+            }
+        }
+    }
+
     void Update()
     {
        // camera.Translate(Vector3.right * cameraSpeed * Time.deltaTime);

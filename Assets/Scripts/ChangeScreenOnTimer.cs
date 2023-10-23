@@ -14,6 +14,7 @@ public class ChangeScreenOnTimer : MonoBehaviour
 
     public GameObject healthbar;
     public GameObject ghostHUD;
+    public GameObject lives;
 
     public GameObject actualCamera;
     public GameObject stateMachineToDisable;
@@ -34,7 +35,8 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
             else
             {
-                healthbar.SetActive(true);
+                //healthbar.SetActive(true);
+                lives.SetActive(true);
                 ghostHUD.SetActive(true);
                 stateMachineToDisable.SetActive(false);
                 actualCamera.SetActive(true);
@@ -52,7 +54,8 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
             else
             {
-                healthbar.SetActive(true);
+                //healthbar.SetActive(true);
+                lives.SetActive(true);
                 ghostHUD.SetActive(true);
                 stateMachineToDisable.SetActive(false);
                 actualCamera.SetActive(true);
@@ -70,7 +73,8 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
             else
             {
-                healthbar.SetActive(true);
+               // healthbar.SetActive(true);
+                lives.SetActive(true);
                 ghostHUD.SetActive(true);
                 stateMachineToDisable.SetActive(false);
                 actualCamera.SetActive(true);
@@ -88,7 +92,8 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
             else
             {
-                healthbar.SetActive(true);
+                //healthbar.SetActive(true);
+                lives.SetActive(true);
                 ghostHUD.SetActive(true);
                 stateMachineToDisable.SetActive(false);
                 actualCamera.SetActive(true);
@@ -106,7 +111,8 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
             else
             {
-                healthbar.SetActive(true);
+                //healthbar.SetActive(true);
+                lives.SetActive(true);
                 ghostHUD.SetActive(true);
                 stateMachineToDisable.SetActive(false);
                 actualCamera.SetActive(true);
@@ -124,7 +130,8 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
             else
             {
-                healthbar.SetActive(true);
+                //healthbar.SetActive(true);
+                lives.SetActive(true);
                 ghostHUD.SetActive(true);
                 stateMachineToDisable.SetActive(false);
                 actualCamera.SetActive(true);
@@ -142,7 +149,8 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
             else
             {
-                healthbar.SetActive(true);
+                //healthbar.SetActive(true);
+                lives.SetActive(true);
                 ghostHUD.SetActive(true);
                 stateMachineToDisable.SetActive(false);
                 actualCamera.SetActive(true);
@@ -160,7 +168,8 @@ public class ChangeScreenOnTimer : MonoBehaviour
             }
             else
             {
-                healthbar.SetActive(true);
+                //healthbar.SetActive(true);
+                lives.SetActive(true);
                 ghostHUD.SetActive(true);
                 stateMachineToDisable.SetActive(false);
                 actualCamera.SetActive(true);
@@ -173,6 +182,7 @@ public class ChangeScreenOnTimer : MonoBehaviour
         levelInput.enabled = true;
         sceneAnimator.SetBool("startCutscene", false);
         healthbar.SetActive(true);
+        lives.SetActive(true);
         ghostHUD.SetActive(true);
         stateMachineToDisable.SetActive(false);
         actualCamera.SetActive(true);

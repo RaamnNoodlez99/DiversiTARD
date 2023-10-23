@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Wooden_Man_Attack : MonoBehaviour
 {
     public Animator animator;
-    public float timeToAttack = 1f;
+    public float timeToAttack = 0.3f;
 
     private bool soundAlreadyPlayed = false;
 
@@ -46,7 +46,7 @@ public class Wooden_Man_Attack : MonoBehaviour
     {
         isAttacking = true;
         animator.SetBool("isAttacking", true);
-        StartCoroutine(activateAttackCollider(0.85f));
+        StartCoroutine(activateAttackCollider(0.18f));
     }
 
     private IEnumerator activateAttackCollider(float duration)

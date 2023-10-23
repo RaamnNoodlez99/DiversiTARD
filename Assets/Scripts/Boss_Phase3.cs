@@ -78,6 +78,7 @@ public class Boss_Phase3 : MonoBehaviour
 
     }
 
+
     IEnumerator StartRush(string direction)
     {
         float currentRushDist = 0;
@@ -96,6 +97,10 @@ public class Boss_Phase3 : MonoBehaviour
         isRushing = true;
         bossRoar.Play();
         bossObjectAnimator.SetBool("isRushing", true);
+        
+        bossObjectAnimator.SetTrigger("startStomp");
+        
+        yield return new WaitForSeconds(1f);
 
 
         Vector3 targetPosition;
@@ -217,7 +222,7 @@ public class Boss_Phase3 : MonoBehaviour
             }
 
             Health objectHealth = collision.collider.GetComponent<Health>();
-            objectHealth.Damage(bossDamage);
+            objectHealth.RemoveLife();
         }
 
         if (collision.gameObject.CompareTag("Projectile"))

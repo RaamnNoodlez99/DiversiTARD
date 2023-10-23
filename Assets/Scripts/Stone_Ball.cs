@@ -122,7 +122,7 @@ public class Stone_Ball : MonoBehaviour
                         player.knockFromRight = false;
                     }
 
-                    objectHealth.Damage(damage);
+                    objectHealth.RemoveLife();
                 }
             }
         }

@@ -1591,6 +1591,7 @@ MonoBehaviour:
   LevelComplete: {fileID: 0}
   teleport: {fileID: 0}
   trapped: {fileID: 0}
+  bossLaugh: {fileID: 0}
   Audio: {fileID: 480285849}
 --- !u!4 &480285851
 Transform:
@@ -1975,6 +1976,7 @@ MonoBehaviour:
   knockbackTotalTime: 0.4
   knockFromRight: 0
   IsBusyTeleporting: 0
+  movingWall: {fileID: 0}
   ghostCanFollow: 1
 --- !u!114 &720915873
 MonoBehaviour:
@@ -1989,9 +1991,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  MAX_HEALTH: 100
   damageFlickerer: {fileID: 0}
-  healthBar: {fileID: 1089251652}
+  lives: {fileID: 0}
 --- !u!114 &720915874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2007,7 +2008,7 @@ MonoBehaviour:
   otherCharacter: {fileID: 242319920}
   thisCharacter: {fileID: 720915871}
   cinemachine: {fileID: 0}
-  healthBar: {fileID: 1089251651}
+  lives: {fileID: 0}
   Rails: []
   ShooterHeads: []
   TeleportDoors: []
@@ -3617,7 +3618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769536931}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.600346, y: 16.2, z: 0}
+  m_LocalPosition: {x: 16.600346, y: 16.199997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
