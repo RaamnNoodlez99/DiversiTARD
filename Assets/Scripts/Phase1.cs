@@ -22,10 +22,15 @@ public class Phase1 : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        Debug.Log("cow");
+    }
+
 
     void Update()
     {
-       // camera.Translate(Vector3.right * cameraSpeed * Time.deltaTime);
+        // camera.Translate(Vector3.right * cameraSpeed * Time.deltaTime);
         flowerBoss.Translate(Vector3.right * monsterSpeed * Time.deltaTime);
         //followObject.Translate(Vector3.right * cameraSpeed * Time.deltaTime);
     }

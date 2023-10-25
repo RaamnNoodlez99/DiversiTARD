@@ -16,6 +16,8 @@ public class StartCutscene : MonoBehaviour
 
     public bool loadNextScene = false;
     private bool bossSoundPlayed = false;
+
+    private bool isStartPhase = false;
     private void Start()
     {
         dadPlayerController = GameObject.FindWithTag("WoodenMan").GetComponent<Player_Controller>();
@@ -51,6 +53,16 @@ public class StartCutscene : MonoBehaviour
                         Invoke("stopCutscene", 3f);
                     }
                 }
+                
+                if (Phase1StartScript != null)
+                {
+                    if (!isStartPhase)
+                    {
+                        PlayerPrefs.SetInt("hasSeenBossLevelCutscene", 1);
+                        Phase1StartScript.SetActive(true);
+                        isStartPhase = true;
+                    }
+                }
             }
             else
             {
@@ -69,16 +81,10 @@ public class StartCutscene : MonoBehaviour
 
                 if (Phase1StartScript != null)
                 {
-                    Debug.Log("player pref" + PlayerPrefs.GetInt("hasSeenBossLevelCutscene"));
-                    if (PlayerPrefs.GetInt("hasSeenBossLevelCutscene") == 1)
+                    if (!isStartPhase)
                     {
-                        StartCoroutine(Phase1Effect(20f, 3f));
-                    }
-                    else
-                    {
-                        PlayerPrefs.SetInt("hasSeenBossLevelCutscene", 1);
-                        Debug.Log("player pref" + PlayerPrefs.GetInt("hasSeenBossLevelCutscene"));
-                        Phase1StartScript.SetActive(true);
+                        StartCoroutine(Phase1Effect(25f, 3f));
+                        isStartPhase = true;
                     }
                 }
 
