@@ -9,10 +9,11 @@ public class Main_Menu : MonoBehaviour
 {
     private List<Button> childButtons = new List<Button>();
     private float cooldownDuration = 0.1f;
-    private bool buttonsRemoved = false;
+    public bool buttonsRemoved = false;
     public GameObject firstSelectedButton;
     public GameObject removableText;
     public GameObject title;
+    public GameObject otherMenu;
 
     private Vector3 initialTitlePosition;
     public float titleMoveSpeed = 10f;
@@ -97,6 +98,17 @@ public class Main_Menu : MonoBehaviour
             SceneManager.LoadScene(PlayerPrefs.GetInt("currentLevel"));
         else
             SceneManager.LoadScene(1);
+    }
+    public void NewGame()
+    {
+        PlayerPrefs.DeleteAll();
+        if(otherMenu != null)
+        {
+            otherMenu.SetActive(true);
+            gameObject.SetActive(false);
+            otherMenu.GetComponent<Main_Menu>().buttonsRemoved = true;
+            otherMenu.GetComponent<Main_Menu>().AddButtons();
+        }  
     }
 
     public void PlayTutorial()
