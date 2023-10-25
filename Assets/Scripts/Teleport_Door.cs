@@ -18,6 +18,7 @@ public class Teleport_Door : MonoBehaviour
     private bool isTeleporting = false;
     public float teleportTimer = 180f;
     private bool showHint = false;
+    public float timeInPortal = 1f;
 
 
     private bool qeueDeActivation = false;
@@ -158,9 +159,12 @@ public class Teleport_Door : MonoBehaviour
         DisableRenderers(character.transform);
 
         if (character.CompareTag("WoodenMan") || character.CompareTag("Ghost"))
-            StartCoroutine(character.GetComponent<Player_Controller>().FreezeMovementInputForDuration(1f));
+        {
+            if(timeInPortal > 0)
+                StartCoroutine(character.GetComponent<Player_Controller>().FreezeMovementInputForDuration(timeInPortal));
+        }
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(timeInPortal);
 
         Vector3 teleportPosition;
 
@@ -190,7 +194,8 @@ public class Teleport_Door : MonoBehaviour
         character.transform.position = teleportPosition;
 
 
-        EnableRenderers(character.transform); isTeleporting = false;
+        EnableRenderers(character.transform); 
+        isTeleporting = false;
 
         yield return new WaitForSeconds(0f);
 

@@ -4,36 +4,38 @@ using UnityEngine;
 
 public class Projectile_Freezer : MonoBehaviour
 {
-
     public float timeToDestroy;
-    public AudioSource stoneSource;
+    public AudioSource soundSource;
     public AudioClip[] stoneFallSounds;
-
-    // Keep track of the last played audio clip.
-    private AudioClip lastPlayedSound;
+    public AudioClip[] arrowFallSounds;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("StoneBall"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("StoneBall"))
         {
-            Debug.Log("Freezing");
-            playRandomAudio();
+            //Debug.Log("Freezing StoneBall");
+            PlayRandomStoneAudio();
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Arrows"))
+        {
+            //Debug.Log("Freezing Arrows");
+            PlayRandomArrowAudio();
             Destroy(collision.gameObject);
         }
     }
 
-    public float playRandomAudio()
+    public void PlayRandomStoneAudio()
     {
-        AudioClip randomSound;
-        do
-        {
-            randomSound = stoneFallSounds[Random.Range(0, stoneFallSounds.Length)];
-        } while (randomSound == lastPlayedSound);
+        AudioClip randomSound = stoneFallSounds[Random.Range(0, stoneFallSounds.Length)];
+        soundSource.clip = randomSound;
+        soundSource.Play();
+    }
 
-        stoneSource.clip = randomSound;
-        stoneSource.Play();
-        lastPlayedSound = randomSound;
-
-        return randomSound.length;
+    public void PlayRandomArrowAudio()
+    {
+        AudioClip randomSound = arrowFallSounds[Random.Range(0, arrowFallSounds.Length)];
+        soundSource.clip = randomSound;
+        soundSource.Play();
     }
 }
