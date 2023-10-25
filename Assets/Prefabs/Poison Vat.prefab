@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5567f09e016fe4ca831e97d81ed180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poisonDrop: {fileID: 5406549034018571992, guid: 7a08f22f23ec0a341b0399ca18ae8616, type: 3}
+  poisonDrop: {fileID: 413842115048582327, guid: e603b44c3260342c0b7dbaeb6830288b, type: 3}
   poisonOrigin: {fileID: 136389080679359830}
-  poisonSpawnInterval: 0.35
-  inialNumOfDrops: 20
-  gapBetweenDrops: 7
+  poisonSpawnInterval: 0.14
+  inialNumOfDrops: 15
+  gapBetweenDrops: 8
 --- !u!1 &136389080679359825
 GameObject:
   m_ObjectHideFlags: 0

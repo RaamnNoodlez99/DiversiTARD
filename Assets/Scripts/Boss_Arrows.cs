@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Stone_Ball : MonoBehaviour
+public class Boss_Arrows : MonoBehaviour
 {
     public float timeToDestroy;
     public AudioSource stoneSource;
@@ -23,7 +23,7 @@ public class Stone_Ball : MonoBehaviour
     public Sprite ghostRock;
 
     public bool doDamage = false;
-    
+
     private void Start()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, platformLayer);
@@ -34,7 +34,7 @@ public class Stone_Ball : MonoBehaviour
         }
 
         woodenManReference = GameObject.Find("Wooden Man");
-        if(woodenManReference != null)
+        if (woodenManReference != null)
             woodenMansCharacterSwitch = woodenManReference.GetComponent<Character_Switch>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -50,33 +50,44 @@ public class Stone_Ball : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Arrow Pass"))
+        {
+            if (ignoreFirstPlatform)
+            {
+                Debug.Log("2");
+                gameObject.layer = LayerMask.NameToLayer("Ignore Platforms");
+                Invoke("ChangeLayer", 0.32f);
+                ignoreFirstPlatform = false;
+            }
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
         if (collision.collider != null && !collision.gameObject.CompareTag("StoneBall"))
         {
-            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
-            AudioClip randomSound;
-        
-            // Keep generating a random sound until it's different from the last one played.
-            do
-            {
-                randomSound = stoneFallSounds[Random.Range(0, stoneFallSounds.Length)];
-            } while (randomSound == lastPlayedSound);
-        
-            stoneSource.clip = randomSound;
-            stoneSource.Play();
-        
-            // Update the last played sound.
-            lastPlayedSound = randomSound;
-        
-            Destroy(gameObject, randomSound.length);
+                gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+                AudioClip randomSound;
+
+                do
+                {
+                    randomSound = stoneFallSounds[Random.Range(0, stoneFallSounds.Length)];
+                } while (randomSound == lastPlayedSound);
+
+                stoneSource.clip = randomSound;
+                stoneSource.Play();
+                lastPlayedSound = randomSound;
+
+                Destroy(gameObject, randomSound.length);   
         }
-        
+
         if (doDamage && (collision.gameObject.CompareTag("WoodenMan")))
         {
             Health objectHealth = collision.collider.GetComponent<Health>();
-            
+
             if (objectHealth != null)
             {
                 Player_Controller player = null;
@@ -107,6 +118,11 @@ public class Stone_Ball : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void ChangeLayer()
+    {
+        gameObject.layer = LayerMask.NameToLayer("Arrows");
     }
 
     public float playRandomAudio()

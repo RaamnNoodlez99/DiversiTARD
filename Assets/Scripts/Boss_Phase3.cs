@@ -5,17 +5,27 @@ using UnityEngine;
 public class Boss_Phase3 : MonoBehaviour
 {
     public GameObject woodenMan;
-    public float rushDistance = 10.0f; // The distance the boss should rush
-    public float secondRushDistance = 10.0f; // The distance the boss should rush
-    public float rushSpeed = 5.0f; // Adjust the speed at which the boss rushes
-    public float cooldownTime = 2.0f; // Cooldown time in seconds
+    public float rushDistance = 10.0f; 
+    public float secondRushDistance = 10.0f; 
+    public float rushSpeed = 5.0f; 
+    public float cooldownTime = 2.0f; 
     public bool isRushing = false;
     private bool hitSomething = false;
     private bool isOnCooldown = false;
-    private string direction = "left";
+    public string direction = "left";
     public AudioSource bossRoar;
     public int bossDamage;
     public AudioSource bossHurt;
+    public GameObject trappWall1;
+    public GameObject trappWall2;
+    public GameObject movingWall;
+    public float trapTime = 20f;
+    public GameObject arrowShooter1;
+    public float timeToInvokeShooterAfterTrapped1 = 0.5f;
+    public GameObject arrowShooter2;
+    public float timeToInvokeShooterAfterTrapped2 = 1f;
+    public int bossLifes = 3;
+
 
 
     public GameObject bossObject;
@@ -24,6 +34,8 @@ public class Boss_Phase3 : MonoBehaviour
     private bool waitForLoad = true;
     private bool hasTeleported = false;
     private int typeRush = 1;
+    private bool inCalmPhase = false;
+    private bool bossIsInvinsible = false;
 
     private bool facingLeft = false;
 
@@ -81,6 +93,7 @@ public class Boss_Phase3 : MonoBehaviour
 
     IEnumerator StartRush(string direction)
     {
+       
         float currentRushDist = 0;
         if(typeRush == 1)
         {
@@ -93,80 +106,87 @@ public class Boss_Phase3 : MonoBehaviour
             typeRush = 1;
         }
 
-        hitSomething = false;
-        isRushing = true;
-        bossRoar.Play();
-        bossObjectAnimator.SetBool("isRushing", true);
-        
-        bossObjectAnimator.SetTrigger("startStomp");
-        
-        yield return new WaitForSeconds(1f);
+        if (!inCalmPhase)
+        {
+            hitSomething = false;
+            isRushing = true;
+
+            bossRoar.Play();
+            bossObjectAnimator.SetBool("isRushing", true);
+
+            bossObjectAnimator.SetTrigger("startStomp");
+
+            yield return new WaitForSeconds(1f);
 
 
-        Vector3 targetPosition;
-        if (direction == "right")
-        {
-             targetPosition = new Vector3(transform.position.x + currentRushDist, transform.position.y, transform.position.z);
-        }
-        else
-        {
-             targetPosition = new Vector3(transform.position.x - currentRushDist, transform.position.y, transform.position.z);
-        }
-
-        if(direction == "right")
-        {
-            while (transform.position.x <= targetPosition.x)
+            Vector3 targetPosition;
+            if (direction == "right")
             {
-                if (hitSomething || hasTeleported)
-                {
-                    //hitBlock.SetActive(true);
-                    Debug.Log("Hit Something");
-                    hasTeleported = false;
-                    isRushing = false;
-                    isOnCooldown = true;
-                    StartCoroutine(StartCooldown());
-                    yield break;
-                }
-                // Calculate the movement direction
-                Vector3 moveDirection = (targetPosition - transform.position).normalized;
-
-                // Move the boss towards the target position with the specified rushSpeed
-                transform.position += moveDirection * rushSpeed * Time.deltaTime;
-
-                yield return null;
+                targetPosition = new Vector3(transform.position.x + currentRushDist, transform.position.y, transform.position.z);
             }
-        }
-        else
-        {
-            while (transform.position.x >= targetPosition.x)
+            else
             {
-                if (hitSomething || hasTeleported)
-                {
-                    //hitBlock.SetActive(true);
-                    Debug.Log("Hit Something");
-                    hasTeleported = false;
-                    isRushing = false;
-                    isOnCooldown = true;
-                    StartCoroutine(StartCooldown());
-                    yield break;
-                }
-                // Calculate the movement direction
-                Vector3 moveDirection = (targetPosition - transform.position).normalized;
-
-                // Move the boss towards the target position with the specified rushSpeed
-                transform.position += moveDirection * rushSpeed * Time.deltaTime;
-
-                yield return null;
+                targetPosition = new Vector3(transform.position.x - currentRushDist, transform.position.y, transform.position.z);
             }
-        }
 
-        isOnCooldown = true;
-        isRushing = false;
+            if (isRushing)
+            {
+                if (direction == "right")
+                {
+                    while (transform.position.x <= targetPosition.x)
+                    {
+                        if (hitSomething || hasTeleported)
+                        {
+                            //hitBlock.SetActive(true);
+                            Debug.Log("Hit Something");
+                            hasTeleported = false;
+                            isRushing = false;
+                            isOnCooldown = true;
+                            StartCoroutine(StartCooldown());
+                            yield break;
+                        }
+                        // Calculate the movement direction
+                        Vector3 moveDirection = (targetPosition - transform.position).normalized;
 
-       // stopBlock.SetActive(true);
+                        // Move the boss towards the target position with the specified rushSpeed
+                        transform.position += moveDirection * rushSpeed * Time.deltaTime;
 
-        StartCoroutine(StartCooldown());
-        yield return null;
+                        yield return null;
+                    }
+                }
+                else
+                {
+                    while (transform.position.x >= targetPosition.x)
+                    {
+                        if (hitSomething || hasTeleported)
+                        {
+                            //hitBlock.SetActive(true);
+                            Debug.Log("Hit Something");
+                            hasTeleported = false;
+                            isRushing = false;
+                            isOnCooldown = true;
+                            StartCoroutine(StartCooldown());
+                            yield break;
+                        }
+                        // Calculate the movement direction
+                        Vector3 moveDirection = (targetPosition - transform.position).normalized;
+
+                        // Move the boss towards the target position with the specified rushSpeed
+                        transform.position += moveDirection * rushSpeed * Time.deltaTime;
+
+                        yield return null;
+                    }
+                }
+            }
+
+            isOnCooldown = true;
+            isRushing = false;
+
+            // stopBlock.SetActive(true);
+
+            StartCoroutine(StartCooldown());
+            yield return null;
+        }      
     }
     
 
@@ -197,8 +217,22 @@ public class Boss_Phase3 : MonoBehaviour
         // yield return new WaitForSeconds(cooldownTime);
         isOnCooldown = false;
     }
+    IEnumerator BossInvincibility()
+    {
+        bossIsInvinsible = true;
+        float currentTime = 1f; ;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+        while (currentTime > 0)
+        {
+            currentTime -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        bossIsInvinsible = false;
+    }
+
+        private void OnCollisionEnter2D(Collision2D collision)
     {
         Player_Controller player = null;
         if (collision.gameObject.CompareTag("WoodenMan"))
@@ -227,7 +261,25 @@ public class Boss_Phase3 : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            bossHurt.Play();
+            if (!bossIsInvinsible)
+            {
+                StartCoroutine(BossInvincibility());
+                if (bossLifes == 1)
+                {
+                    FlickerBoss();
+                    Invoke("EndLevel", 0.1f);
+                }
+                else
+                {
+                    bossHurt.Play();
+                    FlickerBoss();
+
+                    if (!inCalmPhase)
+                        Invoke("EngageTrap", 1.0f);
+
+                    bossLifes--;
+                }
+            }
         }
         else
         {
@@ -264,6 +316,62 @@ public class Boss_Phase3 : MonoBehaviour
         }
     }
 
+    private void EndLevel()
+    {
+        Destroy(gameObject);
+    }
+
+    private void EngageTrap()
+    {
+        inCalmPhase = true;
+
+        trappWall1.SetActive(true);
+        trappWall2.SetActive(true);
+        movingWall.SetActive(false);
+        SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.cageTrap);
+
+        Invoke("ActivateArrow1", timeToInvokeShooterAfterTrapped1);
+        Invoke("ActivateArrow2", timeToInvokeShooterAfterTrapped2);
+
+
+        StartCoroutine(StartTrapCountdown());
+    }
+
+    private void ActivateArrow1()
+    {
+        if(arrowShooter1 != null)
+            arrowShooter1.SetActive(true);
+    }
+
+    private void ActivateArrow2()
+    {
+        if (arrowShooter2 != null)
+            arrowShooter2.SetActive(true);
+    }
+
+    IEnumerator StartTrapCountdown()
+    {
+        float currentTime = trapTime;
+
+        while (currentTime > 0)
+        {
+            currentTime -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        trappWall1.SetActive(false);
+        trappWall2.SetActive(false);
+        //arrowShooter1.SetActive(false);
+        //arrowShooter2.SetActive(false);
+        movingWall.SetActive(true);
+        movingWall.GetComponent<Moving_Wall>().MoveWallUp(); 
+
+        SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.cageTrap);
+
+        inCalmPhase = false;
+    }
+
     private void EnableRenderers(Transform parentTransform)
     {
         foreach (Transform child in parentTransform)
@@ -295,7 +403,7 @@ public class Boss_Phase3 : MonoBehaviour
         isFlickering = false;
     }
 
-    public void flickerBoss()
+    public void FlickerBoss()
     {
         if (!isFlickering)
             StartCoroutine(Flicker(gameObject.transform));

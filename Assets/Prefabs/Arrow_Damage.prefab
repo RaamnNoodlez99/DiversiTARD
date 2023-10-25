@@ -100,7 +100,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 8245071106484847466, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.35
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -199,12 +199,15 @@ MonoBehaviour:
   timeToDestroy: 0.3
   stoneSource: {fileID: 5994973411753045863}
   stoneFallSounds:
-  - {fileID: 8300000, guid: 1040f37cec376c74eb600852938a6829, type: 3}
-  - {fileID: 8300000, guid: 2dcc4c9cc575c254a99d2dc84992ab1f, type: 3}
-  - {fileID: 8300000, guid: 57c7d2314d5e5774784c771e8d03fd13, type: 3}
-  - {fileID: 8300000, guid: 6e91432ead909994ba596f3aed415d79, type: 3}
-  - {fileID: 8300000, guid: 393f2050aa2748c47b9432c6138ac726, type: 3}
+  - {fileID: 8300000, guid: 6105e4969661e7247ba6e0c133c08905, type: 3}
+  - {fileID: 8300000, guid: 2df24c25da75e3e468bc19e6f5063284, type: 3}
+  - {fileID: 8300000, guid: fe2fad684e1c9dc4f8c9dd43c097a5ae, type: 3}
+  - {fileID: 8300000, guid: 76a6ff9e571a02348a079e9fdfb9922c, type: 3}
+  - {fileID: 8300000, guid: 2df24c25da75e3e468bc19e6f5063284, type: 3}
   damage: 30
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   woodenManRock: {fileID: -632639934, guid: 33619a780db80d342bb5084a34943716, type: 3}
   ghostRock: {fileID: -632639934, guid: 33619a780db80d342bb5084a34943716, type: 3}
   doDamage: 1
@@ -223,7 +226,7 @@ Rigidbody2D:
   m_Mass: 0.001
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 8
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

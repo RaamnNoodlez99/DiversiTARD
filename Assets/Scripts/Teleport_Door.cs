@@ -118,16 +118,41 @@ public class Teleport_Door : MonoBehaviour
 
     IEnumerator TeleportCharacter(GameObject character)
     {
+        //Begin teleporting Animation
+
         isTeleporting = true;
+        string exitDirection = "right";
 
         if (character.CompareTag("Boss"))
+        {
             character.GetComponent<Boss_Phase3>().HasTelported();
+            
+            if(character.GetComponent<Boss_Phase3>().direction == "left")
+            {
+                exitDirection = "right";
+            }
+            else
+            {
+                exitDirection = "left";
+            }
+        }
 
 
         if (character.CompareTag("WoodenMan") || character.CompareTag("Ghost"))
+        {
             character.GetComponent<Player_Controller>().IsBusyTeleporting = true;
 
-        if(SFX_Manager.sfxInstance.teleport != null)
+            if (character.GetComponent<Player_Controller>().facingLeft)
+            {
+                exitDirection = "left";
+            }
+            else
+            {
+                exitDirection = "right";
+            }
+        }
+
+        if (SFX_Manager.sfxInstance.teleport != null)
             SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.teleport);
 
         DisableRenderers(character.transform);
@@ -141,24 +166,24 @@ public class Teleport_Door : MonoBehaviour
 
         if (dad.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
         {
-            if (spawnToTheLeft)
+            if (exitDirection == "right")
             {
-                teleportPosition = connectedDadDoor.transform.position + new Vector3(-7f, 0f, 0f);
+                teleportPosition = connectedDadDoor.transform.position + new Vector3(7f, 0f, 0f);
             }
             else
             {
-                teleportPosition = connectedDadDoor.transform.position + new Vector3(7f, 0f, 0f);
+                teleportPosition = connectedDadDoor.transform.position + new Vector3(-7f, 0f, 0f);
             }
         }
         else
         {
-            if (spawnToTheLeft)
+            if (exitDirection == "right")
             {
-                teleportPosition = connectedGhostDoor.transform.position + new Vector3(-7f, 0f, 0f);
+                teleportPosition = connectedGhostDoor.transform.position + new Vector3(7f, 0f, 0f);
             }
             else
             {
-                teleportPosition = connectedGhostDoor.transform.position + new Vector3(7f, 0f, 0f);
+                teleportPosition = connectedGhostDoor.transform.position + new Vector3(-7f, 0f, 0f);
             }
         }
 
@@ -168,6 +193,9 @@ public class Teleport_Door : MonoBehaviour
         EnableRenderers(character.transform); isTeleporting = false;
 
         yield return new WaitForSeconds(0f);
+
+
+        //Finish teleporting animation
     }
 
     private void DisableRenderers(Transform parentTransform)

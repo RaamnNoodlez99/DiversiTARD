@@ -424,8 +424,9 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -16.727242, y: 12.81178}
       - {x: -16.72042, y: 16.064014}
-      - {x: -15.384513, y: 20.748207}
-      - {x: -15.547162, y: 10.445419}
+      - {x: -15.805388, y: 20.780582}
+      - {x: -16.020079, y: 15.222506}
+      - {x: -16.129913, y: 11.190046}
 --- !u!114 &5687228424973130808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +632,7 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   ghostPlatform: {fileID: 6849975941971926316, guid: 607304796dc15bc4386c5f3ab5c8ffd6, type: 3}
   poisonKnockback: 1
+  allowBone: 1
   GhostHUD: {fileID: 0}
   animator: {fileID: 4573405270768568801}
   knockbackForce: 12

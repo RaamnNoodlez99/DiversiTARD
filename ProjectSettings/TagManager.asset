@@ -22,6 +22,7 @@ TagManager:
   - StoneBall
   - Boss
   - Portal
+  - Arrow Pass
   layers:
   - Default
   - TransparentFX
@@ -42,7 +43,7 @@ TagManager:
   - FallingPlatform
   - Phase3Boss
   - Arrows
-  - 
+  - Ignore Platforms
   - 
   - 
   - 

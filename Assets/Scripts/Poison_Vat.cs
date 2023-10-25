@@ -9,13 +9,32 @@ public class Poison_Vat : MonoBehaviour
     public float poisonSpawnInterval = 1;
     public int inialNumOfDrops = 8;
     public float gapBetweenDrops = 9f;
+    private bool busyDropping = false;
 
     private List<GameObject> spawnedPoisonDrops = new List<GameObject>();
 
-    void Start()
+    void OnEnable()
     {
         SpawnInitialLine();
-        InvokeRepeating("SpawnPoisonDrop", poisonSpawnInterval, poisonSpawnInterval);
+        StartDropping();
+    }
+
+    public void StartDropping()
+    {
+        if (!busyDropping)
+        {
+            InvokeRepeating("SpawnPoisonDrop", poisonSpawnInterval, poisonSpawnInterval);
+            busyDropping = true;
+        }
+    }
+
+    public void StopDropping()
+    {
+        if (busyDropping)
+        {
+            CancelInvoke("SpawnPoisonDrop");
+            busyDropping = false;
+        }
     }
 
     void SpawnInitialLine()

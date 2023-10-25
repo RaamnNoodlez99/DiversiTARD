@@ -979,6 +979,7 @@ MonoBehaviour:
   switchDelay: 0.001
   inputManager: {fileID: 1883137707}
   ghostPlatform: {fileID: 2675158141671572417, guid: 730ec2a9bc7e44fd6af9211dbe35ae93, type: 3}
+  poisonKnockback: 1
   GhostHUD: {fileID: 36841849}
   animator: {fileID: 462617583}
   knockbackForce: 12
@@ -987,6 +988,7 @@ MonoBehaviour:
   knockbackTotalTime: 0.4
   knockFromRight: 0
   IsBusyTeleporting: 0
+  movingWall: {fileID: 0}
   ghostCanFollow: 0
 --- !u!95 &462617583 stripped
 Animator:
@@ -1543,6 +1545,7 @@ MonoBehaviour:
   LevelComplete: {fileID: 0}
   teleport: {fileID: 0}
   trapped: {fileID: 0}
+  bossLaugh: {fileID: 0}
   Audio: {fileID: 593480067}
 --- !u!4 &593480065
 Transform:

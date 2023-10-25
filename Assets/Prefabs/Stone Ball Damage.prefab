@@ -157,6 +157,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6e91432ead909994ba596f3aed415d79, type: 3}
   - {fileID: 8300000, guid: 393f2050aa2748c47b9432c6138ac726, type: 3}
   damage: 50
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   woodenManRock: {fileID: 774449714, guid: 98dcebf11653448ff922c9ba98eb32d9, type: 3}
   ghostRock: {fileID: 774449714, guid: 98dcebf11653448ff922c9ba98eb32d9, type: 3}
   doDamage: 1

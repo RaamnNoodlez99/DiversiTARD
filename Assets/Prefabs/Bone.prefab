@@ -508,11 +508,11 @@ MonoBehaviour:
   timeToDestroy: 0
   stoneSource: {fileID: 3147705900672045332}
   stoneFallSounds:
-  - {fileID: 8300000, guid: 1040f37cec376c74eb600852938a6829, type: 3}
-  - {fileID: 8300000, guid: 2dcc4c9cc575c254a99d2dc84992ab1f, type: 3}
-  - {fileID: 8300000, guid: 57c7d2314d5e5774784c771e8d03fd13, type: 3}
-  - {fileID: 8300000, guid: 6e91432ead909994ba596f3aed415d79, type: 3}
-  - {fileID: 8300000, guid: 393f2050aa2748c47b9432c6138ac726, type: 3}
+  - {fileID: 8300000, guid: 76a6ff9e571a02348a079e9fdfb9922c, type: 3}
+  - {fileID: 8300000, guid: 6105e4969661e7247ba6e0c133c08905, type: 3}
+  - {fileID: 8300000, guid: 2df24c25da75e3e468bc19e6f5063284, type: 3}
+  - {fileID: 8300000, guid: fe2fad684e1c9dc4f8c9dd43c097a5ae, type: 3}
+  - {fileID: 8300000, guid: 76a6ff9e571a02348a079e9fdfb9922c, type: 3}
 --- !u!82 &3147705900672045332
 AudioSource:
   m_ObjectHideFlags: 0

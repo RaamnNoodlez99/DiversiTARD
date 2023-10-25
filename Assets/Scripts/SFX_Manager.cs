@@ -24,6 +24,7 @@ public class SFX_Manager : MonoBehaviour
     public AudioClip teleport;
     public AudioClip trapped;
     public AudioClip bossLaugh;
+    public AudioClip cageTrap;
 
 
 

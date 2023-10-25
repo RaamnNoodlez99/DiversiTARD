@@ -27,7 +27,9 @@ public class Wooden_Man_Attack : MonoBehaviour
 
             if(timer >= timeToAttack - 0.55 && !soundAlreadyPlayed)
             {
-                SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.axeSwing);
+                if(SFX_Manager.sfxInstance.axeSwing != null)
+                    SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.axeSwing, 0.6f);
+
                 soundAlreadyPlayed = true;
             }
 

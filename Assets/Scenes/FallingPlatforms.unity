@@ -360,6 +360,10 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 741399904703212890, guid: e8a90795f336d45988897473054f5e73, type: 3}
+      propertyPath: lives
+      value: 
+      objectReference: {fileID: 2027793134}
+    - target: {fileID: 741399904703212890, guid: e8a90795f336d45988897473054f5e73, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 110932605}
@@ -431,6 +435,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5068456077889257147, guid: e8a90795f336d45988897473054f5e73, type: 3}
+      propertyPath: lives
+      value: 
+      objectReference: {fileID: 2027793135}
     - target: {fileID: 5068456077889257147, guid: e8a90795f336d45988897473054f5e73, type: 3}
       propertyPath: healthBar
       value: 
@@ -1057,6 +1065,7 @@ MonoBehaviour:
   inputManager: {fileID: 1883137707}
   ghostPlatform: {fileID: 2675158141671572417, guid: 730ec2a9bc7e44fd6af9211dbe35ae93, type: 3}
   poisonKnockback: 1
+  allowBone: 1
   GhostHUD: {fileID: 600320928}
   animator: {fileID: 462617583}
   knockbackForce: 12
@@ -1065,6 +1074,7 @@ MonoBehaviour:
   knockbackTotalTime: 0.4
   knockFromRight: 0
   IsBusyTeleporting: 0
+  movingWall: {fileID: 0}
   ghostCanFollow: 0
 --- !u!95 &462617583 stripped
 Animator:
@@ -1086,7 +1096,7 @@ MonoBehaviour:
   otherCharacter: {fileID: 1731100109}
   thisCharacter: {fileID: 462617581}
   cinemachine: {fileID: 1978145137}
-  healthBar: {fileID: 110932602}
+  lives: {fileID: 2027793135}
   Rails: []
   ShooterHeads: []
   TeleportDoors: []
@@ -1140,9 +1150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  MAX_HEALTH: 100
   damageFlickerer: {fileID: 0}
-  healthBar: {fileID: 110932605}
+  lives: {fileID: 0}
 --- !u!1 &486434282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,7 +1785,7 @@ MonoBehaviour:
   platformDestroy: {fileID: 8300000, guid: c35a71666e0d6e74db6cf437b80954b2, type: 3}
   axeSwing: {fileID: 8300000, guid: 136b42cf301410c4581671e7604329d1, type: 3}
   axeSwingWithHit: {fileID: 8300000, guid: ff1dd363c0760424d82caf1a7883bb2b, type: 3}
-  environmentChange: {fileID: 8300000, guid: ff9e54b16a7bc9b4c9e86ad0f11268a3, type: 3}
+  environmentChange: {fileID: 8300000, guid: 7f6f6bf35e27c8a42be021de8c9ff976, type: 3}
   poisonDrop: {fileID: 8300000, guid: f12b5473301bad245b9034e59cbfdc82, type: 3}
   deathGrunt: {fileID: 8300000, guid: cf1d968a3f1f0be458190cc044a6fe80, type: 3}
   painGrunt: {fileID: 8300000, guid: acb598e9ac2f37741a1c313c4a68d9ad, type: 3}
@@ -1790,6 +1799,8 @@ MonoBehaviour:
   LevelComplete: {fileID: 0}
   teleport: {fileID: 0}
   trapped: {fileID: 0}
+  bossLaugh: {fileID: 0}
+  cageTrap: {fileID: 0}
   Audio: {fileID: 593480067}
 --- !u!4 &593480065
 Transform:
@@ -3822,6 +3833,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+--- !u!224 &2027793134 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6426264282417251415, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+  m_PrefabInstance: {fileID: 2027793133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2027793135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5496593036415750398, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+  m_PrefabInstance: {fileID: 2027793133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2107562259 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1999152744229929482, guid: 091883a33b8bb3b4aad22f2c1daf45c6, type: 3}

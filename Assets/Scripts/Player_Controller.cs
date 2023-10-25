@@ -21,6 +21,7 @@ public class Player_Controller : MonoBehaviour
     public GameObject inputManager;
     public GameObject ghostPlatform;
     public bool poisonKnockback = true;
+    public bool allowBone = true;
     //public GameObject gameManager;
 
     bool isJumping = false;
@@ -55,7 +56,7 @@ public class Player_Controller : MonoBehaviour
     public GameObject movingWall;
 
 
-    private bool facingLeft = true;
+    public bool facingLeft = true;
     private bool movementFrozen = false;
 
     private GameObject currentGhostPlatform = null;
@@ -445,37 +446,40 @@ public class Player_Controller : MonoBehaviour
     }
 
 public void OnSpawnPlatform(InputAction.CallbackContext context)
-    { 
-        if(movingWall != null)
+    {
+        if (allowBone)
         {
-            movingWall.GetComponent<Moving_Wall>().togglePlatform();
-        }
+            if (movingWall != null)
+            {
+                movingWall.GetComponent<Moving_Wall>().togglePlatform();
+            }
 
-        if(gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && gameObject.CompareTag("Ghost") && !Pause_Menu.isPaused && isJumping && context.performed)
-        {
-            Debug.Log("1");
-            if (currentGhostPlatform != null)
+            if (gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && gameObject.CompareTag("Ghost") && !Pause_Menu.isPaused && isJumping && context.performed)
             {
-                Debug.Log("Destroying Old Creating New");
-                currentGhostPlatform.GetComponent<ghostPlatform>().SetDespawnTimer();
-                ghostPlatformExists = false;
-                SpawnPlatform();
+                Debug.Log("1");
+                if (currentGhostPlatform != null)
+                {
+                    Debug.Log("Destroying Old Creating New");
+                    currentGhostPlatform.GetComponent<ghostPlatform>().SetDespawnTimer();
+                    ghostPlatformExists = false;
+                    SpawnPlatform();
+                }
+                else
+                {
+                    Debug.Log("Creating New");
+                    SpawnPlatform();
+                }
             }
-            else
+            else if (gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && gameObject.CompareTag("Ghost") && !Pause_Menu.isPaused && !isJumping && context.performed)
             {
-                Debug.Log("Creating New");
-                SpawnPlatform();
-            }
-        }
-        else if (gameObject.GetComponent<Character_Switch>().getCurCharacter() == "Ghost" && gameObject.CompareTag("Ghost") && !Pause_Menu.isPaused && !isJumping && context.performed)
-        {
-            Debug.Log("2");
-            if (currentGhostPlatform != null)
-            {
-                Debug.Log("Destroying Old");
-                SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.platformDestroy,0.55f);
-                currentGhostPlatform.GetComponent<ghostPlatform>().SetDespawnTimer();
-                ghostPlatformExists = false;
+                Debug.Log("2");
+                if (currentGhostPlatform != null)
+                {
+                    Debug.Log("Destroying Old");
+                    SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.platformDestroy, 0.55f);
+                    currentGhostPlatform.GetComponent<ghostPlatform>().SetDespawnTimer();
+                    ghostPlatformExists = false;
+                }
             }
         }
     }

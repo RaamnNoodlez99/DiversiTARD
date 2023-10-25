@@ -14,7 +14,7 @@ public class Arrow : MonoBehaviour
 
     public void Start()
     {
-       
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -38,7 +38,7 @@ public class Arrow : MonoBehaviour
             }
             else if (collision.gameObject.CompareTag("Boss"))
             {
-                collision.gameObject.GetComponent<Boss_Phase3>().flickerBoss();
+                //collision.gameObject.GetComponent<Boss_Phase3>().FlickerBoss();
             }
             
             if (player != null)
