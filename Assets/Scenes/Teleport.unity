@@ -1002,6 +1002,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4210759595945518555, guid: 92b190fc20c524b1389036cfeff3ee06, type: 3}
+      propertyPath: lives
+      value: 
+      objectReference: {fileID: 1030540479}
+    - target: {fileID: 4210759595945518555, guid: 92b190fc20c524b1389036cfeff3ee06, type: 3}
       propertyPath: ghostHUD
       value: 
       objectReference: {fileID: 1499954355}

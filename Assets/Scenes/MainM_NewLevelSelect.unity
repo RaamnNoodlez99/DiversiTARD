@@ -769,6 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cca9087a6c9734e9c932e0663aa003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsRemoved: 0
   firstSelectedButton: {fileID: 2141007506}
   removableText: {fileID: 384657276}
   title: {fileID: 56028218}
@@ -3452,6 +3453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cca9087a6c9734e9c932e0663aa003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsRemoved: 0
   firstSelectedButton: {fileID: 1522141045}
   removableText: {fileID: 384657276}
   title: {fileID: 56028218}

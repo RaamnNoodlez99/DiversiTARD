@@ -89,7 +89,14 @@ public class StartCutscene : MonoBehaviour
                 }
 
             }
+        } else if (SceneManager.GetActiveScene().buildIndex == 12)
+        {
+            if (loadNextScene)
+            {
+                loadNextLevel();
+            }
         }
+        
 
         
     }

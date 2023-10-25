@@ -569,6 +569,7 @@ MonoBehaviour:
   killsGhost: 1
   killsFather: 1
   healthBar: {fileID: 1089251652}
+  isBoss: 1
 --- !u!60 &242159341
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3020,6 +3021,7 @@ MonoBehaviour:
   killsGhost: 1
   killsFather: 1
   healthBar: {fileID: 1089251652}
+  isBoss: 0
 --- !u!4 &1574574855
 Transform:
   m_ObjectHideFlags: 0
@@ -3676,6 +3678,7 @@ MonoBehaviour:
   killsGhost: 1
   killsFather: 1
   healthBar: {fileID: 1089251652}
+  isBoss: 0
 --- !u!4 &2045263400
 Transform:
   m_ObjectHideFlags: 0

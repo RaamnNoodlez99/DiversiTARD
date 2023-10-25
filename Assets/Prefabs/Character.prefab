@@ -424,9 +424,9 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -16.727242, y: 12.81178}
       - {x: -16.72042, y: 16.064014}
-      - {x: -15.805388, y: 20.780582}
-      - {x: -16.020079, y: 15.222506}
-      - {x: -16.129913, y: 11.190046}
+      - {x: -15.169678, y: 20.66424}
+      - {x: -15.197397, y: 14.408104}
+      - {x: -15.269836, y: 10.802235}
 --- !u!114 &5687228424973130808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,6 +642,7 @@ MonoBehaviour:
   knockFromRight: 0
   IsBusyTeleporting: 0
   movingWall: {fileID: 0}
+  facingLeft: 1
   ghostCanFollow: 0
 --- !u!114 &5068456077889257147
 MonoBehaviour:
@@ -661,7 +662,6 @@ MonoBehaviour:
   lives: {fileID: 0}
   Rails: []
   ShooterHeads: []
-  TeleportDoors: []
 --- !u!114 &4189188203714929208
 MonoBehaviour:
   m_ObjectHideFlags: 0

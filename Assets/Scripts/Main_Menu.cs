@@ -17,7 +17,7 @@ public class Main_Menu : MonoBehaviour
 
     private Vector3 initialTitlePosition;
     public float titleMoveSpeed = 10f;
-    public float titleHeightIncrease = 350f;
+    public float titleHeightIncrease = 290f;
 
     private void Awake()
     {

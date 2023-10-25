@@ -444,6 +444,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2626844265826002513, guid: e8a90795f336d45988897473054f5e73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2626844265826002513, guid: e8a90795f336d45988897473054f5e73, type: 3}
       propertyPath: m_TagString
       value: WoodenManAttackArea
       objectReference: {fileID: 0}
