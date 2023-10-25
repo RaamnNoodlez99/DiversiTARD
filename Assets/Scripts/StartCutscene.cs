@@ -15,6 +15,7 @@ public class StartCutscene : MonoBehaviour
     private Player_Controller ghostPlayerController;
 
     public bool loadNextScene = false;
+    private bool bossSoundPlayed = false;
     private void Start()
     {
         dadPlayerController = GameObject.FindWithTag("WoodenMan").GetComponent<Player_Controller>();
@@ -25,26 +26,57 @@ public class StartCutscene : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("WoodenMan") || other.CompareTag("Ghost"))
+        if (SceneManager.GetActiveScene().buildIndex == 10)
         {
-            if(bossRoar != null)
-                bossRoar.Play();
-            dadPlayerController.inputManager.SetActive(false);
-            ghostPlayerController.inputManager.SetActive(false);
-            if(Phase1StartScript != null)
-                Phase1StartScript.SetActive(true);
-
-            if (loadNextScene)
+            if (PlayerPrefs.GetInt("hasSeenBossLevelCutscene") == 0)
             {
-                cutsceneAnimator.SetBool("startCutscene", true);
-                Invoke("loadNextLevel", 3f);
+                PlayerPrefs.SetInt("hasSeenBossLevelCutscene", 1);
+                
+                if (other.CompareTag("WoodenMan") || other.CompareTag("Ghost"))
+                {
+                    if(bossRoar != null)
+                        bossRoar.Play();
+                    dadPlayerController.inputManager.SetActive(false);
+                    ghostPlayerController.inputManager.SetActive(false);
+                    if(Phase1StartScript != null)
+                        Phase1StartScript.SetActive(true);
+
+                    if (loadNextScene)
+                    {
+                        cutsceneAnimator.SetBool("startCutscene", true);
+                        Invoke("loadNextLevel", 3f);
+                    }
+                    else
+                    {
+                        cutsceneAnimator.SetBool("cutscene1", true);
+                        Invoke("stopCutscene", 3f);
+                    }
+                }
             }
             else
             {
-                cutsceneAnimator.SetBool("cutscene1", true);
-                Invoke("stopCutscene", 3f);
+                if (bossRoar != null && !bossSoundPlayed)
+                {
+                    bossSoundPlayed = true;
+                    bossRoar.Play();
+                }
+                
+                dadPlayerController.inputManager.SetActive(false);
+                ghostPlayerController.inputManager.SetActive(false);
+                cutsceneAnimator.SetBool("startLevelCamera", true);
+                Invoke("resumePlayerControls", 3f);
+                
+                foreach(GameObject source in backgroundAudios)
+                {
+                    source.GetComponent<AudioSource>().Play();
+                }
+                if(Phase1StartScript != null)
+                    Phase1StartScript.SetActive(true);
+
             }
         }
+
+        
     }
 
     void loadNextLevel()
@@ -66,4 +98,12 @@ public class StartCutscene : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    void resumePlayerControls ()
+    {
+        Destroy(gameObject);
+        dadPlayerController.inputManager.SetActive(true);
+        ghostPlayerController.inputManager.SetActive(true);
+    }
+    
 }

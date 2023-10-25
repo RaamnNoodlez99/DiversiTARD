@@ -244,13 +244,17 @@ PrefabInstance:
       propertyPath: environmentHandler
       value: 
       objectReference: {fileID: 2092722493}
-    - target: {fileID: 5103723223517623459, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 5103723223496601475, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5103723223517623459, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103723223517623459, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5103723224531647520, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
       propertyPath: m_Name
@@ -323,6 +327,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 885b018b6391c4f5288da6e4b174d816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &262344683 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5496593036415750398, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+  m_PrefabInstance: {fileID: 262344679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &262344684 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6426264282417251415, guid: 9fab807cec29c57459d43e72b5b0fd10, type: 3}
+  m_PrefabInstance: {fileID: 262344679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &262863571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -346,6 +360,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 741399904703212890, guid: e8a90795f336d45988897473054f5e73, type: 3}
+      propertyPath: lives
+      value: 
+      objectReference: {fileID: 262344684}
     - target: {fileID: 741399904703212890, guid: e8a90795f336d45988897473054f5e73, type: 3}
       propertyPath: healthBar
       value: 
@@ -418,6 +436,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5068456077889257147, guid: e8a90795f336d45988897473054f5e73, type: 3}
+      propertyPath: lives
+      value: 
+      objectReference: {fileID: 262344683}
     - target: {fileID: 5068456077889257147, guid: e8a90795f336d45988897473054f5e73, type: 3}
       propertyPath: healthBar
       value: 
@@ -1393,12 +1415,15 @@ MonoBehaviour:
   jumpForce: 40
   gravityScale: 40
   jumpTimer: 0.4
+  coyoteTime: 0.2
+  coyoteTimeCounter: 0
   platformOffset: 5
   ghostPlatSpawnDelay: 0
   ghostPlatformExists: 0
   switchDelay: 0.001
   inputManager: {fileID: 1473934678}
   ghostPlatform: {fileID: 2675158141671572417, guid: 730ec2a9bc7e44fd6af9211dbe35ae93, type: 3}
+  poisonKnockback: 1
   GhostHUD: {fileID: 262344681}
   animator: {fileID: 1324569459}
   knockbackForce: 12
@@ -1406,6 +1431,9 @@ MonoBehaviour:
   knockbackCounter: 0
   knockbackTotalTime: 0.4
   knockFromRight: 0
+  IsBusyTeleporting: 0
+  movingWall: {fileID: 0}
+  ghostCanFollow: 0
 --- !u!114 &1324569462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,9 +1447,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  MAX_HEALTH: 100
   damageFlickerer: {fileID: 0}
-  healthBar: {fileID: 0}
+  lives: {fileID: 0}
 --- !u!114 &1324569463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1437,11 +1464,12 @@ MonoBehaviour:
   otherCharacter: {fileID: 262863575}
   thisCharacter: {fileID: 1324569460}
   cinemachine: {fileID: 1518604023}
-  healthBar: {fileID: 262344681}
+  lives: {fileID: 262344683}
   Rails:
   - {fileID: 1269811164}
   ShooterHeads:
   - {fileID: 1698027519}
+  TeleportDoors: []
 --- !u!70 &1324569464
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2265,6 +2293,9 @@ MonoBehaviour:
   jumpLand: {fileID: 8300000, guid: 4763d9893b2ae3f41a2168e5b23ec98d, type: 3}
   JourneyOver: {fileID: 0}
   LevelComplete: {fileID: 0}
+  teleport: {fileID: 0}
+  trapped: {fileID: 0}
+  bossLaugh: {fileID: 0}
   Audio: {fileID: 2026423099}
 --- !u!4 &2026423101
 Transform:

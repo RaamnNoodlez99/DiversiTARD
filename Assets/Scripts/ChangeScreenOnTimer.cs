@@ -181,7 +181,27 @@ public class ChangeScreenOnTimer : MonoBehaviour
     {
         levelInput.enabled = true;
         sceneAnimator.SetBool("startCutscene", false);
-        healthbar.SetActive(true);
+        lives.SetActive(true);
+        ghostHUD.SetActive(true);
+        stateMachineToDisable.SetActive(false);
+        actualCamera.SetActive(true);
+    }
+
+    public void StartDoorCutscene()
+    {
+        actualCamera.SetActive(false);
+        levelInput.enabled = false;
+        stateMachineToDisable.SetActive(true);
+        lives.SetActive(false);
+        ghostHUD.SetActive(false);
+        sceneAnimator.SetBool("doorCutscene", true);
+        Invoke("StopDoorCutscene", 2.5f);
+    }
+    
+    private void StopDoorCutscene()
+    {
+        levelInput.enabled = true;
+        sceneAnimator.SetBool("doorCutscene", false);
         lives.SetActive(true);
         ghostHUD.SetActive(true);
         stateMachineToDisable.SetActive(false);

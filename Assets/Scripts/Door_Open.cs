@@ -13,6 +13,7 @@ public class Door_Open : MonoBehaviour
     public float doorLength = 18f;
     public AudioSource stoneInPlace;
     public AudioSource allButtonsDown;
+    public ChangeScreenOnTimer sceneControl;
 
 
     bool stoneIsInPlace = false;
@@ -70,6 +71,8 @@ public class Door_Open : MonoBehaviour
                 {
                     havePlayedSound = true;
                     Invoke("playAllButtonsDown", 0.2f);
+                    if(sceneControl != null)
+                        sceneControl.StartDoorCutscene();
                 }
 
                 foreach (var linkedButton in linkedButtons)
