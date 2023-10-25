@@ -73,7 +73,7 @@ public class Teleport_Door : MonoBehaviour
                 hint.SetActive(false);
         }
 
-        if (qeueDeActivation)
+       /* if (qeueDeActivation)
         {
             if (!isTeleporting)
             {
@@ -89,7 +89,7 @@ public class Teleport_Door : MonoBehaviour
         else
         {
             //doorRenderer.sprite = ghostSprite;
-        }
+        }*/
     }
 
     public void SetToGhostDoor()
@@ -135,111 +135,114 @@ public class Teleport_Door : MonoBehaviour
     {
         //Begin teleporting Animation
 
-        if(childAnimator != null)
+        if (!isTeleporting)
         {
-            childAnimator.SetBool("startTeleport", true);
-        }
-        
-        if(linkedTeleportAnimators != null && linkedTeleportAnimators.Length > 0)
-        {
-            for (int i = 0; i < linkedTeleportAnimators.Length; i++)
+            isTeleporting = true;
+            if (childAnimator != null)
             {
-                linkedTeleportAnimators[i].SetBool("startTeleport", true);
+                childAnimator.SetBool("startTeleport", true);
             }
-        }
 
-
-        isTeleporting = true;
-        string exitDirection = "right";
-
-        if (character.CompareTag("Boss"))
-        {
-            character.GetComponent<Boss_Phase3>().HasTelported();
-            
-            if(character.GetComponent<Boss_Phase3>().direction == "left")
+            if (linkedTeleportAnimators != null && linkedTeleportAnimators.Length > 0)
             {
-                exitDirection = "right";
+                for (int i = 0; i < linkedTeleportAnimators.Length; i++)
+                {
+                    linkedTeleportAnimators[i].SetBool("startTeleport", true);
+                }
+            }
+
+
+            string exitDirection = "right";
+
+            if (character.CompareTag("Boss"))
+            {
+                character.GetComponent<Boss_Phase3>().HasTelported();
+
+                if (character.GetComponent<Boss_Phase3>().direction == "left")
+                {
+                    exitDirection = "right";
+                }
+                else
+                {
+                    exitDirection = "left";
+                }
+            }
+
+
+            if (character.CompareTag("WoodenMan") || character.CompareTag("Ghost"))
+            {
+                character.GetComponent<Player_Controller>().IsBusyTeleporting = true;
+
+                if (character.GetComponent<Player_Controller>().facingLeft)
+                {
+                    exitDirection = "left";
+                }
+                else
+                {
+                    exitDirection = "right";
+                }
+            }
+
+            if (SFX_Manager.sfxInstance.teleport != null)
+                SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.teleport);
+
+            DisableRenderers(character.transform);
+
+            if (character.CompareTag("WoodenMan") || character.CompareTag("Ghost"))
+            {
+                if (timeInPortal > 0)
+                    StartCoroutine(character.GetComponent<Player_Controller>().FreezeMovementInputForDuration(timeInPortal));
+            }
+
+            yield return new WaitForSeconds(timeInPortal);
+
+            Vector3 teleportPosition;
+
+            if (dad.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+            {
+                if (exitDirection == "right")
+                {
+                    teleportPosition = connectedDadDoor.transform.position + new Vector3(7f, 0f, 0f);
+                }
+                else
+                {
+                    teleportPosition = connectedDadDoor.transform.position + new Vector3(-7f, 0f, 0f);
+                }
             }
             else
             {
-                exitDirection = "left";
+                if (exitDirection == "right")
+                {
+                    teleportPosition = connectedGhostDoor.transform.position + new Vector3(7f, 0f, 0f);
+                }
+                else
+                {
+                    teleportPosition = connectedGhostDoor.transform.position + new Vector3(-7f, 0f, 0f);
+                }
             }
-        }
+
+            character.transform.position = teleportPosition;
 
 
-        if (character.CompareTag("WoodenMan") || character.CompareTag("Ghost"))
-        {
-            character.GetComponent<Player_Controller>().IsBusyTeleporting = true;
+            EnableRenderers(character.transform);
 
-            if (character.GetComponent<Player_Controller>().facingLeft)
+            Debug.Log("here");
+
+            //Finish teleporting animation
+            if (childAnimator != null)
             {
-                exitDirection = "left";
+                childAnimator.SetBool("startTeleport", false);
             }
-            else
+
+            if (linkedTeleportAnimators != null && linkedTeleportAnimators.Length > 0)
             {
-                exitDirection = "right";
+                for (int i = 0; i < linkedTeleportAnimators.Length; i++)
+                {
+                    linkedTeleportAnimators[i].SetBool("startTeleport", false);
+                }
             }
-        }
 
-        if (SFX_Manager.sfxInstance.teleport != null)
-            SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.teleport);
-
-        DisableRenderers(character.transform);
-
-        if (character.CompareTag("WoodenMan") || character.CompareTag("Ghost"))
-        {
-            if(timeInPortal > 0)
-                StartCoroutine(character.GetComponent<Player_Controller>().FreezeMovementInputForDuration(timeInPortal));
-        }
-
-        yield return new WaitForSeconds(timeInPortal);
-
-        Vector3 teleportPosition;
-
-        if (dad.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
-        {
-            if (exitDirection == "right")
-            {
-                teleportPosition = connectedDadDoor.transform.position + new Vector3(7f, 0f, 0f);
-            }
-            else
-            {
-                teleportPosition = connectedDadDoor.transform.position + new Vector3(-7f, 0f, 0f);
-            }
-        }
-        else
-        {
-            if (exitDirection == "right")
-            {
-                teleportPosition = connectedGhostDoor.transform.position + new Vector3(7f, 0f, 0f);
-            }
-            else
-            {
-                teleportPosition = connectedGhostDoor.transform.position + new Vector3(-7f, 0f, 0f);
-            }
-        }
-
-        character.transform.position = teleportPosition;
-
-
-        EnableRenderers(character.transform); 
-        isTeleporting = false;
-
-        yield return new WaitForSeconds(0f);
-
-
-        //Finish teleporting animation
-        if(childAnimator != null)
-        {
-            childAnimator.SetBool("startTeleport", false);
-        }
-        
-        if(linkedTeleportAnimators != null && linkedTeleportAnimators.Length > 0)
-        {
-            for (int i = 0; i < linkedTeleportAnimators.Length; i++)
-            {
-                linkedTeleportAnimators[i].SetBool("startTeleport", false);
-            }
+            isTeleporting = false;
         }
     }
 

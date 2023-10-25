@@ -75,9 +75,10 @@ public class Level_Select : MonoBehaviour
         allowChange = true;
     }
 
-    private void ChangeButton(string moveDirection)
+    public void ChangeButton(string moveDirection)
     {
         buttonSource.PlayOneShot(buttonMove);
+        EventSystem.current.SetSelectedGameObject(levelButton);
 
         if (moveDirection == "right")
         {
