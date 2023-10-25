@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,10 @@ public class TeleportManager : MonoBehaviour
         teleportGhosts = GameObject.FindGameObjectsWithTag("TeleportGhost");
     }
 
+    private void OnDisable()
+    {
+        Debug.Log("cow");
+    }
 
     void Update()
     {

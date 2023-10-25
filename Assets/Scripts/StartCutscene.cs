@@ -30,8 +30,7 @@ public class StartCutscene : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("hasSeenBossLevelCutscene") == 0)
             {
-                PlayerPrefs.SetInt("hasSeenBossLevelCutscene", 1);
-                
+
                 if (other.CompareTag("WoodenMan") || other.CompareTag("Ghost"))
                 {
                     if(bossRoar != null)
@@ -61,22 +60,45 @@ public class StartCutscene : MonoBehaviour
                     bossRoar.Play();
                 }
                 
-                dadPlayerController.inputManager.SetActive(false);
-                ghostPlayerController.inputManager.SetActive(false);
                 cutsceneAnimator.SetBool("startLevelCamera", true);
-                Invoke("resumePlayerControls", 3f);
-                
+
                 foreach(GameObject source in backgroundAudios)
                 {
                     source.GetComponent<AudioSource>().Play();
                 }
-                if(Phase1StartScript != null)
-                    Phase1StartScript.SetActive(true);
+
+                if (Phase1StartScript != null)
+                {
+                    Debug.Log("player pref" + PlayerPrefs.GetInt("hasSeenBossLevelCutscene"));
+                    if (PlayerPrefs.GetInt("hasSeenBossLevelCutscene") == 1)
+                    {
+                        StartCoroutine(Phase1Effect(20f, 3f));
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("hasSeenBossLevelCutscene", 1);
+                        Debug.Log("player pref" + PlayerPrefs.GetInt("hasSeenBossLevelCutscene"));
+                        Phase1StartScript.SetActive(true);
+                    }
+                }
 
             }
         }
 
         
+    }
+    
+    IEnumerator Phase1Effect(float newSpeed, float duration)
+    {
+        if (Phase1StartScript != null)
+        {
+            Phase1StartScript.SetActive(true);
+            Phase1StartScript.GetComponent<Phase1>().monsterSpeed = newSpeed;
+
+            yield return new WaitForSeconds(duration);
+
+            Phase1StartScript.GetComponent<Phase1>().monsterSpeed = 10f;
+        }
     }
 
     void loadNextLevel()

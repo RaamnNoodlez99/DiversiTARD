@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70689936}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.022987, y: 5.667633, z: 28.25879}
+  m_LocalPosition: {x: -22.022987, y: 2.8676329, z: 28.25879}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -547,7 +547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242159337}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -97.5, y: -0.9, z: 0}
+  m_LocalPosition: {x: -97.5, y: -3.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1773,7 +1773,6 @@ MonoBehaviour:
   lives: {fileID: 155956820}
   Rails: []
   ShooterHeads: []
-  TeleportDoors: []
 --- !u!70 &720915875
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3595,7 +3594,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769536931}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.600346, y: 16.2, z: 0}
+  m_LocalPosition: {x: 16.600346, y: 16.199997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

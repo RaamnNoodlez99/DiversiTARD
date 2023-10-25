@@ -12,6 +12,16 @@ public class Phase1 : MonoBehaviour
     public Transform flowerBoss;
     public Transform followObject;
 
+    private void Start()
+    {
+        if (PlayerPrefs.GetInt("hasSeenBossLevelCutscene") == 1)
+        {
+            Vector3 newPosition = flowerBoss.transform.position;
+            newPosition.x = -80.5f;
+            flowerBoss.transform.position = newPosition;
+        }
+    }
+
 
     void Update()
     {

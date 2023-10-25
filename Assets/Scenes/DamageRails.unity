@@ -833,6 +833,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1731100109}
     - target: {fileID: 8521281737967765236, guid: 1eaf7c1abe79185488d420a73cb670b5, type: 3}
+      propertyPath: stoneShooter
+      value: 
+      objectReference: {fileID: 1778472395}
+    - target: {fileID: 8521281737967765236, guid: 1eaf7c1abe79185488d420a73cb670b5, type: 3}
       propertyPath: followOnlyGhost
       value: 0
       objectReference: {fileID: 0}
@@ -975,7 +979,6 @@ MonoBehaviour:
   - {fileID: 1615062227}
   - {fileID: 1778472393}
   - {fileID: 631035681}
-  TeleportDoors: []
 --- !u!70 &462617585
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1517,6 +1520,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3969689845586190236, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
   m_PrefabInstance: {fileID: 1398202553}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &631035683 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3497291950457384917, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
+  m_PrefabInstance: {fileID: 1398202553}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631035681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5f276fccd28744a86c64597b0007a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &632502807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1921,6 +1935,10 @@ PrefabInstance:
       propertyPath: movingWall
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8521281737967765236, guid: 1eaf7c1abe79185488d420a73cb670b5, type: 3}
+      propertyPath: stoneShooter
+      value: 
+      objectReference: {fileID: 631035683}
     - target: {fileID: 8521281737967765236, guid: 1eaf7c1abe79185488d420a73cb670b5, type: 3}
       propertyPath: firefliesStage1
       value: 
@@ -2545,6 +2563,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7768672782343989760, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8301605081218726989, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -2891,6 +2913,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7768672782343989760, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8301605081218726989, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -3045,6 +3071,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3969689845586190236, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
   m_PrefabInstance: {fileID: 1729582974}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1615062229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3497291950457384917, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
+  m_PrefabInstance: {fileID: 1729582974}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615062227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5f276fccd28744a86c64597b0007a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1647801997 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1880723248015024308, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
@@ -3146,6 +3183,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7768672782343989760, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8301605081218726989, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -3186,6 +3227,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3969689845586190236, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
   m_PrefabInstance: {fileID: 1099187504}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1778472395 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3497291950457384917, guid: fc9ea4f832daa4bcb96e2f287fe0b0c6, type: 3}
+  m_PrefabInstance: {fileID: 1099187504}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778472393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5f276fccd28744a86c64597b0007a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1789313741
 GameObject:
   m_ObjectHideFlags: 3
@@ -3381,6 +3433,10 @@ PrefabInstance:
       propertyPath: woodenMan
       value: 
       objectReference: {fileID: 1731100109}
+    - target: {fileID: 8521281737967765236, guid: 1eaf7c1abe79185488d420a73cb670b5, type: 3}
+      propertyPath: stoneShooter
+      value: 
+      objectReference: {fileID: 1615062229}
     - target: {fileID: 8521281737967765236, guid: 1eaf7c1abe79185488d420a73cb670b5, type: 3}
       propertyPath: followOnlyWoodenMan
       value: 0

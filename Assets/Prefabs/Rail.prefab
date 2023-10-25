@@ -215,12 +215,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d1a3eb4629f49d1898c0887e1c98a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerRailSpriteDad: {fileID: 654274106, guid: d74c336a40f634304ac51299e753fb8e, type: 3}
-  leftRailSpriteDad: {fileID: -2110350703, guid: d74c336a40f634304ac51299e753fb8e, type: 3}
-  rightRailSpriteDad: {fileID: 1535040435, guid: d74c336a40f634304ac51299e753fb8e, type: 3}
-  centerRailSpriteGhost: {fileID: 1434945115, guid: cf4ef8440d1354069ab8e970019b0ff4, type: 3}
-  leftRailSpriteGhost: {fileID: -565363365, guid: cf4ef8440d1354069ab8e970019b0ff4, type: 3}
-  rightRailSpriteGhost: {fileID: 1644835569, guid: cf4ef8440d1354069ab8e970019b0ff4, type: 3}
+  centerRailSpriteDad: {fileID: 662380567, guid: 5d3b289239d78417c9c877b55f266496, type: 3}
+  leftRailSpriteDad: {fileID: 2122485352, guid: 5d3b289239d78417c9c877b55f266496, type: 3}
+  rightRailSpriteDad: {fileID: 1462035649, guid: 5d3b289239d78417c9c877b55f266496, type: 3}
+  centerRailSpriteGhost: {fileID: -1702498080, guid: 6a0b7fa438705481a961b5d2f6f1cebf, type: 3}
+  leftRailSpriteGhost: {fileID: -944188503, guid: 6a0b7fa438705481a961b5d2f6f1cebf, type: 3}
+  rightRailSpriteGhost: {fileID: 415709651, guid: 6a0b7fa438705481a961b5d2f6f1cebf, type: 3}
   centerRail: {fileID: 2153688413670014828}
   leftRail: {fileID: 6535339520585958524}
   rightRail: {fileID: 8393363497113037856}

@@ -5,26 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbbf0830-a335-4d67-9b70-26899a0de1fb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Player Actions/axe_swing2.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Player Actions/axe_swing2.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Player Actions/heh.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Player Actions/heh.ogg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BoneOutline.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/BoneOutline.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss3.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss4.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss5.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss6.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Boss/Phase 1 New/Boss7.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Rails/Ghost Rail New/Big rail 2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Rails/Ghost Rail New/Big rail 2.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiversiTARD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiversiTARD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Button/pressed.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Button/pressed.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Button/unpressed.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Button/unpressed.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Boss/Phase1.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Boss/Phase1.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Portal/Light no spiral_0.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Portal/Light no spiral_0.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ghost_Background.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ghost_Background.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Rail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Rail.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ResetButton Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ResetButton Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Shooter_Head.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Shooter_Head.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TeleportDoor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TeleportDoor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SFX Manager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SFX Manager.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/AlternatingWalls.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AlternatingWalls.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FallingPlatforms.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FallingPlatforms.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DamageRails.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DamageRails.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FallingPlatforms2nd.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FallingPlatforms2nd.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MultiplleRailsLevel 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MultiplleRailsLevel 1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SingleRailLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SingleRailLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Button_Red.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Button_Red.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character_Switch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character_Switch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Follow_Shooter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Follow_Shooter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Shooter_Head_Swapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Shooter_Head_Swapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stone_Shooter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stone_Shooter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Teleport_Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Teleport_Door.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Portal/Portal blue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Portal/Portal blue.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Door_Open.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Door_Open.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Phase1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Phase1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartCutscene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StartCutscene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TeleportManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TeleportManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +163,7 @@
       <workItem from="1696063812394" duration="24299000" />
       <workItem from="1698063218602" duration="9600000" />
       <workItem from="1698169182988" duration="2519000" />
-      <workItem from="1698224298744" duration="16085000" />
+      <workItem from="1698224298744" duration="22386000" />
     </task>
     <servers />
   </component>

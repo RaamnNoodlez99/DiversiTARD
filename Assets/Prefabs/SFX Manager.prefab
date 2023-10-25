@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platfromCreation: {fileID: 8300000, guid: c35a71666e0d6e74db6cf437b80954b2, type: 3}
   platformDestroy: {fileID: 8300000, guid: c35a71666e0d6e74db6cf437b80954b2, type: 3}
-  axeSwing: {fileID: 8300000, guid: afcbdf6b401d55a43a67ef5c793630b6, type: 3}
+  axeSwing: {fileID: 8300000, guid: 3edd307eb5e5f4d00871d44ea86906ad, type: 3}
   axeSwingWithHit: {fileID: 8300000, guid: ff1dd363c0760424d82caf1a7883bb2b, type: 3}
   environmentChange: {fileID: 8300000, guid: 7f6f6bf35e27c8a42be021de8c9ff976, type: 3}
   poisonDrop: {fileID: 8300000, guid: f12b5473301bad245b9034e59cbfdc82, type: 3}

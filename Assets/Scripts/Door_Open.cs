@@ -22,6 +22,8 @@ public class Door_Open : MonoBehaviour
     private bool havePlayedSound= false;
     private float targetY;
 
+    private bool havePlayedDoorAnimation = false;
+
 
     void Start()
     {
@@ -38,6 +40,14 @@ public class Door_Open : MonoBehaviour
 
         if (doorSprite.transform.position == openPosition)
         {
+            if (sceneControl != null)
+            {
+                if (!havePlayedDoorAnimation)
+                {
+                    sceneControl.StartDoorCutscene();
+                    havePlayedDoorAnimation = true;
+                }
+            }
             if (!stoneIsInPlace)
             {
                 stoneInPlace.Play();
@@ -71,8 +81,6 @@ public class Door_Open : MonoBehaviour
                 {
                     havePlayedSound = true;
                     Invoke("playAllButtonsDown", 0.2f);
-                    if(sceneControl != null)
-                        sceneControl.StartDoorCutscene();
                 }
 
                 foreach (var linkedButton in linkedButtons)
