@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,18 +21,31 @@ public class Teleport_Door : MonoBehaviour
     private bool showHint = false;
     public float timeInPortal = 1f;
 
+    private Animator childAnimator;
+    public GameObject [] linkedTeleports;
+    private Animator [] linkedTeleportAnimators;
+
 
     private bool qeueDeActivation = false;
 
     void Awake()
     {
-        if (isDadDoor && dad.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+        // if (isDadDoor && dad.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
+        // {
+        //     gameObject.SetActive(true);
+        // }
+        // else if(isGhostDoor && !isDadDoor)
+        // {
+        //     gameObject.SetActive(false);
+        // }
+        
+        childAnimator = GetComponentInChildren<Animator>();
+
+        linkedTeleportAnimators = new Animator[linkedTeleports.Length];
+     
+        for (int i = 0; i < linkedTeleports.Length; i++)
         {
-            gameObject.SetActive(true);
-        }
-        else if(isGhostDoor && !isDadDoor)
-        {
-            gameObject.SetActive(false);
+            linkedTeleportAnimators[i] = linkedTeleports[i].GetComponentInChildren<Animator>();
         }
     }
 
@@ -70,11 +84,11 @@ public class Teleport_Door : MonoBehaviour
 
         if (dad.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
         {
-            doorRenderer.sprite = dadSprite;
+            //doorRenderer.sprite = dadSprite;
         }
         else
         {
-            doorRenderer.sprite = ghostSprite;
+            //doorRenderer.sprite = ghostSprite;
         }
     }
 
@@ -120,6 +134,20 @@ public class Teleport_Door : MonoBehaviour
     IEnumerator TeleportCharacter(GameObject character)
     {
         //Begin teleporting Animation
+
+        if(childAnimator != null)
+        {
+            childAnimator.SetBool("startTeleport", true);
+        }
+        
+        if(linkedTeleportAnimators != null && linkedTeleportAnimators.Length > 0)
+        {
+            for (int i = 0; i < linkedTeleportAnimators.Length; i++)
+            {
+                linkedTeleportAnimators[i].SetBool("startTeleport", true);
+            }
+        }
+
 
         isTeleporting = true;
         string exitDirection = "right";
@@ -201,6 +229,18 @@ public class Teleport_Door : MonoBehaviour
 
 
         //Finish teleporting animation
+        if(childAnimator != null)
+        {
+            childAnimator.SetBool("startTeleport", false);
+        }
+        
+        if(linkedTeleportAnimators != null && linkedTeleportAnimators.Length > 0)
+        {
+            for (int i = 0; i < linkedTeleportAnimators.Length; i++)
+            {
+                linkedTeleportAnimators[i].SetBool("startTeleport", false);
+            }
+        }
     }
 
     private void DisableRenderers(Transform parentTransform)

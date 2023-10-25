@@ -967,6 +967,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4210759595945518555, guid: 92b190fc20c524b1389036cfeff3ee06, type: 3}
+      propertyPath: lives
+      value: 
+      objectReference: {fileID: 2027793135}
+    - target: {fileID: 4210759595945518555, guid: 92b190fc20c524b1389036cfeff3ee06, type: 3}
       propertyPath: ghostHUD
       value: 
       objectReference: {fileID: 600320928}
@@ -1100,7 +1104,6 @@ MonoBehaviour:
   lives: {fileID: 2027793135}
   Rails: []
   ShooterHeads: []
-  TeleportDoors: []
 --- !u!70 &462617585
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1686,11 +1689,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_ParentHash.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_ChildCameras.Array.size
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
+      propertyPath: m_Instructions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
+      propertyPath: m_ChildCameras.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
+      propertyPath: m_ParentHash.Array.data[2].m_Hash
+      value: 1572707065
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
+      propertyPath: m_Instructions.Array.data[2].m_FullHash
+      value: 1572707065
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
+      propertyPath: m_ParentHash.Array.data[2].m_ParentHash
+      value: 756556552
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880723248015024298, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
+      propertyPath: m_Instructions.Array.data[2].m_VirtualCamera
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1880723248015024308, guid: e5e94c712a8834587ace4914d8ec5c22, type: 3}
       propertyPath: m_Name

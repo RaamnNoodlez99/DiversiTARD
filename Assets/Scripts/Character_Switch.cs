@@ -19,7 +19,7 @@ public class Character_Switch : MonoBehaviour
 
     public GameObject[] Rails;
     public GameObject[] ShooterHeads;
-    public GameObject[] TeleportDoors;
+   // public GameObject[] TeleportDoors;
     
     public string getCurCharacter()
     {
@@ -95,13 +95,13 @@ public class Character_Switch : MonoBehaviour
                     }
                 }
 
-                if(TeleportDoors != null && TeleportDoors.Length != 0)
-                {
-                    foreach(var door in TeleportDoors)
-                    {
-                        door.GetComponent<Teleport_Door>().SetToGhostDoor();
-                    }
-                }
+                // if(TeleportDoors != null && TeleportDoors.Length != 0)
+                // {
+                //     foreach(var door in TeleportDoors)
+                //     {
+                //         door.GetComponent<Teleport_Door>().SetToGhostDoor();
+                //     }
+                // }
 
                 if (thisCharacter.CompareTag("Ghost"))
                 {
@@ -188,13 +188,13 @@ public class Character_Switch : MonoBehaviour
                     }
                 }
 
-                if (TeleportDoors != null && TeleportDoors.Length != 0)
-                {
-                    foreach (var door in TeleportDoors)
-                    {
-                        door.GetComponent<Teleport_Door>().SetToDadDoor();
-                    }
-                }
+                // if (TeleportDoors != null && TeleportDoors.Length != 0)
+                // {
+                //     foreach (var door in TeleportDoors)
+                //     {
+                //         door.GetComponent<Teleport_Door>().SetToDadDoor();
+                //     }
+                // }
 
                 if (thisCharacter.CompareTag("WoodenMan"))
                 {

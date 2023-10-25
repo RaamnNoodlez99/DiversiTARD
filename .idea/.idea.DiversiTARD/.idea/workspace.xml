@@ -6,19 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="cbbf0830-a335-4d67-9b70-26899a0de1fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiversiTARD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiversiTARD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Cutscenes/test_animation/BossPhase1CameraControl.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Cutscenes/test_animation/BossPhase1CameraControl.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Cutscenes/test_animation/cameraControl.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Cutscenes/test_animation/cameraControl.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/woodenman/Attack.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/woodenman/Attack.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boss Phase 3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boss Phase 3.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Button/pressed.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Button/pressed.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Button/unpressed.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Button/unpressed.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Rail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Rail.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ResetButton Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ResetButton Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Shooter_Head.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Shooter_Head.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TeleportDoor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TeleportDoor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AlternatingWalls.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AlternatingWalls.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FallingPlatforms.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FallingPlatforms.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MultiplleRailsLevel 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MultiplleRailsLevel 1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rails.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Rails.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SingleRailLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SingleRailLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChangeScreenOnTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChangeScreenOnTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Door_Open.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Door_Open.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Phase1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Phase1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartCutscene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StartCutscene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Button_Red.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Button_Red.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character_Switch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character_Switch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Follow_Shooter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Follow_Shooter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Shooter_Head_Swapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Shooter_Head_Swapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stone_Shooter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stone_Shooter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Teleport_Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Teleport_Door.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Portal/Portal blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Portal/Portal blue.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChangeScreenOnTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Door_Open.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fireflies.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TeleportManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/Editor/AssetEditor/InputActionEditorWindow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
@@ -138,7 +144,7 @@
       <workItem from="1696063812394" duration="24299000" />
       <workItem from="1698063218602" duration="9600000" />
       <workItem from="1698169182988" duration="2519000" />
-      <workItem from="1698224298744" duration="2115000" />
+      <workItem from="1698224298744" duration="16085000" />
     </task>
     <servers />
   </component>

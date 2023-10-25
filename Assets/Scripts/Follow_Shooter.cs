@@ -13,6 +13,9 @@ public class Follow_Shooter : MonoBehaviour
     public bool followOnlyGhost = false;
     public bool followOnlyWoodenMan = false;
     public float moveSpeed;
+    public Stone_Shooter stoneShooter;
+
+    private bool shooterActivated = true;
 
     Renderer railRenderer;
     private Vector3 initialShooterPosition;
@@ -41,6 +44,8 @@ public class Follow_Shooter : MonoBehaviour
     private bool doOnce = false;
 
     private float firstStageCompletionTime;
+
+    private Animator shooterEyeAnimator;
     private void Start()
     {
         startTime = Time.time;
@@ -48,6 +53,9 @@ public class Follow_Shooter : MonoBehaviour
         initialShooterPosition = shooter.transform.position;
         railRenderer = rail.GetComponent<Renderer>();
         railBounds = railRenderer.bounds;
+
+        Transform shooterEye = shooter.transform.GetChild(4);
+        shooterEyeAnimator = shooterEye.GetComponent<Animator>();
 
         if (followOnlyWoodenMan)
         {
@@ -76,6 +84,8 @@ public class Follow_Shooter : MonoBehaviour
 
     void Update()
     {
+        
+        Debug.Log(isResettingPosition);
 
         if (Time.time - startTime >= 60f)
         {
@@ -125,6 +135,14 @@ public class Follow_Shooter : MonoBehaviour
         //Debug.Log(initialShooterPosition.position.x);
         if (!isResettingPosition)
         {
+            shooterEyeAnimator.SetBool("isClosedEyes", false);
+
+            if (!shooterActivated)
+            {
+                stoneShooter.StartStoneBall();
+                shooterActivated = true;
+            }
+            
             if (followedObject != null)
             {
                 if (shouldSwitch && !followedObject.CompareTag(followedObject.GetComponent<Character_Switch>().getCurCharacter()))
@@ -334,6 +352,14 @@ public class Follow_Shooter : MonoBehaviour
         }
         else
         {
+            shooterEyeAnimator.SetBool("isClosedEyes", true);
+
+            if (shooterActivated)
+            {
+                stoneShooter.StopStoneBall();
+                shooterActivated = false;
+            }
+
             shouldPlayAudio = true;
 
             if (shouldPlayAudio && !isPlayingAudio)

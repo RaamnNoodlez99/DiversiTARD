@@ -23,6 +23,8 @@ TagManager:
   - Boss
   - Portal
   - Arrow Pass
+  - TeleportDad
+  - TeleportGhost
   layers:
   - Default
   - TransparentFX
@@ -47,8 +49,6 @@ TagManager:
   - 
   - ignoreBoss
   - flowerBoss
-  - 
-  - 
   - 
   - 
   - 

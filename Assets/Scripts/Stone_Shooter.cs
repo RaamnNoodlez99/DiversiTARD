@@ -11,6 +11,16 @@ public class Stone_Shooter : MonoBehaviour
 
     void Start()
     {
+        StartStoneBall();
+    }
+    
+    public void StopStoneBall()
+    {
+         CancelInvoke("SpawnStoneBall");
+    }
+    
+    public void StartStoneBall()
+    {
         InvokeRepeating("SpawnStoneBall", ballSpawnInterval, ballSpawnInterval);
     }
 

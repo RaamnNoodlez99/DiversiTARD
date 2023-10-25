@@ -8,12 +8,14 @@ public class Shooter_Head_Swapper : MonoBehaviour
     public Sprite headSpriteDad;
     public Sprite mouthSpriteDad;
     public Sprite mouthOpenSpriteDad;
+    public Sprite eyesSpriteDad;
     
     public Sprite circleSpriteGhost;
     public Sprite headSpriteGhost;
     public Sprite mouthSpriteGhost;
     public Sprite mouthOpenSpriteGhost;
     public GameObject followShooter;
+    public Sprite eyesSpriteGhost;
 
     private bool followOnlyGhost;
     private bool followOnlyDad;
@@ -22,6 +24,7 @@ public class Shooter_Head_Swapper : MonoBehaviour
     public GameObject head;
     public GameObject mouth;
     public GameObject mouthOpen;
+    public GameObject eyes;
 
 
     private void Start()
@@ -42,6 +45,9 @@ public class Shooter_Head_Swapper : MonoBehaviour
 
             SpriteRenderer mouthOpenRenderer = mouthOpen.GetComponent<SpriteRenderer>();
             mouthOpenRenderer.sprite = mouthOpenSpriteGhost;
+            
+            SpriteRenderer eyesRenderer = eyes.GetComponent<SpriteRenderer>();
+            eyesRenderer.sprite = eyesSpriteGhost;
         }
     }
 
@@ -60,6 +66,9 @@ public class Shooter_Head_Swapper : MonoBehaviour
 
             SpriteRenderer mouthOpenRenderer = mouthOpen.GetComponent<SpriteRenderer>();
             mouthOpenRenderer.sprite = mouthOpenSpriteDad;
+            
+            SpriteRenderer eyesRenderer = eyes.GetComponent<SpriteRenderer>();
+            eyesRenderer.sprite = eyesSpriteDad;
         }
        
     }
@@ -79,6 +88,9 @@ public class Shooter_Head_Swapper : MonoBehaviour
 
             SpriteRenderer mouthOpenRenderer = mouthOpen.GetComponent<SpriteRenderer>();
             mouthOpenRenderer.sprite = mouthOpenSpriteGhost;
+            
+            SpriteRenderer eyesRenderer = eyes.GetComponent<SpriteRenderer>();
+            eyesRenderer.sprite = eyesSpriteGhost;
         }
     }
 }

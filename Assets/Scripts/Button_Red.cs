@@ -19,11 +19,15 @@ public class Button_Red : MonoBehaviour
     public Color dadPressedButtonColor;
     public Color dadCupColor;
     public Color dadEyesColor;
-    
+    public Color dadHead1;
+    public Color dadHead2;
+
     public Color ghostButtonColor;
     public Color ghostPressedButtonColor;
     public Color ghostCupColor;
     public Color ghostEyesColor;
+    public Color ghostHead1;
+    public Color ghostHead2;
 
     private bool isButtonPressed = false;
 
@@ -57,11 +61,20 @@ public class Button_Red : MonoBehaviour
             SpriteRenderer cupSpriteRenderer = cupGameObject.GetComponent<SpriteRenderer>();
 
             SpriteRenderer eyesSpriteRenderer = null;
+            SpriteRenderer head1SpriteRenderer = null;
+            SpriteRenderer head2SpriteRenderer = null;
                 
             if (isResetButton)
             {
-                GameObject eyesGameObject = buttonGameObject.transform.GetChild(0).gameObject;
+                GameObject eyesGameObject = buttonGameObject.transform.GetChild(2).gameObject;
                 eyesSpriteRenderer = eyesGameObject.GetComponent<SpriteRenderer>();
+                
+                
+                GameObject head1GameObject = buttonGameObject.transform.GetChild(0).gameObject;
+                head1SpriteRenderer = head1GameObject.GetComponent<SpriteRenderer>();
+                
+                GameObject head2GameObject = buttonGameObject.transform.GetChild(1).gameObject;
+                head2SpriteRenderer = head2GameObject.GetComponent<SpriteRenderer>();
             }
 
             if (characterCheck.GetComponent<Character_Switch>().getCurCharacter() == "WoodenMan")
@@ -70,21 +83,45 @@ public class Button_Red : MonoBehaviour
                 cupSpriteRenderer.color = dadCupColor;
 
                 if (isResetButton)
+                {
                     eyesSpriteRenderer.color = dadEyesColor;
+                    head1SpriteRenderer.color = dadHead1;
+                    head2SpriteRenderer.color = dadHead2;
+                }
 
                 if (_animator.GetBool("isPressed"))
+                {
                     buttonSpriteRenderer.color = dadPressedButtonColor;
+
+                    if (isResetButton)
+                    {
+                        head1SpriteRenderer.color = dadPressedButtonColor;
+                        head2SpriteRenderer.color = dadPressedButtonColor;
+                    }
+                }
             }
             else
             {
                 buttonSpriteRenderer.color = ghostButtonColor;
                 cupSpriteRenderer.color = ghostCupColor;
-                
+
                 if (isResetButton)
+                {
                     eyesSpriteRenderer.color = ghostEyesColor;
-                
+                    head1SpriteRenderer.color = ghostHead1;
+                    head2SpriteRenderer.color = ghostHead2;
+                }
+
                 if (_animator.GetBool("isPressed"))
+                {
                     buttonSpriteRenderer.color = ghostPressedButtonColor;
+
+                    if (isResetButton)
+                    {
+                        head1SpriteRenderer.color = ghostPressedButtonColor;
+                        head2SpriteRenderer.color = ghostPressedButtonColor;
+                    }
+                }
             }
         }
     }
