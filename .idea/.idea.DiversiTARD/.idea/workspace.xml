@@ -6,21 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cbbf0830-a335-4d67-9b70-26899a0de1fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiversiTARD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiversiTARD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Boss/Boss.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Boss/Boss.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Character.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TeleportDoorGhost.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TeleportDoorGhost.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BossLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BossLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DamageRails.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DamageRails.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FinalCutscene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FinalCutscene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FinalOrb.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FinalOrb.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainM_NewLevelSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainM_NewLevelSelect.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/OpeningCutscene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/OpeningCutscene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SingleRailLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SingleRailLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Teleport.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Teleport.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tutorial.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Death_Platform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Death_Platform.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main_Menu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main_Menu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartCutscene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StartCutscene.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +126,7 @@
       <workItem from="1696063812394" duration="24299000" />
       <workItem from="1698063218602" duration="9600000" />
       <workItem from="1698169182988" duration="2519000" />
-      <workItem from="1698224298744" duration="29309000" />
+      <workItem from="1698224298744" duration="29722000" />
     </task>
     <servers />
   </component>
