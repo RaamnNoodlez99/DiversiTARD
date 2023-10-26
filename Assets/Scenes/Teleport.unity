@@ -1616,6 +1616,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportDoorGhost (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 685684986888679569, guid: c67a86209db12400d8dda41dd57383e9, type: 3}
+      propertyPath: m_Layer
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 685684986888679569, guid: c67a86209db12400d8dda41dd57383e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440351698440717301, guid: c67a86209db12400d8dda41dd57383e9, type: 3}
+      propertyPath: m_Layer
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 1838896491171630141, guid: c67a86209db12400d8dda41dd57383e9, type: 3}
       propertyPath: dad
       value: 

@@ -1294,7 +1294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: -35
   endPosition: 32
-  movementSpeed: 0.03
+  movementSpeed: 11
 --- !u!1 &510400368
 GameObject:
   m_ObjectHideFlags: 0
@@ -5281,7 +5281,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8245071106484847466, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
-  m_audioClip: {fileID: 8300000, guid: a61cc54565d8cd445a8008b7012e7771, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 453ff2d11a743eb4081ffa49bfddcb85, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5513,7 +5513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: 30
   endPosition: -36
-  movementSpeed: 0.03
+  movementSpeed: 11
 --- !u!1 &2089206246
 GameObject:
   m_ObjectHideFlags: 0
@@ -5914,7 +5914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4009465597149063684, guid: 2a679b7bcdd3a4acab15acda693f4d7d, type: 3}
       propertyPath: rushDistance
-      value: 60
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4009465597149063684, guid: 2a679b7bcdd3a4acab15acda693f4d7d, type: 3}
       propertyPath: arrowShooter1
@@ -6113,7 +6113,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8245071106484847466, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7f56ebc9ff87e034a9a82815a5d3a91f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5ec7fb9469f766149bae11e73ba5a6aa, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

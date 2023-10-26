@@ -135,7 +135,7 @@ public class Teleport_Door : MonoBehaviour
     {
         //Begin teleporting Animation
 
-        if (!isTeleporting)
+        if (!isTeleporting && !character.GetComponent<Player_Controller>().IsBusyTeleporting)
         {
             isTeleporting = true;
             if (childAnimator != null)
@@ -183,7 +183,7 @@ public class Teleport_Door : MonoBehaviour
                 }
             }
 
-            if (SFX_Manager.sfxInstance.teleport != null)
+            if (SFX_Manager.sfxInstance.teleport != null )
                 SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.teleport);
 
             DisableRenderers(character.transform);

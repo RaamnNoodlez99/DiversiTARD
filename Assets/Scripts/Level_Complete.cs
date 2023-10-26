@@ -40,7 +40,10 @@ public class Level_Complete : MonoBehaviour
         Cursor.visible = true;
         //SFX_Manager.sfxInstance.Audio.PlayOneShot(SFX_Manager.sfxInstance.LevelComplete);
         audioSource.PlayOneShot(levelComplete,0.5f);
+
+        volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTimeSFX(VolumeChangeDuration, PlayerPrefs.GetFloat("soundEffectsVolume"), 0.13f));
         volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, PlayerPrefs.GetFloat("backgroundVolume"), 0.13f));
+
         SFX_Manager.sfxInstance.Audio.Stop();
         levelOverScreen.SetActive(true);
         levelIsOver = true;
@@ -134,6 +137,24 @@ public class Level_Complete : MonoBehaviour
             float decibelVolume = ConvertToDecibel(newVolume);
 
             audioMixer.SetFloat("BackgroundVolume", decibelVolume);
+
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
+    }
+
+    private IEnumerator ChangeVolumeOverTimeSFX(float duration, float startVolume, float targetVolume)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+            float newVolume = Mathf.Lerp(startVolume, targetVolume, t);
+
+            float decibelVolume = ConvertToDecibel(newVolume);
+
+            audioMixer.SetFloat("SoundEffectsVolume", decibelVolume);
 
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;

@@ -138,6 +138,10 @@ MonoBehaviour:
   bottomCenterPoint: {fileID: 5088555175047276728}
   ghost: {fileID: 0}
   vineWrapping: {fileID: 6968608656678549269}
+  startDownwards: 0
+  onlyMoveOnce: 0
+  vineAnimation1: {fileID: 0}
+  vineAnimation2: {fileID: 0}
 --- !u!82 &6968608656678549269
 AudioSource:
   m_ObjectHideFlags: 0
@@ -147,7 +151,7 @@ AudioSource:
   m_GameObject: {fileID: 5088555174554082954}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4412599394785456188, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
+  OutputAudioMixerGroup: {fileID: 8245071106484847466, guid: f04c25e25d7a81d4b89bd3f3fc07b8f1, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3d2a538b4f670234aa28f59ebb054cc0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

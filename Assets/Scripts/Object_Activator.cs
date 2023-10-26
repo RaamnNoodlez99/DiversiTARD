@@ -18,4 +18,18 @@ public class Object_Activator : MonoBehaviour
             }
         }
     }
+
+    private void Start()
+    {
+        GameObject ghost = GameObject.FindGameObjectWithTag("Ghost");
+        GameObject woodenMan = GameObject.FindGameObjectWithTag("WoodenMan");
+
+        Debug.Log(woodenMan.transform.position.x);
+
+        if ( (ghost.transform.position.x > gameObject.transform.position.x || woodenMan.transform.position.x > gameObject.transform.position.x))
+        {
+            objectToActivate.SetActive(true);
+            hasActivated = true;
+        }
+    }
 }

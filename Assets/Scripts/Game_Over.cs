@@ -47,6 +47,7 @@ public class Game_Over : MonoBehaviour
         gameOverScreen.SetActive(true);
         audioSource.Play();
         isOver = true;
+        volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTimeSFX(VolumeChangeDuration, PlayerPrefs.GetFloat("soundEffectsVolume"), 0f));
         volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, PlayerPrefs.GetFloat("backgroundVolume"), 0f));
 
         Time.timeScale = 0f;
@@ -79,9 +80,9 @@ public class Game_Over : MonoBehaviour
         if (volumeChangeCoroutine != null)
             StopCoroutine(volumeChangeCoroutine);
 
-        audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
-        audioMixer.SetFloat("MasterVolume", ConvertToDecibel(PlayerPrefs.GetFloat("masterVolume")));
-        audioMixer.SetFloat("SoundEffectsVolume", ConvertToDecibel(PlayerPrefs.GetFloat("soundEffectsVolume")));
+       // audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
+        //audioMixer.SetFloat("MasterVolume", ConvertToDecibel(PlayerPrefs.GetFloat("masterVolume")));
+       // audioMixer.SetFloat("SoundEffectsVolume", ConvertToDecibel(PlayerPrefs.GetFloat("soundEffectsVolume")));
         
         environmentHandler.GetComponent<Environment_Handler>().shouldLoadPlatforms = false;
         environmentHandler.GetComponent<Environment_Handler>().switchOff = true;
@@ -104,6 +105,24 @@ public class Game_Over : MonoBehaviour
             float decibelVolume = ConvertToDecibel(newVolume);
 
             audioMixer.SetFloat("BackgroundVolume", decibelVolume);
+
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
+    }
+
+    private IEnumerator ChangeVolumeOverTimeSFX(float duration, float startVolume, float targetVolume)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+            float newVolume = Mathf.Lerp(startVolume, targetVolume, t);
+
+            float decibelVolume = ConvertToDecibel(newVolume);
+
+            audioMixer.SetFloat("SoundEffectsVolume", decibelVolume);
 
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;

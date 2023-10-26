@@ -71,11 +71,11 @@ public class Pause_Menu : MonoBehaviour
         {
             Cursor.visible = true;
 
-            if (volumeChangeCoroutine != null)
+           /* if (volumeChangeCoroutine != null)
                 StopCoroutine(volumeChangeCoroutine);
 
             if (PlayerPrefs.GetFloat("backgroundVolume") > volumeWhilePaused)
-                volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, PlayerPrefs.GetFloat("backgroundVolume"), volumeWhilePaused));
+                volumeChangeCoroutine = StartCoroutine(ChangeVolumeOverTime(VolumeChangeDuration, PlayerPrefs.GetFloat("backgroundVolume"), volumeWhilePaused));*/
 
             pauseMenu.SetActive(true);
             isPaused = true;
@@ -104,8 +104,8 @@ public class Pause_Menu : MonoBehaviour
     public void ResumeGame()
     {
 
-        if (volumeChangeCoroutine != null)
-            StopCoroutine(volumeChangeCoroutine);
+        /*if (volumeChangeCoroutine != null)
+            StopCoroutine(volumeChangeCoroutine);*/
 
         Cursor.visible = false;
         if (settingScreen.activeSelf)
@@ -130,8 +130,8 @@ public class Pause_Menu : MonoBehaviour
 
     public void ToMenu()
     {
-        if (volumeChangeCoroutine != null)
-            StopCoroutine(volumeChangeCoroutine);
+       /* if (volumeChangeCoroutine != null)
+            StopCoroutine(volumeChangeCoroutine);*/
 
         audioMixer.SetFloat("BackgroundVolume", ConvertToDecibel(PlayerPrefs.GetFloat("backgroundVolume")));
         audioMixer.SetFloat("MasterVolume", ConvertToDecibel(PlayerPrefs.GetFloat("masterVolume")));

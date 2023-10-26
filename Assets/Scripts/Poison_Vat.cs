@@ -11,12 +11,14 @@ public class Poison_Vat : MonoBehaviour
     public float gapBetweenDrops = 9f;
     private bool busyDropping = false;
 
+    public bool hasBeenTriggered = false;
+
     private List<GameObject> spawnedPoisonDrops = new List<GameObject>();
 
     void OnEnable()
     {
-        SpawnInitialLine();
-        StartDropping();
+            SpawnInitialLine();
+            StartDropping();
     }
 
     public void StartDropping()
@@ -62,7 +64,7 @@ public class Poison_Vat : MonoBehaviour
 
     void Update()
     {
-        spawnedPoisonDrops.RemoveAll(drop => drop == null);
+        //spawnedPoisonDrops.RemoveAll(drop => drop == null);
     }
 
     void OnDestroy()

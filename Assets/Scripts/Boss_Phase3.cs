@@ -93,8 +93,8 @@ public class Boss_Phase3 : MonoBehaviour
 
     IEnumerator StartRush(string direction)
     {
-       
-        float currentRushDist = 0;
+
+        /*float currentRushDist = 0;
         if(typeRush == 1)
         {
             currentRushDist = rushDistance;
@@ -104,7 +104,9 @@ public class Boss_Phase3 : MonoBehaviour
         {
             currentRushDist = secondRushDistance;
             typeRush = 1;
-        }
+        }*/
+
+        float currentRushDist = Random.Range(rushDistance, secondRushDistance);
 
         if (!inCalmPhase)
         {
